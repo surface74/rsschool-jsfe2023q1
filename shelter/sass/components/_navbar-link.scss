@@ -7,6 +7,7 @@
   &.active {
     border-bottom: 3px solid $color-primary;
     padding-bottom: 4px;
+    pointer-events: none;
   }
 }
 
