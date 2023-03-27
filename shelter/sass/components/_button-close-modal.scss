@@ -6,7 +6,7 @@ button.button-close-modal {
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
-  background: url('../../assets/images/cross.svg') center no-repeat;
+  background: url("../../assets/images/cross.svg") center no-repeat;
 
   &:hover {
     border-color: $color-primary-light;
