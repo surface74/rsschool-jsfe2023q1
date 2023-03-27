@@ -1,0 +1,16 @@
+.help-card {
+  display: flex;
+  flex-direction: column;
+  height: 113px;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+
+  .help-card__image {
+    width: 60px;
+  }
+
+  .help-card__caption {
+    color: $color-dark-l;   
+  }
+}

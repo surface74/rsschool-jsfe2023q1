@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px calc(50% - 600px) 0;
+  background: url('../../assets/images/noise_transparent@2x.png'),
+    radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+
+  .footer__block {
+    display: flex;
+    max-width: 30%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 60px;
+    color: $color-light-xl;
+    overflow-wrap: anywhere;
+
+    .icon-caption {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: $color-primary;
+
+      img {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .footer__image {
+    width: 100%;
+  }
+}

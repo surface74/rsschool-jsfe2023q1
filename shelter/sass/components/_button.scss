@@ -1,0 +1,35 @@
+a.button {
+  display: block;
+  text-align: center;
+  padding: 13px 43px;
+  width: fit-content;
+  overflow: hidden;
+
+  font-family: Georgia;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: $color-dark-3xl;
+
+  background-color: $color-primary;
+  border: 2px solid $color-primary;
+  border-radius: 100px;
+
+  &.button--transparent {
+    background-color: transparent;
+  }
+
+  &:hover,
+  &.button--transparent:hover {
+    border-color: $color-primary-light;
+    background-color: $color-primary-light;
+  }
+
+  &:active,
+  &.button--transparent:active {
+    border-color: $color-primary;
+    background-color: $color-primary;
+  }
+}

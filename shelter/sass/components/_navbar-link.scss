@@ -1,0 +1,35 @@
+.navbar-link {
+  width: fit-content;
+  @extend %font-paragraph-l;
+  text-decoration: none;
+  padding-bottom: 4px;
+
+  &.active {
+    border-bottom: 3px solid $color-primary;
+    padding-bottom: 4px;
+  }
+}
+
+.navbar-link_light {
+  color: $color-light-l;
+
+  &:hover {
+    color: $color-light-s;
+  }
+
+  &:active {
+    color: $color-light-l;
+  }
+}
+
+.navbar-link_dark {
+  color: $color-dark-l;
+
+  &:hover {
+    color: $color-dark-3xl;
+  }
+
+  &:active {
+    color: $color-dark-l;
+  }
+}
