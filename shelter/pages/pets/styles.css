@@ -108,6 +108,7 @@ a {
 html {
   font-size: 16px;
   font-family: "Georgia", "Arial", sans-serif;
+  scroll-behavior: smooth;
 }
 
 /* set basic config for body */
@@ -182,6 +183,7 @@ h5.modal-window {
 .navbar-link.active {
   border-bottom: 3px solid #F1CDB3;
   padding-bottom: 4px;
+  pointer-events: none;
 }
 
 .navbar-link_light {

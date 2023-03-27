@@ -9,7 +9,7 @@ button.button-arrow {
   color: $color-dark-3xl;
   background-color: transparent;
   cursor: pointer;
-  background: url('../../assets/icons/arrow.svg') center no-repeat;
+  background: url("../../assets/icons/arrow.svg") center no-repeat;
 
   &.button-arrow--left {
     transform: rotate(0deg);
@@ -54,7 +54,7 @@ button.button-arrow {
   &.button-arrow--down:disabled {
     color: $color-dark-s;
     border-color: $color-dark-s;
-    background: url('../../assets/images/arrow-disabled.svg') center no-repeat;
+    background: url("../../assets/images/arrow-disabled.svg") center no-repeat;
     background-color: transparent;
     cursor: auto;
   }
