@@ -9,7 +9,7 @@ button.button-arrow {
   color: $color-dark-3xl;
   background-color: transparent;
   cursor: pointer;
-  background: url('../../assets/images/arrow.svg') center no-repeat;
+  background: url('../../assets/icons/arrow.svg') center no-repeat;
 
   &.button-arrow--left {
     transform: rotate(0deg);
