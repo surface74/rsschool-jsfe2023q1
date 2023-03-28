@@ -405,7 +405,7 @@ button.button-paginator:disabled {
   padding: 40px calc(50% - 600px) 0;
   background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }
-.footer .footer__block {
+.footer .footer__wrapper {
   display: flex;
   max-width: 30%;
   flex-direction: column;
@@ -415,18 +415,20 @@ button.button-paginator:disabled {
   color: #FFFFFF;
   overflow-wrap: anywhere;
 }
-.footer .footer__block .icon-caption {
+.footer .footer__wrapper .footer__link {
   display: flex;
   flex-direction: row;
   align-items: center;
   color: #F1CDB3;
-  transition: color 0.5s;
+  fill: #F1CDB3;
+  transition: all 0.5s;
 }
-.footer .footer__block .icon-caption img {
+.footer .footer__wrapper .footer__link .footer__icon {
   margin-right: 20px;
 }
-.footer .footer__block .icon-caption:hover {
+.footer .footer__wrapper .footer__link:hover {
   color: #FFFFFF;
+  fill: #FFFFFF;
 }
 .footer .footer__image {
   width: 100%;
