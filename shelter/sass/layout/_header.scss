@@ -49,10 +49,12 @@
   .header__logo {
     .header__title {
       color: $color-primary;
+      transition: color 0.5s;
     }
 
     .header__subtitle {
       color: $color-light-xl;
+      transition: color 0.5s;
     }
 
     &:hover {
@@ -81,10 +83,12 @@
   .header__logo {
     .header__title {
       color: $color-dark-l;
+      transition: color 0.5s;
     }
 
     .header__subtitle {
       color: $color-dark-xl;
+      transition: color 0.5s;
     }
 
     &:hover {

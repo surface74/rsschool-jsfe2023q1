@@ -179,6 +179,7 @@ h5.modal-window {
   width: fit-content;
   text-decoration: none;
   padding-bottom: 4px;
+  transition: all 0.5s;
 }
 .navbar-link.active {
   border-bottom: 3px solid #F1CDB3;
@@ -223,6 +224,7 @@ a.button {
   background-color: #F1CDB3;
   border: 2px solid #F1CDB3;
   border-radius: 100px;
+  transition: all 0.5s;
 }
 a.button.button--transparent {
   background-color: transparent;
@@ -251,6 +253,7 @@ button.button-paginator {
   color: #292929;
   background-color: transparent;
   cursor: pointer;
+  transition: all 0.5s;
 }
 button.button-paginator:hover {
   border-color: #FDDCC4;
@@ -277,6 +280,7 @@ button.button-paginator:disabled {
   background-color: #FAFAFA;
   border-radius: 9px;
   overflow: hidden;
+  transition: all 0.5s;
 }
 .card .card__image {
   width: 100%;
@@ -356,9 +360,11 @@ button.button-paginator:disabled {
 }
 .header_dark .header__logo .header__title {
   color: #F1CDB3;
+  transition: color 0.5s;
 }
 .header_dark .header__logo .header__subtitle {
   color: #FFFFFF;
+  transition: color 0.5s;
 }
 .header_dark .header__logo:hover .header__title,
 .header_dark .header__logo:hover .header__subtitle {
@@ -376,9 +382,11 @@ button.button-paginator:disabled {
 }
 .header_light .header__logo .header__title {
   color: #545454;
+  transition: color 0.5s;
 }
 .header_light .header__logo .header__subtitle {
   color: #4C4C4C;
+  transition: color 0.5s;
 }
 .header_light .header__logo:hover .header__title,
 .header_light .header__logo:hover .header__subtitle {
