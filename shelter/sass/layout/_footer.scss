@@ -5,7 +5,7 @@
   background: url("../../assets/images/noise_transparent@2x.png"),
     radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 
-  .footer__block {
+  .footer__wrapper {
     display: flex;
     max-width: 30%;
     flex-direction: column;
@@ -15,21 +15,22 @@
     color: $color-light-xl;
     overflow-wrap: anywhere;
 
-    .icon-caption {
+    .footer__link {
       display: flex;
       flex-direction: row;
       align-items: center;
       color: $color-primary;
+      fill: $color-primary;
+      transition: all 0.5s;
 
-      transition: color 0.5s;
-
-      img {
+      .footer__icon {
         margin-right: 20px;
       }
     }
 
-    .icon-caption:hover {
+    .footer__link:hover {
       color: $color-light-xl;
+      fill: $color-light-xl;
     }
   }
 
