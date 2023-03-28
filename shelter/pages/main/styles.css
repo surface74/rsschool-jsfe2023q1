@@ -487,7 +487,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   padding-bottom: 50px;
   overflow: hidden;
 }
-.start-wrapper .start__content .content .content__title {
+.start-wrapper .start__content .content .donation__title {
   max-width: 310px;
   color: #FFFFFF;
   margin-bottom: 42px;
@@ -517,7 +517,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   padding-top: 14px;
   margin-left: 120px;
 }
-.about .about__content .content__title {
+.about .about__content .donation__title {
   max-width: 370px;
   color: #545454;
   margin-bottom: 25px;
@@ -594,13 +594,13 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   align-items: flex-start;
   margin-left: 30px;
 }
-.donation .donation__content .content__title {
+.donation .donation__content .donation__title {
   color: #545454;
 }
-.donation .donation__content .content__bank {
+.donation .donation__content .donation__bank {
   color: #545454;
 }
-.donation .donation__content .content__credit-card {
+.donation .donation__content .donation__card {
   display: flex;
   align-items: center;
   -moz-column-gap: 15px;
@@ -609,8 +609,12 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   border-radius: 9px;
   color: #545454;
   background-color: #F1CDB3;
+  transition: background-color 0.5s;
 }
-.donation .donation__content .content__legal-info {
+.donation .donation__content .donation__card:hover {
+  background-color: #FDDCC4;
+}
+.donation .donation__content .donation__legal-info {
   width: 380px;
   font-family: "Arial";
   font-style: italic;

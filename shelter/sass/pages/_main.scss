@@ -28,7 +28,7 @@
       padding-bottom: 50px;
       overflow: hidden;
 
-      .content__title {
+      .donation__title {
         max-width: 310px;
         color: $color-light-xl;
         margin-bottom: 42px;
@@ -65,7 +65,7 @@
     padding-top: 14px;
     margin-left: 120px;
 
-    .content__title {
+    .donation__title {
       max-width: 370px;
       color: $color-dark-l;
       margin-bottom: 25px;
@@ -153,15 +153,15 @@
     align-items: flex-start;
     margin-left: 30px;
 
-    .content__title {
+    .donation__title {
       color: $color-dark-l;
     }
 
-    .content__bank {
+    .donation__bank {
       color: $color-dark-l;
     }
 
-    .content__credit-card {
+    .donation__card {
       display: flex;
       align-items: center;
       column-gap: 15px;
@@ -169,9 +169,15 @@
       border-radius: 9px;
       color: $color-dark-l;
       background-color: $color-primary;
+
+      transition: background-color 0.5s;
     }
 
-    .content__legal-info {
+    .donation__card:hover {
+      background-color: $color-primary-light;
+    }
+
+    .donation__legal-info {
       width: 380px;
       font-family: "Arial";
       font-style: italic;
