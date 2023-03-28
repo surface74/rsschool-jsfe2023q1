@@ -420,9 +420,13 @@ button.button-paginator:disabled {
   flex-direction: row;
   align-items: center;
   color: #F1CDB3;
+  transition: color 0.5s;
 }
 .footer .footer__block .icon-caption img {
   margin-right: 20px;
+}
+.footer .footer__block .icon-caption:hover {
+  color: #FFFFFF;
 }
 .footer .footer__image {
   width: 100%;

@@ -21,9 +21,15 @@
       align-items: center;
       color: $color-primary;
 
+      transition: color 0.5s;
+
       img {
         margin-right: 20px;
       }
+    }
+
+    .icon-caption:hover {
+      color: $color-light-xl;
     }
   }
 
