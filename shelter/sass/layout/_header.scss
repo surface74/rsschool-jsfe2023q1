@@ -1,12 +1,12 @@
 .header {
+  --animation-speed: 0.5s;
   width: 100%;
+  background-color: transparent;
 }
 
 .header__content {
   display: flex;
   justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 40px;
   align-items: center;
   height: 60px;
 }
@@ -25,11 +25,13 @@
   letter-spacing: 0.06em;
   margin-bottom: 8px;
   text-decoration: none;
+  transition: color var(--animation-speed);
 }
 
 .header__subtitle {
   @extend %font-logo-subtitle;
   margin-left: 4px;
+  transition: color var(--animation-speed);
 }
 
 .header__navbar {
@@ -44,18 +46,17 @@
 }
 
 .header_dark {
-  background-color: transparent;
+  // background-color: transparent;
+
+  .header__title {
+    color: $color-primary;
+  }
+
+  .header__subtitle {
+    color: $color-light-xl;
+  }
 
   .header__logo {
-    .header__title {
-      color: $color-primary;
-      transition: color 0.5s;
-    }
-
-    .header__subtitle {
-      color: $color-light-xl;
-      transition: color 0.5s;
-    }
 
     &:hover {
 
@@ -78,18 +79,16 @@
 }
 
 .header_light {
-  background-color: $color-light-xl;
+
+  .header__title {
+    color: $color-dark-l;
+  }
+
+  .header__subtitle {
+    color: $color-dark-xl;
+  }
 
   .header__logo {
-    .header__title {
-      color: $color-dark-l;
-      transition: color 0.5s;
-    }
-
-    .header__subtitle {
-      color: $color-dark-xl;
-      transition: color 0.5s;
-    }
 
     &:hover {
 

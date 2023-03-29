@@ -309,20 +309,20 @@ button.button-paginator:disabled {
   background-color: #F1CDB3;
 }
 
-.wrapper {
+.section-wrapper {
   max-width: 1280px;
   margin: auto;
 }
 
 .header {
+  --animation-speed: 0.5s;
   width: 100%;
+  background-color: transparent;
 }
 
 .header__content {
   display: flex;
   justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 40px;
   align-items: center;
   height: 60px;
 }
@@ -341,10 +341,12 @@ button.button-paginator:disabled {
   letter-spacing: 0.06em;
   margin-bottom: 8px;
   text-decoration: none;
+  transition: color var(--animation-speed);
 }
 
 .header__subtitle {
   margin-left: 4px;
+  transition: color var(--animation-speed);
 }
 
 .header__navbar ul {
@@ -355,16 +357,11 @@ button.button-paginator:disabled {
   margin-bottom: 6px;
 }
 
-.header_dark {
-  background-color: transparent;
-}
-.header_dark .header__logo .header__title {
+.header_dark .header__title {
   color: #F1CDB3;
-  transition: color 0.5s;
 }
-.header_dark .header__logo .header__subtitle {
+.header_dark .header__subtitle {
   color: #FFFFFF;
-  transition: color 0.5s;
 }
 .header_dark .header__logo:hover .header__title,
 .header_dark .header__logo:hover .header__subtitle {
@@ -377,16 +374,11 @@ button.button-paginator:disabled {
   color: #FFFFFF;
 }
 
-.header_light {
-  background-color: #FFFFFF;
-}
-.header_light .header__logo .header__title {
+.header_light .header__title {
   color: #545454;
-  transition: color 0.5s;
 }
-.header_light .header__logo .header__subtitle {
+.header_light .header__subtitle {
   color: #4C4C4C;
-  transition: color 0.5s;
 }
 .header_light .header__logo:hover .header__title,
 .header_light .header__logo:hover .header__subtitle {
@@ -400,12 +392,13 @@ button.button-paginator:disabled {
 }
 
 .footer {
+  --animation-speed: 0.5s;
   display: flex;
   justify-content: space-between;
-  padding: 40px calc(50% - 600px) 0;
-  background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+  padding-top: 40px;
 }
-.footer .footer__wrapper {
+
+.footer__wrapper {
   display: flex;
   max-width: 30%;
   flex-direction: column;
@@ -415,62 +408,82 @@ button.button-paginator:disabled {
   color: #FFFFFF;
   overflow-wrap: anywhere;
 }
-.footer .footer__wrapper .footer__link {
+
+.footer__link {
   display: flex;
   flex-direction: row;
   align-items: center;
   color: #F1CDB3;
   fill: #F1CDB3;
-  transition: all 0.5s;
+  transition: color var(--animation-speed), fill var(--animation-speed);
 }
-.footer .footer__wrapper .footer__link .footer__icon {
+
+.footer__icon {
   margin-right: 20px;
 }
-.footer .footer__wrapper .footer__link:hover {
+
+.footer__link:hover {
   color: #FFFFFF;
   fill: #FFFFFF;
 }
-.footer .footer__image {
+
+.footer__image {
   width: 100%;
 }
 
-main {
-  flex-grow: 1;
+.section-wrapper {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.section-header-bg {
+  background-color: #FFFFFF;
 }
 
 .header {
-  position: sticky;
-  top: 0;
-  padding: 30px 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-.pets {
+.section-pets-bg {
+  background-color: #F6F6F6;
+}
+
+.section-pets {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px calc(50% - 640px) 100px;
-  background-color: #F6F6F6;
+  padding-top: 80px;
+  padding-bottom: 100px;
 }
-.pets .pets__heading {
+
+.section-pets__heading {
   color: #545454;
   margin-bottom: 60px;
   text-align: center;
 }
-.pets .pets__slider {
+
+.slider {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   overflow: hidden;
 }
-.pets .pets__slider .pets__slider-cards {
+
+.slider__cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 30px 40px;
-  margin-bottom: 60px;
 }
-.pets .pets__slider .pets__slider-nav {
+
+.slider__nav {
   display: flex;
+  margin-top: 60px;
   gap: 20px;
+}
+
+.footer-bg {
+  background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }/*# sourceMappingURL=styles.css.map */
