@@ -436,7 +436,7 @@ button.button-paginator:disabled {
   padding-right: 40px;
 }
 
-.header-bg {
+.section-header-bg {
   background-color: #FFFFFF;
 }
 
@@ -445,38 +445,42 @@ button.button-paginator:disabled {
   padding-bottom: 30px;
 }
 
-.pets-bg {
+.section-pets-bg {
   background-color: #F6F6F6;
 }
 
-.pets {
+.section-pets {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 80px;
   padding-bottom: 100px;
 }
-.pets .pets__heading {
+
+.section-pets__heading {
   color: #545454;
   margin-bottom: 60px;
   text-align: center;
 }
-.pets .pets__slider {
+
+.slider {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   overflow: hidden;
 }
-.pets .pets__slider .pets__slider-cards {
+
+.slider__cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 30px 40px;
-  margin-bottom: 60px;
 }
-.pets .pets__slider .pets__slider-nav {
+
+.slider__nav {
   display: flex;
+  margin-top: 60px;
   gap: 20px;
 }
 
