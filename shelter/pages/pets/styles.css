@@ -317,6 +317,7 @@ button.button-paginator:disabled {
 .header {
   --animation-speed: 0.5s;
   width: 100%;
+  background-color: transparent;
 }
 
 .header__content {
@@ -356,9 +357,6 @@ button.button-paginator:disabled {
   margin-bottom: 6px;
 }
 
-.header_dark {
-  background-color: transparent;
-}
 .header_dark .header__title {
   color: #F1CDB3;
 }
@@ -376,9 +374,6 @@ button.button-paginator:disabled {
   color: #FFFFFF;
 }
 
-.header_light {
-  background-color: #FFFFFF;
-}
 .header_light .header__title {
   color: #545454;
 }
@@ -436,22 +431,30 @@ button.button-paginator:disabled {
   width: 100%;
 }
 
-main {
-  flex-grow: 1;
+.section-wrapper {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.header-bg {
+  background-color: #FFFFFF;
 }
 
 .header {
-  position: sticky;
-  top: 0;
-  padding: 30px 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.pets-bg {
+  background-color: #F6F6F6;
 }
 
 .pets {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px calc(50% - 640px) 100px;
-  background-color: #F6F6F6;
+  padding-top: 80px;
+  padding-bottom: 100px;
 }
 .pets .pets__heading {
   color: #545454;
@@ -475,4 +478,8 @@ main {
 .pets .pets__slider .pets__slider-nav {
   display: flex;
   gap: 20px;
+}
+
+.footer-bg {
+  background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }/*# sourceMappingURL=styles.css.map */

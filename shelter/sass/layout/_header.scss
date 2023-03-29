@@ -1,6 +1,7 @@
 .header {
   --animation-speed: 0.5s;
   width: 100%;
+  background-color: transparent;
 }
 
 .header__content {
@@ -45,7 +46,7 @@
 }
 
 .header_dark {
-  background-color: transparent;
+  // background-color: transparent;
 
   .header__title {
     color: $color-primary;
@@ -78,7 +79,6 @@
 }
 
 .header_light {
-  background-color: $color-light-xl;
 
   .header__title {
     color: $color-dark-l;
