@@ -340,6 +340,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 
 .header {
+  --animation-speed: 0.5s;
   width: 100%;
 }
 
@@ -366,10 +367,12 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   letter-spacing: 0.06em;
   margin-bottom: 8px;
   text-decoration: none;
+  transition: color var(--animation-speed);
 }
 
 .header__subtitle {
   margin-left: 4px;
+  transition: color var(--animation-speed);
 }
 
 .header__navbar ul {
@@ -383,13 +386,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 .header_dark {
   background-color: transparent;
 }
-.header_dark .header__logo .header__title {
+.header_dark .header__title {
   color: #F1CDB3;
-  transition: color 0.5s;
 }
-.header_dark .header__logo .header__subtitle {
+.header_dark .header__subtitle {
   color: #FFFFFF;
-  transition: color 0.5s;
 }
 .header_dark .header__logo:hover .header__title,
 .header_dark .header__logo:hover .header__subtitle {
@@ -405,13 +406,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 .header_light {
   background-color: #FFFFFF;
 }
-.header_light .header__logo .header__title {
+.header_light .header__title {
   color: #545454;
-  transition: color 0.5s;
 }
-.header_light .header__logo .header__subtitle {
+.header_light .header__subtitle {
   color: #4C4C4C;
-  transition: color 0.5s;
 }
 .header_light .header__logo:hover .header__title,
 .header_light .header__logo:hover .header__subtitle {
