@@ -1,40 +1,41 @@
 .footer {
+  --animation-speed: 0.5s;
   display: flex;
   justify-content: space-between;
   padding: 40px calc(50% - 600px) 0;
   background: url("../../assets/images/noise_transparent@2x.png"),
     radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+}
 
-  .footer__wrapper {
-    display: flex;
-    max-width: 30%;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 16px;
-    padding-bottom: 60px;
-    color: $color-light-xl;
-    overflow-wrap: anywhere;
+.footer__wrapper {
+  display: flex;
+  max-width: 30%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 60px;
+  color: $color-light-xl;
+  overflow-wrap: anywhere;
+}
 
-    .footer__link {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      color: $color-primary;
-      fill: $color-primary;
-      transition: all 0.5s;
+.footer__link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $color-primary;
+  fill: $color-primary;
+  transition: color var(--animation-speed), fill var(--animation-speed);
+}
 
-      .footer__icon {
-        margin-right: 20px;
-      }
-    }
+.footer__icon {
+  margin-right: 20px;
+}
 
-    .footer__link:hover {
-      color: $color-light-xl;
-      fill: $color-light-xl;
-    }
-  }
+.footer__link:hover {
+  color: $color-light-xl;
+  fill: $color-light-xl;
+}
 
-  .footer__image {
-    width: 100%;
-  }
+.footer__image {
+  width: 100%;
 }

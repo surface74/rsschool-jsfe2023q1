@@ -399,12 +399,14 @@ button.button-paginator:disabled {
 }
 
 .footer {
+  --animation-speed: 0.5s;
   display: flex;
   justify-content: space-between;
   padding: 40px calc(50% - 600px) 0;
   background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }
-.footer .footer__wrapper {
+
+.footer__wrapper {
   display: flex;
   max-width: 30%;
   flex-direction: column;
@@ -414,22 +416,26 @@ button.button-paginator:disabled {
   color: #FFFFFF;
   overflow-wrap: anywhere;
 }
-.footer .footer__wrapper .footer__link {
+
+.footer__link {
   display: flex;
   flex-direction: row;
   align-items: center;
   color: #F1CDB3;
   fill: #F1CDB3;
-  transition: all 0.5s;
+  transition: color var(--animation-speed), fill var(--animation-speed);
 }
-.footer .footer__wrapper .footer__link .footer__icon {
+
+.footer__icon {
   margin-right: 20px;
 }
-.footer .footer__wrapper .footer__link:hover {
+
+.footer__link:hover {
   color: #FFFFFF;
   fill: #FFFFFF;
 }
-.footer .footer__image {
+
+.footer__image {
   width: 100%;
 }
 
