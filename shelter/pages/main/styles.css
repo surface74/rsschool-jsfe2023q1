@@ -46,7 +46,7 @@
   font-weight: 700;
   src: url("../../assets/fonts/arial-bold-italic.ttf") format("truetype");
 }
-.about .about__content .content__text, .start-wrapper .start__content .content .content__text, .navbar-link {
+.about .about__content .content__text, .start__content .content .content__text, .navbar-link {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -334,7 +334,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   color: #545454;
 }
 
-.wrapper {
+.section-wrapper {
   max-width: 1280px;
   margin: auto;
 }
@@ -347,8 +347,6 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 .header__content {
   display: flex;
   justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 40px;
   align-items: center;
   height: 60px;
 }
@@ -427,8 +425,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   --animation-speed: 0.5s;
   display: flex;
   justify-content: space-between;
-  padding: 40px calc(50% - 600px) 0;
-  background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+  padding-top: 40px;
 }
 
 .footer__wrapper {
@@ -464,27 +461,30 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   width: 100%;
 }
 
-.header {
-  position: absolute;
-  top: 30px;
+.section-wrapper {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-.start-wrapper {
+.start-bg {
   background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
-  padding: 120px calc(50% - 600px) 0;
 }
-.start-wrapper .start {
-  width: 100%;
-  max-width: 1280px;
+
+.header {
+  padding-top: 30px;
+}
+
+.start {
   display: flex;
   flex-direction: column;
-  padding-top: 60px;
+  padding-top: 90px;
 }
-.start-wrapper .start__content {
+
+.start__content {
   display: flex;
   justify-content: space-between;
 }
-.start-wrapper .start__content .content {
+.start__content .content {
   display: flex;
   flex-direction: column;
   max-width: 460px;
@@ -492,24 +492,28 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   padding-bottom: 50px;
   overflow: hidden;
 }
-.start-wrapper .start__content .content .donation__title {
+.start__content .content .donation__title {
   max-width: 310px;
   color: #FFFFFF;
   margin-bottom: 42px;
 }
-.start-wrapper .start__content .content .content__text {
+.start__content .content .content__text {
   color: #CDCDCD;
   margin-bottom: 42px;
 }
-.start-wrapper .start__content .image {
+.start__content .image {
   width: 100%;
+}
+
+.about-bg {
+  background-color: #FFFFFF;
 }
 
 .about {
   display: flex;
-  padding: 80px calc(50% - 640px) 100px;
+  padding-top: 80px;
+  padding-bottom: 100px;
   justify-content: center;
-  background-color: #FFFFFF;
 }
 .about .about__image {
   width: 100%;
@@ -536,12 +540,16 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   margin-bottom: 0;
 }
 
+.pets-bg {
+  background-color: #F6F6F6;
+}
+
 .pets {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px calc(50% - 600px) 100px;
-  background-color: #F6F6F6;
+  padding-top: 80px;
+  padding-bottom: 100px;
 }
 .pets .pets__heading {
   color: #545454;
@@ -563,11 +571,15 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   max-width: 990px;
 }
 
+.help-bg {
+  background-color: #FFFFFF;
+}
+
 .help {
   display: flex;
   flex-direction: column;
-  padding: 80px calc(50% - 600px) 100px;
-  background-color: #FFFFFF;
+  padding-top: 80px;
+  padding-bottom: 100px;
 }
 .help .help__heading {
   color: #545454;
@@ -582,12 +594,16 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   gap: 55px 120px;
 }
 
+.donation-bg {
+  background-color: #F6F6F6;
+}
+
 .donation {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px calc(50% - 640px) 100px;
-  background-color: #F6F6F6;
+  padding-top: 80px;
+  padding-bottom: 100px;
 }
 .donation .donation__image {
   width: 100%;
@@ -627,4 +643,8 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   font-size: 12px;
   line-height: 18px;
   color: #B2B2B2;
+}
+
+.footer-bg {
+  background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }/*# sourceMappingURL=styles.css.map */

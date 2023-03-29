@@ -309,7 +309,7 @@ button.button-paginator:disabled {
   background-color: #F1CDB3;
 }
 
-.wrapper {
+.section-wrapper {
   max-width: 1280px;
   margin: auto;
 }
@@ -322,8 +322,6 @@ button.button-paginator:disabled {
 .header__content {
   display: flex;
   justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 40px;
   align-items: center;
   height: 60px;
 }
@@ -402,8 +400,7 @@ button.button-paginator:disabled {
   --animation-speed: 0.5s;
   display: flex;
   justify-content: space-between;
-  padding: 40px calc(50% - 600px) 0;
-  background: url("../../assets/images/noise_transparent@2x.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+  padding-top: 40px;
 }
 
 .footer__wrapper {

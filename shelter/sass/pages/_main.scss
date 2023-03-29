@@ -1,57 +1,62 @@
-.header {
-  position: absolute;
-  top: 30px;
+.section-wrapper {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-.start-wrapper {
+.start-bg {
   background: url("../../assets/images/noise_transparent@2x.png"),
     radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
-  padding: 120px calc(50% - 600px) 0;
+}
 
-  .start {
-    width: 100%;
-    max-width: 1280px;
+.header {
+  padding-top: 30px;
+}
+
+.start {
+  display: flex;
+  flex-direction: column;
+  padding-top: 90px;
+}
+
+.start__content {
+  display: flex;
+  justify-content: space-between;
+
+  .content {
     display: flex;
     flex-direction: column;
-    padding-top: 60px;
-  }
+    max-width: 460px;
+    padding-top: 163px;
+    padding-bottom: 50px;
+    overflow: hidden;
 
-  .start__content {
-    display: flex;
-    justify-content: space-between;
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      max-width: 460px;
-      padding-top: 163px;
-      padding-bottom: 50px;
-      overflow: hidden;
-
-      .donation__title {
-        max-width: 310px;
-        color: $color-light-xl;
-        margin-bottom: 42px;
-      }
-
-      .content__text {
-        @extend %font-paragraph-l;
-        color: $color-dark-s;
-        margin-bottom: 42px;
-      }
+    .donation__title {
+      max-width: 310px;
+      color: $color-light-xl;
+      margin-bottom: 42px;
     }
 
-    .image {
-      width: 100%;
+    .content__text {
+      @extend %font-paragraph-l;
+      color: $color-dark-s;
+      margin-bottom: 42px;
     }
   }
+
+  .image {
+    width: 100%;
+  }
+}
+
+.about-bg {
+  background-color: $color-light-xl;
 }
 
 .about {
   display: flex;
-  padding: 80px calc(50% - 640px) 100px;
+  padding-top: 80px;
+  padding-bottom: 100px;
   justify-content: center;
-  background-color: $color-light-xl;
 
   .about__image {
     width: 100%;
@@ -84,12 +89,16 @@
   }
 }
 
+.pets-bg {
+  background-color: $color-light-l;
+}
+
 .pets {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px calc(50% - 600px) 100px;
-  background-color: $color-light-l;
+  padding-top: 80px;
+  padding-bottom: 100px;
 
   .pets__heading {
     color: $color-dark-l;
@@ -114,11 +123,16 @@
   }
 }
 
+.help-bg {
+  background-color: $color-light-xl;
+}
+
 .help {
   display: flex;
   flex-direction: column;
-  padding: 80px calc(50% - 600px) 100px;
-  background-color: $color-light-xl;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  // padding: 80px calc(50% - 600px) 100px;
 
   .help__heading {
     color: $color-dark-l;
@@ -135,12 +149,16 @@
   }
 }
 
+.donation-bg {
+  background-color: $color-light-l;
+}
+
 .donation {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px calc(50% - 640px) 100px;
-  background-color: $color-light-l;
+  padding-top: 80px;
+  padding-bottom: 100px;
 
   .donation__image {
     width: 100%;
@@ -169,7 +187,6 @@
       border-radius: 9px;
       color: $color-dark-l;
       background-color: $color-primary;
-
       transition: background-color 0.5s;
     }
 
@@ -187,4 +204,9 @@
       color: $color-dark-m;
     }
   }
+}
+
+.footer-bg {
+  background: url("../../assets/images/noise_transparent@2x.png"),
+    radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }
