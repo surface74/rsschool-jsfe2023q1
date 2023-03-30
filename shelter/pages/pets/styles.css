@@ -441,13 +441,18 @@ button.button-paginator:disabled {
   padding-right: 40px;
 }
 
-.section-header-bg {
+.header_bg {
   background-color: #FFFFFF;
 }
 
 .header {
   padding-top: 30px;
   padding-bottom: 30px;
+}
+
+.header__content {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .section-pets {
