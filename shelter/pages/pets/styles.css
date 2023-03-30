@@ -403,7 +403,7 @@ button.button-paginator:disabled {
   padding-top: 40px;
 }
 
-.footer__wrapper {
+.footer__column {
   display: flex;
   max-width: 30%;
   flex-direction: column;
@@ -433,7 +433,7 @@ button.button-paginator:disabled {
 }
 
 .footer__image {
-  width: 100%;
+  max-width: 100%;
 }
 
 .section-wrapper {
