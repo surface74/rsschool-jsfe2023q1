@@ -2,6 +2,8 @@
   --animation-speed: 0.5s;
   width: 100%;
   background-color: transparent;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .header__content {
@@ -108,4 +110,8 @@
       }
     }
   }
+}
+
+.header_pos-absolute {
+  position: absolute;
 }

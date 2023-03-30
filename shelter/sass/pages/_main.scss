@@ -1,21 +1,17 @@
-.section-wrapper {
+.header__content {
   padding-left: 40px;
   padding-right: 40px;
 }
 
-.section-house-bg {
+.section-house {
   background: url("../../assets/images/noise_transparent@2x.png"),
     radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
 
-.header {
-  padding-top: 30px;
-}
-
-.section-house {
+.section-house__block {
   display: flex;
   flex-direction: column;
-  padding-top: 90px;
+  padding: 180px 40px 0;
 }
 
 .section-house__content {
@@ -44,27 +40,26 @@
   }
 
   .image {
-    width: 100%;
+    max-width: 100%;
   }
 }
 
-.section-about-bg {
+.section-about {
   background-color: $color-light-xl;
 }
 
-.section-about {
+.section-about__block {
   display: flex;
   padding-top: 80px;
   padding-bottom: 100px;
   justify-content: center;
-
 }
 
 .section-about__image {
-  width: 100%;
+  max-width: 100%;
 }
 
-.section-about__content {
+.section-about__description {
   display: flex;
   flex-direction: column;
   max-width: 460px;
@@ -72,13 +67,13 @@
   padding-top: 14px;
   margin-left: 120px;
 
-  .content__title {
+  .title {
     max-width: 370px;
     color: $color-dark-l;
     margin-bottom: 25px;
   }
 
-  .content__text {
+  .text {
     max-width: 430px;
     @extend %font-paragraph-l;
     color: $color-dark-xl;
@@ -90,16 +85,15 @@
   }
 }
 
-.section-pets-bg {
+.section-pets {
   background-color: $color-light-l;
 }
 
-.section-pets {
+.section-pets__block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 40px 100px;
 }
 
 .section-pets__heading {
@@ -124,15 +118,14 @@
   }
 }
 
-.section-help-bg {
+.section-help {
   background-color: $color-light-xl;
 }
 
-.section-help {
+.section-help__block {
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 40px 100px;
 }
 
 .section-help__heading {
@@ -149,20 +142,19 @@
   gap: 55px 120px;
 }
 
-.section-donation-bg {
+.section-donation {
   background-color: $color-light-l;
 }
 
-.section-donation {
+.section-donation__block {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 40px 100px;
 }
 
 .section-donation__image {
-  width: 100%;
+  max-width: 100%;
 }
 
 .section-donation__content {
@@ -206,7 +198,12 @@
   }
 }
 
-.footer-bg {
+.footer_bg {
   background: url("../../assets/images/noise_transparent@2x.png"),
     radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+}
+
+.footer {
+  padding-left: 40px;
+  padding-right: 40px;
 }
