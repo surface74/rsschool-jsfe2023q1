@@ -8,14 +8,15 @@
     radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
 
-.header {
-  padding-top: 30px;
+.header__content {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .section-house {
   display: flex;
   flex-direction: column;
-  padding-top: 90px;
+  padding-top: 180px;
 }
 
 .section-house__content {

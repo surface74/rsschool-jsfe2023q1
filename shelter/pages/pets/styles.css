@@ -323,6 +323,8 @@ button.button-paginator:disabled {
   --animation-speed: 0.5s;
   width: 100%;
   background-color: transparent;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .header__content {
@@ -396,6 +398,10 @@ button.button-paginator:disabled {
   color: #4C4C4C;
 }
 
+.header_pos-absolute {
+  position: absolute;
+}
+
 .footer {
   --animation-speed: 0.5s;
   display: flex;
@@ -438,11 +444,6 @@ button.button-paginator:disabled {
 
 .header_bg {
   background-color: #FFFFFF;
-}
-
-.header {
-  padding-top: 30px;
-  padding-bottom: 30px;
 }
 
 .header__content {
