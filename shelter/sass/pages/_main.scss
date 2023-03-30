@@ -48,23 +48,22 @@
   }
 }
 
-.section-about-bg {
+.section-about {
   background-color: $color-light-xl;
 }
 
-.section-about {
+.section-about__block {
   display: flex;
   padding-top: 80px;
   padding-bottom: 100px;
   justify-content: center;
-
 }
 
 .section-about__image {
-  width: 100%;
+  max-width: 100%;
 }
 
-.section-about__content {
+.section-about__description {
   display: flex;
   flex-direction: column;
   max-width: 460px;
@@ -72,13 +71,13 @@
   padding-top: 14px;
   margin-left: 120px;
 
-  .content__title {
+  .title {
     max-width: 370px;
     color: $color-dark-l;
     margin-bottom: 25px;
   }
 
-  .content__text {
+  .text {
     max-width: 430px;
     @extend %font-paragraph-l;
     color: $color-dark-xl;

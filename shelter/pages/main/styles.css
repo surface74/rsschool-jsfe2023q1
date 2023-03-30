@@ -46,7 +46,7 @@
   font-weight: 700;
   src: url("../../assets/fonts/arial-bold-italic.ttf") format("truetype");
 }
-.section-about__content .content__text, .section-house__content .content .content__text, .navbar-link {
+.section-about__description .text, .section-house__content .content .content__text, .navbar-link {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
@@ -339,6 +339,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   margin: auto;
 }
 
+.wrapper {
+  max-width: 1280px;
+  margin: auto;
+}
+
 .header {
   --animation-speed: 0.5s;
   width: 100%;
@@ -500,11 +505,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   width: 100%;
 }
 
-.section-about-bg {
+.section-about {
   background-color: #FFFFFF;
 }
 
-.section-about {
+.section-about__block {
   display: flex;
   padding-top: 80px;
   padding-bottom: 100px;
@@ -512,10 +517,10 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 
 .section-about__image {
-  width: 100%;
+  max-width: 100%;
 }
 
-.section-about__content {
+.section-about__description {
   display: flex;
   flex-direction: column;
   max-width: 460px;
@@ -523,17 +528,17 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   padding-top: 14px;
   margin-left: 120px;
 }
-.section-about__content .content__title {
+.section-about__description .title {
   max-width: 370px;
   color: #545454;
   margin-bottom: 25px;
 }
-.section-about__content .content__text {
+.section-about__description .text {
   max-width: 430px;
   color: #4C4C4C;
   margin-bottom: 25px;
 }
-.section-about__content .content__text:last-child {
+.section-about__description .text:last-child {
   margin-bottom: 0;
 }
 
