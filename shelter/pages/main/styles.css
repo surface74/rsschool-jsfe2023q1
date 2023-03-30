@@ -598,20 +598,19 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   gap: 55px 120px;
 }
 
-.section-donation-bg {
+.section-donation {
   background-color: #F6F6F6;
 }
 
-.section-donation {
+.section-donation__block {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  padding: 80px 40px 100px;
 }
 
 .section-donation__image {
-  width: 100%;
+  max-width: 100%;
 }
 
 .section-donation__content {
