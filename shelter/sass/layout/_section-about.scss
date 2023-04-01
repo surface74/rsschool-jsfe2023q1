@@ -1,0 +1,40 @@
+.section-about {
+  background-color: $color-light-xl;
+}
+
+.section-about__block {
+  display: flex;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  justify-content: center;
+}
+
+.section-about__image {
+  max-width: 100%;
+}
+
+.section-about__description {
+  display: flex;
+  flex-direction: column;
+  max-width: 460px;
+  overflow: hidden;
+  padding-top: 14px;
+  margin-left: 120px;
+
+  .title {
+    max-width: 370px;
+    color: $color-dark-l;
+    margin-bottom: 25px;
+  }
+
+  .text {
+    max-width: 430px;
+    @extend %font-paragraph-l;
+    color: $color-dark-xl;
+    margin-bottom: 25px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

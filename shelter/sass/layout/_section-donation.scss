@@ -1,0 +1,55 @@
+.section-donation {
+  background-color: $color-light-l;
+}
+
+.section-donation__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 40px 100px;
+}
+
+.section-donation__image {
+  max-width: 100%;
+}
+
+.section-donation__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: flex-start;
+  margin-left: 30px;
+
+  .title {
+    color: $color-dark-l;
+  }
+
+  .bank {
+    color: $color-dark-l;
+  }
+
+  .bank-card {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    padding: 10px 15px;
+    border-radius: 9px;
+    color: $color-dark-l;
+    background-color: $color-primary;
+    transition: background-color 0.5s;
+  }
+
+  .bank-card:hover {
+    background-color: $color-primary-light;
+  }
+
+  .legal-info {
+    width: 380px;
+    font-family: "Arial";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: $color-dark-m;
+  }
+}

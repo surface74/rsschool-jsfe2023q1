@@ -2,26 +2,10 @@
   background-color: $color-light-xl;
 }
 
-.header__content {
+.header__content,
+.footer {
   padding-left: 40px;
   padding-right: 40px;
-}
-
-.section-pets {
-  background-color: $color-light-l;
-}
-
-.section-pets__block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px 40px 100px;
-}
-
-.section-pets__heading {
-  color: $color-dark-l;
-  margin-bottom: 60px;
-  text-align: center;
 }
 
 .slider {
@@ -48,9 +32,4 @@
 .footer_bg {
   background: url("../../assets/images/noise_transparent@2x.png"),
     radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
-}
-
-.footer {
-  padding-left: 40px;
-  padding-right: 40px;
 }

@@ -1,0 +1,16 @@
+.section-pets2 {
+  background-color: $color-light-l;
+}
+
+.section-pets2__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 40px 100px;
+}
+
+.section-pets2__heading {
+  color: $color-dark-l;
+  margin-bottom: 60px;
+  text-align: center;
+}

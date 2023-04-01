@@ -1,0 +1,32 @@
+.section-pets {
+  background-color: $color-light-l;
+}
+
+.section-pets__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 40px 100px;
+}
+
+.section-pets__heading {
+  color: $color-dark-l;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.section-pets__slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 60px;
+  overflow: hidden;
+
+  .card-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 990px;
+  }
+}
