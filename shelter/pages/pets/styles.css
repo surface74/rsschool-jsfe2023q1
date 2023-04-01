@@ -50,16 +50,16 @@
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
 }
 
 .header__subtitle {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
-  font-size: 13px;
-  line-height: 15px;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
   letter-spacing: 0.1em;
 }
 
@@ -106,7 +106,7 @@ a {
 }
 
 html {
-  font-size: 16px;
+  font-size: 10px;
   font-family: "Georgia", "Arial", sans-serif;
   scroll-behavior: smooth;
 }
@@ -125,31 +125,40 @@ body {
   border: 1px solid red;
 }
 
+h1 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3.2rem;
+  line-height: 3.5rem;
+  letter-spacing: 0.06em;
+}
+
 h2 {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
-  font-size: 44px;
-  line-height: 57px;
+  font-size: 4.4rem;
+  line-height: 5.7rem;
 }
 
 h3 {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
-  font-size: 35px;
-  line-height: 45px;
+  font-size: 3.5rem;
+  line-height: 4.5rem;
   letter-spacing: 0.06em;
 }
 h3.mobile {
-  font-size: 25px;
+  font-size: 2.5rem;
 }
 
 h4 {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 2rem;
   line-height: 115%;
   letter-spacing: 0.06em;
 }
@@ -158,8 +167,8 @@ h5 {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 17px;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
   letter-spacing: 0.06em;
 }
 h5.modal-window {
@@ -170,8 +179,8 @@ h5.modal-window {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
-  line-height: 51px;
+  font-size: 3.2rem;
+  line-height: 5.1rem;
 }
 
 .navbar-link {
@@ -215,9 +224,9 @@ a.button {
   width: fit-content;
   overflow: hidden;
   font-family: Georgia;
-  font-size: 17px;
+  font-size: 1.7rem;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 2.2rem;
   letter-spacing: 0.06em;
   text-decoration: none;
   color: #292929;
@@ -247,7 +256,7 @@ button.button-paginator {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 2rem;
   line-height: 115%;
   letter-spacing: 0.06em;
   color: #292929;
@@ -291,8 +300,8 @@ button.button-paginator:disabled {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 23px;
+  font-size: 2rem;
+  line-height: 2.3rem;
   margin-bottom: 30px;
   letter-spacing: 0.06em;
 }
@@ -335,12 +344,6 @@ button.button-paginator:disabled {
 }
 
 .header__title {
-  font-family: "Georgia";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 35px;
-  letter-spacing: 0.06em;
   margin-bottom: 8px;
   text-decoration: none;
   transition: color var(--animation-speed);
