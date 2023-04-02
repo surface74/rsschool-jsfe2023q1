@@ -5,7 +5,7 @@
 .section-help__block {
   display: flex;
   flex-direction: column;
-  padding: 80px 40px 100px;
+  padding: 80px $section-width-padding 100px;
 }
 
 .section-help__heading {
@@ -20,4 +20,13 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 55px 120px;
+}
+
+@include media-desktop() {
+  .section-help__block {
+    $section-width-padding: 20px;
+    padding: 80px $section-width-padding 100px;
+  }
+
+  //
 }

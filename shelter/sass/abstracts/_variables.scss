@@ -12,9 +12,12 @@ $color-primary: #F1CDB3;
 $color-primary-light: #FDDCC4;
 
 $content-width: 1280px;
+$tablet-width: 768px;
+$mobile-width: 320px;
 
-$breakpoints: (
-  "medium": (min-width: 800px),
-  "large": (min-width: 1000px),
-  "huge": (min-width: 1200px),
-);
+$section-width-padding: 40px;
+// $breakpoints: (
+//   "medium": (min-width: 800px),
+//   "large": (min-width: 1000px),
+//   "huge": (min-width: 1200px),
+// );

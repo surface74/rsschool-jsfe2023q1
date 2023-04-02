@@ -73,6 +73,10 @@
 
 .header_light {
 
+  .header {
+    background-color: $color-light-xl;
+  }
+
   .header__title {
     color: $color-dark-l;
   }
