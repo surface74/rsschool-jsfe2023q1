@@ -1,3 +1,11 @@
+@mixin font ($size, $height: $size, $weight: 400, $style: normal, $spacing: normal) {
+  font-style: $style;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $height;
+  letter-spacing: $spacing;
+}
+
 /// Control responsibility
 /// @access public
 /// @param {String} $breakpoint

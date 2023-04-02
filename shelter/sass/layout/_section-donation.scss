@@ -46,10 +46,7 @@
   .legal-info {
     width: 380px;
     font-family: "Arial";
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.2rem;
-    line-height: 1.8rem;
+    @include font($size: 1.2rem, $height: 1.8rem, $style: italic);
     color: $color-dark-m;
   }
 }

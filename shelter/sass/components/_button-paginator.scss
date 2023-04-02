@@ -6,11 +6,7 @@ button.button-paginator {
   border-radius: 50%;
 
   font-family: "Georgia";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 2rem;
-  line-height: 115%;
-  letter-spacing: 0.06em;
+  @include font($size: 2rem, $height: 115%, $spacing: 0.06em);
   color: $color-dark-3xl;
 
   background-color: transparent;

@@ -19,12 +19,9 @@
 
   .card__title {
     font-family: "Georgia";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 2.3rem;
-    margin-bottom: 30px;
+    @include font($size: 2rem, $height: 2.3rem, $spacing: 0.06em);
     letter-spacing: 0.06em;
+    margin-bottom: 30px;
   }
 
 
