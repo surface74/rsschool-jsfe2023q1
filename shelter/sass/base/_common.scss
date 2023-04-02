@@ -55,6 +55,10 @@ body {
   // overflow-x: hidden;
 }
 
+section, main, article, aside, header, footer {
+  display: block;
+}
+
 /* for test purpose only */
 .br {
   border: 1px solid red;
