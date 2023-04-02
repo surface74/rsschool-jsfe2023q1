@@ -22,7 +22,7 @@
   align-items: center;
   color: $color-primary;
   fill: $color-primary;
-  transition: color var(--animation-speed), fill var(--animation-speed);
+  @extend %transition-color;
 }
 
 .footer__icon {

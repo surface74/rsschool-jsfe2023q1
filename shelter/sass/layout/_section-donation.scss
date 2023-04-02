@@ -36,7 +36,7 @@
     border-radius: 9px;
     color: $color-dark-l;
     background-color: $color-primary;
-    transition: background-color 0.5s;
+    @extend %transition-color;
   }
 
   .bank-card:hover {

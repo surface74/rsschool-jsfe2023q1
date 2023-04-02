@@ -63,6 +63,10 @@
   letter-spacing: 0.1em;
 }
 
+.footer__link, .header__subtitle, .header__title, .card, button.button-paginator, a.button, .navbar-link {
+  transition: color 0.5s ease-out, fill 0.5s ease-out, background-color 0.5s ease-out;
+}
+
 /* set box sizing */
 *,
 *::before,
@@ -188,7 +192,6 @@ h5.modal-window {
   width: fit-content;
   text-decoration: none;
   padding-bottom: 4px;
-  transition: all 0.5s;
 }
 .navbar-link.active {
   border-bottom: 3px solid #F1CDB3;
@@ -233,7 +236,6 @@ a.button {
   background-color: #F1CDB3;
   border: 2px solid #F1CDB3;
   border-radius: 100px;
-  transition: all 0.5s;
 }
 a.button.button--transparent {
   background-color: transparent;
@@ -262,7 +264,6 @@ button.button-paginator {
   color: #292929;
   background-color: transparent;
   cursor: pointer;
-  transition: all 0.5s;
 }
 button.button-paginator:hover {
   border-color: #FDDCC4;
@@ -289,7 +290,6 @@ button.button-paginator:disabled {
   background-color: #FAFAFA;
   border-radius: 9px;
   overflow: hidden;
-  transition: all 0.5s;
 }
 .card .card__image {
   width: 100%;
@@ -324,7 +324,6 @@ button.button-paginator:disabled {
 }
 
 .header {
-  --animation-speed: 0.5s;
   width: 100%;
   background-color: transparent;
   padding-top: 30px;
@@ -346,12 +345,10 @@ button.button-paginator:disabled {
 .header__title {
   margin-bottom: 8px;
   text-decoration: none;
-  transition: color var(--animation-speed);
 }
 
 .header__subtitle {
   margin-left: 4px;
-  transition: color var(--animation-speed);
 }
 
 .header__navbar ul {
@@ -424,7 +421,6 @@ button.button-paginator:disabled {
   align-items: center;
   color: #F1CDB3;
   fill: #F1CDB3;
-  transition: color var(--animation-speed), fill var(--animation-speed);
 }
 
 .footer__icon {

@@ -23,3 +23,7 @@
   line-height: 1.5rem;
   letter-spacing: 0.1em;
 }
+
+%transition-color {
+  transition: color 0.5s ease-out, fill 0.5s ease-out, background-color 0.5s ease-out;
+}

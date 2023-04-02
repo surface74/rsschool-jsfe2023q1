@@ -9,7 +9,7 @@
   border-radius: 9px;
   overflow: hidden;
 
-  transition: all 0.5s;
+  @extend %transition-color;
 
   .card__image {
     width: 100%;

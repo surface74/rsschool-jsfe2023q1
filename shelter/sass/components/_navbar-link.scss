@@ -3,7 +3,7 @@
   @extend %font-paragraph-l;
   text-decoration: none;
   padding-bottom: 4px;
-  transition: all 0.5s;
+  @extend %transition-color;
 
   &.active {
     border-bottom: 3px solid $color-primary;

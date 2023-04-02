@@ -11,7 +11,7 @@ button.button-arrow {
   cursor: pointer;
   background: url("../../assets/icons/arrow.svg") center no-repeat;
 
-  transition: all 0.5s;
+  @extend %transition-color;
 
   &.button-arrow--left {
     transform: rotate(0deg);

@@ -63,6 +63,10 @@
   letter-spacing: 0.1em;
 }
 
+.section-donation__content .bank-card, .footer__link, .header__subtitle, .header__title, button.button-arrow, .card, a.button, .navbar-link {
+  transition: color 0.5s ease-out, fill 0.5s ease-out, background-color 0.5s ease-out;
+}
+
 /* set box sizing */
 *,
 *::before,
@@ -188,7 +192,6 @@ h5.modal-window {
   width: fit-content;
   text-decoration: none;
   padding-bottom: 4px;
-  transition: all 0.5s;
 }
 .navbar-link.active {
   border-bottom: 3px solid #F1CDB3;
@@ -233,7 +236,6 @@ a.button {
   background-color: #F1CDB3;
   border: 2px solid #F1CDB3;
   border-radius: 100px;
-  transition: all 0.5s;
 }
 a.button.button--transparent {
   background-color: transparent;
@@ -257,7 +259,6 @@ a.button:active, a.button.button--transparent:active {
   background-color: #FAFAFA;
   border-radius: 9px;
   overflow: hidden;
-  transition: all 0.5s;
 }
 .card .card__image {
   width: 100%;
@@ -297,7 +298,6 @@ button.button-arrow {
   background-color: transparent;
   cursor: pointer;
   background: url("../../assets/icons/arrow.svg") center no-repeat;
-  transition: all 0.5s;
 }
 button.button-arrow.button-arrow--left {
   transform: rotate(0deg);
@@ -349,7 +349,6 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 
 .header {
-  --animation-speed: 0.5s;
   width: 100%;
   background-color: transparent;
   padding-top: 30px;
@@ -371,12 +370,10 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 .header__title {
   margin-bottom: 8px;
   text-decoration: none;
-  transition: color var(--animation-speed);
 }
 
 .header__subtitle {
   margin-left: 4px;
-  transition: color var(--animation-speed);
 }
 
 .header__navbar ul {
@@ -449,7 +446,6 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   align-items: center;
   color: #F1CDB3;
   fill: #F1CDB3;
-  transition: color var(--animation-speed), fill var(--animation-speed);
 }
 
 .footer__icon {
@@ -640,7 +636,6 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   border-radius: 9px;
   color: #545454;
   background-color: #F1CDB3;
-  transition: background-color 0.5s;
 }
 .section-donation__content .bank-card:hover {
   background-color: #FDDCC4;

@@ -15,7 +15,7 @@ button.button-paginator {
 
   background-color: transparent;
   cursor: pointer;
-  transition: all 0.5s;
+  @extend %transition-color;
 
   &:hover {
     border-color: $color-primary-light;
