@@ -1,0 +1,31 @@
+.section-pets {
+  background-color: $color-light-l;
+}
+
+.section-pets__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px $section-width-padding 100px;
+}
+
+.section-pets__heading {
+  color: $color-dark-l;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.section-pets__slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 60px;
+  overflow: hidden;
+}
+
+.slider__cards {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 0 90px;
+}

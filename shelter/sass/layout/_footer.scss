@@ -1,5 +1,4 @@
 .footer {
-  --animation-speed: 0.5s;
   display: flex;
   justify-content: space-between;
   padding-top: 40px;
@@ -22,18 +21,23 @@
   align-items: center;
   color: $color-primary;
   fill: $color-primary;
-  transition: color var(--animation-speed), fill var(--animation-speed);
+  @extend %transition-color;
+
+  &:hover {
+    color: $color-light-xl;
+    fill: $color-light-xl;
+  }
 }
 
 .footer__icon {
   margin-right: 20px;
 }
 
-.footer__link:hover {
-  color: $color-light-xl;
-  fill: $color-light-xl;
-}
-
 .footer__image {
   max-width: 100%;
+}
+
+.footer_bg {
+  background: url("../../assets/images/noise_transparent@2x.png"),
+    radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }

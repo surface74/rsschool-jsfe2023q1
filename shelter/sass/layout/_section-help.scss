@@ -1,0 +1,32 @@
+.section-help {
+  background-color: $color-light-xl;
+}
+
+.section-help__block {
+  display: flex;
+  flex-direction: column;
+  padding: 80px $section-width-padding 100px;
+}
+
+.section-help__heading {
+  color: $color-dark-l;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.section-help__list {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 55px 120px;
+}
+
+@include media-desktop() {
+  .section-help__block {
+    $section-width-padding: 20px;
+    padding: 80px $section-width-padding 100px;
+  }
+
+  //
+}

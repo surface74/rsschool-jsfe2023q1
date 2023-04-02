@@ -41,7 +41,7 @@ a {
 }
 
 html {
-  font-size: 16px;
+  font-size: 10px;
   font-family: "Georgia", "Arial", sans-serif;
   scroll-behavior: smooth;
 }
@@ -53,6 +53,10 @@ body {
   line-height: 1.5;
   font-size: 0;
   // overflow-x: hidden;
+}
+
+section, main, article, aside, header, footer {
+  display: block;
 }
 
 /* for test purpose only */

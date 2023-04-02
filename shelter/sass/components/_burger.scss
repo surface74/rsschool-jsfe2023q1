@@ -1,0 +1,27 @@
+.burger {
+  display: none;
+  width: 30px;
+  height: 22px;
+  background: url("../../assets/icons/burger.svg");
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    scale: 1.1;
+  }
+
+  &:active {
+    transform: rotate(90deg);
+  }
+}
+
+.burger_dark {
+  background: url("../../assets/icons/burger-dark.svg");
+}
+
+@include media-mobile {
+  .burger {
+    display: inline-block;
+  }
+}
