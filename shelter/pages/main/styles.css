@@ -742,7 +742,6 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 
 .footer {
-  --animation-speed: 0.5s;
   display: flex;
   justify-content: space-between;
   padding-top: 40px;
@@ -766,14 +765,13 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   color: #F1CDB3;
   fill: #F1CDB3;
 }
-
-.footer__icon {
-  margin-right: 20px;
-}
-
 .footer__link:hover {
   color: #FFFFFF;
   fill: #FFFFFF;
+}
+
+.footer__icon {
+  margin-right: 20px;
 }
 
 .footer__image {

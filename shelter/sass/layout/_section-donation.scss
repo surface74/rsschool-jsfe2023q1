@@ -37,11 +37,12 @@
     color: $color-dark-l;
     background-color: $color-primary;
     @extend %transition-color;
+
+    &:hover {
+      background-color: $color-primary-light;
+    }
   }
 
-  .bank-card:hover {
-    background-color: $color-primary-light;
-  }
 
   .legal-info {
     width: 380px;

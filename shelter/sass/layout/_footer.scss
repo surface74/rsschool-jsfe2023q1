@@ -1,5 +1,4 @@
 .footer {
-  --animation-speed: 0.5s;
   display: flex;
   justify-content: space-between;
   padding-top: 40px;
@@ -23,15 +22,15 @@
   color: $color-primary;
   fill: $color-primary;
   @extend %transition-color;
+
+  &:hover {
+    color: $color-light-xl;
+    fill: $color-light-xl;
+  }
 }
 
 .footer__icon {
   margin-right: 20px;
-}
-
-.footer__link:hover {
-  color: $color-light-xl;
-  fill: $color-light-xl;
 }
 
 .footer__image {
