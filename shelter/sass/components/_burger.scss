@@ -20,7 +20,7 @@
   background: url("../../assets/icons/burger-dark.svg");
 }
 
-@include media-desktop {
+@include media-mobile {
   .burger {
     display: inline-block;
   }

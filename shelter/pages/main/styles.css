@@ -703,7 +703,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   background: url("../../assets/icons/burger-dark.svg");
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 320px) {
   .burger {
     display: inline-block;
   }
