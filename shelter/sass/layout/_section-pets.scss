@@ -23,3 +23,9 @@
   margin-bottom: 60px;
   overflow: hidden;
 }
+
+.slider__cards {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 0 90px;
+}

@@ -4,8 +4,3 @@
   padding-right: $section-width-padding;
 }
 
-.slider__cards {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto 1fr;
-  gap: 0 90px;
-}
