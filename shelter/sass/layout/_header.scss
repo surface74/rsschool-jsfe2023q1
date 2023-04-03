@@ -13,6 +13,10 @@
   @include respond-to("tablet") {
     padding: 0 $tablet-width-padding;
   }
+
+  @include respond-to("mobile") {
+    padding: 0 $mobile-width-padding;
+  }
 }
 
 .header__logo {
@@ -33,6 +37,11 @@
 }
 
 .header__navbar {
+
+  @include respond-to("small-tablet") {
+    display: none;
+  }
+
   ul {
     display: flex;
     gap: 36px;

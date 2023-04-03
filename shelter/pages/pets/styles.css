@@ -470,9 +470,6 @@ h3 {
   line-height: 4.5rem;
   letter-spacing: 0.06em;
 }
-h3.mobile {
-  font-size: 2.5rem;
-}
 
 h4 {
   font-family: "Georgia";
@@ -663,6 +660,11 @@ button.button-paginator:disabled {
   cursor: pointer;
   transition: all 0.3s;
 }
+@media (max-width: 740px) {
+  .burger {
+    display: inline-block;
+  }
+}
 .burger:hover {
   scale: 1.1;
 }
@@ -674,11 +676,6 @@ button.button-paginator:disabled {
   background: url("../../assets/icons/burger-dark.svg");
 }
 
-@media (max-width: 320px) {
-  .burger {
-    display: inline-block;
-  }
-}
 .wrapper {
   max-width: 1280px;
   margin: auto;
@@ -706,6 +703,11 @@ button.button-paginator:disabled {
     padding: 0 30px;
   }
 }
+@media (max-width: 320px) {
+  .header__content {
+    padding: 0 20px;
+  }
+}
 
 .header__logo {
   display: flex;
@@ -721,6 +723,11 @@ button.button-paginator:disabled {
   margin-left: 4px;
 }
 
+@media (max-width: 740px) {
+  .header__navbar {
+    display: none;
+  }
+}
 .header__navbar ul {
   display: flex;
   gap: 36px;
