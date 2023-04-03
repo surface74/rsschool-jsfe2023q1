@@ -75,6 +75,9 @@
       max-width: 80.42%;
       align-self: end;
     }
+    @include respond-to("mobile") {
+      max-width: 86.7%;
+    }
 
   }
 }

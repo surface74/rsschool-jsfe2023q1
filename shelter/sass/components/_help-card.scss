@@ -6,11 +6,11 @@
   justify-content: space-between;
   overflow: hidden;
 
-  @include respond-to("tablet") {
+  @include respond-to("small-desktop") {
     width: 170px;
   }
 
-  @include respond-to("mobile") {
+  @include respond-to("big-mobile") {
     width: 130px;
     height: 87px;
   }
@@ -20,7 +20,7 @@
   width: 60px;
   height: 60px;
 
-  @include respond-to("mobile") {
+  @include respond-to("big-mobile") {
     width: 50px;
     height: 50px;
   }
@@ -30,7 +30,7 @@
   color: $color-dark-l;
 }
 
-@include respond-to("mobile") {
+@include respond-to("big-mobile") {
   .help-card__title {
     @include font($size: 1.5rem, $height: 1.7rem, $spacing: 0.06em);
   }

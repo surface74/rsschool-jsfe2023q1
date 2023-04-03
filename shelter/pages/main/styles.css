@@ -652,12 +652,12 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   justify-content: space-between;
   overflow: hidden;
 }
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .help-card {
     width: 170px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 441px) {
   .help-card {
     width: 130px;
     height: 87px;
@@ -668,7 +668,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   width: 60px;
   height: 60px;
 }
-@media (max-width: 320px) {
+@media (max-width: 441px) {
   .help-card__image img {
     width: 50px;
     height: 50px;
@@ -679,7 +679,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   color: #545454;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 441px) {
   .help-card__title {
     font-style: normal;
     font-size: 1.5rem;
@@ -995,6 +995,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     align-self: end;
   }
 }
+@media (max-width: 320px) {
+  .section-house__content .image {
+    max-width: 86.7%;
+  }
+}
 
 .section-about {
   background-color: #FFFFFF;
@@ -1202,6 +1207,9 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   text-align: center;
 }
 @media (max-width: 320px) {
+  .section-help__heading {
+    margin-bottom: 42px;
+  }
   .section-help__heading .section-help__title {
     font-style: normal;
     font-size: 2.5rem;
@@ -1220,8 +1228,15 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 @media (max-width: 768px) {
   .section-help__list {
-    -moz-column-gap: 60px;
-         column-gap: 60px;
+    -moz-column-gap: 30px;
+         column-gap: 30px;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 768px) {
+  .section-help__list {
+    gap: 30px;
+    margin-bottom: 42px;
   }
 }
 
