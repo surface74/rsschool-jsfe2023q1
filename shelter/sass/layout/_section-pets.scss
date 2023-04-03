@@ -40,10 +40,10 @@
 
   @include respond-to("small-desktop") {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 0;
+    grid-template-rows: 1 1fr;
 
-    &>.card:last-of-type {
-      visibility: collapse;
+    &>.card:nth-last-child(-n+1) {
+      display: none;;
     }
   }
 }

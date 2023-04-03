@@ -21,12 +21,3 @@
   justify-content: center;
   gap: 55px 120px;
 }
-
-@include media-desktop() {
-  .section-help__block {
-    $desktop-width-padding: 20px;
-    padding: 80px $desktop-width-padding 100px;
-  }
-
-  //
-}
