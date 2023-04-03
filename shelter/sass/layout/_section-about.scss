@@ -12,6 +12,11 @@
     flex-direction: column;
     align-items: center;
   }
+
+  @include respond-to("mobile") {
+    padding: 43px $mobile-width-padding 0;
+    text-align: center;
+  }
 }
 
 .section-about__image {
@@ -21,6 +26,11 @@
     max-width: 39.1%;
     order: 1;
     margin-top: 80px;
+  }
+
+  @include respond-to("mobile") {
+    max-width: 86.7%;
+    margin-top: 40px;
   }
 }
 
@@ -37,10 +47,20 @@
     margin-left: 0;
   }
 
+  @include respond-to("small-desktop") {
+    padding: 0 15px 0;
+  }
+
   .title {
     max-width: 370px;
     color: $color-dark-l;
     margin-bottom: 25px;
+
+    @include respond-to("mobile") {
+      .section-about__title {
+        @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+      }
+    }
   }
 
   .text {
@@ -49,8 +69,14 @@
     color: $color-dark-xl;
     margin-bottom: 25px;
 
+    @include respond-to("mobile") {
+      text-align: justify;
+      margin-bottom: 22px;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
+
   }
 }

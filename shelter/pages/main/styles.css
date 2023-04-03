@@ -942,7 +942,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   .section-house__content .content .content__title {
     align-self: auto;
   }
-  .section-house__content .content .content__title h2 {
+  .section-house__content .content .content__title .section-house__title {
     font-style: normal;
     font-size: 2.5rem;
     font-weight: 400;
@@ -985,6 +985,12 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     align-items: center;
   }
 }
+@media (max-width: 320px) {
+  .section-about__block {
+    padding: 43px 10px 0;
+    text-align: center;
+  }
+}
 
 .section-about__image {
   max-width: 100%;
@@ -994,6 +1000,12 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     max-width: 39.1%;
     order: 1;
     margin-top: 80px;
+  }
+}
+@media (max-width: 320px) {
+  .section-about__image {
+    max-width: 86.7%;
+    margin-top: 40px;
   }
 }
 
@@ -1011,15 +1023,35 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     margin-left: 0;
   }
 }
+@media (max-width: 1100px) {
+  .section-about__description {
+    padding: 0 15px 0;
+  }
+}
 .section-about__description .title {
   max-width: 370px;
   color: #545454;
   margin-bottom: 25px;
 }
+@media (max-width: 320px) {
+  .section-about__description .title .section-about__title {
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 3.2rem;
+    letter-spacing: 0.06em;
+  }
+}
 .section-about__description .text {
   max-width: 430px;
   color: #4C4C4C;
   margin-bottom: 25px;
+}
+@media (max-width: 320px) {
+  .section-about__description .text {
+    text-align: justify;
+    margin-bottom: 22px;
+  }
 }
 .section-about__description .text:last-child {
   margin-bottom: 0;
