@@ -2,3 +2,9 @@
   max-width: $content-width;
   margin: auto;
 }
+
+@include media-tablet {
+  .wrapper {
+    max-width: $tablet-width;
+  }
+}

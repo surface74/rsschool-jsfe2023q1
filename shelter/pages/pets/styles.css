@@ -688,6 +688,11 @@ button.button-paginator:disabled {
   margin: auto;
 }
 
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: 768px;
+  }
+}
 .header {
   width: 100%;
   background-color: transparent;
@@ -698,8 +703,12 @@ button.button-paginator:disabled {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 0 40px;
+}
+@media (max-width: 768px) {
+  .header__content {
+    padding: 0 30px;
+  }
 }
 
 .header__logo {

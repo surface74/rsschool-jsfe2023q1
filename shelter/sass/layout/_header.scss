@@ -8,8 +8,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: $section-width-padding;
-  padding-right: $section-width-padding;
+  padding: 0 $section-width-padding;
+
+  @include media-tablet {
+    padding: 0 $tablet-width-padding;
+  }
 }
 
 .header__logo {
