@@ -12,12 +12,25 @@
     padding-left: $tablet-width-padding;
     padding-right: $tablet-width-padding;
   }
+  @include respond-to("mobile") {
+    padding: 42px $mobile-width-padding;
+  }
 }
 
 .section-pets2__heading {
   color: $color-dark-l;
   margin-bottom: 60px;
   text-align: center;
+
+  @include respond-to("small-tablet") {
+    margin-bottom: 42px;
+  }
+}
+
+@include respond-to("mobile") {
+  .section-pets2__title {
+    @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+  }
 }
 
 .slider__cards {
@@ -29,6 +42,15 @@
     grid-template-rows: repeat(3, 1fr);
 
     &>.card:nth-last-child(-n+2) {
+      display: none;
+    }
+  }
+
+  @include respond-to("small-tablet") {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+
+    &>.card:nth-last-child(-n+5) {
       display: none;
     }
   }
