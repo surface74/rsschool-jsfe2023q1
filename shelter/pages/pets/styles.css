@@ -613,6 +613,9 @@ a.button:active, a.button.button--transparent:active {
   grid-template-rows: repeat(2, 1fr);
   gap: 30px 40px;
 }
+.slider__cards .card {
+  justify-self: center;
+}
 
 .slider__nav {
   display: flex;
