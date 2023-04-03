@@ -1,5 +1,9 @@
 .section-pets {
   background-color: $color-light-l;
+
+  @include respond-to("mobile") {
+    display: none;
+  }
 }
 
 .section-pets__block {

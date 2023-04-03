@@ -1,5 +1,9 @@
 .section-donation {
   background-color: $color-light-l;
+
+  @include respond-to("mobile") {
+    display: none;
+  }
 }
 
 .section-donation__block {

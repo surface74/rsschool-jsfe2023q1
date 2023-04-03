@@ -9,6 +9,10 @@
   @include respond-to("small-desktop") {
     padding: 0 $tablet-width-padding;
   }
+
+  @include respond-to("mobile") {
+    padding: 0 $mobile-width-padding;
+  }
 }
 
 .section-house__content {
@@ -29,9 +33,14 @@
     overflow: hidden;
 
     @include respond-to("small-desktop") {
-      padding-top: 149px;
+      padding-top: 150px;
       padding-bottom: 100px;
       align-items: center;
+    }
+
+    @include respond-to("mobile") {
+      text-align: center;
+      padding-bottom: 105px;
     }
 
     .content__title {
@@ -41,6 +50,14 @@
 
       @include respond-to("small-desktop") {
         align-self: flex-start;
+      }
+
+      @include respond-to("mobile") {
+        align-self: auto;
+
+        & h2 {
+          @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+        }
       }
     }
 
@@ -53,9 +70,14 @@
 
   .image {
     max-width: 100%;
+
     @include respond-to("small-desktop") {
       max-width: 80.42%;
       align-self: end;
+    }
+
+    @include respond-to("small-desktop") {
+      max-width: 86.7%;
     }
   }
 }

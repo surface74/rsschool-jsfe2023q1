@@ -686,6 +686,11 @@ button.button-paginator:disabled {
     max-width: 768px;
   }
 }
+@media (max-width: 320px) {
+  .wrapper {
+    max-width: 320px;
+  }
+}
 .header {
   width: 100%;
   background-color: transparent;

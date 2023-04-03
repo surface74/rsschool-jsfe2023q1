@@ -8,3 +8,15 @@
     max-width: $tablet-width;
   }
 }
+
+// @include respond-to("tablet") {
+//   .wrapper {
+//     max-width: $tablet-width;
+//   }
+// }
+
+@include respond-to("mobile") {
+  .wrapper {
+    max-width: $mobile-width;
+  }
+}

@@ -711,6 +711,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     max-width: 768px;
   }
 }
+@media (max-width: 320px) {
+  .wrapper {
+    max-width: 320px;
+  }
+}
 .header {
   width: 100%;
   background-color: transparent;
@@ -886,6 +891,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     padding: 0 30px;
   }
 }
+@media (max-width: 320px) {
+  .section-house__block {
+    padding: 0 10px;
+  }
+}
 
 .section-house__content {
   display: flex;
@@ -907,9 +917,15 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 @media (max-width: 1100px) {
   .section-house__content .content {
-    padding-top: 149px;
+    padding-top: 150px;
     padding-bottom: 100px;
     align-items: center;
+  }
+}
+@media (max-width: 320px) {
+  .section-house__content .content {
+    text-align: center;
+    padding-bottom: 105px;
   }
 }
 .section-house__content .content .content__title {
@@ -920,6 +936,18 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 @media (max-width: 1100px) {
   .section-house__content .content .content__title {
     align-self: flex-start;
+  }
+}
+@media (max-width: 320px) {
+  .section-house__content .content .content__title {
+    align-self: auto;
+  }
+  .section-house__content .content .content__title h2 {
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 3.2rem;
+    letter-spacing: 0.06em;
   }
 }
 .section-house__content .content .content__text {
@@ -933,6 +961,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   .section-house__content .image {
     max-width: 80.42%;
     align-self: end;
+  }
+}
+@media (max-width: 1100px) {
+  .section-house__content .image {
+    max-width: 86.7%;
   }
 }
 
@@ -994,6 +1027,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 
 .section-pets {
   background-color: #F6F6F6;
+}
+@media (max-width: 320px) {
+  .section-pets {
+    display: none;
+  }
 }
 
 .section-pets__block {
@@ -1070,6 +1108,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 
 .section-donation {
   background-color: #F6F6F6;
+}
+@media (max-width: 320px) {
+  .section-donation {
+    display: none;
+  }
 }
 
 .section-donation__block {
