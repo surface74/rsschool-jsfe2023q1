@@ -64,7 +64,7 @@
   letter-spacing: 0.1em;
 }
 
-.section-donation__content .bank-card, .footer__link, .header__subtitle, .header__title, button.button-arrow, .card, a.button, .navbar-link {
+.bank-card, .footer__link, .header__subtitle, .header__title, button.button-arrow, .card, a.button, .navbar-link {
   transition: color 0.5s ease-out, fill 0.5s ease-out, background-color 0.5s ease-out;
 }
 
@@ -1243,11 +1243,6 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 .section-donation {
   background-color: #F6F6F6;
 }
-@media (max-width: 320px) {
-  .section-donation {
-    display: none;
-  }
-}
 
 .section-donation__block {
   display: flex;
@@ -1260,6 +1255,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     flex-direction: column;
   }
 }
+@media (max-width: 441px) {
+  .section-donation__block {
+    padding: 42px 10px 42px;
+  }
+}
 
 .section-donation__image {
   max-width: 100%;
@@ -1268,6 +1268,12 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   .section-donation__image {
     order: 1;
     margin-top: 60px;
+  }
+}
+@media (max-width: 441px) {
+  .section-donation__image {
+    max-width: 86.7%;
+    margin-top: 42px;
   }
 }
 
@@ -1283,13 +1289,39 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     margin-left: 0;
   }
 }
+@media (max-width: 441px) {
+  .section-donation__content {
+    align-items: center;
+    text-align: center;
+  }
+}
 .section-donation__content .title {
   color: #545454;
 }
-.section-donation__content .bank {
+@media (max-width: 320px) {
+  .section-donation__content .title .section-donation__title {
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 3.2rem;
+    letter-spacing: 0.06em;
+  }
+}
+@media (max-width: 441px) {
+  .section-donation__content .bank-name {
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+    letter-spacing: normal;
+  }
+}
+
+.bank {
   color: #545454;
 }
-.section-donation__content .bank-card {
+
+.bank-card {
   display: flex;
   align-items: center;
   -moz-column-gap: 15px;
@@ -1299,10 +1331,20 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   color: #545454;
   background-color: #F1CDB3;
 }
-.section-donation__content .bank-card:hover {
+.bank-card:hover {
   background-color: #FDDCC4;
 }
-.section-donation__content .legal-info {
+@media (max-width: 441px) {
+  .bank-card .bank-card__number {
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.7rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+.legal-info {
   width: 380px;
   font-family: "Arial";
   font-style: italic;
@@ -1311,4 +1353,12 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   line-height: 1.8rem;
   letter-spacing: normal;
   color: #B2B2B2;
+}
+@media (max-width: 441px) {
+  .legal-info {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: justify;
+  }
 }/*# sourceMappingURL=styles.css.map */
