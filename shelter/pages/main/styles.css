@@ -1045,9 +1045,20 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   align-items: center;
   padding: 80px 40px 100px;
 }
+@media (max-width: 1100px) {
+  .section-donation__block {
+    flex-direction: column;
+  }
+}
 
 .section-donation__image {
   max-width: 100%;
+}
+@media (max-width: 1100px) {
+  .section-donation__image {
+    order: 1;
+    margin-top: 60px;
+  }
 }
 
 .section-donation__content {
@@ -1056,6 +1067,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   row-gap: 20px;
   align-items: flex-start;
   margin-left: 30px;
+}
+@media (max-width: 1100px) {
+  .section-donation__content {
+    margin-left: 0;
+  }
 }
 .section-donation__content .title {
   color: #545454;

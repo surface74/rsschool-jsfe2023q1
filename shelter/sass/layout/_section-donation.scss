@@ -7,10 +7,18 @@
   justify-content: center;
   align-items: center;
   padding: 80px $desktop-width-padding 100px;
+
+  @include respond-to("small-desktop") {
+    flex-direction: column;
+  }
 }
 
 .section-donation__image {
   max-width: 100%;
+  @include respond-to("small-desktop") {
+    order: 1;
+    margin-top: 60px;
+  }
 }
 
 .section-donation__content {
@@ -19,6 +27,10 @@
   row-gap: 20px;
   align-items: flex-start;
   margin-left: 30px;
+
+  @include respond-to("small-desktop") {
+    margin-left: 0;
+  }
 
   .title {
     color: $color-dark-l;
