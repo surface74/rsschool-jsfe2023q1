@@ -852,9 +852,29 @@ button.button-paginator:disabled {
   align-items: center;
   padding: 80px 40px 100px;
 }
+@media (max-width: 1200px) {
+  .section-pets2__block {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
 
 .section-pets2__heading {
   color: #545454;
   margin-bottom: 60px;
   text-align: center;
+}
+
+.slider__cards {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+@media (max-width: 1200px) {
+  .slider__cards {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .slider__cards > .card:nth-last-child(-n+2) {
+    display: none;
+  }
 }/*# sourceMappingURL=styles.css.map */
