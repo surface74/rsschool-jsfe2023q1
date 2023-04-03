@@ -6,12 +6,22 @@
   display: flex;
   flex-direction: column;
   padding: 80px $desktop-width-padding 100px;
+
+  @include respond-to("mobile") {
+    padding: 42px 15px 0;
+  }
 }
 
 .section-help__heading {
   color: $color-dark-l;
   margin-bottom: 60px;
   text-align: center;
+
+  @include respond-to("mobile") {
+    .section-help__title {
+      @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+    }
+  }
 }
 
 .section-help__list {
@@ -20,4 +30,8 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 55px 120px;
+
+  @include respond-to("tablet") {
+    column-gap: 60px;
+  }
 }

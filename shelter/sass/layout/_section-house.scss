@@ -76,8 +76,8 @@
       align-self: end;
     }
 
-    @include respond-to("small-desktop") {
-      max-width: 86.7%;
-    }
+    // @include respond-to("tablet") {
+    //   max-width: 86.7%;
+    // }
   }
 }
