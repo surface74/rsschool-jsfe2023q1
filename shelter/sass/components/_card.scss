@@ -9,7 +9,7 @@
   border-radius: 9px;
   overflow: hidden;
 
-  transition: all 0.5s;
+  @extend %transition-color;
 
   .card__image {
     width: 100%;
@@ -19,12 +19,9 @@
 
   .card__title {
     font-family: "Georgia";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    margin-bottom: 30px;
+    @include font($size: 2rem, $height: 2.3rem, $spacing: 0.06em);
     letter-spacing: 0.06em;
+    margin-bottom: 30px;
   }
 
 

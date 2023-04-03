@@ -1,16 +1,22 @@
 .header {
-  --animation-speed: 0.5s;
   width: 100%;
   background-color: transparent;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 30px 0;
 }
 
 .header__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  padding: 0 $desktop-width-padding;
+
+  @include respond-to("tablet") {
+    padding: 0 $tablet-width-padding;
+  }
+
+  @include respond-to("mobile") {
+    padding: 0 20px;
+  }
 }
 
 .header__logo {
@@ -19,24 +25,23 @@
 }
 
 .header__title {
-  font-family: "Georgia";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 35px;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   text-decoration: none;
-  transition: color var(--animation-speed);
+  @extend %transition-color;
 }
 
 .header__subtitle {
   @extend %font-logo-subtitle;
   margin-left: 4px;
-  transition: color var(--animation-speed);
+  @extend %transition-color;
 }
 
 .header__navbar {
+
+  @include respond-to("small-tablet") {
+    display: none;
+  }
+
   ul {
     display: flex;
     gap: 36px;
@@ -48,7 +53,6 @@
 }
 
 .header_dark {
-  // background-color: transparent;
 
   .header__title {
     color: $color-primary;
@@ -81,6 +85,10 @@
 }
 
 .header_light {
+
+  .header {
+    background-color: $color-light-xl;
+  }
 
   .header__title {
     color: $color-dark-l;
