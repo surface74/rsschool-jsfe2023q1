@@ -55,7 +55,7 @@
       @include respond-to("mobile") {
         align-self: auto;
 
-        & h2 {
+        .section-house__title {
           @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
         }
       }
