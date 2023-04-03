@@ -6,11 +6,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px $section-width-padding 100px;
+  padding: 80px $desktop-width-padding 100px;
+
+  @include respond-to("small-desktop") {
+    flex-direction: column;
+  }
+
+  @include respond-to("big-mobile") {
+    padding: 42px $mobile-width-padding 42px;
+  }
 }
 
 .section-donation__image {
   max-width: 100%;
+
+  @include respond-to("small-desktop") {
+    order: 1;
+    margin-top: 60px;
+  }
+
+  @include respond-to("big-mobile") {
+    max-width: 86.7%;
+    margin-top: 42px;
+  }
 }
 
 .section-donation__content {
@@ -20,34 +38,68 @@
   align-items: flex-start;
   margin-left: 30px;
 
+  @include respond-to("small-desktop") {
+    margin-left: 0;
+  }
+
+  @include respond-to("big-mobile") {
+    align-items: center;
+    text-align: center;
+  }
+
   .title {
     color: $color-dark-l;
-  }
 
-  .bank {
-    color: $color-dark-l;
-  }
-
-  .bank-card {
-    display: flex;
-    align-items: center;
-    column-gap: 15px;
-    padding: 10px 15px;
-    border-radius: 9px;
-    color: $color-dark-l;
-    background-color: $color-primary;
-    @extend %transition-color;
-
-    &:hover {
-      background-color: $color-primary-light;
+    .section-donation__title {
+      @include respond-to("mobile") {
+        @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+      }
     }
   }
 
+  .bank-name {
+    @include respond-to("big-mobile") {
+      @include font($size: 1.5rem, $height: 2.4rem);
+    }
+  }
+}
 
-  .legal-info {
-    width: 380px;
-    font-family: "Arial";
-    @include font($size: 1.2rem, $height: 1.8rem, $style: italic);
-    color: $color-dark-m;
+.bank {
+  color: $color-dark-l;
+}
+
+.bank-card {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  padding: 10px 15px;
+  border-radius: 9px;
+  color: $color-dark-l;
+  background-color: $color-primary;
+  @extend %transition-color;
+
+  &:hover {
+    background-color: $color-primary-light;
+  }
+
+  @include respond-to("big-mobile") {
+    .bank-card__number {
+      @include font($size: 1.5rem, $height: 1.7rem, $spacing: 0.06em);
+    }
+  }
+}
+
+
+.legal-info {
+  width: 380px;
+  font-family: "Arial";
+  @include font($size: 1.2rem, $height: 1.8rem, $style: italic);
+  color: $color-dark-m;
+
+  @include respond-to("big-mobile") {
+    width: 100%;
+    padding-left: $mobile-width-padding;
+    padding-right: $mobile-width-padding;
+    text-align: justify;
   }
 }

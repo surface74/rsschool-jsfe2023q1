@@ -15,9 +15,18 @@ $content-width: 1280px;
 $tablet-width: 768px;
 $mobile-width: 320px;
 
-$section-width-padding: 40px;
-// $breakpoints: (
-//   "medium": (min-width: 800px),
-//   "large": (min-width: 1000px),
-//   "huge": (min-width: 1200px),
-// );
+$desktop-width-padding: 40px;
+$tablet-width-padding: 30px;
+$mobile-width-padding: 10px;
+
+$breakpoints: (
+  "desktop": (max-width: 1280px),
+  "smaller-desktop": (max-width: 1200px),
+  "small-desktop": (max-width: 1100px),
+  "big-tablet": (max-width: 1000px),
+  "tablet": (max-width: 768px),
+  "smaller-tablet": (max-width: 750px),
+  "small-tablet": (max-width: 740px),
+  "big-mobile": (max-width: 441px),
+  "mobile": (max-width: 320px),
+);

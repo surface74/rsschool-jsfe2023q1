@@ -7,6 +7,10 @@
   cursor: pointer;
   transition: all 0.3s;
 
+  @include respond-to("small-tablet") {
+    display: inline-block;
+  }
+
   &:hover {
     scale: 1.1;
   }
@@ -18,10 +22,4 @@
 
 .burger_dark {
   background: url("../../assets/icons/burger-dark.svg");
-}
-
-@include media-mobile {
-  .burger {
-    display: inline-block;
-  }
 }

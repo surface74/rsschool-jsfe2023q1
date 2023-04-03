@@ -1,18 +1,66 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  padding-top: 40px;
+  width: 100%;
+  padding: 40px $desktop-width-padding 0;
+
+  @include respond-to("small-desktop") {
+    padding: 30px $tablet-width-padding 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include respond-to("small-tablet") {
+    padding: 31px $mobile-width-padding 0;
+  }
+}
+
+.footer__columns-wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 61%;
+
+  @include respond-to("small-desktop") {
+    width: 89.3%;
+    margin-right: 7px;
+  }
+
+  @include respond-to("small-tablet") {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  @include respond-to("mobile") {
+    .footer__column-title {
+      @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+    }
+  }
 }
 
 .footer__column {
   display: flex;
-  max-width: 30%;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 16px;
   padding-bottom: 60px;
   color: $color-light-xl;
   overflow-wrap: anywhere;
+
+  @include respond-to("small-desktop") {
+    padding-top: 0;
+    height: 295px;
+  }
+
+  @include respond-to("mobile") {
+    padding-bottom: 0;
+    height: auto;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
 }
 
 .footer__link {
@@ -35,6 +83,15 @@
 
 .footer__image {
   max-width: 100%;
+
+  @include respond-to("small-desktop") {
+    max-width: min(300px, 42.4%);
+    margin-top: 4px;
+  }
+
+  @include respond-to("small-tablet") {
+    max-width: 86.7%;
+  }
 }
 
 .footer_bg {

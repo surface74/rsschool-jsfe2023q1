@@ -12,6 +12,12 @@
   }
 }
 
+@mixin media-1080() {
+  @media (max-width: 1080px) {
+    @content;
+  }
+}
+
 @mixin media-tablet() {
   @media (max-width: $tablet-width) {
     @content;
@@ -28,21 +34,21 @@
 /// @access public
 /// @param {String} $breakpoint
 /// @requires $breakpoints
-// @mixin respond-to($breakpoint) {
-//   $raw-query: map-get($breakpoints, $breakpoint);
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
 
-//   @if $raw-query {
-//     $query: if(type-of($raw-query)=="string",
-//       unquote($raw-query),
-//       inspect($raw-query));
+  @if $raw-query {
+    $query: if(type-of($raw-query)=="string",
+      unquote($raw-query),
+      inspect($raw-query));
 
-//     @media #{$query} {
-//       @content;
-//     }
-//   }
+    @media #{$query} {
+      @content;
+    }
+  }
 
-//   @else {
-//     @error "No value for `#{$breakpoint}`. "
-//     +"Please be sure it was defined in map `$breakpoints`.";
-//   }
-// }
+  @else {
+    @error "No value for `#{$breakpoint}`. "
+    +"Please be sure it was defined in map `$breakpoints`.";
+  }
+}
