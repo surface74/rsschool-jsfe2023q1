@@ -1195,6 +1195,16 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   flex-direction: column;
   padding: 80px 40px 100px;
 }
+@media (max-width: 768px) {
+  .section-help__block {
+    padding: 80px 30px 100px;
+  }
+}
+@media (max-width: 441px) {
+  .section-help__block {
+    padding: 42px 15px 0;
+  }
+}
 @media (max-width: 320px) {
   .section-help__block {
     padding: 42px 15px 0;
@@ -1228,15 +1238,15 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 @media (max-width: 768px) {
   .section-help__list {
-    -moz-column-gap: 30px;
-         column-gap: 30px;
-    justify-content: space-between;
+    -moz-column-gap: 60px;
+         column-gap: 60px;
+    margin-bottom: 42px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 320px) {
   .section-help__list {
     gap: 30px;
-    margin-bottom: 42px;
+    justify-content: space-between;
   }
 }
 

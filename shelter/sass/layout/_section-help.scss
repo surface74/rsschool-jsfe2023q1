@@ -7,6 +7,14 @@
   flex-direction: column;
   padding: 80px $desktop-width-padding 100px;
 
+  @include respond-to("tablet") {
+    padding: 80px $tablet-width-padding 100px;
+  }
+
+  @include respond-to("big-mobile") {
+    padding: 42px 15px 0;
+  }
+
   @include respond-to("mobile") {
     padding: 42px 15px 0;
   }
@@ -33,11 +41,12 @@
   gap: 55px 120px;
 
   @include respond-to("tablet") {
-    column-gap: 30px;
-    justify-content: space-between;
-  }
-  @include respond-to("tablet") {
-    gap: 30px;
+    column-gap: 60px;
     margin-bottom: 42px;
+  }
+
+  @include respond-to("mobile") {
+    gap: 30px;
+    justify-content: space-between;
   }
 }
