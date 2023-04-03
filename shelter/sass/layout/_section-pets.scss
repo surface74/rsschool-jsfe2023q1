@@ -7,6 +7,11 @@
   flex-direction: column;
   align-items: center;
   padding: 80px $desktop-width-padding 100px;
+
+  @include respond-to("small-desktop") {
+    padding-left: $tablet-width-padding;
+    padding-right: $tablet-width-padding;
+  }
 }
 
 .section-pets__heading {
@@ -28,4 +33,18 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto 1fr;
   gap: 0 90px;
+
+  @include respond-to("smaller-desktop") {
+    gap: 0 40px;
+  }
+
+  @include respond-to("small-desktop") {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 0;
+
+    & > .card:last-of-type {
+      visibility: collapse;
+    }
+  }
 }
+
