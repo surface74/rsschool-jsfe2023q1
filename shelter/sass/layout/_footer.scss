@@ -1,12 +1,23 @@
 .footer {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   padding: 40px $desktop-width-padding 0;
+
+  @include respond-to("big-tablet") {
+    padding: 30px $tablet-width-padding 0;
+    flex-direction: column;
+  }
+}
+
+.footer__columns-wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 61%;
 }
 
 .footer__column {
   display: flex;
-  max-width: 30%;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 16px;
