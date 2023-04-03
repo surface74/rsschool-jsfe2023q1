@@ -698,6 +698,8 @@ button.button-paginator:disabled {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .header__logo {
@@ -766,7 +768,7 @@ button.button-paginator:disabled {
 .footer {
   display: flex;
   justify-content: space-between;
-  padding-top: 40px;
+  padding-top: 40px 40px 0;
 }
 
 .footer__column {
@@ -819,10 +821,4 @@ button.button-paginator:disabled {
   color: #545454;
   margin-bottom: 60px;
   text-align: center;
-}
-
-.header__content,
-.footer {
-  padding-left: 40px;
-  padding-right: 40px;
 }/*# sourceMappingURL=styles.css.map */
