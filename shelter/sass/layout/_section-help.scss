@@ -5,7 +5,7 @@
 .section-help__block {
   display: flex;
   flex-direction: column;
-  padding: 80px $section-width-padding 100px;
+  padding: 80px $desktop-width-padding 100px;
 }
 
 .section-help__heading {
@@ -24,8 +24,8 @@
 
 @include media-desktop() {
   .section-help__block {
-    $section-width-padding: 20px;
-    padding: 80px $section-width-padding 100px;
+    $desktop-width-padding: 20px;
+    padding: 80px $desktop-width-padding 100px;
   }
 
   //

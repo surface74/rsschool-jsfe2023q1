@@ -15,10 +15,12 @@ $content-width: 1280px;
 $tablet-width: 768px;
 $mobile-width: 320px;
 
-$section-width-padding: 40px;
+$desktop-width-padding: 40px;
 $tablet-width-padding: 30px;
-// $breakpoints: (
-//   "medium": (min-width: 800px),
-//   "large": (min-width: 1000px),
-//   "huge": (min-width: 1200px),
-// );
+
+$breakpoints: (
+  "desktop": (max-width: 1280px),
+  "small-desktop": (max-width: 1080px),
+  "tablet": (max-width: 768px),
+  "mobile": (max-width: 320px),
+);

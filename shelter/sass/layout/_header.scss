@@ -8,9 +8,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 $section-width-padding;
+  padding: 0 $desktop-width-padding;
 
-  @include media-tablet {
+  @include respond-to("tablet") {
     padding: 0 $tablet-width-padding;
   }
 }
