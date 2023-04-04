@@ -6,28 +6,8 @@
   letter-spacing: $spacing;
 }
 
-@mixin media-desktop() {
-  @media (max-width: $content-width) {
-    @content;
-  }
-}
-
-@mixin media-1080() {
-  @media (max-width: 1080px) {
-    @content;
-  }
-}
-
-@mixin media-tablet() {
-  @media (max-width: $tablet-width) {
-    @content;
-  }
-}
-
-@mixin media-mobile() {
-  @media (max-width: $mobile-width) {
-    @content;
-  }
+@mixin font3h-mobile() {
+  @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
 }
 
 /// Control responsibility

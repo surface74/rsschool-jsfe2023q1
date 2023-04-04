@@ -38,16 +38,24 @@
       align-items: center;
     }
 
-    @include respond-to("mobile") {
+    @include respond-to("toggle-menu") {
       max-width: 100%;
+      padding: 150px 17.4% 100px;
+    }
+
+    @include respond-to("big-mobile") {
       text-align: center;
+      padding: 150px 0 100px;
+    }
+
+    @include respond-to("mobile") {
       padding-bottom: 105px;
     }
 
     .content__title {
       max-width: 310px;
-      color: $color-light-xl;
       margin-bottom: 42px;
+      color: $color-light-xl;
 
       @include respond-to("big-tablet") {
         align-self: flex-start;
@@ -60,14 +68,26 @@
 
     .content__text {
       @extend %font-paragraph-l;
-      color: $color-dark-s;
       margin-bottom: 42px;
+      color: $color-dark-s;
     }
   }
 
-  @include respond-to("mobile") {
-    .section-house__title {
-      @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+  .section-house__title {
+
+    @include respond-to("small-tablet") {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
+
+    @include respond-to("big-mobile") {
+      font-size: 3rem;
+      line-height: 3.8rem;
+    }
+
+    @include respond-to("mobile") {
+      max-width: 250px;
+      @include font3h-mobile();
     }
   }
 
@@ -79,9 +99,9 @@
       max-width: 80.42%;
       align-self: end;
     }
+
     @include respond-to("mobile") {
       max-width: 86.7%;
     }
-
   }
 }

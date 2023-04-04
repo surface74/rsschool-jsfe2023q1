@@ -41,7 +41,7 @@
 
 @include respond-to("mobile") {
   .footer__column-title {
-    @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+    @include font3h-mobile();
   }
 }
 
@@ -78,7 +78,6 @@
   @include respond-to("mobile") {
     max-width: 250px;
   }
-
 }
 
 .footer__link {
