@@ -8,7 +8,7 @@
   padding: 80px $desktop-width-padding 100px;
 
   @include respond-to("tablet") {
-    padding: 80px $tablet-width-padding 100px;
+    padding: 80px $tablet-width-padding 57px;
   }
 
   @include respond-to("big-mobile") {

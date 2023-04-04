@@ -38,7 +38,7 @@
 
 .header__navbar {
 
-  @include respond-to("small-tablet") {
+  @include respond-to("toggle-menu") {
     display: none;
   }
 

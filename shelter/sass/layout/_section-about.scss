@@ -8,7 +8,7 @@
   padding-bottom: 100px;
   justify-content: center;
 
-  @include respond-to("small-desktop") {
+  @include respond-to("tablet") {
     flex-direction: column;
     align-items: center;
   }
@@ -20,10 +20,11 @@
 }
 
 .section-about__image {
-  max-width: 100%;
+  max-width: 25%;
+  object-fit: contain;
 
-  @include respond-to("small-desktop") {
-    max-width: 39.1%;
+  @include respond-to("tablet") {
+    max-width: 100%;
     order: 1;
     margin-top: 80px;
   }
@@ -38,17 +39,15 @@
 .section-about__description {
   display: flex;
   flex-direction: column;
-  max-width: 460px;
+  max-width: 38.33%;
   overflow: hidden;
   padding-top: 14px;
   margin-left: 120px;
 
-  @include respond-to("small-desktop") {
+  @include respond-to("tablet") {
+    max-width: 100%;
     padding-top: 0;
     margin-left: 0;
-  }
-
-  @include respond-to("small-desktop") {
     padding: 0 15px 0;
   }
 
