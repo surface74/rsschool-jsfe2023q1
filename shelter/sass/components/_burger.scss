@@ -7,7 +7,7 @@
   cursor: pointer;
   transition: all 0.3s;
 
-  @include respond-to("small-tablet") {
+  @include respond-to("toggle-menu") {
     display: inline-block;
   }
 

@@ -724,7 +724,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   cursor: pointer;
   transition: all 0.3s;
 }
-@media (max-width: 740px) {
+@media (max-width: 767px) {
   .burger {
     display: inline-block;
   }
@@ -792,7 +792,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   margin-left: 4px;
 }
 
-@media (max-width: 740px) {
+@media (max-width: 767px) {
   .header__navbar {
     display: none;
   }
