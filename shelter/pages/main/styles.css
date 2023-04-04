@@ -867,12 +867,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 .footer__columns-wrapper {
   display: inline-flex;
   justify-content: space-between;
-  width: 61%;
+  width: 61.6%;
 }
 @media (max-width: 1100px) {
   .footer__columns-wrapper {
-    width: 89.3%;
-    margin-right: 7px;
+    width: 90.2%;
   }
 }
 @media (max-width: 740px) {
@@ -882,11 +881,16 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     align-items: center;
     text-align: center;
     width: 100%;
-    margin-right: 0;
   }
 }
 @media (max-width: 320px) {
-  .footer__columns-wrapper .footer__column-title {
+  .footer__columns-wrapper .footer__column:last-of-type {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer__column-title {
     font-style: normal;
     font-size: 2.5rem;
     font-weight: 400;
@@ -894,11 +898,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
     letter-spacing: 0.06em;
   }
 }
-
 .footer__column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 300px;
   padding-top: 16px;
   padding-bottom: 60px;
   color: #FFFFFF;
@@ -912,10 +916,21 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 @media (max-width: 320px) {
   .footer__column {
-    padding-bottom: 0;
+    width: 100%;
     height: auto;
+    align-items: center;
     gap: 40px;
+    padding-bottom: 0;
     margin-bottom: 40px;
+  }
+  .footer__column .footer__column-title:last-of-type {
+    align-self: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer__column-title {
+    max-width: 250px;
   }
 }
 
@@ -929,6 +944,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 .footer__link:hover {
   color: #FFFFFF;
   fill: #FFFFFF;
+}
+@media (max-width: 320px) {
+  .footer__link {
+    text-align: left;
+  }
 }
 
 .footer__icon {
@@ -947,6 +967,11 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 @media (max-width: 740px) {
   .footer__image {
     max-width: 86.7%;
+  }
+}
+@media (max-width: 740px) {
+  .footer__image {
+    margin-top: 0;
   }
 }
 

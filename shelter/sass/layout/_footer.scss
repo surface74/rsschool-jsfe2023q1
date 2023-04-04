@@ -18,11 +18,10 @@
 .footer__columns-wrapper {
   display: inline-flex;
   justify-content: space-between;
-  width: 61%;
+  width: 61.6%;
 
   @include respond-to("small-desktop") {
-    width: 89.3%;
-    margin-right: 7px;
+    width: 90.2%;
   }
 
   @include respond-to("small-tablet") {
@@ -31,13 +30,18 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    margin-right: 0;
   }
 
   @include respond-to("mobile") {
-    .footer__column-title {
-      @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+    & .footer__column:last-of-type {
+      align-items: flex-start;
     }
+  }
+}
+
+@include respond-to("mobile") {
+  .footer__column-title {
+    @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
   }
 }
 
@@ -45,6 +49,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 300px;
   padding-top: 16px;
   padding-bottom: 60px;
   color: $color-light-xl;
@@ -56,11 +61,24 @@
   }
 
   @include respond-to("mobile") {
-    padding-bottom: 0;
+    width: 100%;
     height: auto;
+    align-items: center;
     gap: 40px;
+    padding-bottom: 0;
     margin-bottom: 40px;
+
+    & .footer__column-title:last-of-type {
+      align-self: center;
+    }
   }
+}
+
+.footer__column-title {
+  @include respond-to("mobile") {
+    max-width: 250px;
+  }
+
 }
 
 .footer__link {
@@ -74,6 +92,10 @@
   &:hover {
     color: $color-light-xl;
     fill: $color-light-xl;
+  }
+
+  @include respond-to("mobile") {
+    text-align: left;
   }
 }
 
@@ -92,6 +114,12 @@
   @include respond-to("small-tablet") {
     max-width: 86.7%;
   }
+
+  @include respond-to("small-tablet") {
+    margin-top: 0;
+  }
+
+
 }
 
 .footer_bg {
