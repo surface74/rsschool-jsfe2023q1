@@ -9,8 +9,7 @@
   padding: 80px $desktop-width-padding 100px;
 
   @include respond-to("small-desktop") {
-    padding-left: $tablet-width-padding;
-    padding-right: $tablet-width-padding;
+    padding: 80px $tablet-width-padding 100px;
   }
 
   @include respond-to("mobile") {
@@ -30,7 +29,7 @@
 
 .section-pets__title {
   @include respond-to("mobile") {
-    @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
+    @include font3h-mobile();
   }
 }
 
@@ -65,7 +64,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
 
-    &>.card:nth-last-child(-n+1) {
+    & .card:nth-last-child(-n+1) {
       display: none;
       ;
     }
@@ -74,7 +73,7 @@
   @include respond-to("smaller-tablet") {
     grid-template-columns: 1fr;
 
-    &>.card:nth-last-child(-n+2) {
+    & .card:nth-last-child(-n+2) {
       display: none;
     }
   }

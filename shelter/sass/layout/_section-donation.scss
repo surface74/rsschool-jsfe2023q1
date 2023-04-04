@@ -23,8 +23,8 @@
 
   @include respond-to("tablet") {
     max-width: 100%;
-    order: 1;
     margin-top: 60px;
+    order: 1;
   }
 
   @include respond-to("big-mobile") {
@@ -36,8 +36,8 @@
 .section-donation__content {
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
   align-items: flex-start;
+  row-gap: 20px;
   margin-left: 30px;
 
   @include respond-to("tablet") {
@@ -52,17 +52,18 @@
   .title {
     color: $color-dark-l;
 
-    .section-donation__title {
-      @include respond-to("mobile") {
-        @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
-      }
-    }
   }
 
   .bank-name {
     @include respond-to("big-mobile") {
       @include font($size: 1.5rem, $height: 2.4rem);
     }
+  }
+}
+
+.section-donation__title {
+  @include respond-to("mobile") {
+    @include font3h-mobile();
   }
 }
 
@@ -83,14 +84,13 @@
   &:hover {
     background-color: $color-primary-light;
   }
-
-  @include respond-to("big-mobile") {
-    .bank-card__number {
-      @include font($size: 1.5rem, $height: 1.7rem, $spacing: 0.06em);
-    }
-  }
 }
 
+.bank-card__number {
+  @include respond-to("big-mobile") {
+    @include font($size: 1.5rem, $height: 1.7rem, $spacing: 0.06em);
+  }
+}
 
 .legal-info {
   width: 380px;

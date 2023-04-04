@@ -3,17 +3,11 @@
   margin: auto;
 }
 
-@include media-tablet {
+@include respond-to("tablet") {
   .wrapper {
     max-width: $tablet-width;
   }
 }
-
-// @include respond-to("tablet") {
-//   .wrapper {
-//     max-width: $tablet-width;
-//   }
-// }
 
 @include respond-to("mobile") {
   .wrapper {

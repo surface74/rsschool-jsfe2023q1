@@ -14,10 +14,6 @@
   @include respond-to("big-mobile") {
     padding: 42px 15px 0;
   }
-
-  @include respond-to("mobile") {
-    padding: 42px 15px 0;
-  }
 }
 
 .section-help__heading {
@@ -27,9 +23,12 @@
 
   @include respond-to("mobile") {
     margin-bottom: 42px;
-    .section-help__title {
-      @include font($size: 2.5rem, $height: 3.2rem, $spacing: 0.06em);
-    }
+  }
+}
+
+.section-help__title {
+  @include respond-to("mobile") {
+    @include font3h-mobile()
   }
 }
 
@@ -40,8 +39,12 @@
   justify-content: center;
   gap: 55px 120px;
 
+  @include respond-to("small-desktop") {
+    column-gap: 11.8%;
+  }
+
   @include respond-to("tablet") {
-    column-gap: 60px;
+    column-gap: 8.45%;
     margin-bottom: 42px;
   }
 
