@@ -1332,7 +1332,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   align-items: center;
   padding: 80px 40px 100px;
 }
-@media (max-width: 1100px) {
+@media (max-width: 768px) {
   .section-donation__block {
     flex-direction: column;
   }
@@ -1344,10 +1344,13 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 
 .section-donation__image {
-  max-width: 100%;
+  max-width: 42.08%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
-@media (max-width: 1100px) {
+@media (max-width: 768px) {
   .section-donation__image {
+    max-width: 100%;
     order: 1;
     margin-top: 60px;
   }
@@ -1366,7 +1369,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   align-items: flex-start;
   margin-left: 30px;
 }
-@media (max-width: 1100px) {
+@media (max-width: 768px) {
   .section-donation__content {
     margin-left: 0;
   }
