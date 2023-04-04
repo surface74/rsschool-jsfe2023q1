@@ -1240,7 +1240,7 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 }
 @media (max-width: 768px) {
   .section-help__block {
-    padding: 80px 30px 100px;
+    padding: 80px 30px 57px;
   }
 }
 @media (max-width: 441px) {
