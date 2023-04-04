@@ -6,8 +6,7 @@
 .section-house__block {
   padding: 180px $desktop-width-padding 0;
 
-  // @include respond-to("small-desktop") {
-  @include respond-to("tablet") {
+  @include respond-to("big-tablet") {
     padding: 0 $tablet-width-padding;
   }
 
@@ -20,8 +19,7 @@
   display: flex;
   justify-content: space-between;
 
-  // @include respond-to("small-desktop") {
-  @include respond-to("tablet") {
+  @include respond-to("big-tablet") {
     flex-direction: column;
     align-items: center;
   }
@@ -30,15 +28,10 @@
     display: flex;
     flex-direction: column;
     max-width: 38.33%;
-    // width: 460px;
-
-    // padding-top: 163px;
     padding-top: 13.7%;
-    // padding-bottom: 50px;
     overflow: hidden;
 
-    // @include respond-to("small-desktop") {
-    @include respond-to("tablet") {
+    @include respond-to("big-tablet") {
       max-width: 65%;
       padding-top: 150px;
       padding-bottom: 100px;
@@ -56,8 +49,7 @@
       color: $color-light-xl;
       margin-bottom: 42px;
 
-      // @include respond-to("small-desktop") {
-      @include respond-to("tablet") {
+      @include respond-to("big-tablet") {
         align-self: flex-start;
       }
 
@@ -80,12 +72,10 @@
   }
 
   .image {
-    // max-width: 100%;
     max-width: 58.17%;
     object-fit: contain;
 
-    // @include respond-to("small-desktop") {
-    @include respond-to("tablet") {
+    @include respond-to("big-tablet") {
       max-width: 80.42%;
       align-self: end;
     }
