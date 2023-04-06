@@ -46,7 +46,7 @@
   font-weight: 700;
   src: url("../../assets/fonts/arial-bold-italic.ttf") format("truetype");
 }
-.navbar-link {
+.navbar__link {
   font-family: "Arial";
   font-style: normal;
   font-size: 1.5rem;
@@ -64,7 +64,7 @@
   letter-spacing: 0.1em;
 }
 
-.footer__link, .header__subtitle, .header__title, button.button-paginator, .card, a.button, .navbar-link {
+.footer__link, .header__subtitle, .header__title, button.button-paginator, .card, a.button, .navbar__link {
   transition: color 0.5s ease-out, fill 0.5s ease-out, background-color 0.5s ease-out;
 }
 
@@ -502,38 +502,6 @@ h5.modal-window {
   letter-spacing: normal;
 }
 
-.navbar-link {
-  width: -moz-fit-content;
-  width: fit-content;
-  text-decoration: none;
-  padding-bottom: 4px;
-}
-.navbar-link.active {
-  border-bottom: 3px solid #F1CDB3;
-  padding-bottom: 4px;
-  pointer-events: none;
-}
-
-.navbar-link_light {
-  color: #F6F6F6;
-}
-.navbar-link_light:hover {
-  color: #FAFAFA;
-}
-.navbar-link_light:active {
-  color: #F6F6F6;
-}
-
-.navbar-link_dark {
-  color: #545454;
-}
-.navbar-link_dark:hover {
-  color: #292929;
-}
-.navbar-link_dark:active {
-  color: #545454;
-}
-
 @media (max-width: 767px) {
   .navbar {
     display: none;
@@ -545,6 +513,62 @@ h5.modal-window {
 }
 .navbar li {
   margin-bottom: 6px;
+}
+
+.navbar_menu-showed {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(41, 41, 41, 0.6);
+}
+.navbar_menu-showed ul {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 100%;
+  background: #292929;
+  padding-left: 0;
+  gap: 40px;
+}
+.navbar_menu-showed .navbar__link {
+  font-style: normal;
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 5.1rem;
+  letter-spacing: normal;
+}
+
+.navbar__link {
+  width: -moz-fit-content;
+  width: fit-content;
+  text-decoration: none;
+  padding-bottom: 4px;
+  color: #F6F6F6;
+}
+.navbar__link:not(.active):hover {
+  color: #FAFAFA;
+}
+.navbar__link:active {
+  color: #F6F6F6;
+}
+.navbar__link.active {
+  border-bottom: 3px solid #F1CDB3;
+  cursor: default;
+}
+
+.navbar:not(.navbar_menu-showed) .navbar__link_dark {
+  color: #545454;
+}
+.navbar:not(.navbar_menu-showed) .navbar__link_dark:not(.active):hover {
+  color: #292929;
+}
+.navbar:not(.navbar_menu-showed) .navbar__link_dark:active {
+  color: #545454;
 }
 
 a.button {
@@ -681,6 +705,7 @@ button.button-paginator:disabled {
   padding: 0;
   background: transparent;
   border: none;
+  outline: none;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -699,6 +724,10 @@ button.button-paginator:disabled {
 
 .burger_dark .burger__line {
   border-color: #000000;
+}
+
+.burger_light .burger__line {
+  border-color: #F1CDB3;
 }
 
 .wrapper {
