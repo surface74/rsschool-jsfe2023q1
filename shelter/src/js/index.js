@@ -1,7 +1,7 @@
 'use strict';
 
 const burger = document.querySelector('.burger');
-const headerNavbar = document.querySelector('.header__navbar');
+const headerNavbar = document.querySelector('.navbar');
 
 burger.addEventListener('click', () => {
   if (burger.classList.contains('burger_activated')) {

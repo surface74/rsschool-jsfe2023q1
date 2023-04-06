@@ -1,0 +1,15 @@
+.navbar {
+
+  @include respond-to("toggle-menu") {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    gap: 36px;
+  }
+
+  li {
+    margin-bottom: 6px;
+  }
+}

@@ -534,6 +534,19 @@ h5.modal-window {
   color: #545454;
 }
 
+@media (max-width: 767px) {
+  .navbar {
+    display: none;
+  }
+}
+.navbar ul {
+  display: flex;
+  gap: 36px;
+}
+.navbar li {
+  margin-bottom: 6px;
+}
+
 a.button {
   display: block;
   text-align: center;
@@ -792,19 +805,6 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 
 .header__subtitle {
   margin-left: 4px;
-}
-
-@media (max-width: 767px) {
-  .header__navbar {
-    display: none;
-  }
-}
-.header__navbar ul {
-  display: flex;
-  gap: 36px;
-}
-.header__navbar li {
-  margin-bottom: 6px;
 }
 
 .header_dark .header__title {
