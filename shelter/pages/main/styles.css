@@ -709,29 +709,37 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
   gap: 20px;
 }
 
+.burger_activated, .burger:active {
+  transform: rotate(90deg);
+}
+
 .burger {
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
   width: 30px;
   height: 22px;
-  background: url("../../assets/icons/burger.svg");
+  padding: 0;
+  background: transparent;
   border: none;
   cursor: pointer;
   transition: all 0.3s;
 }
 @media (max-width: 767px) {
   .burger {
-    display: inline-block;
+    display: inline-flex;
   }
 }
 .burger:hover {
   scale: 1.1;
 }
-.burger:active {
-  transform: rotate(90deg);
+.burger .burger__line {
+  width: 100%;
+  border: 1px solid #F1CDB3;
 }
 
-.burger_dark {
-  background: url("../../assets/icons/burger-dark.svg");
+.burger_dark .burger__line {
+  border-color: #000000;
 }
 
 .wrapper {
