@@ -542,7 +542,7 @@ h5.modal-window {
   justify-content: flex-end;
   width: 100vw;
   height: 100vh;
-  transform: translateX(100vw);
+  transform: scaleX(0) translateX(100vw);
   top: 0;
   background: transparent;
   overflow-x: hidden;
@@ -557,7 +557,7 @@ h5.modal-window {
   width: 320px;
   height: 100%;
   background: #292929;
-  padding-left: 0;
+  padding-bottom: 35px;
   gap: 40px;
   transform: translateX(320px);
   transition: transform 0.3s;
@@ -594,7 +594,7 @@ h5.modal-window {
 
 .aside-navbar_showed {
   background: rgba(41, 41, 41, 0.6);
-  transform: translateX(0);
+  transform: translateX(0) scaleX(1);
 }
 .aside-navbar_showed .navbar-list {
   transform: translateX(0);
