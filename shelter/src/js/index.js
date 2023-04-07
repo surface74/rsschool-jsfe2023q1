@@ -3,7 +3,7 @@
 const preventedKeys = ['ArrowUp', 'ArrowDown', 'Tab'];
 
 const burger = document.querySelector('.burger');
-const navbar = document.querySelector('.navbar');
+const navbar = document.querySelector('.aside-navbar');
 
 const preventScroll = (e) => { e.preventDefault(); }
 const preventScrollByKeys = (e) => {
@@ -17,7 +17,7 @@ const hideMenu = () => {
   navbar.removeEventListener('wheel', preventScroll);
   burger.classList.remove('burger_light');
   burger.classList.remove('burger_activated');
-  navbar.classList.remove('navbar_menu-showed');
+  navbar.classList.remove('aside-navbar_showed');
 }
 
 const showMenu = () => {
@@ -26,7 +26,7 @@ const showMenu = () => {
   navbar.addEventListener('wheel', preventScroll);
   burger.classList.add('burger_light');
   burger.classList.add('burger_activated');
-  navbar.classList.add('navbar_menu-showed');
+  navbar.classList.add('aside-navbar_showed');
 }
 
 
@@ -40,7 +40,7 @@ burger.addEventListener('click', () => {
 
 navbar.addEventListener('click', (e) => {
   const target = e.target;
-  if (target.classList.contains('navbar_menu-showed') ||
+  if (target.classList.contains('aside-navbar_showed') ||
     target.classList.contains('navbar__link')) {
     hideMenu();
   }
