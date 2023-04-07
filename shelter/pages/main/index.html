@@ -98,28 +98,28 @@
             are looking for a house</h3>
         </div>
         <div class="section-pets__slider">
-          <button class="button-arrow" type="button">
+          <button class="button-arrow button-arrow_left" type="button">
           </button>
           <!-- <div class="slider"> -->
           <div class="slider__cards">
-            <div class="card">
+            <div class="card" data-id="5">
               <img class="card__image" src="../../assets/images/pets/katrine.png" alt="Katrine's photo">
               <span class="card__title">Katrine</span>
               <a class="button button--transparent">Learn more</a>
             </div>
-            <div class="card">
+            <div class="card" data-id="0">
               <img class="card__image" src="../../assets/images/pets/jennifer.png" alt="Jennifer's photo">
               <span class="card__title">Jennifer</span>
               <a class="button button--transparent">Learn more</a>
             </div>
-            <div class="card">
+            <div class="card" data-id="2">
               <img class="card__image" src="../../assets/images/pets/woody.png" alt="Woody's photo">
               <span class="card__title">Woody</span>
               <a class="button button--transparent">Learn more</a>
             </div>
           </div>
           <!-- </div> -->
-          <button class="button-arrow button-arrow--right" type="button">
+          <button class="button-arrow button-arrow_right" type="button">
           </button>
         </div>
         <a class="button" href="../pets/">Get to know the rest</a>
@@ -237,6 +237,33 @@
     </section>
   </main>
 
+  <aside>
+
+    <div class="popup">
+      <div class="popup-wrapper">
+        <button class="button-close-modal"></button>
+        <div class="popup__card">
+          <img class="popup__image" src="../../assets/images/pets/jennifer.png" alt="pet's photo">
+          <div class="popup__about">
+            <h3 class="name">Jennifer</h3>
+            <h4 class="type-bread">Dog - Labrador</h4>
+            <span class="description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</span>
+            <ul class="data-list">
+              <li class="list-item age">Age:<h5>2 months</h5>
+              </li>
+              <li class="list-item inoculations">Inoculations:<h5>none</h5>
+              </li>
+              <li class="list-item diseases">Diseases:<h5>none</h5>
+              </li>
+              <li class="list-item parasites">Parasites:<h5>none</h5>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
   <footer class="footer_bg" id="contacts">
     <div class="footer wrapper">
       <div class="footer__columns-wrapper">
@@ -302,6 +329,7 @@
     </div>
   </footer>
   <script src="../../src/js/index.js"></script>
+  <script src="../../src/js/popup.js"></script>
 </body>
 
 </html>

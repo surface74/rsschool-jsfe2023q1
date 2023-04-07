@@ -64,7 +64,7 @@
   letter-spacing: 0.1em;
 }
 
-.footer__link, .header__subtitle, .header__title, button.button-paginator, .card, a.button, .aside-navbar .navbar__link, .navbar .navbar__link {
+.footer__link, .header__subtitle, .header__title, button.button-close-modal, button.button-paginator, .card, a.button, .aside-navbar .navbar__link, .navbar .navbar__link {
   transition: color 0.5s ease-out, fill 0.5s ease-out, background-color 0.5s ease-out;
 }
 
@@ -757,6 +757,25 @@ button.button-paginator:disabled {
 
 .burger_light .burger__line {
   border-color: #F1CDB3;
+}
+
+button.button-close-modal {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 2px solid #F1CDB3;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  background: url("../../assets/icons/cross.svg") center no-repeat;
+}
+button.button-close-modal:hover {
+  border-color: #FDDCC4;
+  background-color: #FDDCC4;
+}
+button.button-close-modal:active {
+  border-color: #F1CDB3;
+  background-color: #F1CDB3;
 }
 
 .wrapper {

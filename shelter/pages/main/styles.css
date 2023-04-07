@@ -64,7 +64,7 @@
   letter-spacing: 0.1em;
 }
 
-.bank-card, .footer__link, .header__subtitle, .header__title, button.button-arrow, .card, a.button, .aside-navbar .navbar__link, .navbar .navbar__link {
+.bank-card, .footer__link, .header__subtitle, .header__title, button.button-close-modal, button.button-arrow, .card, a.button, .aside-navbar .navbar__link, .navbar .navbar__link {
   transition: color 0.5s ease-out, fill 0.5s ease-out, background-color 0.5s ease-out;
 }
 
@@ -681,28 +681,28 @@ button.button-arrow {
   cursor: pointer;
   background: url("../../assets/icons/arrow.svg") center no-repeat;
 }
-button.button-arrow.button-arrow--left {
+button.button-arrow.button-arrow_left {
   transform: rotate(0deg);
 }
-button.button-arrow.button-arrow--up {
+button.button-arrow.button-arrow_up {
   transform: rotate(90deg);
 }
-button.button-arrow.button-arrow--right {
+button.button-arrow.button-arrow_right {
   transform: rotate(180deg);
 }
-button.button-arrow.button-arrow--down {
+button.button-arrow.button-arrow_down {
   transform: rotate(-90deg);
 }
-button.button-arrow:hover, button.button-arrow.button-arrow--left:hover, button.button-arrow.button-arrow--up:hover, button.button-arrow.button-arrow--right:hover, button.button-arrow.button-arrow--down:hover {
+button.button-arrow:hover, button.button-arrow.button-arrow_left:hover, button.button-arrow.button-arrow_up:hover, button.button-arrow.button-arrow_right:hover, button.button-arrow.button-arrow_down:hover {
   border-color: #FDDCC4;
   background-color: #FDDCC4;
 }
-button.button-arrow:active, button.button-arrow.button-arrow--left:active, button.button-arrow.button-arrow--up:active, button.button-arrow.button-arrow--right:active, button.button-arrow.button-arrow--down:active, button.button-arrow.active {
+button.button-arrow:active, button.button-arrow.button-arrow_left:active, button.button-arrow.button-arrow_up:active, button.button-arrow.button-arrow_right:active, button.button-arrow.button-arrow_down:active, button.button-arrow.active {
   color: #292929;
   border-color: #F1CDB3;
   background-color: #F1CDB3;
 }
-button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, button.button-arrow.button-arrow--up:disabled, button.button-arrow.button-arrow--right:disabled, button.button-arrow.button-arrow--down:disabled {
+button.button-arrow:disabled, button.button-arrow.button-arrow_left:disabled, button.button-arrow.button-arrow_up:disabled, button.button-arrow.button-arrow_right:disabled, button.button-arrow.button-arrow_down:disabled {
   color: #CDCDCD;
   border-color: #CDCDCD;
   background: url("../../assets/images/arrow-disabled.svg") center no-repeat;
@@ -811,6 +811,25 @@ button.button-arrow:disabled, button.button-arrow.button-arrow--left:disabled, b
 
 .burger_light .burger__line {
   border-color: #F1CDB3;
+}
+
+button.button-close-modal {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 2px solid #F1CDB3;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  background: url("../../assets/icons/cross.svg") center no-repeat;
+}
+button.button-close-modal:hover {
+  border-color: #FDDCC4;
+  background-color: #FDDCC4;
+}
+button.button-close-modal:active {
+  border-color: #F1CDB3;
+  background-color: #F1CDB3;
 }
 
 .wrapper {
