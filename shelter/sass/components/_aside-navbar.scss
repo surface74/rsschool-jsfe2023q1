@@ -12,7 +12,6 @@
 
   .navbar-list {
     display: flex;
-    gap: 36px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -28,7 +27,7 @@
   .navbar__link {
     @include font-menu-mobile();
     text-decoration: none;
-    padding-bottom: 2px;
+    padding-bottom: 5px;
     @extend %transition-color;
 
     color: $color-light-l;
