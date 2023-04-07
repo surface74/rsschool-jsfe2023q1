@@ -6,6 +6,7 @@ const burger = document.querySelector('.burger');
 const navbar = document.querySelector('.aside-navbar');
 
 const preventScroll = (e) => { e.preventDefault(); }
+
 const preventScrollByKeys = (e) => {
   if (preventedKeys.includes(e.key)) {
     e.preventDefault();
@@ -45,6 +46,4 @@ navbar.addEventListener('click', (e) => {
     hideMenu();
   }
 
-  // if (target.classList.closest())
-  // console.log(e.target);
 });
