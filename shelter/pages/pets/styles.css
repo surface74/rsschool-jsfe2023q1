@@ -776,12 +776,18 @@ button.button-paginator:disabled {
 }
 
 .popup {
-  display: flex;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   justify-content: center;
   align-items: center;
   background: rgba(41, 41, 41, 0.6);
+}
+.popup.popup_open {
+  display: flex;
 }
 
 .popup__wrapper {
