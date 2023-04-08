@@ -60,7 +60,7 @@
 }
 
 .aside-navbar_showed {
-  background: rgba(41, 41, 41, 0.6);
+  background: $color-popup-background;
   transform: translateX(0) scaleX(1);
   .navbar-list {
     transform: translateX(0);
