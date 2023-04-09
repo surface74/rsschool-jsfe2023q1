@@ -1,6 +1,7 @@
 'use strict';
 
-const sliderCards = document.querySelector('.slider__cards');
+const sliderCards = document.querySelector('.carousel__cards') ||
+document.querySelector('.slider__cards');
 // const buttonPrev = document.querySelector('.button-arrow_left');
 // const buttonNext = document.querySelector('.button-arrow_right');
 const popup = document.querySelector('.pet-popup');
@@ -37,7 +38,7 @@ const closePopup = (e) => {
 
 const openPopup = (e) => {
   const target = e.target.closest('.card');
-  if (!target) {
+  if (!target || target.dataset.id == undefined) {
     return;
   }
 
@@ -46,9 +47,9 @@ const openPopup = (e) => {
   navbar.addEventListener('wheel', preventScroll);
   document.body.style.overflowY = 'hidden';
 
+
   fillPetCard(target.dataset.id);
   popup.classList.add('popup_open');
-
 }
 
 sliderCards.addEventListener('click', openPopup);

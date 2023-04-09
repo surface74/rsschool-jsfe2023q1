@@ -1,7 +1,18 @@
 const preventedKeys = ['ArrowUp', 'ArrowDown', 'Tab'];
 
+
+
+const preventScroll = (e) => { e.preventDefault(); }
+
+const preventScrollByKeys = (e) => {
+  if (preventedKeys.includes(e.key)) {
+    e.preventDefault();
+  };
+}
+
 const pets = [
   {
+    "id": "0",
     "name": "Jennifer",
     "img": "../../assets/images/pets/jennifer.png",
     "type": "Dog",
@@ -13,6 +24,7 @@ const pets = [
     "parasites": ["none"]
   },
   {
+    "id": "1",
     "name": "Sophia",
     "img": "../../assets/images/pets/sophia.png",
     "type": "Dog",
@@ -24,6 +36,7 @@ const pets = [
     "parasites": ["none"]
   },
   {
+    "id": "2",
     "name": "Woody",
     "img": "../../assets/images/pets/woody.png",
     "type": "Dog",
@@ -35,6 +48,7 @@ const pets = [
     "parasites": ["none"]
   },
   {
+    "id": "3",
     "name": "Scarlett",
     "img": "../../assets/images/pets/scarlett.png",
     "type": "Dog",
@@ -46,6 +60,7 @@ const pets = [
     "parasites": ["none"]
   },
   {
+    "id": "4",
     "name": "Katrine",
     "img": "../../assets/images/pets/katrine.png",
     "type": "Cat",
@@ -57,6 +72,7 @@ const pets = [
     "parasites": ["none"]
   },
   {
+    "id": "5",
     "name": "Timmy",
     "img": "../../assets/images/pets/timmy.png",
     "type": "Cat",
@@ -68,6 +84,7 @@ const pets = [
     "parasites": ["none"]
   },
   {
+    "id": "6",
     "name": "Freddie",
     "img": "../../assets/images/pets/freddie.png",
     "type": "Cat",
@@ -79,6 +96,7 @@ const pets = [
     "parasites": ["none"]
   },
   {
+    "id": "7",
     "name": "Charly",
     "img": "../../assets/images/pets/charly.png",
     "type": "Dog",
@@ -90,11 +108,3 @@ const pets = [
     "parasites": ["lice", "fleas"]
   }
 ];
-
-const preventScroll = (e) => { e.preventDefault(); }
-
-const preventScrollByKeys = (e) => {
-  if (preventedKeys.includes(e.key)) {
-    e.preventDefault();
-  };
-}
