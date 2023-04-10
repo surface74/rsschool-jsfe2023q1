@@ -6,6 +6,16 @@ const carouselButtonRight = document.querySelector('.button-arrow_right');
 let carouselPos = 0; //pointer to the first displayed element in the whole array of items (can be between 0 to length-1)
 let baseCarouselShift;
 
+const getVisibledCardsCount = () => {
+  const width = document.body.clientWidth;
+  if (width > 1100) {
+    return 3;
+  } else if (width > 750) {
+    return 2;
+  }
+  return 1;
+}
+
 const switchControls = (state) => {
   if (state) {
     carouselButtonLeft.removeAttribute('disabled');
@@ -46,6 +56,7 @@ const initCarousel = (carouselWrapper) => {
 
 const carouselMoveLeft = () => {
   carouselButtonLeft.setAttribute('disabled', 'true');
+  const times = getVisibledCardsCount();
 
   const shift = baseCarouselShift + getCarouselShift();
   carouselWrapper.style.transform = `translateX(${shift}px)`;
@@ -96,7 +107,6 @@ const correctCarouselShift = () => {
   baseCarouselShift = -getCarouselShift();
   carouselWrapper.style.transform = `translateX(${baseCarouselShift}px)`;
 }
-
 
 carouselButtonLeft.addEventListener('click', carouselMoveLeft);
 carouselButtonRight.addEventListener('click', carouselMoveRight);
