@@ -24,16 +24,28 @@
           <div class="header__subtitle">Shelter for pets in Boston</div>
         </div>
       </a>
-      <nav class="header__navbar">
-        <ul>
-          <li><a class="navbar-link navbar-link_light active" href="">About the shelter</a></li>
-          <li><a class="navbar-link navbar-link_light" href="../pets/">Our pets</a></li>
-          <li><a class="navbar-link navbar-link_light" href="#help">Help the shelter</a></li>
-          <li><a class="navbar-link navbar-link_light" href="#contacts">Contacts</a></li>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li><a class="navbar__link active" href="#">About the shelter</a></li>
+          <li><a class="navbar__link" href="../pets/">Our pets</a></li>
+          <li><a class="navbar__link" href="#help">Help the shelter</a></li>
+          <li><a class="navbar__link" href="#contacts">Contacts</a></li>
         </ul>
       </nav>
-      <button class="burger" type="button"></button>
+      <button class="burger" type="button">
+        <div class="burger__line"></div>
+        <div class="burger__line"></div>
+        <div class="burger__line"></div>
+      </button>
     </div>
+    <nav class="aside-navbar">
+      <ul class="navbar-list">
+        <li><a class="navbar__link active" href="#">About the shelter</a></li>
+        <li><a class="navbar__link" href="../pets/">Our pets</a></li>
+        <li><a class="navbar__link" href="#help">Help the shelter</a></li>
+        <li><a class="navbar__link" href="#contacts">Contacts</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
@@ -85,29 +97,39 @@
           <h3 class="section-pets__title">Our friends who<br>
             are looking for a house</h3>
         </div>
-        <div class="section-pets__slider">
-          <button class="button-arrow" type="button">
+        <div class="section-pets__carousel">
+          <button class="button-arrow button-arrow_left" type="button">
           </button>
-          <!-- <div class="slider"> -->
-          <div class="slider__cards">
-            <div class="card">
-              <img class="card__image" src="../../assets/images/pets/katrine.png" alt="Katrine's photo">
-              <span class="card__title">Katrine</span>
-              <a class="button button--transparent">Learn more</a>
-            </div>
-            <div class="card">
-              <img class="card__image" src="../../assets/images/pets/jennifer.png" alt="Jennifer's photo">
-              <span class="card__title">Jennifer</span>
-              <a class="button button--transparent">Learn more</a>
-            </div>
-            <div class="card">
-              <img class="card__image" src="../../assets/images/pets/woody.png" alt="Woody's photo">
-              <span class="card__title">Woody</span>
-              <a class="button button--transparent">Learn more</a>
+          <div class="carousel">
+            <div class="carousel__cards">
+              <div class="card" data-id="4">
+                <img class="card__image" src="../../assets/images/pets/katrine.png" alt="Katrine's photo">
+                <span class="card__title">Katrine</span>
+                <a class="button button--transparent">Learn more</a>
+              </div>
+              <div class="card" data-id="4">
+                <img class="card__image" src="../../assets/images/pets/katrine.png" alt="Katrine's photo">
+                <span class="card__title">Katrine</span>
+                <a class="button button--transparent">Learn more</a>
+              </div>
+              <div class="card" data-id="0">
+                <img class="card__image" src="../../assets/images/pets/jennifer.png" alt="Jennifer's photo">
+                <span class="card__title">Jennifer</span>
+                <a class="button button--transparent">Learn more</a>
+              </div>
+              <div class="card" data-id="2">
+                <img class="card__image" src="../../assets/images/pets/woody.png" alt="Woody's photo">
+                <span class="card__title">Woody</span>
+                <a class="button button--transparent">Learn more</a>
+              </div>
+              <div class="card" data-id="2">
+                <img class="card__image" src="../../assets/images/pets/woody.png" alt="Woody's photo">
+                <span class="card__title">Woody</span>
+                <a class="button button--transparent">Learn more</a>
+              </div>
             </div>
           </div>
-          <!-- </div> -->
-          <button class="button-arrow button-arrow--right" type="button">
+          <button class="button-arrow button-arrow_right" type="button">
           </button>
         </div>
         <a class="button" href="../pets/">Get to know the rest</a>
@@ -289,6 +311,37 @@
       <img class="footer__image" src="../../assets/images/footer-puppy.png" alt="puppy">
     </div>
   </footer>
+
+  <div class="popup pet-popup">
+    <div class="popup__wrapper">
+      <button class="button-close popup__close-button"></button>
+      <div class="popup__card">
+        <img class="popup__image" src="" alt="pet's photo">
+        <div class="popup__about">
+          <h3 class="name">Jennifer</h3>
+          <h4 class="type-bread">Dog - Labrador</h4>
+          <h5 class="description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new
+            forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play
+            up a storm in the house if she has all of her favorite toys.</h5>
+          <ul class="data-list">
+            <li class="list-item">Age: <h5 class="age">2 months</h5>
+            </li>
+            <li class="list-item">Inoculations: <h5 class="inoculations">none</h5>
+            </li>
+            <li class="list-item">Diseases: <h5 class="diseases">none</h5>
+            </li>
+            <li class="list-item">Parasites: <h5 class="parasites">none</h5>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../src/js/index.js"></script>
+  <script src="../../src/js/menu.js"></script>
+  <script src="../../src/js/pet-card-popup.js"></script>
+  <script src="../../src/js/carousel.js"></script>
 </body>
 
 </html>

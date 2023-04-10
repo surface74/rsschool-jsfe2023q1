@@ -1,0 +1,47 @@
+.navbar {
+
+  @include respond-to("toggle-menu") {
+    display: none;
+  }
+
+  .navbar-list {
+    display: flex;
+    gap: 36px;
+  }
+
+  .navbar__link {
+    @extend %font-paragraph-l;
+    text-decoration: none;
+    padding-bottom: 2px;
+    @extend %transition-color;
+
+    color: $color-light-l;
+
+    &:not(.active):hover {
+      color: $color-light-s;
+    }
+
+    &:active {
+      color: $color-light-l;
+    }
+
+    &.active {
+      border-bottom: 3px solid $color-primary;
+      cursor: default;
+    }
+  }
+
+  .navbar__link_dark {
+    color: $color-dark-l;
+
+    &:not(.active):hover {
+      color: $color-dark-3xl;
+    }
+
+    &:active {
+      color: $color-dark-l;
+    }
+  }
+}
+
+

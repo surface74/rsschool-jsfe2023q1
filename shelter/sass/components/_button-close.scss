@@ -1,4 +1,4 @@
-button.button-close-modal {
+.button-close {
   width: 52px;
   height: 52px;
   padding: 0;
@@ -6,7 +6,7 @@ button.button-close-modal {
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
-  background: url("../../assets/images/cross.svg") center no-repeat;
+  background: url("../../assets/icons/cross.svg") center no-repeat;
   @extend %transition-color;
 
   &:hover {

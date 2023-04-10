@@ -36,22 +36,6 @@
   @extend %transition-color;
 }
 
-.header__navbar {
-
-  @include respond-to("toggle-menu") {
-    display: none;
-  }
-
-  ul {
-    display: flex;
-    gap: 36px;
-  }
-
-  li {
-    margin-bottom: 6px;
-  }
-}
-
 .header_dark {
 
   .header__title {

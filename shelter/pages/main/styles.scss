@@ -11,13 +11,16 @@
 @import "../../sass/base/common";
 @import "../../sass/base/typography";
 
-@import "../../sass/components/navbar-link";
+@import "../../sass/components/navbar";
+@import "../../sass/components/aside-navbar";
 @import "../../sass/components/button";
 @import "../../sass/components/card";
 @import "../../sass/components/button-arrow";
 @import "../../sass/components/help-card";
-@import "../../sass/components/slider";
+@import "../../sass/components/carousel";
 @import "../../sass/components/burger";
+@import "../../sass/components/button-close";
+@import "../../sass/components/popup";
 
 @import "../../sass/layout/wrapper";
 @import "../../sass/layout/header";

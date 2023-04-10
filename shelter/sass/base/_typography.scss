@@ -21,11 +21,7 @@ h4 {
 
 h5 {
   font-family: "Georgia";
-  @include font($size: 1.5rem, $height: 1.7rem, $spacing: 0.06em);
-
-  &.modal-window {
-    font-weight: 700;
-  }
+  @include font-h5();
 }
 
 .paragraph-mobile-menu {

@@ -1,0 +1,36 @@
+.carousel {
+  display: flex;
+  overflow: hidden;
+
+  @include respond-to("big-mobile") {
+    order: -1;
+  }
+}
+
+.carousel__nav {
+  display: flex;
+  margin-top: 60px;
+  gap: 20px;
+}
+
+.carousel__cards {
+  --column-gap: 90px;
+  display: flex;
+  flex: 0 0 content;
+  width: calc(3 * $card-width + 2 * var(--column-gap));
+  column-gap: var(--column-gap);
+
+  @include respond-to("smaller-desktop") {
+    --column-gap: 40px;
+    column-gap: var(--column-gap);
+    width: calc(3 * $card-width + 2 * var(--column-gap));
+  }
+
+  @include respond-to("small-desktop") {
+    width: calc(2 * $card-width + var(--column-gap));
+  }
+
+  @include respond-to("smaller-tablet") {
+    width: calc($card-width);
+  }
+}
