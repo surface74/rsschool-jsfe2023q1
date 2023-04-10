@@ -1,14 +1,14 @@
 'use strict';
 
 const carouselWrapper = document.querySelector('.carousel__cards');
-const carouselCards = carouselWrapper.querySelectorAll('.card');
 const carouselButtonLeft = document.querySelector('.button-arrow_left');
 const carouselButtonRight = document.querySelector('.button-arrow_right');
 let carouselPos = 0; //pointer to the first displayed element in the whole array of items (can be between 0 to length-1)
 let baseCarouselShift;
 
+
 const getCarouselShift = () => {
-  return Number.parseInt(getComputedStyle(carouselCards[0]).width) +
+  return Number.parseInt(getComputedStyle(carouselWrapper.children[0]).width) +
     Number.parseInt(getComputedStyle(carouselWrapper).columnGap);
 }
 
@@ -21,21 +21,20 @@ const fillCard = (card, position) => {
   card.querySelector('.card__title').innerHTML = pets[position].name;
 }
 
-const fillCarousel = (cards, position) => {
+const fillCarousel = (position) => {
   const totalPets = getPetsAmount();
-  for (const card of cards) {
+  for (const card of carouselWrapper.children) {
     if (position - 1 < 0) {
       position = totalPets - 1;
     } else if (position >= totalPets) {
       position = 0;
     }
-
     fillCard(card, position++);
   }
 }
 
 const initCarousel = (carouselWrapper) => {
-  fillCarousel(carouselCards, carouselPos);
+  fillCarousel(carouselPos);
   baseCarouselShift = -getCarouselShift();
   carouselWrapper.style.transform = `translateX(${baseCarouselShift}px)`;
 }
@@ -47,25 +46,40 @@ const carouselMoveLeft = () => {
   if (--carouselPos < 0) {
     carouselPos = getPetsAmount() - 1;
   }
-  setTimeout( () => {
+  setTimeout(() => {
     carouselWrapper.style.transition = '';
+    const card = carouselWrapper.children[0].cloneNode(true);
+    const prevIndex = (carouselPos == 0) ? getPetsAmount() - 1 : carouselPos - 1;
+
+    fillCard(card, prevIndex);
+    carouselWrapper.prepend(card);
+    carouselWrapper.style.transform = `translateX(${baseCarouselShift}px)`;
+    carouselWrapper.lastElementChild.remove();
   }, 300);
-  console.log('carouselPos: ', carouselPos);
 }
 
 const carouselMoveRight = () => {
   const shift = baseCarouselShift - getCarouselShift();
-  carouselWrapper.style.transition = 'transform .3s ease';
-  const test = `translateX(-${shift}px)`;
   carouselWrapper.style.transform = `translateX(${shift}px)`;
+  carouselWrapper.style.transition = 'transform .3s ease';
   const totalPets = getPetsAmount();
   if (++carouselPos > totalPets - 1) {
     carouselPos = 0;
   }
-  setTimeout( () => {
+  setTimeout(() => {
     carouselWrapper.style.transition = '';
+
+    const card = carouselWrapper.children[0].cloneNode(true);
+    const nextIndex = (carouselPos >= totalPets - 3) ? (carouselPos - totalPets + 3) : carouselPos + 3;
+    console.log('nextIndex-carouselPos: ', nextIndex, carouselPos);
+
+    fillCard(card, nextIndex);
+    carouselWrapper.append(card);
+    carouselWrapper.style.transform = `translateX(${baseCarouselShift}px)`;
+    carouselWrapper.firstElementChild.remove();
+
   }, 300);
-  console.log('test: ', test);
+  console.log('carouselPos: ', carouselPos);
 }
 
 const correctCarouselShift = () => {
