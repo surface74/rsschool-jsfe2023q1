@@ -6,6 +6,11 @@ const carouselButtonRight = document.querySelector('.button-arrow_right');
 let carouselPos = 0; //pointer to the first displayed element in the whole array of items (can be between 0 to length-1)
 let baseCarouselShift;
 
+const switchControls = (state) => {
+  if (state) {
+    carouselButtonLeft.removeAttribute('disabled');
+  }
+}
 
 const getCarouselShift = () => {
   return Number.parseInt(getComputedStyle(carouselWrapper.children[0]).width) +
@@ -46,6 +51,8 @@ const carouselMoveLeft = () => {
   if (--carouselPos < 0) {
     carouselPos = getPetsAmount() - 1;
   }
+  carouselButtonLeft.setAttribute('disabled', 'true');
+
   setTimeout(() => {
     carouselWrapper.style.transition = '';
     const card = carouselWrapper.children[0].cloneNode(true);
@@ -55,6 +62,7 @@ const carouselMoveLeft = () => {
     carouselWrapper.prepend(card);
     carouselWrapper.style.transform = `translateX(${baseCarouselShift}px)`;
     carouselWrapper.lastElementChild.remove();
+    carouselButtonLeft.removeAttribute('disabled');
   }, 300);
 }
 
@@ -66,20 +74,20 @@ const carouselMoveRight = () => {
   if (++carouselPos > totalPets - 1) {
     carouselPos = 0;
   }
+  carouselButtonRight.removeAttribute('disabled');
+
   setTimeout(() => {
     carouselWrapper.style.transition = '';
 
     const card = carouselWrapper.children[0].cloneNode(true);
     const nextIndex = (carouselPos >= totalPets - 3) ? (carouselPos - totalPets + 3) : carouselPos + 3;
-    console.log('nextIndex-carouselPos: ', nextIndex, carouselPos);
 
     fillCard(card, nextIndex);
     carouselWrapper.append(card);
     carouselWrapper.style.transform = `translateX(${baseCarouselShift}px)`;
     carouselWrapper.firstElementChild.remove();
-
+    carouselButtonRight.removeAttribute('disabled');
   }, 300);
-  console.log('carouselPos: ', carouselPos);
 }
 
 const correctCarouselShift = () => {
