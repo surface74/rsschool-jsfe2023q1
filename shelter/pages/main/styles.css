@@ -770,6 +770,8 @@ button.button-arrow:disabled, button.button-arrow.button-arrow_left:disabled, bu
 .carousel__cards {
   --column-gap: 90px;
   display: flex;
+  flex: 0 0 content;
+  width: calc(810px + 2 * var(--column-gap));
   -moz-column-gap: var(--column-gap);
        column-gap: var(--column-gap);
 }
@@ -778,26 +780,18 @@ button.button-arrow:disabled, button.button-arrow.button-arrow_left:disabled, bu
     --column-gap: 40px;
     -moz-column-gap: var(--column-gap);
          column-gap: var(--column-gap);
+    width: calc(810px + 2 * var(--column-gap));
   }
 }
-.carousel__cards .card:nth-child(0) {
-  display: none;
-}
-.carousel__cards .card:nth-last-child(0) {
-  display: none;
-}
 @media (max-width: 1100px) {
-  .carousel__cards .card:nth-last-child(-n+1) {
-    display: none;
+  .carousel__cards {
+    width: calc(540px + var(--column-gap));
   }
 }
 @media (max-width: 750px) {
-  .carousel__cards .card:nth-last-child(-n+2) {
-    display: none;
+  .carousel__cards {
+    width: 270px;
   }
-}
-.carousel__cards .card {
-  justify-self: center;
 }
 
 .burger_activated, .burger:active {

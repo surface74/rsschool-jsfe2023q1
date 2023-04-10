@@ -16,35 +16,21 @@
 .carousel__cards {
   --column-gap: 90px;
   display: flex;
-  // width: calc(3 * $card-width + 2 * var(--column-gap));
+  flex: 0 0 content;
+  width: calc(3 * $card-width + 2 * var(--column-gap));
   column-gap: var(--column-gap);
 
   @include respond-to("smaller-desktop") {
     --column-gap: 40px;
     column-gap: var(--column-gap);
-  }
-
-  & .card:nth-child(0) {
-    display: none;
-  }
-
-  & .card:nth-last-child(0) {
-    display: none;
+    width: calc(3 * $card-width + 2 * var(--column-gap));
   }
 
   @include respond-to("small-desktop") {
-    & .card:nth-last-child(-n+1) {
-      display: none;
-    }
+    width: calc(2 * $card-width + var(--column-gap));
   }
 
   @include respond-to("smaller-tablet") {
-    & .card:nth-last-child(-n+2) {
-      display: none;
-    }
-  }
-
-  & .card {
-    justify-self: center;
+    width: calc($card-width);
   }
 }
