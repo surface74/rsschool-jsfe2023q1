@@ -2,8 +2,7 @@
 
 const sliderCards = document.querySelector('.carousel__cards') ||
 document.querySelector('.slider__cards');
-// const buttonPrev = document.querySelector('.button-arrow_left');
-// const buttonNext = document.querySelector('.button-arrow_right');
+
 const popup = document.querySelector('.pet-popup');
 const popupCloseButton = document.querySelector('.popup__close-button');
 
