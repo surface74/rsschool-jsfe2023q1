@@ -56,7 +56,7 @@ button.button-arrow {
   &.button-arrow_down:disabled {
     color: $color-dark-s;
     border-color: $color-dark-s;
-    background: url("../../assets/images/arrow-disabled.svg") center no-repeat;
+    background: url("../../assets/icons/arrow-disabled.svg") center no-repeat;
     background-color: transparent;
     cursor: auto;
   }

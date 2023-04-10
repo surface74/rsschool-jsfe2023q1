@@ -45,13 +45,14 @@ const initCarousel = (carouselWrapper) => {
 }
 
 const carouselMoveLeft = () => {
+  carouselButtonLeft.setAttribute('disabled', 'true');
+
   const shift = baseCarouselShift + getCarouselShift();
   carouselWrapper.style.transform = `translateX(${shift}px)`;
   carouselWrapper.style.transition = 'transform .3s ease';
   if (--carouselPos < 0) {
     carouselPos = getPetsAmount() - 1;
   }
-  carouselButtonLeft.setAttribute('disabled', 'true');
 
   setTimeout(() => {
     carouselWrapper.style.transition = '';
@@ -67,6 +68,8 @@ const carouselMoveLeft = () => {
 }
 
 const carouselMoveRight = () => {
+  carouselButtonRight.setAttribute('disabled', 'true');
+
   const shift = baseCarouselShift - getCarouselShift();
   carouselWrapper.style.transform = `translateX(${shift}px)`;
   carouselWrapper.style.transition = 'transform .3s ease';
@@ -74,7 +77,6 @@ const carouselMoveRight = () => {
   if (++carouselPos > totalPets - 1) {
     carouselPos = 0;
   }
-  carouselButtonRight.removeAttribute('disabled');
 
   setTimeout(() => {
     carouselWrapper.style.transition = '';

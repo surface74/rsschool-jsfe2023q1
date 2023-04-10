@@ -702,7 +702,7 @@ button.button-arrow:active, button.button-arrow.button-arrow_left:active, button
 button.button-arrow:disabled, button.button-arrow.button-arrow_left:disabled, button.button-arrow.button-arrow_up:disabled, button.button-arrow.button-arrow_right:disabled, button.button-arrow.button-arrow_down:disabled {
   color: #CDCDCD;
   border-color: #CDCDCD;
-  background: url("../../assets/images/arrow-disabled.svg") center no-repeat;
+  background: url("../../assets/icons/arrow-disabled.svg") center no-repeat;
   background-color: transparent;
   cursor: auto;
 }
