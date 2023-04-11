@@ -64,7 +64,7 @@
   letter-spacing: 0.1em;
 }
 
-.footer__link, .header__subtitle, .header__title, .button-close, button.button-paginator, .card, a.button, .aside-navbar .navbar__link, .navbar .navbar__link {
+.footer__link, .header__subtitle, .header__title, .button-close, .button-paginator, .card, a.button, .aside-navbar .navbar__link, .navbar .navbar__link {
   transition: color 0.5s ease-out, fill 0.5s ease-out, background-color 0.5s ease-out;
 }
 
@@ -721,7 +721,7 @@ a.button:active, a.button.button--transparent:active {
   }
 }
 
-button.button-paginator {
+.button-paginator {
   width: 52px;
   height: 52px;
   padding: 0;
@@ -737,18 +737,19 @@ button.button-paginator {
   background-color: transparent;
   cursor: pointer;
 }
-button.button-paginator:hover {
+.button-paginator:hover {
   border-color: #FDDCC4;
   background-color: #FDDCC4;
 }
-button.button-paginator:active, button.button-paginator.active {
+.button-paginator:active, .button-paginator.active {
   border-color: #F1CDB3;
   background-color: #F1CDB3;
 }
-button.button-paginator.disabled {
+.button-paginator.disabled {
   color: #CDCDCD;
   border-color: #CDCDCD;
   background-color: transparent;
+  pointer-events: none;
   cursor: auto;
 }
 
