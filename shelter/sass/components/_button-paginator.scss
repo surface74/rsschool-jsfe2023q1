@@ -1,4 +1,4 @@
-button.button-paginator {
+.button-paginator {
   width: 52px;
   height: 52px;
   padding: 0;
@@ -24,10 +24,11 @@ button.button-paginator {
     background-color: $color-primary;
   }
 
-  &:disabled {
+  &.disabled {
     color: $color-dark-s;
     border-color: $color-dark-s;
     background-color: transparent;
+    pointer-events: none;
     cursor: auto;
   }
 }
