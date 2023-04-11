@@ -31,6 +31,6 @@
   }
 
   @include respond-to("smaller-tablet") {
-    width: calc($card-width);
+    width: $card-width;
   }
 }
