@@ -108,10 +108,27 @@ const correctCarouselShift = () => {
   carouselWrapper.style.transform = `translateX(${baseCarouselShift}px)`;
 }
 
+const shuffle = (elementNumber) => {
+  const arr = new Array(elementNumber).fill(0).map((item, index) => index);
+  for(let i = arr.length - 1; i > 0; i--){
+  	const j = Math.floor(Math.random()*(i + 1));
+    [arr[j], arr[i]] = [arr[i], arr[j]];
+  }
+  return arr;
+}
+
 carouselButtonLeft.addEventListener('click', carouselMoveLeft);
 carouselButtonRight.addEventListener('click', carouselMoveRight);
 window.addEventListener('resize', correctCarouselShift);
 
 initCarousel(carouselWrapper);
+
+
+///тест
+const testButton = document.querySelector('.test');
+testButton.addEventListener('click', () => {
+  const card = carouselWrapper.children[0].cloneNode(true);
+  carouselWrapper.prepend(card);
+});
 
 
