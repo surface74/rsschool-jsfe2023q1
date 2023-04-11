@@ -1,0 +1,52 @@
+.pagination {
+  overflow: hidden;
+}
+
+.pagination__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px 40px;
+
+  @include respond-to("smaller-desktop") {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    & .card:nth-last-child(-n+2) {
+      display: none;
+    }
+  }
+
+  @include respond-to("big-tablet") {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    & .card:nth-last-child(-n+2) {
+      display: none;
+    }
+  }
+
+  @include respond-to("small-tablet") {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+
+    & .card:nth-last-child(-n+5) {
+      display: none;
+    }
+  }
+}
+
+.pagination__nav {
+  display: flex;
+  margin-top: 60px;
+  gap: 20px;
+
+  @include respond-to("tablet") {
+    margin-top: 40px;
+  }
+
+  @include respond-to("big-mobile") {
+    gap: 10px;
+    margin-top: 42px;
+  }
+}

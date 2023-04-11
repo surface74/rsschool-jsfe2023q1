@@ -1,7 +1,7 @@
 'use strict';
 
 const sliderCards = document.querySelector('.carousel__cards') ||
-document.querySelector('.slider__cards');
+document.querySelector('.pagination__cards');
 
 const popup = document.querySelector('.pet-popup');
 const popupCloseButton = document.querySelector('.popup__close-button');

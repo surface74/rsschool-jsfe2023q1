@@ -24,7 +24,7 @@ button.button-paginator {
     background-color: $color-primary;
   }
 
-  &:disabled {
+  &.disabled {
     color: $color-dark-s;
     border-color: $color-dark-s;
     background-color: transparent;

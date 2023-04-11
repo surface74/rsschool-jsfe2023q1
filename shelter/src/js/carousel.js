@@ -4,7 +4,6 @@ const carouselWrapper = document.querySelector('.carousel__cards');
 const carouselButtonLeft = document.querySelector('.button-arrow_left');
 const carouselButtonRight = document.querySelector('.button-arrow_right');
 let carouselPos = 0; //pointer to the first displayed element in the whole array of items (can be between 0 to length-1)
-let baseCarouselShift;
 let cardIndexes = []; //shuffled indexes for get pet's card from the pool
 
 const getVisibledCardsCount = () => {
