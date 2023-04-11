@@ -17,8 +17,8 @@ const getVisibledCardsCount = () => {
   return 1;
 }
 
-const removeUsedCards = (wrapper, arr) => {
-  //TODO: remove current card from arr;
+const removeUsedCards = (arr, number) => {
+  return arr.slice(0, -number);
 }
 
 const getCarouselShift = () => {
@@ -73,7 +73,7 @@ const carouselMoveLeft = () => {
       carouselWrapper.children[carouselWrapper.children.length - 1].remove();
     }
     cardIndexes = shuffle(getPetsAmount());
-    removeUsedCards(carouselWrapper, cardIndexes);
+    cardIndexes = removeUsedCards(cardIndexes, times);
     carouselButtonLeft.removeAttribute('disabled');
   }, 300);
 }
@@ -100,7 +100,7 @@ const carouselMoveRight = () => {
     }
 
     cardIndexes = shuffle(getPetsAmount());
-    removeUsedCards(carouselWrapper, cardIndexes);
+    cardIndexes = removeUsedCards(cardIndexes, times);
     carouselButtonRight.removeAttribute('disabled');
   }, 300);
 }
