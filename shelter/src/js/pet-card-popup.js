@@ -2,8 +2,12 @@ import { preventScroll, preventScrollByKeys } from './scroll-handler.js';
 
 const popup = document.querySelector('.pet-popup');
 const navbar = document.querySelector('.aside-navbar');
+const cardsWrapper = document.querySelector('.carousel__cards') ||
+  document.querySelector('.pagination__cards');
 
-export const fillPetCard = (id, pets) => {
+let pets;
+
+const fillPetCard = (id) => {
   popup.querySelector('.name').innerHTML = pets[id].name;
   popup.querySelector('.type-bread').innerHTML = `${pets[id].type} - ${pets[id].breed}`;
   popup.querySelector('.description').innerHTML = pets[id].description;
@@ -14,7 +18,7 @@ export const fillPetCard = (id, pets) => {
   popup.querySelector('.popup__image').setAttribute('src', pets[id].img);
 }
 
-export const closePopup = (e) => {
+const closePopup = (e) => {
   document.body.removeEventListener('keydown', preventScrollByKeys);
   navbar.removeEventListener('wheel', preventScroll);
   document.body.style.overflowY = '';
@@ -22,14 +26,33 @@ export const closePopup = (e) => {
   popup.classList.remove('popup_open');
 }
 
-export const openPopup = (id, pets) => {
+const openPopup = (e) => {
+  const target = e.target.closest('.card');
+  if (!target || target.dataset.id == undefined) {
+    return;
+  }
+
   window.addEventListener('resize', closePopup, { once: true })
   document.body.addEventListener('keydown', preventScrollByKeys);
   navbar.addEventListener('wheel', preventScroll);
   document.body.style.overflowY = 'hidden';
 
-  fillPetCard(id, pets);
+  fillPetCard(target.dataset.id);
   popup.classList.add('popup_open');
+}
+
+cardsWrapper.addEventListener('click', openPopup);
+
+popup.addEventListener('click', (e) => {
+  const target = e.target;
+  if (target.classList.contains('popup_open') ||
+    target.classList.contains('popup__close-button')) {
+    closePopup();
+  }
+});
+
+export const init = (petsData) => {
+  pets = petsData;
 }
 
 

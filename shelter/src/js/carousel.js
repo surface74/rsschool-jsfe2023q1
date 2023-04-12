@@ -1,6 +1,7 @@
-export const buttonLeft = document.querySelector('.button-arrow_left');
-export const buttonRight = document.querySelector('.button-arrow_right');
+const buttonLeft = document.querySelector('.button-arrow_left');
+const buttonRight = document.querySelector('.button-arrow_right');
 const wrapper = document.querySelector('.carousel__cards');
+
 let cardIndexes = []; //shuffled indexes for get pet's card from the pool
 let pets = []; //pets' data
 
@@ -49,13 +50,7 @@ const fillCarousel = () => {
   }
 }
 
-export const init = (petsData) => {
-  pets = petsData;
-  cardIndexes = shuffle(getPetsAmount());
-  fillCarousel();
-}
-
-export const moveLeft = () => {
+const moveLeft = () => {
   buttonLeft.setAttribute('disabled', 'true');
   wrapper.style.transition = '';
   const times = getVisibledCardsCount();
@@ -85,7 +80,7 @@ export const moveLeft = () => {
   }, 300);
 }
 
-export const moveRight = () => {
+const moveRight = () => {
   buttonRight.setAttribute('disabled', 'true');
   const times = getVisibledCardsCount();
 
@@ -112,5 +107,12 @@ export const moveRight = () => {
   }, 300);
 }
 
+export const init = (petsData) => {
+  pets = petsData;
+  cardIndexes = shuffle(getPetsAmount());
+  fillCarousel();
+}
 
+buttonLeft.addEventListener('click', moveLeft);
+buttonRight.addEventListener('click', moveRight);
 
