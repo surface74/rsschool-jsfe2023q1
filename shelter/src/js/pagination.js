@@ -1,19 +1,14 @@
-'use strict';
+const wrapper = document.querySelector('.pagination__cards');
+const buttonFastLeft = document.querySelector('.button-paginator_fast-left');
+const buttonLeft = document.querySelector('.button-paginator_left');
+const buttonRight = document.querySelector('.button-paginator_right');
+const buttonFastRight = document.querySelector('.button-paginator_fast-right');
+const buttonPage = document.querySelector('.button-paginator_page');
 
-const pagWrapper = document.querySelector('.pagination__cards');
-const pagButtonFastLeft = document.querySelector('.button-paginator_fast-left');
-const pagButtonLeft = document.querySelector('.button-paginator_left');
-const pagButtonRight = document.querySelector('.button-paginator_right');
-const pagButtonFastRight = document.querySelector('.button-paginator_fast-right');
-const pagButtonPage = document.querySelector('.button-paginator_page');
-
-const PETS_AMOUNT = pets.length;
-const cardsPull = [...shuffle(PETS_AMOUNT), ...shuffle(PETS_AMOUNT),
-...shuffle(PETS_AMOUNT), ...shuffle(PETS_AMOUNT),
-...shuffle(PETS_AMOUNT), ...shuffle(PETS_AMOUNT)];
 let currentPage = 0;
 let currentCardsOnPage;
-;
+let pets;
+const cardsPull = [];
 
 const getCardsPerPage = () => {
   const width = document.body.clientWidth;
@@ -40,32 +35,35 @@ const fillPagination = (page) => {
   const cardsPerPage = getCardsPerPage();
   for (let i = 0; i < cardsPerPage; i++) {
     const index = (page - 1) * cardsPerPage + i;
-    fillCard(pagWrapper.children[i], index);
+    fillCard(wrapper.children[i], index);
   }
 }
 
 const refreshPagButton = () => {
-  pagButtonFastLeft.classList.add('disabled');
-  pagButtonLeft.classList.add('disabled');
-  pagButtonRight.classList.add('disabled');
-  pagButtonFastRight.classList.add('disabled');
+  buttonFastLeft.classList.add('disabled');
+  buttonLeft.classList.add('disabled');
+  buttonRight.classList.add('disabled');
+  buttonFastRight.classList.add('disabled');
 
   if (currentPage > 1) {
-    pagButtonFastLeft.classList.remove('disabled');
-    pagButtonLeft.classList.remove('disabled');
+    buttonFastLeft.classList.remove('disabled');
+    buttonLeft.classList.remove('disabled');
   }
   if (currentPage != getTotalPages()) {
-    pagButtonFastRight.classList.remove('disabled');
-    pagButtonRight.classList.remove('disabled');
+    buttonFastRight.classList.remove('disabled');
+    buttonRight.classList.remove('disabled');
   }
-  pagButtonPage.textContent = currentPage;
+  buttonPage.textContent = currentPage;
 }
 
-const initPagination = () => {
-  currentPage = 1;
+export const init = (petsData) => {
+  pets = petsData;
+  const PETS_AMOUNT = pets.length;
+  cardsPull.splice(0, 0, ...[...shuffle(PETS_AMOUNT), ...shuffle(PETS_AMOUNT),
+  ...shuffle(PETS_AMOUNT), ...shuffle(PETS_AMOUNT),
+  ...shuffle(PETS_AMOUNT), ...shuffle(PETS_AMOUNT)]);
   currentCardsOnPage = getCardsPerPage();
-  refreshPagButton();
-  fillPagination(currentPage);
+  moveToPage(1);
 }
 
 const moveToPage = (pageNumber) => {
@@ -83,17 +81,16 @@ function shuffle(elementNumber) {
   return arr;
 }
 
-pagButtonFastLeft.addEventListener('click', () => moveToPage(1));
-pagButtonLeft.addEventListener('click', () => moveToPage(currentPage - 1));
-pagButtonRight.addEventListener('click', () => moveToPage(currentPage + 1));
-pagButtonFastRight.addEventListener('click', () => moveToPage(getTotalPages()));
+buttonFastLeft.addEventListener('click', () => moveToPage(1));
+buttonLeft.addEventListener('click', () => moveToPage(currentPage - 1));
+buttonRight.addEventListener('click', () => moveToPage(currentPage + 1));
+buttonFastRight.addEventListener('click', () => moveToPage(getTotalPages()));
 
 window.addEventListener('resize', () => {
   if (currentCardsOnPage != getCardsPerPage()) {
-    initPagination();
+    moveToPage(1);
   }
 });
 
-initPagination();
 
 

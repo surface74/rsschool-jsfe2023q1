@@ -1,17 +1,7 @@
-'use strict';
+import { preventScroll, preventScrollByKeys } from './scroll-handler.js';
 
 const burger = document.querySelector('.burger');
 const navbar = document.querySelector('.aside-navbar');
-
-// const preventedKeys = ['ArrowUp', 'ArrowDown', 'Tab'];
-
-// const preventScroll = (e) => { e.preventDefault(); }
-
-// const preventScrollByKeys = (e) => {
-//   if (preventedKeys.includes(e.key)) {
-//     e.preventDefault();
-//   };
-// }
 
 const hideMenu = () => {
   document.body.removeEventListener('keydown', preventScrollByKeys);
@@ -31,7 +21,6 @@ const showMenu = () => {
   burger.classList.add('burger_activated');
   navbar.classList.add('aside-navbar_showed');
 }
-
 
 burger.addEventListener('click', () => {
   if (burger.classList.contains('burger_activated')) {

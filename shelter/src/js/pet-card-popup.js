@@ -1,10 +1,11 @@
-'use strict';
-
-const sliderCards = document.querySelector('.carousel__cards') ||
-document.querySelector('.pagination__cards');
+import { preventScroll, preventScrollByKeys } from './scroll-handler.js';
 
 const popup = document.querySelector('.pet-popup');
-const popupCloseButton = document.querySelector('.popup__close-button');
+const navbar = document.querySelector('.aside-navbar');
+const cardsWrapper = document.querySelector('.carousel__cards') ||
+  document.querySelector('.pagination__cards');
+
+let pets;
 
 const fillPetCard = (id) => {
   popup.querySelector('.name').innerHTML = pets[id].name;
@@ -15,17 +16,7 @@ const fillPetCard = (id) => {
   popup.querySelector('.diseases').innerHTML = pets[id].diseases;
   popup.querySelector('.parasites').innerHTML = pets[id].parasites;
   popup.querySelector('.popup__image').setAttribute('src', pets[id].img);
-
 }
-// const preventedKeys = ['ArrowUp', 'ArrowDown', 'Tab'];
-
-// const preventScroll = (e) => { e.preventDefault(); }
-
-// const preventScrollByKeys = (e) => {
-//   if (preventedKeys.includes(e.key)) {
-//     e.preventDefault();
-//   };
-// }
 
 const closePopup = (e) => {
   document.body.removeEventListener('keydown', preventScrollByKeys);
@@ -46,12 +37,11 @@ const openPopup = (e) => {
   navbar.addEventListener('wheel', preventScroll);
   document.body.style.overflowY = 'hidden';
 
-
   fillPetCard(target.dataset.id);
   popup.classList.add('popup_open');
 }
 
-sliderCards.addEventListener('click', openPopup);
+cardsWrapper.addEventListener('click', openPopup);
 
 popup.addEventListener('click', (e) => {
   const target = e.target;
@@ -60,5 +50,10 @@ popup.addEventListener('click', (e) => {
     closePopup();
   }
 });
+
+export const init = (petsData) => {
+  pets = petsData;
+}
+
 
 
