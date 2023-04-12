@@ -1,17 +1,7 @@
-'use strict';
+import { preventScroll, preventScrollByKeys } from '../../src/js/scrollHandler.js';
 
 const burger = document.querySelector('.burger');
 const navbar = document.querySelector('.aside-navbar');
-
-// const preventedKeys = ['ArrowUp', 'ArrowDown', 'Tab'];
-
-// const preventScroll = (e) => { e.preventDefault(); }
-
-// const preventScrollByKeys = (e) => {
-//   if (preventedKeys.includes(e.key)) {
-//     e.preventDefault();
-//   };
-// }
 
 const hideMenu = () => {
   document.body.removeEventListener('keydown', preventScrollByKeys);

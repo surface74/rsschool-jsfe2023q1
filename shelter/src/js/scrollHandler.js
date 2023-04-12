@@ -1,8 +1,8 @@
-function preventScroll(e) {
+export function preventScroll(e) {
   e.preventDefault();
 }
 
-function preventScrollByKeys(e) {
+export function preventScrollByKeys(e) {
   const keys = ['ArrowUp', 'ArrowDown', 'Tab'];
   if (keys.includes(e.key)) {
     e.preventDefault();
