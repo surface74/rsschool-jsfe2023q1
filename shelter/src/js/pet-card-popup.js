@@ -1,12 +1,9 @@
-'use strict';
-
-const sliderCards = document.querySelector('.carousel__cards') ||
-document.querySelector('.pagination__cards');
+import { preventScroll, preventScrollByKeys } from './scroll-handler.js';
 
 const popup = document.querySelector('.pet-popup');
-const popupCloseButton = document.querySelector('.popup__close-button');
+const navbar = document.querySelector('.aside-navbar');
 
-const fillPetCard = (id) => {
+export const fillPetCard = (id, pets) => {
   popup.querySelector('.name').innerHTML = pets[id].name;
   popup.querySelector('.type-bread').innerHTML = `${pets[id].type} - ${pets[id].breed}`;
   popup.querySelector('.description').innerHTML = pets[id].description;
@@ -15,19 +12,9 @@ const fillPetCard = (id) => {
   popup.querySelector('.diseases').innerHTML = pets[id].diseases;
   popup.querySelector('.parasites').innerHTML = pets[id].parasites;
   popup.querySelector('.popup__image').setAttribute('src', pets[id].img);
-
 }
-// const preventedKeys = ['ArrowUp', 'ArrowDown', 'Tab'];
 
-// const preventScroll = (e) => { e.preventDefault(); }
-
-// const preventScrollByKeys = (e) => {
-//   if (preventedKeys.includes(e.key)) {
-//     e.preventDefault();
-//   };
-// }
-
-const closePopup = (e) => {
+export const closePopup = (e) => {
   document.body.removeEventListener('keydown', preventScrollByKeys);
   navbar.removeEventListener('wheel', preventScroll);
   document.body.style.overflowY = '';
@@ -35,30 +22,15 @@ const closePopup = (e) => {
   popup.classList.remove('popup_open');
 }
 
-const openPopup = (e) => {
-  const target = e.target.closest('.card');
-  if (!target || target.dataset.id == undefined) {
-    return;
-  }
-
+export const openPopup = (id, pets) => {
   window.addEventListener('resize', closePopup, { once: true })
   document.body.addEventListener('keydown', preventScrollByKeys);
   navbar.addEventListener('wheel', preventScroll);
   document.body.style.overflowY = 'hidden';
 
-
-  fillPetCard(target.dataset.id);
+  fillPetCard(id, pets);
   popup.classList.add('popup_open');
 }
 
-sliderCards.addEventListener('click', openPopup);
-
-popup.addEventListener('click', (e) => {
-  const target = e.target;
-  if (target.classList.contains('popup_open') ||
-    target.classList.contains('popup__close-button')) {
-    closePopup();
-  }
-});
 
 
