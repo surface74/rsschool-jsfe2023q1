@@ -18,11 +18,7 @@ const getVisibledCardsCount = () => {
   return 1;
 }
 
-const removeUsedCards = (indexes, ids) => {
-  // console.log('pets: ', pets);
-  // console.log('indexes, ids: ', indexes, ids);
-  // const unusedIds = indexes.filter(item => !ids.includes(item));
-  // console.log('unusedIds: ', unusedIds);
+const removeUsedCardIndexes = (indexes, ids) => {
   return indexes.filter(item => !ids.includes(item));
 }
 
@@ -59,7 +55,6 @@ const fillCarousel = () => {
 const getCurrentCardsId = () => {
   const cards = wrapper.querySelectorAll('.card');
   const indexes = [];
-  console.log('cards: ', cards);
   for (const card of cards) {
     indexes.push(+card.dataset.id);
   }
@@ -71,31 +66,24 @@ const moveLeft = () => {
   wrapper.style.transition = '';
   const times = getVisibledCardsCount();
   prevRightCardIDs = getCurrentCardsId();
-  cardIndexes = removeUsedCards(cardIndexes, prevRightCardIDs);
+  cardIndexes = removeUsedCardIndexes(cardIndexes, prevRightCardIDs);
 
   for (let i = 0; i < times; i++) {
     const card = wrapper.children[0].cloneNode(true);
     card.style.display = 'none';
-    let newCardIndex;
-    if (prevLeftCardIDs.length) {
-      newCardIndex = prevLeftCardIDs[prevLeftCardIDs.length - 1];
-      prevLeftCardIDs.pop();
-    } else {
-      newCardIndex = cardIndexes[cardIndexes.length - 1 - i];
-    }
+    const newCardIndex = (prevLeftCardIDs.length)
+      ? prevLeftCardIDs[prevLeftCardIDs.length - i - 1]
+      : cardIndexes[i];
+
     fillCard(card, newCardIndex);
     wrapper.prepend(card);
   }
   prevLeftCardIDs = [];
 
-  console.log('cardIndexes: ', cardIndexes);
-  console.log('prevLeftCardIDs: ', prevLeftCardIDs);
-  console.log('prevRightCardIDs: ', prevRightCardIDs);
-
   const shift = times * getCarouselShift();
   wrapper.style.transform = `translateX(-${shift}px)`;
-  for (let i = 0; i < times; i++) {
-    wrapper.children[i].removeAttribute('style');
+  for (const child of wrapper.children) {
+    child.removeAttribute('style');
   }
 
   setTimeout(() => {
@@ -104,9 +92,7 @@ const moveLeft = () => {
     for (let i = 0; i < times; i++) {
       wrapper.children[wrapper.children.length - 1].remove();
     }
-
     cardIndexes = shuffle(getPetsAmount());
-
     buttonLeft.removeAttribute('disabled');
   }, 300);
 }
@@ -115,26 +101,17 @@ const moveRight = () => {
   buttonRight.setAttribute('disabled', 'true');
   const times = getVisibledCardsCount();
   prevLeftCardIDs = getCurrentCardsId();
+  cardIndexes = removeUsedCardIndexes(cardIndexes, prevLeftCardIDs);
 
   for (let i = 0; i < times; i++) {
     const card = wrapper.children[0].cloneNode(true);
-    let newCardIndex;
+    let newCardIndex = (prevRightCardIDs.length)
+      ? prevRightCardIDs[i] : cardIndexes[i];
 
-    if (prevRightCardIDs.length) {
-      newCardIndex = prevRightCardIDs[0];
-      prevRightCardIDs.pop();
-    } else {
-      newCardIndex = cardIndexes[cardIndexes.length - 1 - i];
-    }
     fillCard(card, newCardIndex);
     wrapper.append(card);
   }
-
-  prevLeftCardIDs = [];
-
-  console.log('cardIndexes: ', cardIndexes);
-  console.log('prevLeftCardIDs: ', prevLeftCardIDs);
-  console.log('prevRightCardIDs: ', prevRightCardIDs);
+  prevRightCardIDs = [];
 
   const shift = times * getCarouselShift();
   wrapper.style.transition = 'transform .3s ease';
@@ -146,9 +123,7 @@ const moveRight = () => {
     for (let i = 0; i < times; i++) {
       wrapper.children[0].remove();
     }
-
     cardIndexes = shuffle(getPetsAmount());
-    cardIndexes = removeUsedCards(cardIndexes, times);
     buttonRight.removeAttribute('disabled');
   }, 300);
 }
@@ -162,7 +137,6 @@ function correctCardsCount(neededCardsCount) {
     }
   } else if (neededCardsCount > cards.length) {
     for (let i = cards.length; i < neededCardsCount; i++) {
-      // const card = cards[0].cloneNode(true);
       cards[0].parentElement.append(cards[0].cloneNode(true));
     }
   }
