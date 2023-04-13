@@ -4,6 +4,9 @@ const wrapper = document.querySelector('.carousel__cards');
 
 let cardIndexes = []; //shuffled indexes for get pet's card from the pool
 let pets = []; //pets' data
+let prevLeftCardIDs = []; //keeps the last cards' indexes after move to the right
+let prevRightCardIDs = []; //keeps the last cards' indexes after move to the right
+let currentCardsOnPage;
 
 const getVisibledCardsCount = () => {
   const width = document.body.clientWidth;
@@ -15,8 +18,12 @@ const getVisibledCardsCount = () => {
   return 1;
 }
 
-const removeUsedCards = (arr, number) => {
-  return arr.slice(0, -number);
+const removeUsedCards = (indexes, ids) => {
+  // console.log('pets: ', pets);
+  // console.log('indexes, ids: ', indexes, ids);
+  // const unusedIds = indexes.filter(item => !ids.includes(item));
+  // console.log('unusedIds: ', unusedIds);
+  return indexes.filter(item => !ids.includes(item));
 }
 
 const getCarouselShift = () => {
@@ -26,8 +33,7 @@ const getCarouselShift = () => {
 
 const getPetsAmount = () => pets.length;
 
-const fillCard = (card, position) => {
-  const index = cardIndexes[position];
+const fillCard = (card, index) => {
   card.dataset.id = pets[index].id;
   card.querySelector('.card__image').setAttribute('src', pets[index].img);
   card.querySelector('.card__image').setAttribute('alt', `${pets[index].name}'s photo`);
@@ -46,21 +52,45 @@ const shuffle = (elementNumber) => {
 const fillCarousel = () => {
   let index = 0;
   for (const card of wrapper.children) {
-    fillCard(card, index++);
+    fillCard(card, cardIndexes[index++]);
   }
+}
+
+const getCurrentCardsId = () => {
+  const cards = wrapper.querySelectorAll('.card');
+  const indexes = [];
+  console.log('cards: ', cards);
+  for (const card of cards) {
+    indexes.push(+card.dataset.id);
+  }
+  return indexes;
 }
 
 const moveLeft = () => {
   buttonLeft.setAttribute('disabled', 'true');
   wrapper.style.transition = '';
   const times = getVisibledCardsCount();
+  prevRightCardIDs = getCurrentCardsId();
+  cardIndexes = removeUsedCards(cardIndexes, prevRightCardIDs);
 
   for (let i = 0; i < times; i++) {
     const card = wrapper.children[0].cloneNode(true);
     card.style.display = 'none';
-    fillCard(card, cardIndexes.length - 1 - i);
+    let newCardIndex;
+    if (prevLeftCardIDs.length) {
+      newCardIndex = prevLeftCardIDs[prevLeftCardIDs.length - 1];
+      prevLeftCardIDs.pop();
+    } else {
+      newCardIndex = cardIndexes[cardIndexes.length - 1 - i];
+    }
+    fillCard(card, newCardIndex);
     wrapper.prepend(card);
   }
+  prevLeftCardIDs = [];
+
+  console.log('cardIndexes: ', cardIndexes);
+  console.log('prevLeftCardIDs: ', prevLeftCardIDs);
+  console.log('prevRightCardIDs: ', prevRightCardIDs);
 
   const shift = times * getCarouselShift();
   wrapper.style.transform = `translateX(-${shift}px)`;
@@ -74,8 +104,9 @@ const moveLeft = () => {
     for (let i = 0; i < times; i++) {
       wrapper.children[wrapper.children.length - 1].remove();
     }
+
     cardIndexes = shuffle(getPetsAmount());
-    cardIndexes = removeUsedCards(cardIndexes, times);
+
     buttonLeft.removeAttribute('disabled');
   }, 300);
 }
@@ -83,12 +114,27 @@ const moveLeft = () => {
 const moveRight = () => {
   buttonRight.setAttribute('disabled', 'true');
   const times = getVisibledCardsCount();
+  prevLeftCardIDs = getCurrentCardsId();
 
   for (let i = 0; i < times; i++) {
     const card = wrapper.children[0].cloneNode(true);
-    fillCard(card, cardIndexes.length - 1 - i);
+    let newCardIndex;
+
+    if (prevRightCardIDs.length) {
+      newCardIndex = prevRightCardIDs[0];
+      prevRightCardIDs.pop();
+    } else {
+      newCardIndex = cardIndexes[cardIndexes.length - 1 - i];
+    }
+    fillCard(card, newCardIndex);
     wrapper.append(card);
   }
+
+  prevLeftCardIDs = [];
+
+  console.log('cardIndexes: ', cardIndexes);
+  console.log('prevLeftCardIDs: ', prevLeftCardIDs);
+  console.log('prevRightCardIDs: ', prevRightCardIDs);
 
   const shift = times * getCarouselShift();
   wrapper.style.transition = 'transform .3s ease';
@@ -107,12 +153,34 @@ const moveRight = () => {
   }, 300);
 }
 
+function correctCardsCount(neededCardsCount) {
+  const cards = wrapper.querySelectorAll('.card');
+
+  if (neededCardsCount < cards.length) {
+    for (let i = cards.length; i > neededCardsCount; i--) {
+      cards[i - 1].remove();
+    }
+  } else if (neededCardsCount > cards.length) {
+    for (let i = cards.length; i < neededCardsCount; i++) {
+      // const card = cards[0].cloneNode(true);
+      cards[0].parentElement.append(cards[0].cloneNode(true));
+    }
+  }
+}
+
 export const init = (petsData) => {
   pets = petsData;
+  currentCardsOnPage = getVisibledCardsCount();
+  correctCardsCount(currentCardsOnPage);
+
   cardIndexes = shuffle(getPetsAmount());
   fillCarousel();
 }
 
 buttonLeft.addEventListener('click', moveLeft);
 buttonRight.addEventListener('click', moveRight);
-
+window.addEventListener('resize', () => {
+  if (currentCardsOnPage != getVisibledCardsCount()) {
+    init(pets);
+  }
+});
