@@ -1,0 +1,15 @@
+npm init
+
+eslint --init
+
+npm i -D commitizen | npm i -g commitizen
+commitizen init cz-conventional-changelog --save-dev --save-exact
+
+npm i -D webpack webpack-cli webpack-dev-server
+
+npm i -D html-loader html-webpack-plugin
+npm i -D css-loader sass sass-loader mini-css-extract-plugin
+
+npm i -D copy-webpack-plugin
+
+npm i -D clean-webpack-plugin
