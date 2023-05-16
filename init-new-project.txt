@@ -1,6 +1,14 @@
 npm init
+Add to package.json:
+  "type": "module"
 
 eslint --init
+Rename .eslintrc.js to .eslintrc.cjs
+Add rules:
+  rules: {
+    'import/extensions': 'off',
+    'max-len': ['warn', { code: 120 }],
+  },
 
 npm i -D commitizen | npm i -g commitizen
 commitizen init cz-conventional-changelog --save-dev --save-exact
@@ -13,3 +21,5 @@ npm i -D css-loader sass sass-loader mini-css-extract-plugin
 npm i -D copy-webpack-plugin
 
 npm i -D clean-webpack-plugin
+
+Add to package.json:

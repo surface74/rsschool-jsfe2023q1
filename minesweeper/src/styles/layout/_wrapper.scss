@@ -1,0 +1,7 @@
+@import '../abstracts/variables';
+
+.wrapper {
+  max-width: calc(15 * $button-size + 17 * $space-between);
+  margin: auto;
+}
+

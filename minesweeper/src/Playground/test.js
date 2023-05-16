@@ -1,4 +1,4 @@
-import Playground from './Playground.js';
+import Playground from './index.js';
 
 function getTestField() {
   return [

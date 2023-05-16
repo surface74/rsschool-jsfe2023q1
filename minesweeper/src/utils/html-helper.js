@@ -14,6 +14,12 @@ export default class HtmlHelper {
     return this.elem;
   }
 
+  static ElementFromHTML(htmlString) {
+    const template = document.createElement('template');
+    template.innerHTML = htmlString;
+    return template.content.firstChild;
+  }
+
   static getCssWidth(element) {
     const { width } = element.getBoundingClientRect();
     const { paddingLeft, paddingRight } = getComputedStyle(element);

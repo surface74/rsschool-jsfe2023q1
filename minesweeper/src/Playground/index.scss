@@ -1,0 +1,8 @@
+@import '../styles/abstracts/variables';
+
+.background {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat($init-playground-size, 1fr);
+  grid-template-rows: repeat($init-playground-size, 1fr);
+}
