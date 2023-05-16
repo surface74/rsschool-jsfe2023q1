@@ -4,6 +4,7 @@
   "description": "task minesweeper from surface74-jsfe2023q1",
   "type": "module",
   "scripts": {
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

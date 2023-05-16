@@ -21,7 +21,7 @@ module.exports = ({ develop }) => ({
   mode: develop ? 'development' : 'production',
   devtool: 'source-map',
   entry: {
-    app: './src/index.js',
+    app: './minesweeper/src/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -31,11 +31,6 @@ module.exports = ({ develop }) => ({
   },
   module: {
     rules: [
-      {
-        test: /\.[t]s$/i,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
       {
         test: /\.html$/i,
         use: [
@@ -65,16 +60,16 @@ module.exports = ({ develop }) => ({
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './src/index.html',
+      template: './minesweeper/src/index.html',
       filename: './index.html',
     }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: './public',
-        },
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: './public',
+    //     },
+    //   ],
+    // }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
