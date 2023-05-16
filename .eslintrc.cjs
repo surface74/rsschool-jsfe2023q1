@@ -11,5 +11,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'import/extensions': 'off',
+    'max-len': ['warn', { code: 120 }],
   },
 };
