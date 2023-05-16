@@ -6,16 +6,16 @@ export default class Playground {
     this.minesCount = minesCount;
     this.fields = [];
     this.mines = [];
-    this.makeFields(size);
+    this.initContent();
   }
 
-  makeFields(size) {
-    for (let i = 0; i < size; i += 1) {
-      this.fields.push(Array.from({ length: size })
+  initContent() {
+    for (let i = 0; i < this.size; i += 1) {
+      this.fields.push(Array.from({ length: this.size })
         .map((item, index) => ({
           state: CONST.State.Hidden,
           content: CONST.Content.Free,
-          id: (i * size) + index,
+          id: (i * this.size) + index,
         })));
     }
   }
@@ -29,9 +29,9 @@ export default class Playground {
     }
   }
 
-  getPosition(linеarIndex) {
-    const column = linеarIndex % this.size;
-    const row = Math.floor(linеarIndex / this.size);
+  getPosition(linearIndex) {
+    const column = linearIndex % this.size;
+    const row = Math.floor(linearIndex / this.size);
     return { row, column };
   }
 

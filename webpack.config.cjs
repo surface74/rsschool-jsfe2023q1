@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -63,13 +64,13 @@ module.exports = ({ develop }) => ({
       template: './minesweeper/src/index.html',
       filename: './index.html',
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: './public',
-    //     },
-    //   ],
-    // }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: './minesweeper/public',
+        },
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
