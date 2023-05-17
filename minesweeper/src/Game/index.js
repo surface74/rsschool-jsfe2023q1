@@ -32,40 +32,57 @@ export default class Game {
       return;
     }
     const field = e.target;
+    const fieldId = field.dataset.id;
+
     if (!this.playground.mines.length) { // the first click - start game
-      this.startRound(field.dataset.id);
+      this.startRound(fieldId);
     }
-    this.checkClickResult(field.dataset.id);
+
+    const { state, content } = this.playground.getFieldData(fieldId);
+    if (state === CONST.State.Hidden) {
+      if (content >= CONST.Content.Mine) {
+        this.changeFieldState(field, content, CONST.State.Explosion);
+        this.loseRound();
+        return;
+      }
+
+      this.changeFieldState(field, content, CONST.State.Open);
+      if (!content) {
+        this.clearHeighbors();
+      }
+      this.checkWin();
+    }
+  }
+
+  checkWin() {
+    const opendFieldsCount = this.playground.fields.reduce((acc, { state }) => acc + +(state === CONST.State.Open), 0);
+    console.log('opendFieldsCount: ', opendFieldsCount);
+  }
+
+  clearHeighbors() {
+    console.log('clearHeighbors');
+  }
+
+  changeFieldState(field, content, state) {
+    this.playground.setFieldState(field.dataset.id, state);
+    const newField = this.field.getField(state, field.dataset.id);
+    field.replaceWith(newField);
+    if (content) {
+      newField.textContent = content;
+    }
+  }
+
+  loseRound() {
+    console.log('loseRound');
+    // TODO Open playground
+    // TODO Stop clock
   }
 
   startRound(fieldId) {
     this.playground.initMines(fieldId);
-    this.setFieldTitles();
-    // TODO Start clock
-  }
-
-  setFieldTitles() {
-    const fieldsData = Object.entries(document.querySelectorAll('.field'));
-    for (let i = 0; i < fieldsData.length; i += 1) {
-      const { row, column } = this.playground.getPosition(fieldsData[i][1].dataset.id);
-      const { content } = this.playground.fields[row][column];
-      if (content < CONST.Content.Mine) {
-        fieldsData[i][1].textContent = content;
-      }
-    }
-  }
-
-  checkClickResult(fieldId) {
-    const { state, content } = this.playground.getFieldData(fieldId);
-    console.log('state, content: ', state, content);
-    // switch (state) {
-    //   case CONST.State.:
-
-    //     break;
-
-    //   default:
-    //     break;
-    // }
-
+    // TODO Reset && Start clock
+    // TODO Reset StepCounter
+    // Enable button Pause & Save
+    // Disable button Restore
   }
 }

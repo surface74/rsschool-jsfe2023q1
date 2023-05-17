@@ -72,6 +72,11 @@ export default class Playground {
     return this.fields[row][column];
   }
 
+  setFieldState(fieldId, state) {
+    const { row, column } = this.getPosition(fieldId);
+    this.fields[row][column].state = state;
+  }
+
   getMines() {
     return this.mines;
   }

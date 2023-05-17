@@ -24,19 +24,20 @@
 }
 
 .field_marked {
-  background-color: $field-open-bgcolor;
-  background: url('../assets/image/flag.png') no-repeat center;
+  background: url('../assets/image/flag.png') no-repeat center,  $field-open-bgcolor;
+  background-size: contain;
   font-size: 0;
 }
 
 .field_mine {
   background-color: $field-open-bgcolor;
-  background: url('../assets/image/mine.png') no-repeat center;
+  background: url('../assets/image/mine.png') no-repeat center, $field-open-bgcolor;
+  background-size: contain;
   font-size: 0;
 }
 
 .field_explosion {
-  background-color: $field-explosion-bgcolor;
-  background: url('../assets/image/mine.png') no-repeat center;
+  background: url('../assets/image/mine.png') no-repeat center, $field-explosion-bgcolor;
+  background-size: contain;
   font-size: 0;
 }
