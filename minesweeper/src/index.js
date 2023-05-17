@@ -1,13 +1,5 @@
-import './styles/base/_normalize.scss';
-import './styles/base/_common.scss';
-import './styles/layout/_wrapper.scss';
-import icons from './Favicon/index.js';
-import Playground from './Playground/playground.js';
-import playgroundElement from './Playground/index.js';
+import Game from '../Game/index.js';
 
-icons.forEach((icon) => document.head.append(icon));
+const game = new Game();
 
-document.body.append(playgroundElement);
-
-const playground = new Playground();
-playground.init(10, 10);
+game.init(10, 10);
