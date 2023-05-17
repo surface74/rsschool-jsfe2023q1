@@ -1,0 +1,42 @@
+@import '../styles/abstracts/variables';
+
+.field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: $field-min-size;
+  max-width: $field-max-size;
+  min-height: $field-min-size;
+  max-height: $field-max-size;
+
+  border: 1px solid $field-border-color;
+  font-size: $field-font-size;
+}
+
+.field_hidden {
+  background-color: $field-hidden-bgcolor;
+  font-size: 0;
+}
+
+.field_open {
+  background-color: $field-open-bgcolor;
+}
+
+.field_marked {
+  background-color: $field-open-bgcolor;
+  background: url('../assets/image/flag.png') no-repeat center;
+  font-size: 0;
+}
+
+.field_mine {
+  background-color: $field-open-bgcolor;
+  background: url('../assets/image/mine.png') no-repeat center;
+  font-size: 0;
+}
+
+.field_explosion {
+  background-color: $field-explosion-bgcolor;
+  background: url('../assets/image/mine.png') no-repeat center;
+  font-size: 0;
+}

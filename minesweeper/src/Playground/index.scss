@@ -1,8 +1,10 @@
 @import '../styles/abstracts/variables';
 
-.background {
+.playground {
   display: grid;
+  width: fit-content;
+
   gap: 0;
-  grid-template-columns: repeat($init-playground-size, 1fr);
-  grid-template-rows: repeat($init-playground-size, 1fr);
+  grid-template-columns: repeat($init-playground-size, minmax($field-max-size, 1fr));
+  grid-template-rows: repeat($init-playground-size, minmax($field-max-size, 1fr));
 }

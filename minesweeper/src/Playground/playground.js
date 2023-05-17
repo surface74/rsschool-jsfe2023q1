@@ -1,4 +1,4 @@
-import CONST from './constants.js';
+import CONST from '../Constants/index.js';
 
 export default class Playground {
   init(size, minesCount) {
@@ -25,6 +25,7 @@ export default class Playground {
       const random = this.getExcludeRandom(0, this.fields.length ** 2 - 1, excludeId);
       const position = this.getPosition(random);
       this.fields[position.row][position.column].content = CONST.Content.Mine;
+      this.fields[position.row][position.column].state = CONST.State.Mine;
       this.mines.push(position);
     }
   }
