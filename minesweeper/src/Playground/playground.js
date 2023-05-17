@@ -25,9 +25,9 @@ export default class Playground {
       const random = this.getExcludeRandom(0, this.fields.length ** 2 - 1, excludeId);
       const position = this.getPosition(random);
       this.fields[position.row][position.column].content = CONST.Content.Mine;
-      this.fields[position.row][position.column].state = CONST.State.Mine;
       this.mines.push(position);
     }
+    this.countMineNeighbors();
   }
 
   getPosition(linearIndex) {
@@ -36,7 +36,7 @@ export default class Playground {
     return { row, column };
   }
 
-  markMineNeighbors() {
+  countMineNeighbors() {
     for (let i = 0; i < this.mines.length; i += 1) {
       const { row, column } = this.mines[i];
       const neighbors = [];
@@ -65,6 +65,11 @@ export default class Playground {
     } while (result === exclude || this.mines.includes(result));
 
     return result;
+  }
+
+  getFieldData(fieldId) {
+    const { row, column } = this.getPosition(fieldId);
+    return this.fields[row][column];
   }
 
   getMines() {
