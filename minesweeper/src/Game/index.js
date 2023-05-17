@@ -24,11 +24,16 @@ export default class Game {
 
   fillPlayground() {
     for (let i = 0; i < this.playground.size ** 2; i += 1) {
-      this.playgroundElement.append(this.field.getField(CONST.State.Hidden));
+      this.playgroundElement.append(this.field.getField(CONST.State.Hidden, i));
     }
   }
 
   onPlaygroundClick(e) {
-    console.log(e.target);
+    if (!e.target.classList.contains('field')) {
+      return;
+    }
+    if (!this.playground.mines.length) { // the first click - start game
+
+    }
   }
 }

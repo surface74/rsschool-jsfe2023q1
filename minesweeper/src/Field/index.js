@@ -8,8 +8,9 @@ export default class Field {
     this.element = HtmlHelper.ElementFromHTML(FieldHtml);
   }
 
-  getField(fieldState) {
+  getField(fieldState, id) {
     const field = this.element.cloneNode({ deep: true });
+    field.dataset.id = id;
     switch (fieldState) {
       case CONST.State.Hidden:
         field.classList.add('field_hidden');
