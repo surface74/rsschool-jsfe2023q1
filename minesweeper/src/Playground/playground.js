@@ -1,4 +1,5 @@
-import CONST from '../Constants/index.js';
+import STATE from '../Field/const-state.js';
+import CONTENT from '../Field/const-content.js';
 
 export default class Playground {
   init(size, minesCount) {
@@ -15,8 +16,8 @@ export default class Playground {
     for (let i = 0; i < this.size; i += 1) {
       this.fields.push(Array.from({ length: this.size })
         .map((item, index) => ({
-          state: CONST.State.Hidden,
-          content: CONST.Content.Free,
+          state: STATE.Hidden,
+          content: CONTENT.Free,
           id: (i * this.size) + index,
         })));
     }
@@ -26,7 +27,7 @@ export default class Playground {
     for (let i = 0; i < this.minesCount; i += 1) {
       const random = this.getExcludeRandom(0, this.fields.length ** 2 - 1, +excludeId);
       const position = this.getPosition(random);
-      this.fields[position.row][position.column].content = CONST.Content.Mine;
+      this.fields[position.row][position.column].content = CONTENT.Mine;
       this.mines.push(position);
     }
 
@@ -87,10 +88,10 @@ export default class Playground {
   setFieldState(fieldId, state) {
     const { row, column } = this.getPosition(+fieldId);
     this.fields[row][column].state = state;
-    if (state === CONST.State.Open) {
+    if (state === STATE.Open) {
       this.openedField += 1;
     }
-    if (state === CONST.State.Marked) {
+    if (state === STATE.Marked) {
       this.markedField += 1;
     }
   }

@@ -1,7 +1,8 @@
 import '../styles/base/_normalize.scss';
 import '../styles/base/_common.scss';
 import '../styles/layout/_wrapper.scss';
-import CONST from '../Constants/index.js';
+import STATE from '../Field/const-state.js';
+import CONTENT from '../Field/const-content.js';
 import Playground from '../Playground/playground.js';
 import PlaygroundElement from '../Playground/index.js';
 import Field from '../Field/index.js';
@@ -30,7 +31,7 @@ export default class Game {
 
   fillPlayground() {
     for (let i = 0; i < this.playground.size ** 2; i += 1) {
-      this.playgroundElement.append(this.field.getField(CONST.State.Hidden, i));
+      this.playgroundElement.append(this.field.getField(STATE.Hidden, i));
     }
   }
 
@@ -43,13 +44,13 @@ export default class Game {
     const fieldId = +field.dataset.id;
 
     const { state, content } = this.playground.getFieldData(fieldId);
-    if (state === CONST.State.Hidden) {
-      this.changeFieldState(field, content, CONST.State.Marked);
+    if (state === STATE.Hidden) {
+      this.changeFieldState(field, content, STATE.Marked);
       if (this.playground.isWinPosition()) {
         document.body.dispatchEvent(this.winEvent);
       }
-    } else if (state === CONST.State.Marked) {
-      this.changeFieldState(field, content, CONST.State.Hidden);
+    } else if (state === STATE.Marked) {
+      this.changeFieldState(field, content, STATE.Hidden);
     }
   }
 
@@ -66,14 +67,14 @@ export default class Game {
     }
 
     const { state, content } = this.playground.getFieldData(fieldId);
-    if (state === CONST.State.Hidden) {
-      if (content >= CONST.Content.Mine) {
-        this.changeFieldState(field, content, CONST.State.Explosion);
+    if (state === STATE.Hidden) {
+      if (content >= CONTENT.Mine) {
+        this.changeFieldState(field, content, STATE.Explosion);
         document.body.dispatchEvent(this.loseEvent);
         return;
       }
 
-      this.changeFieldState(field, content, CONST.State.Open);
+      this.changeFieldState(field, content, STATE.Open);
       if (!content) {
         this.openHeighbors(field);
       }
@@ -93,8 +94,8 @@ export default class Game {
       const fieldId = this.playground.size * row + column;
       const neighorsField = this.playgroundElement.querySelector(`[data-id="${fieldId}"]`);
 
-      if (state === CONST.State.Hidden) {
-        this.changeFieldState(neighorsField, (content) || '', CONST.State.Open);
+      if (state === STATE.Hidden) {
+        this.changeFieldState(neighorsField, (content) || '', STATE.Open);
         if (!content) { // empty field
           this.openHeighbors(neighorsField);
         }
@@ -116,11 +117,11 @@ export default class Game {
     for (let i = 0; i < fields.length; i += 1) {
       const field = fields[i];
       const { state, content } = this.playground.getFieldData(+field.dataset.id);
-      if (state === CONST.State.Hidden || state === CONST.State.Marked) {
+      if (state === STATE.Hidden || state === STATE.Marked) {
         this.changeFieldState(
           field,
           content,
-          (content < CONST.Content.Mine) ? CONST.State.Open : CONST.State.Mine,
+          (content < CONTENT.Mine) ? STATE.Open : STATE.Mine,
         );
       }
     }
@@ -136,13 +137,17 @@ export default class Game {
 
   onWin() {
     console.log('winRound');
-    console.log('this: ', this);
     this.openPlayground();
   }
 
   onLose() {
     console.log('loseRound');
-    console.log('this: ', this);
     this.openPlayground();
+  }
+
+  onPause() {
+    console.log('pauseRound');
+    // TODO: hide board
+    // stop clock
   }
 }
