@@ -93,7 +93,7 @@ export default class Game {
       const neighorsField = this.playground.element.querySelector(`[data-id="${fieldId}"]`);
 
       if (state === STATE.Hidden) {
-        this.changeFieldState(neighorsField, (content) || '', STATE.Open);
+        this.changeFieldState(neighorsField, content || '', STATE.Open);
         if (!content) { // empty field
           this.openHeighbors(neighorsField);
         }
@@ -104,10 +104,8 @@ export default class Game {
   changeFieldState(field, content, state) {
     this.playground.setFieldState(+field.dataset.id, state);
     const newField = this.field.getField(state, +field.dataset.id);
+    newField.textContent = content || '';
     field.replaceWith(newField);
-    if (content) {
-      newField.textContent = content;
-    }
   }
 
   openPlayground() {

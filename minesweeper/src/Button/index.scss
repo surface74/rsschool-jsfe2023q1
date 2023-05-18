@@ -1,0 +1,34 @@
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 30px;
+  padding: 0 10px;
+  overflow: hidden;
+  border: none;
+
+  text-align: center;
+  text-decoration: none;
+  color: $color-button-text;
+  background: $color-button;
+  border-radius: 10%;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $color-button-hover-text;
+    background: $color-button-hover;
+  }
+
+  &:active {
+    transform: scale(1.2);
+    color: $color-button-active-text;
+  }
+}
+
+.button_disabled {
+  color: $color-button-disabled-text;
+  background: $color-button-disabled;
+  pointer-events: none;
+}
+

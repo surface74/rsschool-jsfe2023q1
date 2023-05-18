@@ -1,8 +1,8 @@
 @import '../abstracts/variables';
 
 .wrapper {
-  min-width: 500px;
-  max-width: 1280px;
+  min-width: $content-width-min;
+  max-width: $content-width-max;
   margin: auto;
 }
 
