@@ -19,6 +19,7 @@ export default class Game {
 
     document.body.append(PlaygroundElement);
     this.playgroundElement.addEventListener('click', this.onPlaygroundClick.bind(this));
+    this.playgroundElement.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
   }
 
   fillPlayground() {
@@ -27,10 +28,27 @@ export default class Game {
     }
   }
 
+  onPlaygroundRightClick(e) {
+    e.preventDefault();
+    if (!e.target.classList.contains('field')) {
+      return;
+    }
+    const field = e.target;
+    const fieldId = field.dataset.id;
+
+    const { state, content } = this.playground.getFieldData(fieldId);
+    if (state === CONST.State.Hidden) {
+      this.changeFieldState(field, content, CONST.State.Marked);
+    } else if (state === CONST.State.Marked) {
+      this.changeFieldState(field, content, CONST.State.Hidden);
+    }
+  }
+
   onPlaygroundClick(e) {
     if (!e.target.classList.contains('field')) {
       return;
     }
+
     const field = e.target;
     const fieldId = field.dataset.id;
 

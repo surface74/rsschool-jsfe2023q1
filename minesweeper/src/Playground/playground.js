@@ -7,6 +7,7 @@ export default class Playground {
     this.fields = [];
     this.mines = [];
     this.openedField = 0;
+    this.markedField = 0;
     this.initContent();
   }
 
@@ -30,6 +31,7 @@ export default class Playground {
     }
     this.countMineNeighbors();
     this.openedField = 0;
+    this.markedField = 0;
   }
 
   isWin() {
@@ -86,6 +88,9 @@ export default class Playground {
     this.fields[row][column].state = state;
     if (state === CONST.State.Open) {
       this.openedField += 1;
+    }
+    if (state === CONST.State.Marked) {
+      this.markedField += 1;
     }
   }
 
