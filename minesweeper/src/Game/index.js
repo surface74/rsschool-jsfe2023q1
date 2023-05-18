@@ -4,13 +4,13 @@ import '../styles/layout/_wrapper.scss';
 import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
 import Playground from '../Playground/playground.js';
-import PlaygroundElement from '../Playground/index.js';
+// import PlaygroundElement from '../Playground/index.js';
 import Field from '../Field/index.js';
 
 export default class Game {
   constructor() {
     this.playground = new Playground();
-    this.playgroundElement = PlaygroundElement;
+    // this.playground.element = PlaygroundElement;
     this.field = new Field();
     this.winEvent = new Event('win', { bubbles: true });
     this.loseEvent = new Event('lose', { bubbles: true });
@@ -21,9 +21,9 @@ export default class Game {
     this.playground.init(size, mines);
     this.fillPlayground();
 
-    document.body.append(PlaygroundElement);
-    this.playgroundElement.addEventListener('click', this.onPlaygroundClick.bind(this));
-    this.playgroundElement.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
+    document.body.append(this.playground.element);
+    this.playground.element.addEventListener('click', this.onPlaygroundClick.bind(this));
+    this.playground.element.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
     document.body.addEventListener('win', this.onWin.bind(this));
     document.body.addEventListener('lose', this.onLose.bind(this));
     document.body.addEventListener('pause', this.onPause.bind(this));
@@ -31,7 +31,7 @@ export default class Game {
 
   fillPlayground() {
     for (let i = 0; i < this.playground.size ** 2; i += 1) {
-      this.playgroundElement.append(this.field.getField(STATE.Hidden, i));
+      this.playground.element.append(this.field.getField(STATE.Hidden, i));
     }
   }
 
@@ -92,7 +92,7 @@ export default class Game {
       const { row, column } = neighbors[i];
       const { state, content } = this.playground.fields[row][column];
       const fieldId = this.playground.size * row + column;
-      const neighorsField = this.playgroundElement.querySelector(`[data-id="${fieldId}"]`);
+      const neighorsField = this.playground.element.querySelector(`[data-id="${fieldId}"]`);
 
       if (state === STATE.Hidden) {
         this.changeFieldState(neighorsField, (content) || '', STATE.Open);
@@ -113,7 +113,7 @@ export default class Game {
   }
 
   openPlayground() {
-    const fields = Array.from(this.playgroundElement.querySelectorAll('.field'));
+    const fields = Array.from(this.playground.element.querySelectorAll('.field'));
     for (let i = 0; i < fields.length; i += 1) {
       const field = fields[i];
       const { state, content } = this.playground.getFieldData(+field.dataset.id);

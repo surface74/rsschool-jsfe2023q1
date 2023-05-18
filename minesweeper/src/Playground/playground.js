@@ -1,5 +1,6 @@
 import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
+import Element from './index.js';
 
 export default class Playground {
   init(size, minesCount) {
@@ -10,6 +11,7 @@ export default class Playground {
     this.openedField = 0;
     this.markedField = 0;
     this.initContent();
+    this.element = Element;
   }
 
   initContent() {

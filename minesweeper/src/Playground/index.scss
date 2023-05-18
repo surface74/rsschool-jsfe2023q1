@@ -5,6 +5,19 @@
   width: fit-content;
 
   gap: 0;
-  grid-template-columns: repeat($init-playground-size, minmax($field-max-size, 1fr));
-  grid-template-rows: repeat($init-playground-size, minmax($field-max-size, 1fr));
+}
+
+.playground_easy {
+  grid-template-columns: repeat($playground-size-easy, minmax($field-max-size, 1fr));
+  grid-template-rows: repeat($playground-size-easy, minmax($field-max-size, 1fr));
+}
+
+.playground_medium {
+  grid-template-columns: repeat($playground-size-medium, minmax($field-max-size, 1fr));
+  grid-template-rows: repeat($playground-size-medium, minmax($field-max-size, 1fr));
+}
+
+.playground_hard {
+  grid-template-columns: repeat($playground-size-hard, minmax($field-max-size, 1fr));
+  grid-template-rows: repeat($playground-size-hard, minmax($field-max-size, 1fr));
 }
