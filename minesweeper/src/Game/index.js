@@ -45,6 +45,9 @@ export default class Game {
     const { state, content } = this.playground.getFieldData(fieldId);
     if (state === CONST.State.Hidden) {
       this.changeFieldState(field, content, CONST.State.Marked);
+      if (this.playground.isWinPosition()) {
+        document.body.dispatchEvent(this.winEvent);
+      }
     } else if (state === CONST.State.Marked) {
       this.changeFieldState(field, content, CONST.State.Hidden);
     }
@@ -109,10 +112,8 @@ export default class Game {
   }
 
   startRound(fieldId) {
-    const { row, column } = this.playground.getPosition(fieldId);
-    console.log(`mines count: ${this.playground.mines.length}. Id: ${fieldId} {${row},${column}}`);
-    this.playground.initMines(fieldId);
-    this.playground.mines.map((item) => console.log(item));
+    this.playground.initMines(+fieldId);
+
     // TODO Reset && Start clock
     // TODO Reset StepCounter
     // Enable button Pause & Save

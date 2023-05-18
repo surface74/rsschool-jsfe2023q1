@@ -29,6 +29,7 @@ export default class Playground {
       this.fields[position.row][position.column].content = CONST.Content.Mine;
       this.mines.push(position);
     }
+
     this.countMineNeighbors();
     this.openedField = 0;
     this.markedField = 0;
@@ -73,7 +74,7 @@ export default class Playground {
     let result;
     do {
       result = Math.floor(min + Math.random() * (max - min + 1));
-    } while (result === +exclude || this.mines.map(({ r, c }) => r * this.size + c).includes(result));
+    } while (result === +exclude || this.mines.map(({ row, column }) => row * this.size + column).includes(result));
 
     return result;
   }
