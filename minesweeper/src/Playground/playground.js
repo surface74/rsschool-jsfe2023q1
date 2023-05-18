@@ -6,6 +6,7 @@ export default class Playground {
     this.minesCount = minesCount;
     this.fields = [];
     this.mines = [];
+    this.openedField = 0;
     this.initContent();
   }
 
@@ -28,6 +29,11 @@ export default class Playground {
       this.mines.push(position);
     }
     this.countMineNeighbors();
+    this.openedField = 0;
+  }
+
+  isWin() {
+    return this.size ** 2 - this.openedField === this.minesCount;
   }
 
   getPosition(linearIndex) {
@@ -38,20 +44,23 @@ export default class Playground {
 
   countMineNeighbors() {
     for (let i = 0; i < this.mines.length; i += 1) {
-      const { row, column } = this.mines[i];
-      const neighbors = [];
-
-      if (row > 0 && column > 0) { neighbors.push({ row: row - 1, column: column - 1 }); }
-      if (row > 0) { neighbors.push({ row: row - 1, column }); }
-      if (row > 0 && column < this.size - 1) { neighbors.push({ row: row - 1, column: column + 1 }); }
-      if (column > 0) { neighbors.push({ row, column: column - 1 }); }
-      if (column > 0 && row < this.size - 1) { neighbors.push({ row: row + 1, column: column - 1 }); }
-      if (row < this.size - 1) { neighbors.push({ row: row + 1, column }); }
-      if (row < this.size - 1 && column < this.size - 1) { neighbors.push({ row: row + 1, column: column + 1 }); }
-      if (column < this.size - 1) { neighbors.push({ row, column: column + 1 }); }
-
+      const neighbors = this.getFieldHeighbors(this.mines[i]);
       neighbors.forEach((position) => { this.fields[position.row][position.column].content += 1; });
     }
+  }
+
+  getFieldHeighbors({ row, column }) {
+    const neighbors = [];
+    if (row > 0 && column > 0) { neighbors.push({ row: row - 1, column: column - 1 }); }
+    if (row > 0) { neighbors.push({ row: row - 1, column }); }
+    if (row > 0 && column < this.size - 1) { neighbors.push({ row: row - 1, column: column + 1 }); }
+    if (column > 0) { neighbors.push({ row, column: column - 1 }); }
+    if (column > 0 && row < this.size - 1) { neighbors.push({ row: row + 1, column: column - 1 }); }
+    if (row < this.size - 1) { neighbors.push({ row: row + 1, column }); }
+    if (row < this.size - 1 && column < this.size - 1) { neighbors.push({ row: row + 1, column: column + 1 }); }
+    if (column < this.size - 1) { neighbors.push({ row, column: column + 1 }); }
+
+    return neighbors;
   }
 
   getExcludeRandom(min, max, exclude) {
@@ -75,6 +84,9 @@ export default class Playground {
   setFieldState(fieldId, state) {
     const { row, column } = this.getPosition(fieldId);
     this.fields[row][column].state = state;
+    if (state === CONST.State.Open) {
+      this.openedField += 1;
+    }
   }
 
   getMines() {

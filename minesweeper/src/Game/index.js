@@ -48,19 +48,32 @@ export default class Game {
 
       this.changeFieldState(field, content, CONST.State.Open);
       if (!content) {
-        this.clearHeighbors();
+        this.openHeighbors(field);
       }
-      this.checkWin();
+
+      if (this.playground.isWin()) {
+        this.winRound();
+      }
     }
   }
 
-  checkWin() {
-    const opendFieldsCount = this.playground.fields.reduce((acc, { state }) => acc + +(state === CONST.State.Open), 0);
-    console.log('opendFieldsCount: ', opendFieldsCount);
-  }
-
-  clearHeighbors() {
+  openHeighbors(field) {
     console.log('clearHeighbors');
+    const neighbors = this.playground.getFieldHeighbors(this.playground.getPosition(field.dataset.id));
+
+    for (let i = 0; i < neighbors.length; i += 1) {
+      const { row, column } = neighbors[i];
+      const { state, content } = this.playground.fields[row][column];
+      const fieldId = this.playground.size * row + column;
+      const neighorsField = this.playgroundElement.querySelector(`[data-id="${fieldId}"]`);
+
+      if (state === CONST.State.Hidden) {
+        this.changeFieldState(neighorsField, (content) || '', CONST.State.Open);
+        if (!content) { // empty field
+          this.openHeighbors(neighorsField);
+        }
+      }
+    }
   }
 
   changeFieldState(field, content, state) {
@@ -72,17 +85,23 @@ export default class Game {
     }
   }
 
-  loseRound() {
-    console.log('loseRound');
-    // TODO Open playground
-    // TODO Stop clock
-  }
-
   startRound(fieldId) {
     this.playground.initMines(fieldId);
     // TODO Reset && Start clock
     // TODO Reset StepCounter
     // Enable button Pause & Save
     // Disable button Restore
+  }
+
+  winRound() {
+    console.log('winRound');
+    // TODO: stop clock
+    // TODO: check & fill table of winners
+  }
+
+  loseRound() {
+    console.log('loseRound');
+    // TODO Open playground
+    // TODO Stop clock
   }
 }
