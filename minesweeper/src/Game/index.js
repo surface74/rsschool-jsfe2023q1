@@ -23,9 +23,9 @@ export default class Game {
     document.body.append(PlaygroundElement);
     this.playgroundElement.addEventListener('click', this.onPlaygroundClick.bind(this));
     this.playgroundElement.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
-    document.body.addEventListener('win', this.onWin);
-    document.body.addEventListener('lose', this.onLose);
-    document.body.addEventListener('pause', this.onPause);
+    document.body.addEventListener('win', this.onWin.bind(this));
+    document.body.addEventListener('lose', this.onLose.bind(this));
+    document.body.addEventListener('pause', this.onPause.bind(this));
   }
 
   fillPlayground() {
@@ -111,9 +111,23 @@ export default class Game {
     }
   }
 
+  openPlayground() {
+    const fields = Array.from(this.playgroundElement.querySelectorAll('.field'));
+    for (let i = 0; i < fields.length; i += 1) {
+      const field = fields[i];
+      const { state, content } = this.playground.getFieldData(+field.dataset.id);
+      if (state === CONST.State.Hidden || state === CONST.State.Marked) {
+        this.changeFieldState(
+          field,
+          content,
+          (content < CONST.Content.Mine) ? CONST.State.Open : CONST.State.Mine,
+        );
+      }
+    }
+  }
+
   startRound(fieldId) {
     this.playground.initMines(+fieldId);
-
     // TODO Reset && Start clock
     // TODO Reset StepCounter
     // Enable button Pause & Save
@@ -122,9 +136,13 @@ export default class Game {
 
   onWin() {
     console.log('winRound');
+    console.log('this: ', this);
+    this.openPlayground();
   }
 
   onLose() {
     console.log('loseRound');
+    console.log('this: ', this);
+    this.openPlayground();
   }
 }
