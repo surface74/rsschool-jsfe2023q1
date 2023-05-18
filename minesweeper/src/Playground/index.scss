@@ -2,22 +2,27 @@
 
 .playground {
   display: grid;
-  width: fit-content;
-
   gap: 0;
 }
 
 .playground_easy {
-  grid-template-columns: repeat($playground-size-easy, minmax($field-max-size, 1fr));
-  grid-template-rows: repeat($playground-size-easy, minmax($field-max-size, 1fr));
+  grid-template-columns: repeat($playground-easy, 1fr);
+  max-width: 500px;
+  font-size: $field-font-size-large;
 }
 
 .playground_medium {
-  grid-template-columns: repeat($playground-size-medium, minmax($field-max-size, 1fr));
-  grid-template-rows: repeat($playground-size-medium, minmax($field-max-size, 1fr));
+  grid-template-columns: repeat($playground-medium, 1fr);
+  max-width: 750px;
+  font-size: $field-font-size-large;
 }
 
 .playground_hard {
-  grid-template-columns: repeat($playground-size-hard, minmax($field-max-size, 1fr));
-  grid-template-rows: repeat($playground-size-hard, minmax($field-max-size, 1fr));
+  grid-template-columns: repeat($playground-hard, 1fr);
+  max-width: 750px;
+  font-size: $field-font-size-medium;
+
+  @media (max-width: 700px) {
+    font-size: $field-font-size-small;
+  }
 }

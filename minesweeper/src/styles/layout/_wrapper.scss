@@ -1,7 +1,8 @@
 @import '../abstracts/variables';
 
 .wrapper {
-  max-width: calc(15 * $button-size + 17 * $space-between);
+  min-width: 500px;
+  max-width: 1280px;
   margin: auto;
 }
 

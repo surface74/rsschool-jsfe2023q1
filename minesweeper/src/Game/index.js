@@ -4,13 +4,11 @@ import '../styles/layout/_wrapper.scss';
 import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
 import Playground from '../Playground/playground.js';
-// import PlaygroundElement from '../Playground/index.js';
 import Field from '../Field/index.js';
 
 export default class Game {
   constructor() {
     this.playground = new Playground();
-    // this.playground.element = PlaygroundElement;
     this.field = new Field();
     this.winEvent = new Event('win', { bubbles: true });
     this.loseEvent = new Event('lose', { bubbles: true });
@@ -19,7 +17,7 @@ export default class Game {
 
   init(size, mines) {
     this.playground.init(size, mines);
-    this.fillPlayground();
+    // this.fillPlayground();
 
     document.body.append(this.playground.element);
     this.playground.element.addEventListener('click', this.onPlaygroundClick.bind(this));
@@ -29,11 +27,11 @@ export default class Game {
     document.body.addEventListener('pause', this.onPause.bind(this));
   }
 
-  fillPlayground() {
-    for (let i = 0; i < this.playground.size ** 2; i += 1) {
-      this.playground.element.append(this.field.getField(STATE.Hidden, i));
-    }
-  }
+  // fillPlayground() {
+  //   for (let i = 0; i < this.playground.size ** 2; i += 1) {
+  //     this.playground.element.append(this.field.getField(STATE.Hidden, i));
+  //   }
+  // }
 
   onPlaygroundRightClick(e) {
     e.preventDefault();

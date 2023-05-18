@@ -1,9 +1,12 @@
 import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
+import SIZE from './const-size.js';
+import Field from '../Field/index.js';
 import Element from './index.js';
 
 export default class Playground {
   init(size, minesCount) {
+    this.field = new Field();
     this.size = size;
     this.minesCount = minesCount;
     this.fields = [];
@@ -11,7 +14,9 @@ export default class Playground {
     this.openedField = 0;
     this.markedField = 0;
     this.initContent();
-    this.element = Element;
+
+    this.element = this.getResizedElement(Element);
+    this.fillPlaygroundElement(this.element);
   }
 
   initContent() {
@@ -36,6 +41,27 @@ export default class Playground {
     this.countMineNeighbors();
     this.openedField = 0;
     this.markedField = 0;
+  }
+
+  getResizedElement(element) {
+    switch (this.size) {
+      case SIZE.Medium:
+        element.classList.add('playground_medium');
+        break;
+      case SIZE.Hard:
+        element.classList.add('playground_hard');
+        break;
+      default:
+        element.classList.add('playground_easy');
+        break;
+    }
+    return element;
+  }
+
+  fillPlaygroundElement(element) {
+    for (let i = 0; i < this.size ** 2; i += 1) {
+      element.append(this.field.getField(STATE.Hidden, i));
+    }
   }
 
   isWinPosition() {

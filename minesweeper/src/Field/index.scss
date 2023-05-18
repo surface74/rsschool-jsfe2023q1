@@ -4,14 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  min-width: $field-min-size;
-  max-width: $field-max-size;
-  min-height: $field-min-size;
-  max-height: $field-max-size;
+  aspect-ratio: 1;
 
   border: 1px solid $field-border-color;
-  font-size: $field-font-size;
 }
 
 .field_hidden {
