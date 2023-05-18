@@ -11,6 +11,9 @@ export default class Game {
     this.playground = new Playground();
     this.playgroundElement = PlaygroundElement;
     this.field = new Field();
+    this.winEvent = new Event('win', { bubbles: true });
+    this.loseEvent = new Event('lose', { bubbles: true });
+    this.pauseEvent = new Event('pause', { bubbles: true });
   }
 
   init(size, mines) {
@@ -20,6 +23,9 @@ export default class Game {
     document.body.append(PlaygroundElement);
     this.playgroundElement.addEventListener('click', this.onPlaygroundClick.bind(this));
     this.playgroundElement.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
+    document.body.addEventListener('win', this.onWin);
+    document.body.addEventListener('lose', this.onLose);
+    document.body.addEventListener('pause', this.onPause);
   }
 
   fillPlayground() {
@@ -34,7 +40,7 @@ export default class Game {
       return;
     }
     const field = e.target;
-    const fieldId = field.dataset.id;
+    const fieldId = +field.dataset.id;
 
     const { state, content } = this.playground.getFieldData(fieldId);
     if (state === CONST.State.Hidden) {
@@ -50,7 +56,7 @@ export default class Game {
     }
 
     const field = e.target;
-    const fieldId = field.dataset.id;
+    const fieldId = +field.dataset.id;
 
     if (!this.playground.mines.length) { // the first click - start game
       this.startRound(fieldId);
@@ -60,7 +66,7 @@ export default class Game {
     if (state === CONST.State.Hidden) {
       if (content >= CONST.Content.Mine) {
         this.changeFieldState(field, content, CONST.State.Explosion);
-        this.loseRound();
+        document.body.dispatchEvent(this.loseEvent);
         return;
       }
 
@@ -69,15 +75,14 @@ export default class Game {
         this.openHeighbors(field);
       }
 
-      if (this.playground.isWin()) {
-        this.winRound();
+      if (this.playground.isWinPosition()) {
+        document.body.dispatchEvent(this.winEvent);
       }
     }
   }
 
   openHeighbors(field) {
-    console.log('clearHeighbors');
-    const neighbors = this.playground.getFieldHeighbors(this.playground.getPosition(field.dataset.id));
+    const neighbors = this.playground.getFieldHeighbors(this.playground.getPosition(+field.dataset.id));
 
     for (let i = 0; i < neighbors.length; i += 1) {
       const { row, column } = neighbors[i];
@@ -95,8 +100,8 @@ export default class Game {
   }
 
   changeFieldState(field, content, state) {
-    this.playground.setFieldState(field.dataset.id, state);
-    const newField = this.field.getField(state, field.dataset.id);
+    this.playground.setFieldState(+field.dataset.id, state);
+    const newField = this.field.getField(state, +field.dataset.id);
     field.replaceWith(newField);
     if (content) {
       newField.textContent = content;
@@ -104,22 +109,21 @@ export default class Game {
   }
 
   startRound(fieldId) {
+    const { row, column } = this.playground.getPosition(fieldId);
+    console.log(`mines count: ${this.playground.mines.length}. Id: ${fieldId} {${row},${column}}`);
     this.playground.initMines(fieldId);
+    this.playground.mines.map((item) => console.log(item));
     // TODO Reset && Start clock
     // TODO Reset StepCounter
     // Enable button Pause & Save
     // Disable button Restore
   }
 
-  winRound() {
+  onWin() {
     console.log('winRound');
-    // TODO: stop clock
-    // TODO: check & fill table of winners
   }
 
-  loseRound() {
+  onLose() {
     console.log('loseRound');
-    // TODO Open playground
-    // TODO Stop clock
   }
 }

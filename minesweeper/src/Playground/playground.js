@@ -24,7 +24,7 @@ export default class Playground {
 
   initMines(excludeId) {
     for (let i = 0; i < this.minesCount; i += 1) {
-      const random = this.getExcludeRandom(0, this.fields.length ** 2 - 1, excludeId);
+      const random = this.getExcludeRandom(0, this.fields.length ** 2 - 1, +excludeId);
       const position = this.getPosition(random);
       this.fields[position.row][position.column].content = CONST.Content.Mine;
       this.mines.push(position);
@@ -34,13 +34,13 @@ export default class Playground {
     this.markedField = 0;
   }
 
-  isWin() {
-    return this.size ** 2 - this.openedField === this.minesCount;
+  isWinPosition() {
+    return this.size ** 2 - this.openedField === this.markedField;
   }
 
   getPosition(linearIndex) {
-    const column = linearIndex % this.size;
-    const row = Math.floor(linearIndex / this.size);
+    const column = +linearIndex % this.size;
+    const row = Math.floor(+linearIndex / this.size);
     return { row, column };
   }
 
@@ -66,25 +66,25 @@ export default class Playground {
   }
 
   getExcludeRandom(min, max, exclude) {
-    if (exclude < min || exclude > max) {
+    if (+exclude < min || +exclude > max) {
       return null;
     }
 
     let result;
     do {
       result = Math.floor(min + Math.random() * (max - min + 1));
-    } while (result === exclude || this.mines.includes(result));
+    } while (result === +exclude || this.mines.map(({ r, c }) => r * this.size + c).includes(result));
 
     return result;
   }
 
   getFieldData(fieldId) {
-    const { row, column } = this.getPosition(fieldId);
+    const { row, column } = this.getPosition(+fieldId);
     return this.fields[row][column];
   }
 
   setFieldState(fieldId, state) {
-    const { row, column } = this.getPosition(fieldId);
+    const { row, column } = this.getPosition(+fieldId);
     this.fields[row][column].state = state;
     if (state === CONST.State.Open) {
       this.openedField += 1;
