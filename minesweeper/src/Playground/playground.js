@@ -60,7 +60,7 @@ export default class Playground {
 
   fillPlaygroundElement(element) {
     for (let i = 0; i < this.size ** 2; i += 1) {
-      element.append(this.field.getField(STATE.Hidden, i));
+      element.append(this.field.getElement(STATE.Hidden, i));
     }
   }
 

@@ -8,7 +8,7 @@ export default class Field {
     this.element = HtmlHelper.ElementFromHTML(FieldHtml);
   }
 
-  getField(fieldState, id) {
+  getElement(fieldState, id) {
     const field = this.element.cloneNode({ deep: true });
     field.dataset.id = id;
     switch (fieldState) {

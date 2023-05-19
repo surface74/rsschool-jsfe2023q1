@@ -7,9 +7,9 @@ $field-hidden-bgcolor: #a9a9a9;
 $field-open-bgcolor: #d3d3d3;
 $field-explosion-bgcolor: #ff0000;
 
-$field-font-size-small: 1.2rem;
-$field-font-size-medium: 1.5rem;
-$field-font-size-large: 2rem;
+$font-size-small: 1.2rem;
+$font-size-medium: 1.5rem;
+$font-size-large: 2rem;
 
 $margin-vertical: 5rem;
 
@@ -21,18 +21,19 @@ $color-button-hover: #00cccc;
 $color-button-hover-text: $color-button;
 $color-button-hover-border: $color-button-hover;
 
-$color-button-disabled: #808080;
+$color-button-disabled: rgb(128, 128, 128);
 $color-button-disabled-text: $color-button-disabled;
 $color-button-disabled-border: $color-button-disabled;
 
 $color-counter-value: #0000ff;
 
-$color-popup: rgba(119, 119, 119, 0.9);
+$color-popup: rgb(179, 179, 179);
+$color-popup-bg: rgba(209, 209, 209, 0.9);
 
-$counter-font-size: 1.5rem;
+$counter-font-size: $font-size-medium;
 
 $button-size: 5rem;
-$button-font-size: 1.5rem;
+$button-font-size: $font-size-medium;
 
 $space-vertical: 1vh;
 $space-horizontal: 1vw;

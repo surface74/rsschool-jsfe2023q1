@@ -8,11 +8,13 @@ import Playground from '../Playground/playground.js';
 import Field from '../Field/index.js';
 import statisticsElement from '../Statistics/index.js';
 import footerElement from '../Footer/index.js';
+import NewGame from '../NewGame/index.js';
 
 export default class Game {
   constructor() {
     this.playground = new Playground();
     this.field = new Field();
+    this.newGame = new NewGame();
     this.winEvent = new Event('win', { bubbles: true });
     this.loseEvent = new Event('lose', { bubbles: true });
     this.pauseEvent = new Event('pause', { bubbles: true });
@@ -25,6 +27,7 @@ export default class Game {
     document.body.append(statisticsElement);
     document.body.append(this.playground.element);
     document.body.append(footerElement);
+    document.body.append(this.newGame.getElement());
 
     this.playground.element.addEventListener('click', this.onPlaygroundClick.bind(this));
     this.playground.element.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
@@ -103,7 +106,7 @@ export default class Game {
 
   changeFieldState(field, content, state) {
     this.playground.setFieldState(+field.dataset.id, state);
-    const newField = this.field.getField(state, +field.dataset.id);
+    const newField = this.field.getElement(state, +field.dataset.id);
     newField.textContent = content || '';
     field.replaceWith(newField);
   }
