@@ -3,10 +3,11 @@ import '../styles/base/_common.scss';
 import '../styles/layout/_wrapper.scss';
 import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
-import footerElement from '../Footer/index.js';
+import headerElement from '../Header/index.js';
 import Playground from '../Playground/playground.js';
 import Field from '../Field/index.js';
 import statisticsElement from '../Statistics/index.js';
+import footerElement from '../Footer/index.js';
 
 export default class Game {
   constructor() {
@@ -20,21 +21,17 @@ export default class Game {
   init(size, mines) {
     this.playground.init(size, mines);
 
-    document.body.append(footerElement);
+    document.body.append(headerElement);
     document.body.append(statisticsElement);
     document.body.append(this.playground.element);
+    document.body.append(footerElement);
+
     this.playground.element.addEventListener('click', this.onPlaygroundClick.bind(this));
     this.playground.element.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
     document.body.addEventListener('win', this.onWin.bind(this));
     document.body.addEventListener('lose', this.onLose.bind(this));
     document.body.addEventListener('pause', this.onPause.bind(this));
   }
-
-  // fillPlayground() {
-  //   for (let i = 0; i < this.playground.size ** 2; i += 1) {
-  //     this.playground.element.append(this.field.getField(STATE.Hidden, i));
-  //   }
-  // }
 
   onPlaygroundRightClick(e) {
     e.preventDefault();

@@ -3,16 +3,16 @@ import ButtonHtml from './index.html';
 import HtmlHelper from '../utils/html-helper.js';
 
 const Button = ({ onClick = null, title, className = null }) => {
-  const buttonElement = HtmlHelper.ElementFromHTML(ButtonHtml);
+  const element = HtmlHelper.ElementFromHTML(ButtonHtml);
   if (onClick) {
-    buttonElement.addEventListener('click', onClick);
+    element.addEventListener('click', onClick);
   }
-  buttonElement.innerHTML = title;
+  element.innerHTML = title;
   if (className) {
-    className.split(' ').forEach((c) => buttonElement.classList.add(c));
+    className.split(' ').forEach((c) => element.classList.add(c));
   }
 
-  return buttonElement;
+  return element;
 };
 
 export default Button;

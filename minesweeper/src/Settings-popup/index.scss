@@ -1,0 +1,10 @@
+@import '../styles/abstracts/variables.scss';
+
+.settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2 * $space-vertical;
+  margin-bottom: 2 * $space-vertical;
+  column-gap: $space-horizontal;
+}
