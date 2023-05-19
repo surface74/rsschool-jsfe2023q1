@@ -1,3 +1,5 @@
+@import '../styles/abstracts/variables';
+
 .button {
   display: inline-flex;
   justify-content: center;
@@ -6,29 +8,30 @@
   height: 30px;
   padding: 0 10px;
   overflow: hidden;
-  border: none;
+  border: 1px solid $color-button-border;
+  cursor: pointer;
 
+  font-size: 1.5rem;
   text-align: center;
   text-decoration: none;
   color: $color-button-text;
-  background: $color-button;
-  border-radius: 10%;
-  transition: all 0.3s;
+  background: transparent;
+  transition: color 0.5s;
 
   &:hover {
     color: $color-button-hover-text;
+    border-color: $color-button-hover-border;
     background: $color-button-hover;
   }
 
   &:active {
-    transform: scale(1.2);
-    color: $color-button-active-text;
+    transform: scale(0.95);
   }
 }
 
 .button_disabled {
   color: $color-button-disabled-text;
-  background: $color-button-disabled;
+  border-color: $color-button-disabled-border;
+  background: transparent;
   pointer-events: none;
 }
-
