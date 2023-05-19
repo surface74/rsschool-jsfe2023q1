@@ -1,0 +1,12 @@
+@import '../styles/abstracts/variables.scss';
+
+.sound {
+  display: flex;
+  align-items: center;
+}
+
+.sound__label {
+  margin-left: 5px;
+  font-size: $button-font-size;
+  color: $color-button-text;
+}
