@@ -11,5 +11,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $color-popup;
+  background-color: $color-popup-bg;
+  backdrop-filter: blur(8px);
 }
