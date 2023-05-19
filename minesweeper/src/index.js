@@ -5,4 +5,4 @@ icons.forEach((icon) => document.head.append(icon));
 
 const game = new Game();
 
-game.init(25, 10);
+game.init(10, 10);

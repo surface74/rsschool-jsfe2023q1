@@ -6,7 +6,7 @@ import Button from '../Button/index.js';
 import MineSelector from '../MineSelector/index.js';
 
 export default class NewGame {
-  constructor() {
+  constructor(minesCount) {
     this.buttonEasy = Button({
       onClick: this.setMinesValue.bind({ parent: this, data: 10 }),
       title: 'Easy',
@@ -22,7 +22,7 @@ export default class NewGame {
       title: 'Hard',
       className: 'button-difficulty-hard',
     });
-    this.mineSelector = new MineSelector();
+    this.mineSelector = new MineSelector(minesCount);
     this.init();
   }
 

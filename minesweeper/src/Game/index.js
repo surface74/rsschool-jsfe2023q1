@@ -14,7 +14,6 @@ export default class Game {
   constructor() {
     this.playground = new Playground();
     this.field = new Field();
-    this.newGame = new NewGame();
     this.winEvent = new Event('win', { bubbles: true });
     this.loseEvent = new Event('lose', { bubbles: true });
     this.pauseEvent = new Event('pause', { bubbles: true });
@@ -22,6 +21,7 @@ export default class Game {
 
   init(size, mines) {
     this.playground.init(size, mines);
+    this.newGame = new NewGame(mines);
 
     document.body.append(headerElement);
     document.body.append(statisticsElement);

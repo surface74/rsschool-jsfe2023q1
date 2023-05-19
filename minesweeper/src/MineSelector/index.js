@@ -3,12 +3,12 @@ import MineSelectorHtml from './index.html';
 import HtmlHelper from '../utils/html-helper.js';
 
 export default class MineSelector {
-  constructor() {
+  constructor(minesCount) {
     this.element = HtmlHelper.ElementFromHTML(MineSelectorHtml);
     this.element.addEventListener('input', this.onInput.bind(this));
     this.inputElement = this.element.querySelector('.mine-selector__input');
     this.valueElement = this.element.querySelector('.mine-selector__value');
-    this.value = this.inputElement.value;
+    this.value = minesCount;
   }
 
   getElement() {
