@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: $space-vertical;
+  margin-top: 2 * $space-vertical;
+  margin-bottom: 2 * $space-vertical;
   column-gap: $space-horizontal;
 }
