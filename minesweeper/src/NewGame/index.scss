@@ -1,0 +1,19 @@
+@import '../styles/abstracts/variables.scss';
+
+.new-game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  row-gap: 2*$space-vertical;
+  background-color: $color-popup;
+  padding: 2*$space-vertical 5*$space-horizontal;
+  border-radius: 10px;
+}
+
+.new-game__title {
+  color: $color-button;
+  font-size: $font-size-large;
+}
