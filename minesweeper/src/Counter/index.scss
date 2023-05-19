@@ -1,0 +1,21 @@
+@import '../styles/abstracts/variables.scss';
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter__title {
+  font-size: $counter-font-size;
+  font-weight: 700;
+}
+
+.counter__value {
+  border: 1px solid $color-button-border;
+  padding: calc($padding / 2) $padding;
+  color: $color-counter-value;
+  font-size: $counter-font-size;
+  font-weight: 700;
+}

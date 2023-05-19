@@ -6,6 +6,7 @@ import CONTENT from '../Field/const-content.js';
 import footerElement from '../Footer/index.js';
 import Playground from '../Playground/playground.js';
 import Field from '../Field/index.js';
+import statisticsElement from '../Statistics/index.js';
 
 export default class Game {
   constructor() {
@@ -20,6 +21,7 @@ export default class Game {
     this.playground.init(size, mines);
 
     document.body.append(footerElement);
+    document.body.append(statisticsElement);
     document.body.append(this.playground.element);
     this.playground.element.addEventListener('click', this.onPlaygroundClick.bind(this));
     this.playground.element.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));

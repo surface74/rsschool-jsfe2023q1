@@ -1,0 +1,9 @@
+@import '../styles/abstracts/variables.scss';
+
+.statistics {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: $space-vertical;
+  column-gap: $space-horizontal;
+}
