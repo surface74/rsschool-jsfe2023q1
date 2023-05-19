@@ -1,0 +1,21 @@
+@import '../styles/abstracts/variables';
+
+.mine-selector {
+  display: flex;
+  flex-direction: column;
+  row-gap: $space-vertical;
+  align-items: center;
+}
+
+.mine-selector__caption {
+  display: flex;
+  justify-content: center;
+  font-size: $font-size-medium;
+}
+
+.mine-selector__value {
+  color: $color-counter-value;
+  font-size: $counter-font-size;
+  font-weight: 700;
+}
+
