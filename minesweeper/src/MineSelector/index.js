@@ -21,6 +21,7 @@ export default class MineSelector {
 
   set value(value) {
     this.valueElement.textContent = value;
+    this.inputElement.value = value;
   }
 
   onInput(e) {
