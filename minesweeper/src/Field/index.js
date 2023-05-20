@@ -27,6 +27,9 @@ export default class Field {
       case STATE.Explosion:
         field.classList.add('field_explosion');
         break;
+      case STATE.Question:
+        field.classList.add('field_question');
+        break;
       default:
         break;
     }

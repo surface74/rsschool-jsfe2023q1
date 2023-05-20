@@ -57,15 +57,21 @@ export default class Game {
     const fieldId = +field.dataset.id;
 
     const { state, content } = this.playground.getFieldData(fieldId);
-    if (state === STATE.Hidden) {
-      this.changeFieldState(field, content, STATE.Marked);
-      if (this.playground.isWinPosition()) {
-        document.body.dispatchEvent(this.Events.WIN);
-      }
-    } else if (state === STATE.Marked) {
-      this.changeFieldState(field, content, STATE.Question);
-    } else if (state === STATE.Question) {
-      this.changeFieldState(field, content, STATE.Hidden);
+    switch (state) {
+      case STATE.Hidden:
+        this.changeFieldState(field, content, STATE.Marked);
+        if (this.playground.isWinPosition()) {
+          document.body.dispatchEvent(this.Events.WIN);
+        }
+        break;
+      case STATE.Marked:
+        this.changeFieldState(field, content, STATE.Question);
+        break;
+      case STATE.Question:
+        this.changeFieldState(field, content, STATE.Hidden);
+        break;
+      default:
+        break;
     }
   }
 
@@ -130,7 +136,7 @@ export default class Game {
     for (let i = 0; i < fields.length; i += 1) {
       const field = fields[i];
       const { state, content } = this.playground.getFieldData(+field.dataset.id);
-      if (state === STATE.Hidden || state === STATE.Marked) {
+      if (state === STATE.Hidden || state === STATE.Marked || state === STATE.Question) {
         this.changeFieldState(
           field,
           content,
