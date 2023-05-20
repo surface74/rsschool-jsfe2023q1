@@ -4,42 +4,44 @@ import NewGameHtml from './index.html';
 import HtmlHelper from '../utils/html-helper.js';
 import Button from '../Button/index.js';
 import MineSelector from '../MineSelector/index.js';
+import SizeSelector from '../SizeSelector/index.js';
 
 export default class NewGame {
-  constructor(minesCount) {
-    this.buttonEasy = Button({
-      onClick: this.setMinesValue.bind({ parent: this, data: 10 }),
-      title: 'Easy',
-      className: 'button-difficulty-easy',
+  constructor(currentConfig) {
+    this.config = currentConfig;
+    this.sizeSelector = new SizeSelector(this.config.size);
+    this.mineSelector = new MineSelector(this.config.mines);
+    this.buttonOK = Button({
+      onClick: this.onClickOk.bind(this),
+      title: 'OK',
+      className: 'button-OK',
     });
-    this.buttonMedium = Button({
-      onClick: this.setMinesValue.bind({ parent: this, data: 25 }),
-      title: 'Medium',
-      className: 'button-difficulty-medium',
-    });
-    this.buttonHard = Button({
-      onClick: this.setMinesValue.bind({ parent: this, data: 60 }),
-      title: 'Hard',
-      className: 'button-difficulty-hard',
-    });
-    this.mineSelector = new MineSelector(minesCount);
     this.init();
   }
 
   init() {
     const content = HtmlHelper.ElementFromHTML(NewGameHtml);
-    content.append(this.buttonEasy);
-    content.append(this.buttonMedium);
-    content.append(this.buttonHard);
+    content.append(this.sizeSelector.getElement());
     content.append(this.mineSelector.getElement());
-    this.element = Popup({ htmlElement: content });
+    this.element = Popup({ htmlElement: content, className: 'popup_hidden' });
+    content.append(this.buttonOK);
   }
 
   getElement() {
     return this.element;
   }
 
-  setMinesValue() {
-    this.parent.mineSelector.value = this.data;
+  setConfig() {
+    this.parent.config = { mines: this.data.mines, size: this.data.size };
+    this.parent.mineSelector.value = this.data.mines;
+  }
+
+  getConfig() {
+    return this.config;
+  }
+
+  onClickOk() {
+    this.element.classList.add('popup_hidden');
+    document.body.dispatchEvent(this.config.onOkEvent);
   }
 }

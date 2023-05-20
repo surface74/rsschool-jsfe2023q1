@@ -1,0 +1,21 @@
+@import '../styles/abstracts/variables';
+
+.size-selector {
+  display: flex;
+  flex-direction: column;
+  row-gap: $space-vertical;
+  align-items: flex-start;
+}
+
+.size-selector__label {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-large;
+}
+
+.size-selector__input {
+  margin-right: $space-horizontal;
+  height: 3*$space-vertical;
+}
+
+
