@@ -4,4 +4,5 @@ export default {
   Marked: 2,
   Mine: 3,
   Explosion: 4,
+  Question: 5,
 };

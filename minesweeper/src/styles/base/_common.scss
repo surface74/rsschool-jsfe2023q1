@@ -51,12 +51,21 @@ body {
   padding-top: 5vh;
 }
 
-section, main, article, aside, header, footer {
+section,
+main,
+article,
+aside,
+header,
+footer {
   display: block;
 }
 
 img {
   display: inline-block;
+}
+
+.hidden {
+  display: none;
 }
 
 /* for test purpose only */

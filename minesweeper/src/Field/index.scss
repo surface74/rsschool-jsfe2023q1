@@ -36,3 +36,9 @@
   background-size: contain;
   font-size: 0;
 }
+
+.field_question {
+  background: url('../assets/image/question.png') no-repeat center, $field-hidden-bgcolor;
+  background-size: contain;
+  font-size: 0;
+}

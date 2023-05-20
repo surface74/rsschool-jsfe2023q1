@@ -3,27 +3,27 @@ import '../styles/base/_common.scss';
 import '../styles/layout/_wrapper.scss';
 import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
-import headerElement from '../Header/index.js';
+import Header from '../Header/index.js';
 import Playground from '../Playground/playground.js';
 import Field from '../Field/index.js';
 import statisticsElement from '../Statistics/index.js';
 import footerElement from '../Footer/index.js';
 import NewGame from '../NewGame/index.js';
+import Events from '../utils/events.js';
 
 export default class Game {
   constructor() {
     this.playground = new Playground();
     this.field = new Field();
-    this.winEvent = new Event('win', { bubbles: true });
-    this.loseEvent = new Event('lose', { bubbles: true });
-    this.pauseEvent = new Event('pause', { bubbles: true });
+    this.Events = new Events();
   }
 
   init(size, mines) {
     this.playground.init(size, mines);
-    this.newGame = new NewGame(mines);
+    this.header = new Header();
+    this.newGame = new NewGame({ size, mines, onOkEvent: this.Events.NEWGAME });
 
-    document.body.append(headerElement);
+    document.body.append(this.header.getElement());
     document.body.append(statisticsElement);
     document.body.append(this.playground.element);
     document.body.append(footerElement);
@@ -34,6 +34,18 @@ export default class Game {
     document.body.addEventListener('win', this.onWin.bind(this));
     document.body.addEventListener('lose', this.onLose.bind(this));
     document.body.addEventListener('pause', this.onPause.bind(this));
+    document.body.addEventListener('newgame', this.onNewGame.bind(this));
+
+    this.header.buttonNewGame.addEventListener('click', this.showNewGamePopup.bind(this));
+  }
+
+  showNewGamePopup() {
+    this.newGame.getElement().classList.remove('popup_hidden');
+  }
+
+  onNewGame() {
+    const { mines, size } = this.newGame.getConfig();
+    this.init(size, mines);
   }
 
   onPlaygroundRightClick(e) {
@@ -48,9 +60,11 @@ export default class Game {
     if (state === STATE.Hidden) {
       this.changeFieldState(field, content, STATE.Marked);
       if (this.playground.isWinPosition()) {
-        document.body.dispatchEvent(this.winEvent);
+        document.body.dispatchEvent(this.Events.WIN);
       }
     } else if (state === STATE.Marked) {
+      this.changeFieldState(field, content, STATE.Question);
+    } else if (state === STATE.Question) {
       this.changeFieldState(field, content, STATE.Hidden);
     }
   }
@@ -71,7 +85,7 @@ export default class Game {
     if (state === STATE.Hidden) {
       if (content >= CONTENT.Mine) {
         this.changeFieldState(field, content, STATE.Explosion);
-        document.body.dispatchEvent(this.loseEvent);
+        document.body.dispatchEvent(this.Events.LOSE);
         return;
       }
 
@@ -81,7 +95,7 @@ export default class Game {
       }
 
       if (this.playground.isWinPosition()) {
-        document.body.dispatchEvent(this.winEvent);
+        document.body.dispatchEvent(this.Events.WIN);
       }
     }
   }

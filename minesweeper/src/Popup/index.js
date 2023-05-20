@@ -4,9 +4,11 @@ import HtmlHelper from '../utils/html-helper.js';
 
 const Popup = ({ htmlElement, className = null }) => {
   const popupElement = HtmlHelper.ElementFromHTML(PopupHtml);
+
+  popupElement.addEventListener('wheel', (e) => e.preventDefault());
   popupElement.addEventListener('click', (e) => {
     if (e.target === popupElement) {
-      popupElement.replaceWith('');
+      popupElement.classList.add('popup_hidden');
     }
   });
 

@@ -10,12 +10,15 @@
 .mine-selector__caption {
   display: flex;
   justify-content: center;
-  font-size: $font-size-medium;
+  font-size: $font-size-large;
+}
+
+.mine-selector__input {
+  width: 17rem;
 }
 
 .mine-selector__value {
   color: $color-counter-value;
-  font-size: $counter-font-size;
+  font-size: $font-size-large;
   font-weight: 700;
 }
-
