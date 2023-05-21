@@ -14,3 +14,21 @@
   background-color: $color-popup-bg;
   backdrop-filter: blur(4px);
 }
+
+
+.popup__title {
+  font-size: 4rem;
+  text-align: center;
+  color: $color-win-message;
+}
+
+.popup__title_win {
+  font-size: 4rem;
+  text-align: center;
+  color: $color-win-message;
+}
+
+.popup__title_lose {
+  font-size: 10rem;
+  color: $color-win-message;
+}

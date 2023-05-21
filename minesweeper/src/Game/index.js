@@ -3,12 +3,15 @@ import '../styles/base/_common.scss';
 import '../styles/layout/_wrapper.scss';
 import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
+import Popup from '../Popup/index.js';
 import Header from '../Header/index.js';
 import Playground from '../Playground/playground.js';
 import Field from '../Field/index.js';
 import Statistics from '../Statistics/index.js';
 import Footer from '../Footer/index.js';
 import Events from '../utils/events.js';
+import messages from '../utils/messages.js';
+import HtmlHelper from '../utils/html-helper.js';
 
 export default class Game {
   constructor() {
@@ -17,6 +20,7 @@ export default class Game {
     this.events = new Events();
     this.statistics = new Statistics();
     this.footer = new Footer();
+    this.sound = this.footer.sound;
   }
 
   init(size, mines) {
@@ -161,6 +165,15 @@ export default class Game {
   onWin() {
     console.log('winRound');
     this.openPlayground();
+    // TODO: create the win popup
+    const message = HtmlHelper.CreateElement({
+      text: messages.winRound,
+      attr: { class: '.popup__title_win popup__title' },
+    });
+    const popup = Popup({ htmlElement: message });
+    document.body.append(popup);
+
+    this.sound.audioWin.play();
   }
 
   onLose() {
