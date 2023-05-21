@@ -23,10 +23,11 @@ export default class Counter {
   }
 
   get value() {
-    return this.querySelector('.counter__value').textContent;
+    const value = this.element.querySelector('.counter__value').textContent;
+    return (Number.isFinite(+value)) ? +value : value;
   }
 
   set value(value) {
-    this.querySelector('.counter__value').textContent = value;
+    this.element.querySelector('.counter__value').textContent = value;
   }
 }

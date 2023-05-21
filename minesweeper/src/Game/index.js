@@ -88,6 +88,7 @@ export default class Game {
 
     const { state, content } = this.playground.getFieldData(fieldId);
     if (state === STATE.Hidden) {
+      this.addStep();
       if (content >= CONTENT.Mine) {
         this.changeFieldState(field, content, STATE.Explosion);
         document.body.dispatchEvent(this.events.getEvent(this.events.ID.LOSE));
@@ -103,6 +104,10 @@ export default class Game {
         document.body.dispatchEvent(this.events.getEvent(this.events.ID.WIN));
       }
     }
+  }
+
+  addStep() {
+    this.statistics.counterSteps.value += 1;
   }
 
   openHeighbors(field) {
