@@ -62,12 +62,14 @@ export default class Game {
     const { state, content } = this.playground.getFieldData(fieldId);
     switch (state) {
       case STATE.Hidden:
+        this.incrementFlag();
         this.changeFieldState(field, content, STATE.Marked);
         if (this.playground.isWinPosition()) {
           document.body.dispatchEvent(this.events.getEvent(this.events.ID.WIN));
         }
         break;
       case STATE.Marked:
+        this.decrementFlag();
         this.changeFieldState(field, content, STATE.Question);
         break;
       case STATE.Question:
@@ -92,7 +94,7 @@ export default class Game {
 
     const { state, content } = this.playground.getFieldData(fieldId);
     if (state === STATE.Hidden) {
-      this.addStep();
+      this.incrementStep();
       if (content >= CONTENT.Mine) {
         this.changeFieldState(field, content, STATE.Explosion);
         document.body.dispatchEvent(this.events.getEvent(this.events.ID.LOSE));
@@ -110,8 +112,18 @@ export default class Game {
     }
   }
 
-  addStep() {
+  incrementStep() {
     this.statistics.counterSteps.value += 1;
+  }
+
+  incrementFlag() {
+    this.statistics.counterFlags.value += 1;
+    this.statistics.counterMines.value -= 1;
+  }
+
+  decrementFlag() {
+    this.statistics.counterFlags.value -= 1;
+    this.statistics.counterMines.value += 1;
   }
 
   openHeighbors(field) {
@@ -156,6 +168,7 @@ export default class Game {
 
   startRound(fieldId) {
     this.playground.initMines(+fieldId);
+    this.statistics.counterMines.value = this.playground.mines.length;
     // TODO Reset && Start clock
     // TODO Reset StepCounter
     // Enable button Pause & Save
@@ -177,6 +190,7 @@ export default class Game {
     this.sound.audioWin.play();
 
     // TODO: show result table
+    // TODO: stop timer
   }
 
   onLose() {
@@ -191,7 +205,8 @@ export default class Game {
 
     this.sound.audioLose.play();
 
-    // TODO: show result table
+    // TODO:
+    // stop timer
   }
 
   onPause() {
