@@ -52,10 +52,14 @@ export default class Game {
     if (!e.target.classList.contains('field')) {
       return;
     }
+
     const field = e.target;
     const fieldId = +field.dataset.id;
 
     const { state, content } = this.playground.getFieldData(fieldId);
+    if (state !== STATE.Open) {
+      this.playSound(this.sound.audioFlag);
+    }
     switch (state) {
       case STATE.Hidden:
         this.incrementFlag();
@@ -81,6 +85,8 @@ export default class Game {
       return;
     }
 
+    this.playSound(this.sound.audioStep);
+
     const field = e.target;
     const fieldId = +field.dataset.id;
 
@@ -105,6 +111,12 @@ export default class Game {
       if (this.playground.isWinPosition()) {
         document.body.dispatchEvent(this.events.getEvent(this.events.ID.WIN));
       }
+    }
+  }
+
+  playSound(audio) {
+    if (this.sound.soundOn) {
+      audio.play();
     }
   }
 
@@ -188,6 +200,7 @@ export default class Game {
 
   onWin() {
     this.timer.stop();
+    this.playSound(this.sound.audioWin);
     this.openPlayground();
     const message = messages.winRound
       .replace('%1', this.statistics.counterTime.value)
@@ -199,13 +212,12 @@ export default class Game {
     const popup = Popup({ htmlElement: messageElement });
     document.body.append(popup);
 
-    this.sound.audioWin.play();
-
     // TODO: show result table
   }
 
   onLose() {
     this.timer.stop();
+    this.playSound(this.sound.audioLose);
     this.openPlayground();
 
     const message = HtmlHelper.CreateElement({
@@ -214,8 +226,6 @@ export default class Game {
     });
     const popup = Popup({ htmlElement: message });
     document.body.append(popup);
-
-    this.sound.audioLose.play();
   }
 
   // onPause() {
