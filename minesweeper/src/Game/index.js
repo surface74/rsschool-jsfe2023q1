@@ -1,5 +1,6 @@
 import '../styles/base/_normalize.scss';
 import '../styles/base/_common.scss';
+import '../styles/themes/_theme-dark.scss';
 import '../styles/layout/_wrapper.scss';
 import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
