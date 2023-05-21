@@ -21,6 +21,7 @@ export default class Game {
     this.statistics = new Statistics();
     this.footer = new Footer();
     this.sound = this.footer.sound;
+    this.timer = this.statistics.counterTime;
   }
 
   init(size, mines) {
@@ -38,17 +39,12 @@ export default class Game {
     this.playground.element.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
     document.body.addEventListener(this.events.ID.WIN, this.onWin.bind(this));
     document.body.addEventListener(this.events.ID.LOSE, this.onLose.bind(this));
-    document.body.addEventListener(this.events.ID.PAUSE, this.onPause.bind(this));
+    // document.body.addEventListener(this.events.ID.PAUSE, this.onPause.bind(this));
     document.body.addEventListener(this.events.ID.NEWGAME, this.onNewGame.bind(this));
   }
 
   static clearBody() {
     document.body.replaceWith(document.createElement('body'));
-  }
-
-  onNewGame(e) {
-    const { mines, size } = e.detail;
-    this.init(size, mines);
   }
 
   onPlaygroundRightClick(e) {
@@ -166,16 +162,27 @@ export default class Game {
     }
   }
 
+  onNewGame(e) {
+    const { mines, size } = e.detail;
+    this.init(size, mines);
+    this.statistics.counterMines.value = 0;
+    this.statistics.counterSteps.value = 0;
+    this.statistics.counterFlags.value = 0;
+    this.timer.reset();
+  }
+
   startRound(fieldId) {
     this.playground.initMines(+fieldId);
     this.statistics.counterMines.value = this.playground.mines.length;
-    // TODO Reset && Start clock
-    // TODO Reset StepCounter
+    this.statistics.counterSteps.value = 0;
+    this.timer.reset();
+    this.timer.start();
     // Enable button Pause & Save
     // Disable button Restore
   }
 
   onWin() {
+    this.timer.stop();
     this.openPlayground();
     const message = messages.winRound
       .replace('%1', this.statistics.counterTime.value)
@@ -190,10 +197,10 @@ export default class Game {
     this.sound.audioWin.play();
 
     // TODO: show result table
-    // TODO: stop timer
   }
 
   onLose() {
+    this.timer.stop();
     this.openPlayground();
 
     const message = HtmlHelper.CreateElement({
@@ -204,14 +211,12 @@ export default class Game {
     document.body.append(popup);
 
     this.sound.audioLose.play();
-
-    // TODO:
-    // stop timer
   }
 
-  onPause() {
-    console.log('pauseRound');
-    // TODO: hide board
-    // stop clock
-  }
+  // onPause() {
+  //   console.log('pauseRound');
+  //   this.timer.stop();
+  //   // TODO: hide board
+  //   // stop clock
+  // }
 }

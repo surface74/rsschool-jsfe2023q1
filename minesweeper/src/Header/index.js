@@ -14,7 +14,7 @@ export default class Header {
     });
     this.buttonRestore = Button({ title: 'Restore', className: 'button-restore' });
     this.buttonSave = Button({ title: 'Save', className: 'button-save' });
-    this.buttonPause = Button({ title: 'Pause', className: 'button-pause' });
+    // this.buttonPause = Button({ title: 'Pause', className: 'button-pause' });
     this.buttonResults = Button({ title: 'Top 10', className: 'button-results' });
     this.newGame = new NewGame();
     this.init();
@@ -24,7 +24,7 @@ export default class Header {
     this.element.append(this.buttonNewGame);
     this.element.append(this.buttonRestore);
     this.element.append(this.buttonSave);
-    this.element.append(this.buttonPause);
+    // this.element.append(this.buttonPause);
     this.element.append(this.buttonResults);
   }
 
