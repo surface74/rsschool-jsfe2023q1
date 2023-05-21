@@ -5,8 +5,13 @@ export default class Timer {
     this.intervalID = null;
     this.startTime = null;
     this.passedTime = 0;
+    this.resumedTime = 0;
     this.element = new Counter({ title: 'Time', className: 'counter-time' });
     this.element.value = '00:00';
+  }
+
+  restoreState(savedTime) {
+    this.resumedTime = savedTime;
   }
 
   getElement() {
@@ -14,7 +19,7 @@ export default class Timer {
   }
 
   get value() {
-    return Math.trunc(this.passedTime / 1000);
+    return this.passedTime;
   }
 
   set value(value) {
@@ -27,6 +32,7 @@ export default class Timer {
       this.intervalID = 0;
       this.startTime = null;
       this.passedTime = 0;
+      this.resumedTime = 0;
       this.value = this.toString();
     }
   }
@@ -35,7 +41,7 @@ export default class Timer {
     this.startTime = Date.now();
     this.intervalID = setInterval(
       () => {
-        this.passedTime = Date.now() - this.startTime;
+        this.passedTime = Date.now() - this.startTime + this.resumedTime;
         this.value = this.toString();
       }, 1000);
   }
@@ -43,7 +49,6 @@ export default class Timer {
   stop() {
     if (this.intervalID) {
       clearInterval(this.intervalID);
-      // this.passedTime = Date.now() - this.startTime;
     }
   }
 

@@ -12,6 +12,7 @@ import Footer from '../Footer/index.js';
 import Events from '../utils/events.js';
 import messages from '../utils/messages.js';
 import HtmlHelper from '../utils/html-helper.js';
+import State from '../utils/state.js';
 
 export default class Game {
   constructor() {
@@ -39,8 +40,67 @@ export default class Game {
     this.playground.element.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
     document.body.addEventListener(this.events.ID.WIN, this.onWin.bind(this));
     document.body.addEventListener(this.events.ID.LOSE, this.onLose.bind(this));
-    // document.body.addEventListener(this.events.ID.PAUSE, this.onPause.bind(this));
     document.body.addEventListener(this.events.ID.NEWGAME, this.onNewGame.bind(this));
+    this.header.buttonSave.addEventListener('click', this.onSaveState.bind(this));
+    this.header.buttonRestore.addEventListener('click', this.onRestoreState.bind(this));
+
+    this.checkStorage();
+  }
+
+  checkStorage() {
+    if (State.RestoreState()) {
+      this.enableRestore();
+    }
+  }
+
+  enableRestore() {
+    this.header.buttonRestore.classList.remove('button_disabled');
+  }
+
+  enableSave() {
+    this.header.buttonSave.classList.remove('button_disabled');
+  }
+
+  disableSave() {
+    this.header.buttonSave.classList.add('button_disabled');
+  }
+
+  onRestoreState() {
+    const {
+      fields, steps, time, sound, results
+    } = State.RestoreState();
+
+    this.timer.stop();
+    this.statistics.counterSteps.value = steps;
+    this.sound.restoreState(sound);
+    this.playground.restoreState(fields);
+    this.restorePlayground();
+    this.timer.restoreState(time);
+    this.timer.start();
+  }
+
+  restorePlayground() {
+    const fields = Array.from(this.playground.element.querySelectorAll('.field'));
+    for (let i = 0; i < fields.length; i += 1) {
+      const field = fields[i];
+      const { state, content } = this.playground.getFieldData(+field.dataset.id);
+      this.changeFieldState(field, content, state, true);
+    }
+    this.statistics.counterFlags.value = this.playground.markedField;
+    this.statistics.counterMines.value = this.playground.mines.length - this.playground.markedField;
+  }
+
+  onSaveState() {
+    const state = {
+      fields: this.playground.fields,
+      steps: this.statistics.counterSteps.value,
+      time: this.timer.value,
+      sound: this.sound.soundOn,
+      result: {},
+    };
+
+    State.SaveState(JSON.stringify(state));
+    this.enableRestore();
   }
 
   static clearBody() {
@@ -152,8 +212,10 @@ export default class Game {
     }
   }
 
-  changeFieldState(field, content, state) {
-    this.playground.setFieldState(+field.dataset.id, state);
+  changeFieldState(field, content, state, restoreMode) {
+    if (!restoreMode) {
+      this.playground.setFieldState(+field.dataset.id, state);
+    }
     const newField = this.field.getElement(state, +field.dataset.id);
     newField.textContent = content || '';
 
@@ -194,8 +256,6 @@ export default class Game {
     this.statistics.counterSteps.value = 0;
     this.timer.reset();
     this.timer.start();
-    // Enable button Pause & Save
-    // Disable button Restore
   }
 
   onWin() {
@@ -203,7 +263,7 @@ export default class Game {
     this.playSound(this.sound.audioWin);
     this.openPlayground();
     const message = messages.winRound
-      .replace('%1', this.statistics.counterTime.value)
+      .replace('%1', Math.trunc(this.timer.value / 1000))
       .replace('%2', this.statistics.counterSteps.value);
     const messageElement = HtmlHelper.CreateElement({
       text: message,
@@ -227,11 +287,4 @@ export default class Game {
     const popup = Popup({ htmlElement: message });
     document.body.append(popup);
   }
-
-  // onPause() {
-  //   console.log('pauseRound');
-  //   this.timer.stop();
-  //   // TODO: hide board
-  //   // stop clock
-  // }
 }

@@ -12,9 +12,8 @@ export default class Header {
       title: 'New game',
       className: 'button-start',
     });
-    this.buttonRestore = Button({ title: 'Restore', className: 'button-restore' });
+    this.buttonRestore = Button({ title: 'Restore', className: 'button_disabled button-restore' });
     this.buttonSave = Button({ title: 'Save', className: 'button-save' });
-    // this.buttonPause = Button({ title: 'Pause', className: 'button-pause' });
     this.buttonResults = Button({ title: 'Top 10', className: 'button-results' });
     this.newGame = new NewGame();
     this.init();

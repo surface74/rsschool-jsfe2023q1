@@ -25,4 +25,9 @@ export default class Sound {
   getElement() {
     return this.element;
   }
+
+  restoreState(checked) {
+    const checkbox = this.element.querySelector('.sound__switch');
+    checkbox.checked = checked;
+  }
 }

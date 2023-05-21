@@ -20,6 +20,30 @@ export default class Playground {
     this.fillPlaygroundElement(this.element);
   }
 
+  restoreState(fields) {
+    Object.assign(this.fields, fields);
+
+    this.size = this.fields.length;
+
+    this.mines.length = 0;
+    this.openedField = 0;
+    this.markedField = 0;
+    this.mines = fields
+      .flat()
+      .filter(({ state, content }) => {
+        if (state === STATE.Open) {
+          this.openedField += 1;
+        }
+        if (state === STATE.Marked) {
+          this.markedField += 1;
+        }
+        return content >= CONTENT.Mine;
+      })
+      .map(({ id }) => this.getPosition(id));
+
+    this.minesCount = this.mines.length;
+  }
+
   initContent() {
     for (let i = 0; i < this.size; i += 1) {
       this.fields.push(Array.from({ length: this.size })
