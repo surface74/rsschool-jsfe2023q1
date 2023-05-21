@@ -8,7 +8,7 @@ const Popup = ({ htmlElement, className = null }) => {
   popupElement.addEventListener('wheel', (e) => e.preventDefault());
   popupElement.addEventListener('click', (e) => {
     if (e.target === popupElement) {
-      popupElement.classList.add('popup_hidden');
+      popupElement.replaceWith('');
     }
   });
 

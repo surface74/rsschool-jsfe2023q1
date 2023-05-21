@@ -1,24 +1,21 @@
 export default class Events {
   constructor() {
-    this.winEvent = new Event('win', { bubbles: true });
-    this.loseEvent = new Event('lose', { bubbles: true });
-    this.pauseEvent = new Event('pause', { bubbles: true });
-    this.newGameEvent = new Event('newgame', { bubbles: true });
+    this.ID = {
+      NEWGAME: 'newgame',
+      WIN: 'win',
+      LOSE: 'lose',
+      PAUSE: 'pause',
+    };
   }
 
-  get WIN() {
-    return this.winEvent;
-  }
-
-  get LOSE() {
-    return this.loseEvent;
-  }
-
-  get PAUSE() {
-    return this.pauseEvent;
-  }
-
-  get NEWGAME() {
-    return this.newGameEvent;
+  getEvent(idEvent, value) {
+    const events = Array.from(Object.entries(this.ID));
+    for (let i = 0; i < events.length; i += 1) {
+      const [, event] = events[i];
+      if (event === idEvent) {
+        return new CustomEvent(idEvent, { bubbles: true, detail: value });
+      }
+    }
+    return null;
   }
 }
