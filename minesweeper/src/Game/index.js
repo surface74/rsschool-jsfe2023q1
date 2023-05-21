@@ -144,6 +144,11 @@ export default class Game {
     this.playground.setFieldState(+field.dataset.id, state);
     const newField = this.field.getElement(state, +field.dataset.id);
     newField.textContent = content || '';
+
+    if (content && state === STATE.Open) {
+      Field.setColor(newField, content);
+    }
+
     field.replaceWith(newField);
   }
 

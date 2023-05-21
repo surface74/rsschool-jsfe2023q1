@@ -36,4 +36,8 @@ export default class Field {
 
     return field;
   }
+
+  static setColor(field, numberMines) {
+    field.classList.add(`field_mines${numberMines}`);
+  }
 }
