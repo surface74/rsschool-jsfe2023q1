@@ -14,6 +14,7 @@
 }
 
 .size-selector__input {
+  transform: scale($input-scale);
   margin-right: $space-horizontal;
   height: 3*$space-vertical;
 }

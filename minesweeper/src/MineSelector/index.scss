@@ -14,7 +14,8 @@
 }
 
 .mine-selector__input {
-  width: 17rem;
+  transform: scale($input-scale);
+  width: 15rem;
 }
 
 .mine-selector__value {

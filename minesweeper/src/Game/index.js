@@ -6,7 +6,7 @@ import CONTENT from '../Field/const-content.js';
 import Header from '../Header/index.js';
 import Playground from '../Playground/playground.js';
 import Field from '../Field/index.js';
-import statisticsElement from '../Statistics/index.js';
+import Statistics from '../Statistics/index.js';
 import footerElement from '../Footer/index.js';
 import Events from '../utils/events.js';
 
@@ -15,6 +15,7 @@ export default class Game {
     this.playground = new Playground();
     this.field = new Field();
     this.events = new Events();
+    this.statistics = new Statistics();
   }
 
   init(size, mines) {
@@ -24,7 +25,7 @@ export default class Game {
 
     Game.clearBody();
     document.body.append(this.header.getElement());
-    document.body.append(statisticsElement);
+    document.body.append(this.statistics.getElement());
     document.body.append(this.playground.element);
     document.body.append(footerElement);
 

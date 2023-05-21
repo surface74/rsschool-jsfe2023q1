@@ -3,7 +3,7 @@
 .statistics {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-bottom: $space-vertical;
-  column-gap: $space-horizontal;
+  justify-content: space-between;
+  margin-bottom: 2*$space-vertical;
+  width: fit-content;
 }

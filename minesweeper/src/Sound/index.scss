@@ -6,7 +6,12 @@
 }
 
 .sound__label {
-  margin-left: 5px;
-  font-size: $button-font-size;
-  color: $color-button-text;
+  display: flex;
+  align-items: center;
+  font-size: $font-size-large;
+}
+
+.sound__switch {
+  transform: scale($input-scale);
+  margin-left: $space-horizontal;
 }
