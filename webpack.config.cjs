@@ -68,6 +68,10 @@ module.exports = ({ develop }) => ({
         {
           from: './minesweeper/public',
         },
+        {
+          from: './minesweeper/src/assets/audio',
+          to: './assets/audio',
+        },
       ],
     }),
     new MiniCssExtractPlugin({

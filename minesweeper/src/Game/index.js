@@ -7,7 +7,7 @@ import Header from '../Header/index.js';
 import Playground from '../Playground/playground.js';
 import Field from '../Field/index.js';
 import Statistics from '../Statistics/index.js';
-import footerElement from '../Footer/index.js';
+import Footer from '../Footer/index.js';
 import Events from '../utils/events.js';
 
 export default class Game {
@@ -16,6 +16,7 @@ export default class Game {
     this.field = new Field();
     this.events = new Events();
     this.statistics = new Statistics();
+    this.footer = new Footer();
   }
 
   init(size, mines) {
@@ -27,7 +28,7 @@ export default class Game {
     document.body.append(this.header.getElement());
     document.body.append(this.statistics.getElement());
     document.body.append(this.playground.element);
-    document.body.append(footerElement);
+    document.body.append(this.footer.getElement());
 
     this.playground.element.addEventListener('click', this.onPlaygroundClick.bind(this));
     this.playground.element.addEventListener('contextmenu', this.onPlaygroundRightClick.bind(this));
