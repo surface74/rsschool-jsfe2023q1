@@ -19,8 +19,10 @@ export default class Game {
 
   init(size, mines) {
     this.playground.init(size, mines);
+
     this.header = new Header();
 
+    Game.clearBody();
     document.body.append(this.header.getElement());
     document.body.append(statisticsElement);
     document.body.append(this.playground.element);
@@ -32,6 +34,10 @@ export default class Game {
     document.body.addEventListener(this.events.ID.LOSE, this.onLose.bind(this));
     document.body.addEventListener(this.events.ID.PAUSE, this.onPause.bind(this));
     document.body.addEventListener(this.events.ID.NEWGAME, this.onNewGame.bind(this));
+  }
+
+  static clearBody() {
+    document.body.replaceWith(document.createElement('body'));
   }
 
   onNewGame(e) {

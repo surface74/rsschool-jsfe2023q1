@@ -2,10 +2,11 @@ import STATE from '../Field/const-state.js';
 import CONTENT from '../Field/const-content.js';
 import SIZE from './const-size.js';
 import Field from '../Field/index.js';
-import Element from './index.js';
+import PlaygroundElement from './index.js';
 
 export default class Playground {
   init(size, minesCount) {
+    this.element = PlaygroundElement.getElement();
     this.field = new Field();
     this.size = size;
     this.minesCount = minesCount;
@@ -13,9 +14,9 @@ export default class Playground {
     this.mines = [];
     this.openedField = 0;
     this.markedField = 0;
-    this.initContent();
 
-    this.element = this.getResizedElement(Element);
+    this.initContent();
+    this.getResizedElement();
     this.fillPlaygroundElement(this.element);
   }
 
@@ -30,6 +31,20 @@ export default class Playground {
     }
   }
 
+  getResizedElement() {
+    switch (this.size) {
+      case SIZE.Medium:
+        this.element.classList.add('playground_medium');
+        break;
+      case SIZE.Hard:
+        this.element.classList.add('playground_hard');
+        break;
+      default:
+        this.element.classList.add('playground_easy');
+        break;
+    }
+  }
+
   initMines(excludeId) {
     for (let i = 0; i < this.minesCount; i += 1) {
       const random = this.getExcludeRandom(0, this.fields.length ** 2 - 1, +excludeId);
@@ -41,21 +56,6 @@ export default class Playground {
     this.countMineNeighbors();
     this.openedField = 0;
     this.markedField = 0;
-  }
-
-  getResizedElement(element) {
-    switch (this.size) {
-      case SIZE.Medium:
-        element.classList.add('playground_medium');
-        break;
-      case SIZE.Hard:
-        element.classList.add('playground_hard');
-        break;
-      default:
-        element.classList.add('playground_easy');
-        break;
-    }
-    return element;
   }
 
   fillPlaygroundElement(element) {
