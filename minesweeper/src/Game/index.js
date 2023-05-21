@@ -163,22 +163,35 @@ export default class Game {
   }
 
   onWin() {
-    console.log('winRound');
     this.openPlayground();
-    // TODO: create the win popup
+    const message = messages.winRound
+      .replace('%1', this.statistics.counterTime.value)
+      .replace('%2', this.statistics.counterSteps.value);
+    const messageElement = HtmlHelper.CreateElement({
+      text: message,
+      attr: { class: 'popup__title_win popup__title' },
+    });
+    const popup = Popup({ htmlElement: messageElement });
+    document.body.append(popup);
+
+    this.sound.audioWin.play();
+
+    // TODO: show result table
+  }
+
+  onLose() {
+    this.openPlayground();
+
     const message = HtmlHelper.CreateElement({
-      text: messages.winRound,
-      attr: { class: '.popup__title_win popup__title' },
+      text: messages.loseRound,
+      attr: { class: 'popup__title_lose popup__title' },
     });
     const popup = Popup({ htmlElement: message });
     document.body.append(popup);
 
-    this.sound.audioWin.play();
-  }
+    this.sound.audioLose.play();
 
-  onLose() {
-    console.log('loseRound');
-    this.openPlayground();
+    // TODO: show result table
   }
 
   onPause() {

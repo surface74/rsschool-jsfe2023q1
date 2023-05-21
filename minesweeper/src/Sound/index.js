@@ -6,7 +6,7 @@ export default class Sound {
   constructor() {
     this.audioStep = new Audio('./assets/audio/step.mp3');
     this.audioWin = new Audio('./assets/audio/win.mp3');
-    this.audioExplosion = new Audio('./assets/audio/explosion.mp3');
+    this.audioLose = new Audio('./assets/audio/lose.mp3');
     this.init();
   }
 
