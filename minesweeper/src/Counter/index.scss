@@ -16,6 +16,7 @@
   border: 1px solid $color-button-border;
   padding: calc($padding / 2) $padding;
   color: $color-counter-value;
+  min-height: 3rem;
   font-size: $counter-font-size;
   font-weight: 700;
 }

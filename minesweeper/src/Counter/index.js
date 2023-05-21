@@ -2,15 +2,31 @@ import './index.scss';
 import CounterHtml from './index.html';
 import HtmlHelper from '../utils/html-helper.js';
 
-const Counter = ({ title, className = null }) => {
-  const element = HtmlHelper.ElementFromHTML(CounterHtml);
-
-  element.querySelector('.counter__title').innerHTML = title;
-  if (className) {
-    className.split(' ').forEach((c) => element.classList.add(c));
+export default class Counter {
+  constructor({ title, className = null }) {
+    this.title = title;
+    this.className = className;
+    this.init();
   }
 
-  return element;
-};
+  init() {
+    this.element = HtmlHelper.ElementFromHTML(CounterHtml);
 
-export default Counter;
+    this.element.querySelector('.counter__title').innerHTML = this.title;
+    if (this.className) {
+      this.className.split(' ').forEach((c) => this.element.classList.add(c));
+    }
+  }
+
+  getElement() {
+    return this.element;
+  }
+
+  get value() {
+    return this.querySelector('.counter__value').textContent;
+  }
+
+  set value(value) {
+    this.querySelector('.counter__value').textContent = value;
+  }
+}

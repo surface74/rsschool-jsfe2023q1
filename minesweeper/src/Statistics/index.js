@@ -5,19 +5,19 @@ import Counter from '../Counter/index.js';
 
 export default class Statistics {
   constructor() {
-    this.counterMines = Counter({ title: 'Mines', className: 'counter-mines' });
-    this.counterFlags = Counter({ title: 'Mines', className: 'counter-flags' });
-    this.counterSteps = Counter({ title: 'Mines', className: 'counter-steps' });
-    this.counterTime = Counter({ title: 'Mines', className: 'counter-time' });
+    this.counterMines = new Counter({ title: 'Mines', className: 'counter-mines' });
+    this.counterFlags = new Counter({ title: 'Flags', className: 'counter-flags' });
+    this.counterSteps = new Counter({ title: 'Steps', className: 'counter-steps' });
+    this.counterTime = new Counter({ title: 'Time', className: 'counter-time' });
     this.init();
   }
 
   init() {
     this.element = HtmlHelper.ElementFromHTML(StatisticsHtml);
-    this.element.append(this.counterMines);
-    this.element.append(this.counterFlags);
-    this.element.append(this.counterSteps);
-    this.element.append(this.counterTime);
+    this.element.append(this.counterMines.getElement());
+    this.element.append(this.counterFlags.getElement());
+    this.element.append(this.counterSteps.getElement());
+    this.element.append(this.counterTime.getElement());
   }
 
   getElement() {
