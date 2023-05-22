@@ -7,7 +7,7 @@ const Button = ({ onClick = null, title, className = null }) => {
   if (onClick) {
     element.addEventListener('click', onClick);
   }
-  element.innerHTML = title;
+  element.innerHTML = title || '';
   if (className) {
     className.split(' ').forEach((c) => element.classList.add(c));
   }

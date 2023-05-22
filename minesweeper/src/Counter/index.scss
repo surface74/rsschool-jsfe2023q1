@@ -8,6 +8,7 @@
 }
 
 .counter__title {
+  color: $counter-color-text;
   font-size: $counter-font-size;
   font-weight: 700;
 }
@@ -22,4 +23,15 @@
   font-size: $counter-font-size;
   font-weight: 700;
   border-radius: 5px;
+}
+
+.theme_dark {
+  .counter__title {
+    color: $theme-dark-counter-color-text;
+  }
+
+  .counter__value {
+    border: 1px solid $theme-dark-color-counter-border;
+    color: $theme-dark-color-counter-value;
+  }
 }

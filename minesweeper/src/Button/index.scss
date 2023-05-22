@@ -38,3 +38,42 @@
   background: transparent;
   pointer-events: none;
 }
+
+.button_theme {
+  background: url('../assets/image/moon.png') no-repeat center;
+  min-width: 3rem;
+  background-size: contain;
+
+  &:hover {
+    border-color: $color-button-hover-border;
+    background: url('../assets/image/moon.png') no-repeat center, $color-button-hover;
+    background-size: contain;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.theme_dark {
+  .button {
+    color: $theme-dark-color-button-text;
+  }
+
+  .button_disabled {
+    color: $color-button-disabled-text;
+    border-color: $theme-dark-color-button-disabled-border;
+  }
+
+  .button_theme {
+    background: url('../assets/image/sun.png') no-repeat center;
+    min-width: 3rem;
+    background-size: contain;
+
+    &:hover {
+      border-color: $color-button-hover-border;
+      background: url('../assets/image/sun.png') no-repeat center, $color-button-hover;
+      background-size: contain;
+    }
+  }
+}

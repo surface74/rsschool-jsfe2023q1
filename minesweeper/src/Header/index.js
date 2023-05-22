@@ -23,7 +23,6 @@ export default class Header {
     this.element.append(this.buttonNewGame);
     this.element.append(this.buttonRestore);
     this.element.append(this.buttonSave);
-    // this.element.append(this.buttonPause);
     this.element.append(this.buttonResults);
   }
 

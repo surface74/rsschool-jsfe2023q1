@@ -9,9 +9,16 @@
   display: flex;
   align-items: center;
   font-size: $font-size-large;
+  color: $color-button-text;
 }
 
 .sound__switch {
   transform: scale($input-scale);
-  margin-left: $space-horizontal;
+  margin-right: $space-horizontal;
+}
+
+.theme_dark {
+  .sound__label {
+    color: $theme-dark-color-button-text;
+  }
 }

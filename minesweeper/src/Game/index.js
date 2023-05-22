@@ -44,8 +44,23 @@ export default class Game {
     document.body.addEventListener(this.events.ID.NEWGAME, this.onNewGame.bind(this));
     this.header.buttonSave.addEventListener('click', this.onSaveState.bind(this));
     this.header.buttonRestore.addEventListener('click', this.onRestoreState.bind(this));
+    this.header.buttonResults.addEventListener('click', this.onResults.bind(this));
+    this.footer.buttonTheme.addEventListener('click', () => document.body.classList.toggle('theme_dark'));
 
     this.checkStorage();
+  }
+
+  onResults() {
+    console.log(this.getScore());
+  }
+
+  getScore() {
+    const mines = this.playground.mines.length;
+    const fields = this.playground.size ** 2;
+    const time = this.timer.value;
+    const steps = this.statistics.counterSteps.value;
+
+    return Math.trunc((1e6 * mines * fields) / (steps * time));
   }
 
   checkStorage() {
@@ -68,9 +83,14 @@ export default class Game {
 
   onRestoreState() {
     const {
-      fields, steps, time, sound, results
+      fields, steps, time, sound, results, darkTheme,
     } = State.RestoreState();
 
+    if (darkTheme) {
+      document.body.classList.add('theme_dark');
+    } else {
+      document.body.classList.remove('theme_dark');
+    }
     this.timer.stop();
     this.statistics.counterSteps.value = steps;
     this.sound.restoreState(sound);
@@ -98,6 +118,7 @@ export default class Game {
       time: this.timer.value,
       sound: this.sound.soundOn,
       result: {},
+      darkTheme: document.body.classList.contains('theme_dark'),
     };
 
     State.SaveState(JSON.stringify(state));

@@ -17,22 +17,28 @@ $margin-vertical: 5rem;
 $color-button: #000000;
 $color-button-border: #00cccc;
 $color-button-text: $color-button;
+$theme-dark-color-button-text: #ffffff;
 
 $color-button-hover: #00cccc;
 $color-button-hover-text: $color-button;
 $color-button-hover-border: $color-button-hover;
 
-$color-button-disabled: rgb(128, 128, 128);
+$color-button-disabled: #808080;
 $color-button-disabled-text: $color-button-disabled;
 $color-button-disabled-border: $color-button-disabled;
+$theme-dark-color-button-disabled-border: $color-button-disabled;
 
+$counter-color-text: $color-button-text;
 $color-counter-value: #0000ff;
-$color-counter-border: #0000ff;
+$color-counter-border: $color-counter-value;
+$theme-dark-counter-color-text: $theme-dark-color-button-text;
+$theme-dark-color-counter-value: #add8e6;
+$theme-dark-color-counter-border: $theme-dark-color-counter-value;
+$counter-font-size: $font-size-medium;
+
 
 $color-popup: rgb(179, 179, 179);
 $color-popup-bg: rgba(209, 209, 209, 0.9);
-
-$counter-font-size: $font-size-medium;
 
 $button-size: 5rem;
 $button-font-size: $font-size-medium;
