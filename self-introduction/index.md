@@ -6,6 +6,6 @@
 
   Some times ago I've become passionate the Web Development. It provides you enless possibilities for develope anything you can imagine just in a few lines of code.
 
-  My last project is programm for gathering data from devices which send emails. The goal is to introduce this data to Enterprise level. To reach this purpose I have check
+  My last project is a programm for gathering data from devices which send emails. The goal is to introduce this data to Enterprise level. The task includes: check senders' addresses, email subjects, type of attachments and so on. Then I need to extract data from messages and save them to SQL Server. To solve it I've used NODE.JS by combining 3 modules together. It works perfect but there's one problem - I still can't compile it to executable file.
 
   I believe, that my ability to learn and to gain new skills will lead me through this path of becoming a professional Frontend Developer.
