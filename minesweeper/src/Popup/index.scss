@@ -28,3 +28,9 @@
 .popup__title_lose {
   color: $color-lose-message;
 }
+
+.theme_dark {
+  .popup {
+    background-color: $theme-dark-color-popup-bg;
+  }
+}

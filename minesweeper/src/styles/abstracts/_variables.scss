@@ -45,6 +45,9 @@ $counter-font-size: $font-size-medium;
 
 $color-popup: rgb(179, 179, 179);
 $color-popup-bg: rgba(209, 209, 209, 0.9);
+$theme-dark-color-popup: darken(rgb(179, 179, 179), $darken-amount);
+$theme-dark-color-popup-bg: darken(rgba(209, 209, 209, 0.9), $darken-amount);
+
 
 $button-size: 5rem;
 $button-font-size: $font-size-medium;

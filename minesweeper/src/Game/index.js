@@ -45,15 +45,13 @@ export default class Game {
     document.body.addEventListener(this.events.ID.NEWGAME, this.onNewGame.bind(this));
     this.header.buttonSave.addEventListener('click', this.onSaveState.bind(this));
     this.header.buttonRestore.addEventListener('click', this.onRestoreState.bind(this));
-    this.footer.buttonTheme.addEventListener('click', () => {
-      if (document.body.classList.contains('theme_dark')) { // sometimes method classList.toogle() doesn't work properly
-        document.body.classList.remove('theme_dark');
-      } else {
-        document.body.classList.add('theme_dark');
-      }
-    });
+    this.footer.buttonTheme.addEventListener('click', Game.onToggleTheme);
 
     this.checkStorage();
+  }
+
+  static onToggleTheme() {
+    document.body.classList.toggle('theme_dark');
   }
 
   getScore() {
@@ -87,14 +85,6 @@ export default class Game {
 
   disableSave() {
     this.header.buttonSave.classList.add('button_disabled');
-  }
-
-  onChangeTheme() {
-    if (document.body.classList.contains('theme_dark')) {
-      document.body.classList.remove('theme_dark');
-    } else {
-      document.body.classList.add('theme_dark');
-    }
   }
 
   onRestoreState() {

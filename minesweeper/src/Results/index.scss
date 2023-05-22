@@ -32,3 +32,9 @@
 .results__item {
   list-style-type: none;
 }
+
+.theme_dark {
+  .results {
+    background-color: $theme-dark-color-popup;
+  }
+}

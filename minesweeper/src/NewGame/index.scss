@@ -21,3 +21,9 @@
   color: $color-button;
   font-size: $font-size-largest;
 }
+
+.theme_dark {
+  .new-game {
+    background-color: $theme_dark-color-popup;
+  }
+}
