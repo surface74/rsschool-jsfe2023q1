@@ -1,3 +1,5 @@
+  https://youtu.be/WgUWh6Wy9V0
+
   My name is Siarhei Muliarenka.
   At the current time I'm a debuty of the head of IT department of a chemical plant.
   I manage a team of developers. Our team developes and maintainces a set of programs for ERP. So the base framework is 1C and there're some projects with C#, ASP.NET and JAVA.
