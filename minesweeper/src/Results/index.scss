@@ -1,0 +1,34 @@
+@import '../styles/abstracts/variables.scss';
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  row-gap: 2*$space-vertical;
+  background-color: $color-popup;
+  padding: 2*$space-vertical 5*$space-horizontal;
+  border-radius: 10px;
+
+  & .button:last-child {
+    margin-top: $space-vertical;
+  }
+}
+
+.results__title {
+  color: $color-button;
+  font-size: $font-size-largest;
+}
+
+.results__table {
+  max-width: 500px;
+  font-size: $font-size-large;
+  font-weight: 700;
+  text-align: center;
+}
+
+.results__item {
+  list-style-type: none;
+}

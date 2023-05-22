@@ -3,6 +3,7 @@ import HeaderHtml from './index.html';
 import HtmlHelper from '../utils/html-helper.js';
 import Button from '../Button/index.js';
 import NewGame from '../NewGame/index.js';
+import Results from '../Results/index.js';
 
 export default class Header {
   constructor() {
@@ -14,8 +15,13 @@ export default class Header {
     });
     this.buttonRestore = Button({ title: 'Restore', className: 'button_disabled button-restore' });
     this.buttonSave = Button({ title: 'Save', className: 'button-save' });
-    this.buttonResults = Button({ title: 'Top 10', className: 'button-results' });
+    this.buttonResults = Button({
+      onClick: this.showResultsPopup.bind(this),
+      title: 'Top 10',
+      className: 'button-results',
+    });
     this.newGame = new NewGame();
+    this.results = new Results();
     this.init();
   }
 
@@ -32,5 +38,9 @@ export default class Header {
 
   showNewGamePopup() {
     document.body.append(this.newGame.getElement());
+  }
+
+  showResultsPopup() {
+    document.body.append(this.results.getElement());
   }
 }

@@ -1,9 +1,16 @@
 export default class State {
-  static RestoreState() {
-    return JSON.parse(JSON.parse(localStorage.getItem('minesweeper')));
+  static get STORAGE() {
+    return {
+      Game: 'minesweeper',
+      Results: 'results',
+    };
   }
 
-  static SaveState(state) {
-    localStorage.setItem('minesweeper', JSON.stringify(state));
+  static RestoreState(storageType) {
+    return JSON.parse(JSON.parse(localStorage.getItem(storageType)));
+  }
+
+  static SaveState(storageType, state) {
+    localStorage.setItem(storageType, JSON.stringify(state));
   }
 }

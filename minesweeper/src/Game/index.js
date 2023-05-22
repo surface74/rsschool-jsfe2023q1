@@ -24,12 +24,13 @@ export default class Game {
     this.footer = new Footer();
     this.sound = this.footer.sound;
     this.timer = this.statistics.counterTime;
+
+    this.header = new Header();
+    this.results = this.header.results;
   }
 
   init(size, mines) {
     this.playground.init(size, mines);
-
-    this.header = new Header();
 
     Game.clearBody();
     document.body.append(this.header.getElement());
@@ -44,14 +45,9 @@ export default class Game {
     document.body.addEventListener(this.events.ID.NEWGAME, this.onNewGame.bind(this));
     this.header.buttonSave.addEventListener('click', this.onSaveState.bind(this));
     this.header.buttonRestore.addEventListener('click', this.onRestoreState.bind(this));
-    this.header.buttonResults.addEventListener('click', this.onResults.bind(this));
     this.footer.buttonTheme.addEventListener('click', () => document.body.classList.toggle('theme_dark'));
 
     this.checkStorage();
-  }
-
-  onResults() {
-    console.log(this.getScore());
   }
 
   getScore() {
@@ -64,8 +60,14 @@ export default class Game {
   }
 
   checkStorage() {
-    if (State.RestoreState()) {
+    const saving = State.RestoreState(State.STORAGE.Game);
+    if (saving) {
+      this.results.restoreState(saving.results);
       this.enableRestore();
+    }
+    const results = State.RestoreState(State.STORAGE.Results);
+    if (results) {
+      this.results.restoreState(results);
     }
   }
 
@@ -83,8 +85,8 @@ export default class Game {
 
   onRestoreState() {
     const {
-      fields, steps, time, sound, results, darkTheme,
-    } = State.RestoreState();
+      fields, steps, time, sound, darkTheme,
+    } = State.RestoreState(State.STORAGE.Game);
 
     if (darkTheme) {
       document.body.classList.add('theme_dark');
@@ -117,11 +119,10 @@ export default class Game {
       steps: this.statistics.counterSteps.value,
       time: this.timer.value,
       sound: this.sound.soundOn,
-      result: {},
       darkTheme: document.body.classList.contains('theme_dark'),
     };
 
-    State.SaveState(JSON.stringify(state));
+    State.SaveState(State.STORAGE.Game, JSON.stringify(state));
     this.enableRestore();
   }
 
@@ -227,7 +228,7 @@ export default class Game {
 
       if (state === STATE.Hidden) {
         this.changeFieldState(neighorsField, content || '', STATE.Open);
-        if (!content) { // empty field
+        if (!content) {
           this.openHeighbors(neighorsField);
         }
       }
@@ -294,7 +295,8 @@ export default class Game {
     const popup = Popup({ htmlElement: messageElement });
     document.body.append(popup);
 
-    // TODO: show result table
+    this.results.addResult(this.getScore());
+    State.SaveState(State.STORAGE.Results, JSON.stringify(this.results.list));
   }
 
   onLose() {

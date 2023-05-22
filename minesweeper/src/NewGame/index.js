@@ -36,6 +36,6 @@ export default class NewGame {
     const mines = this.mineSelector.value;
     const size = this.sizeSelector.value;
     this.element.dispatchEvent(this.events.getEvent(this.events.ID.NEWGAME, { mines, size }));
-    this.element.replaceWith(''); // delete popup
+    this.element.replaceWith('');
   }
 }
