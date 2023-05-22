@@ -75,4 +75,41 @@
   color: #ff0000;
 }
 
+.theme_dark {
+  .field {
+    border: 1px solid $theme_dark-field-border-color;
+  }
 
+  .field_hidden {
+    background-color: $theme_dark-field-hidden-bgcolor;
+  }
+
+  .field_open {
+    background-color: $theme_dark-field-open-bgcolor;
+  }
+
+  .field_marked {
+    background: url('../assets/image/flag.png') no-repeat center,  $theme_dark-field-hidden-bgcolor;
+    background-size: contain;
+    font-size: 0;
+  }
+
+  .field_mine {
+    background-color: $theme_dark-field-open-bgcolor;
+    background: url('../assets/image/mine.png') no-repeat center, $theme_dark-field-open-bgcolor;
+    background-size: contain;
+    font-size: 0;
+  }
+
+  .field_explosion {
+    background: url('../assets/image/mine.png') no-repeat center, $theme_dark-field-explosion-bgcolor;
+    background-size: contain;
+    font-size: 0;
+  }
+
+  .field_question {
+    background: url('../assets/image/question.png') no-repeat center, $theme_dark-field-hidden-bgcolor;
+    background-size: contain;
+    font-size: 0;
+  }
+}

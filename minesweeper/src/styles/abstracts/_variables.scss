@@ -2,10 +2,16 @@ $playground-easy: 10;
 $playground-medium: 15;
 $playground-hard: 25;
 
+$darken-amount: 15%;
+
 $field-border-color: #808080;
 $field-hidden-bgcolor: #a9a9a9;
 $field-open-bgcolor: #dfdfdf;
 $field-explosion-bgcolor: #ff0000;
+$theme_dark-field-border-color: darken($field-border-color, $darken-amount);
+$theme_dark-field-hidden-bgcolor: darken($field-hidden-bgcolor, $darken-amount);
+$theme_dark-field-open-bgcolor: darken($field-open-bgcolor, $darken-amount);
+$theme_dark-field-explosion-bgcolor: darken($field-explosion-bgcolor, $darken-amount);
 
 $font-size-small: 1.2rem;
 $font-size-medium: 1.5rem;
