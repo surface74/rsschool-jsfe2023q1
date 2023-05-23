@@ -17,7 +17,7 @@ export default class Header {
     this.buttonSave = Button({ title: 'Save', className: 'button-save' });
     this.buttonResults = Button({
       onClick: this.showResultsPopup.bind(this),
-      title: 'Top 10',
+      title: 'Results',
       className: 'button-results',
     });
     this.newGame = new NewGame();
