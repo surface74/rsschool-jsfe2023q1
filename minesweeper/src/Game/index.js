@@ -59,7 +59,7 @@ export default class Game {
     const fields = this.playground.size ** 2;
     const time = this.timer.value;
 
-    return Math.trunc((10 * mines ** 2) / (fields * time));
+    return Math.trunc((1e8 * mines ** 2) / (fields * time));
   }
 
   checkStorage() {
