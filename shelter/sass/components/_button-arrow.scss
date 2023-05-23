@@ -1,0 +1,63 @@
+button.button-arrow {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  flex-shrink: 0;
+  border: 2px solid $color-primary;
+  border-radius: 50%;
+
+  color: $color-dark-3xl;
+  background-color: transparent;
+  cursor: pointer;
+  background: url("../../assets/icons/arrow.svg") center no-repeat;
+
+  @extend %transition-color;
+
+  &.button-arrow--left {
+    transform: rotate(0deg);
+  }
+
+  &.button-arrow--up {
+    transform: rotate(90deg);
+  }
+
+  &.button-arrow--right {
+    transform: rotate(180deg);
+  }
+
+  &.button-arrow--down {
+    transform: rotate(-90deg);
+  }
+
+  &:hover,
+  &.button-arrow--left:hover,
+  &.button-arrow--up:hover,
+  &.button-arrow--right:hover,
+  &.button-arrow--down:hover {
+    border-color: $color-primary-light;
+    background-color: $color-primary-light;
+  }
+
+  &:active,
+  &.button-arrow--left:active,
+  &.button-arrow--up:active,
+  &.button-arrow--right:active,
+  &.button-arrow--down:active,
+  &.active {
+    color: $color-dark-3xl;
+    border-color: $color-primary;
+    background-color: $color-primary;
+  }
+
+  &:disabled,
+  &.button-arrow--left:disabled,
+  &.button-arrow--up:disabled,
+  &.button-arrow--right:disabled,
+  &.button-arrow--down:disabled {
+    color: $color-dark-s;
+    border-color: $color-dark-s;
+    background: url("../../assets/images/arrow-disabled.svg") center no-repeat;
+    background-color: transparent;
+    cursor: auto;
+  }
+}

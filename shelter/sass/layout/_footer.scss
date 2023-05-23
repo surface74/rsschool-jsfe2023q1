@@ -1,0 +1,127 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 40px $desktop-width-padding 0;
+
+  @include respond-to("small-desktop") {
+    padding: 30px $tablet-width-padding 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include respond-to("small-tablet") {
+    padding: 31px $mobile-width-padding 0;
+  }
+}
+
+.footer__columns-wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 61.6%;
+
+  @include respond-to("small-desktop") {
+    width: 90.2%;
+  }
+
+  @include respond-to("small-tablet") {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  @include respond-to("mobile") {
+    & .footer__column:last-of-type {
+      align-items: flex-start;
+    }
+  }
+}
+
+@include respond-to("mobile") {
+  .footer__column-title {
+    @include font3h-mobile();
+  }
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 300px;
+  padding-top: 16px;
+  padding-bottom: 60px;
+  color: $color-light-xl;
+  overflow-wrap: anywhere;
+
+  @include respond-to("small-desktop") {
+    padding-top: 0;
+    height: 295px;
+  }
+
+  @include respond-to("mobile") {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 0;
+    margin-bottom: 40px;
+
+    & .footer__column-title:last-of-type {
+      align-self: center;
+    }
+  }
+}
+
+.footer__column-title {
+  @include respond-to("mobile") {
+    max-width: 250px;
+  }
+}
+
+.footer__link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $color-primary;
+  fill: $color-primary;
+  @extend %transition-color;
+
+  &:hover {
+    color: $color-light-xl;
+    fill: $color-light-xl;
+  }
+
+  @include respond-to("mobile") {
+    text-align: left;
+  }
+}
+
+.footer__icon {
+  margin-right: 20px;
+}
+
+.footer__image {
+  max-width: 100%;
+
+  @include respond-to("small-desktop") {
+    max-width: min(300px, 42.4%);
+    margin-top: 4px;
+  }
+
+  @include respond-to("small-tablet") {
+    max-width: 86.7%;
+  }
+
+  @include respond-to("small-tablet") {
+    margin-top: 0;
+  }
+
+
+}
+
+.footer_bg {
+  background: url("../../assets/images/noise_transparent@2x.png"),
+    radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+}
