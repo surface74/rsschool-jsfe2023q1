@@ -16,11 +16,12 @@ export default class Playground {
     this.markedField = 0;
 
     this.initContent();
-    this.getResizedElement();
+    this.setPlaygroundSize();
     this.fillPlaygroundElement(this.element);
   }
 
   restoreState(fields) {
+    this.fields.length = 0;
     Object.assign(this.fields, fields);
 
     this.size = this.fields.length;
@@ -28,7 +29,7 @@ export default class Playground {
     this.mines.length = 0;
     this.openedField = 0;
     this.markedField = 0;
-    this.mines = fields
+    this.mines = this.fields
       .flat()
       .filter(({ state, content }) => {
         if (state === STATE.Open) {
@@ -42,9 +43,12 @@ export default class Playground {
       .map(({ id }) => this.getPosition(id));
 
     this.minesCount = this.mines.length;
+    this.setPlaygroundSize();
+    this.fillPlaygroundElement(this.element);
   }
 
   initContent() {
+    this.fields.length = 0;
     for (let i = 0; i < this.size; i += 1) {
       this.fields.push(Array.from({ length: this.size })
         .map((item, index) => ({
@@ -55,15 +59,21 @@ export default class Playground {
     }
   }
 
-  getResizedElement() {
+  setPlaygroundSize() {
     switch (this.size) {
       case SIZE.Medium:
+        this.element.classList.remove('playground_easy');
+        this.element.classList.remove('playground_hard');
         this.element.classList.add('playground_medium');
         break;
       case SIZE.Hard:
+        this.element.classList.remove('playground_easy');
+        this.element.classList.remove('playground_medium');
         this.element.classList.add('playground_hard');
         break;
       default:
+        this.element.classList.remove('playground_medium');
+        this.element.classList.remove('playground_hard');
         this.element.classList.add('playground_easy');
         break;
     }
@@ -83,6 +93,7 @@ export default class Playground {
   }
 
   fillPlaygroundElement(element) {
+    element.replaceChildren();
     for (let i = 0; i < this.size ** 2; i += 1) {
       element.append(this.field.getElement(STATE.Hidden, i));
     }

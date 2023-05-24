@@ -107,6 +107,7 @@ export default class Game {
 
   restorePlayground() {
     const fields = Array.from(this.playground.element.querySelectorAll('.field'));
+
     for (let i = 0; i < fields.length; i += 1) {
       const field = fields[i];
       const { state, content } = this.playground.getFieldData(+field.dataset.id);
