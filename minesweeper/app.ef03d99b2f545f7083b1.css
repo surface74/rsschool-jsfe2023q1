@@ -14,6 +14,6 @@
 .statistics{display:flex;flex-direction:row;justify-content:space-between;margin-bottom:1vh;max-width:500px}@media(max-width: 400px){.statistics{display:grid;grid-template-columns:repeat(2, 1fr);gap:1vw}}
 .counter{display:flex;flex-direction:column;justify-content:center;align-items:center}.counter__title{color:#000;font-size:1.5rem;font-weight:700}.counter__value{border:1px solid blue;padding:5px 10px;color:blue;min-height:3rem;min-width:9rem;text-align:center;font-size:1.5rem;font-weight:700;border-radius:5px}.theme_dark .counter__title{color:#fff}.theme_dark .counter__value{border:1px solid #add8e6;color:#add8e6}
 .footer{display:flex;flex-direction:row;justify-content:space-around;max-width:500px;margin-top:1vh;margin-bottom:2vh;column-gap:1vw}
-.sound{display:flex;align-items:center}.sound__label{display:flex;align-items:center;font-size:2rem;color:#000}.sound__switch{transform:scale(1.5);margin:0 1vw}.theme_dark .sound__label{color:#fff}
+.sound{display:flex;align-items:center}.sound__label{display:flex;align-items:center;font-size:2rem;color:#000}.sound__switch{transform:scale(1.5);margin:0 1vw}.custom-checkbox{position:absolute;z-index:-1;opacity:0}.theme_dark .sound__label{color:#fff}
 
-/*# sourceMappingURL=app.69f03c4fdccd56b566eb.css.map*/
+/*# sourceMappingURL=app.ef03d99b2f545f7083b1.css.map*/
