@@ -254,7 +254,8 @@ export default class Game {
   }
 
   playSound(audio) {
-    if (this.sound.soundOn) {
+    console.log('play!');
+    if (this.soundOn) {
       audio.play();
     }
   }
