@@ -111,7 +111,6 @@ export default class Game {
 
   restoreConfig(config) {
     this.soundOn = config.soundOn;
-    console.log('config.soundOn: ', config.soundOn);
     this.sound.checkbox.checked = config.soundOn;
 
     if (config.themeDark) {
@@ -135,17 +134,11 @@ export default class Game {
 
   onRestoreState() {
     const {
-      fields, steps, time, sound, darkTheme,
+      fields, steps, time,
     } = State.RestoreState(State.STORAGE.Game);
 
-    if (darkTheme) {
-      document.body.classList.add('theme_dark');
-    } else {
-      document.body.classList.remove('theme_dark');
-    }
     this.timer.stop();
     this.statistics.counterSteps.value = steps;
-    this.sound.restoreState(sound);
     this.playground.restoreState(fields);
     this.restorePlayground();
     this.timer.restoreState(time);
@@ -169,8 +162,6 @@ export default class Game {
       fields: this.playground.fields,
       steps: this.statistics.counterSteps.value,
       time: this.timer.value,
-      sound: this.sound.soundOn,
-      darkTheme: document.body.classList.contains('theme_dark'),
     };
 
     State.SaveState(State.STORAGE.Game, state);
@@ -197,6 +188,7 @@ export default class Game {
 
     if (!this.playground.mines.length) { // the first click - start game
       this.startRound(fieldId);
+      this.enableSave();
     }
 
     const { state, content } = this.playground.getFieldData(fieldId);

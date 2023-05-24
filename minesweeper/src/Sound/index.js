@@ -14,20 +14,7 @@ export default class Sound {
   init() {
     this.element = HtmlHelper.ElementFromHTML(SoundHtml);
     this.checkbox = this.element.querySelector('.sound__switch');
-    // this.checkbox.addEventListener('change', this.onChange.bind(this));
   }
-
-  // get soundOn() {
-  //   return this.checkbox.checked;
-  // }
-
-  // set soundOn(value) {
-  //   this.checkbox.checked = value;
-  // }
-
-  // onChange(e) {
-  //   this.soundOn = e.target.checked;
-  // }
 
   getElement() {
     return this.element;

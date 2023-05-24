@@ -14,7 +14,7 @@ export default class Header {
       className: 'button-start',
     });
     this.buttonRestore = Button({ title: 'Restore', className: 'button_disabled button-restore' });
-    this.buttonSave = Button({ title: 'Save', className: 'button-save' });
+    this.buttonSave = Button({ title: 'Save', className: 'button_disabled button-save' });
     this.buttonResults = Button({
       onClick: this.showResultsPopup.bind(this),
       title: 'Results',
