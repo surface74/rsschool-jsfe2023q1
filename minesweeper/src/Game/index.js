@@ -55,6 +55,11 @@ export default class Game {
 
   onChangeSoundState(e) {
     this.soundOn = e.target.checked;
+    if (this.soundOn) {
+      this.sound.getElement().classList.add('sound_on');
+    } else {
+      this.sound.getElement().classList.remove('sound_on');
+    }
     this.saveConfig();
   }
 
@@ -254,7 +259,6 @@ export default class Game {
   }
 
   playSound(audio) {
-    console.log('play!');
     if (this.soundOn) {
       audio.play();
     }

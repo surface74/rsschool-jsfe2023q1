@@ -12,7 +12,6 @@ export default class State {
   }
 
   static SaveState(storageType, state) {
-    console.log('state: ', JSON.stringify(state));
     localStorage.setItem(storageType, JSON.stringify(state));
   }
 }

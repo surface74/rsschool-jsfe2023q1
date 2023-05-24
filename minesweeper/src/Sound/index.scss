@@ -5,20 +5,52 @@
   align-items: center;
 }
 
-.sound__label {
-  display: flex;
-  align-items: center;
-  font-size: $font-size-large;
-  color: $color-button-text;
+.sound__label:before {
+  content: '';
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid $color-button-border;
+  border-radius: 5px;
+  background: url('../assets/image/speaker-off.png') no-repeat center;
+  background-size: contain;
+
+}
+
+.sound__label:hover:before {
+  border-color: $color-button-hover-border;
+  background: url('../assets/image/speaker-off.png') no-repeat center, $color-button-hover;
+  background-size: contain;
+}
+
+.sound_on {
+  .sound__label:before {
+    background: url('../assets/image/speaker-on.png') no-repeat center;
+    background-size: contain;
+  }
 }
 
 .sound__switch {
-  transform: scale($input-scale);
-  margin: 0 $space-horizontal;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 }
 
 .theme_dark {
-  .sound__label {
-    color: $theme-dark-color-button-text;
+  .sound__label:before {
+    background: url('../assets/image/speaker-off-light.png') no-repeat center;
+    background-size: contain;
+  }
+
+  .sound__label:hover:before {
+    background: url('../assets/image/speaker-off-light.png') no-repeat center, $color-button-hover;
+    background-size: contain;
+  }
+
+  .sound_on {
+    .sound__label:before {
+      background: url('../assets/image/speaker-on-light.png') no-repeat center;
+      background-size: contain;
+    }
   }
 }
