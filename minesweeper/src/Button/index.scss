@@ -21,10 +21,12 @@
   background: transparent;
   transition: all 0.5s;
 
-  &:hover {
-    color: $color-button-hover-text;
-    border-color: $color-button-hover-border;
-    background: $color-button-hover;
+  @media (hover: hover) {
+    &:hover {
+      color: $color-button-hover-text;
+      border-color: $color-button-hover-border;
+      background: $color-button-hover;
+    }
   }
 
   &:active {
@@ -44,10 +46,12 @@
   min-width: 3rem;
   background-size: contain;
 
-  &:hover {
-    border-color: $color-button-hover-border;
-    background: url('../assets/image/moon.png') no-repeat center, $color-button-hover;
-    background-size: contain;
+  @media (hover: hover) {
+    &:hover {
+      border-color: $color-button-hover-border;
+      background: url('../assets/image/moon.png') no-repeat center, $color-button-hover;
+      background-size: contain;
+    }
   }
 
   &:active {
@@ -70,10 +74,12 @@
     min-width: 3rem;
     background-size: contain;
 
-    &:hover {
-      border-color: $color-button-hover-border;
-      background: url('../assets/image/sun.png') no-repeat center, $color-button-hover;
-      background-size: contain;
+    @media (hover: hover) {
+      &:hover {
+        border-color: $color-button-hover-border;
+        background: url('../assets/image/sun.png') no-repeat center, $color-button-hover;
+        background-size: contain;
+      }
     }
   }
 }
