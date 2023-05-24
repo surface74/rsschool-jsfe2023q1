@@ -59,6 +59,29 @@
   }
 }
 
+.button_flag {
+  background: url('../assets/image/flag.png') no-repeat center;
+  min-width: 3rem;
+  background-size: contain;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: $color-button-hover-border;
+      background: url('../assets/image/flag.png') no-repeat center, $color-button-hover;
+      background-size: contain;
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.playground_flag-mode {
+    background: url('../assets/image/flag.png') no-repeat center, $color-button-hover;
+    background-size: contain;
+  }
+}
+
 .theme_dark {
   .button {
     color: $theme-dark-color-button-text;
@@ -69,9 +92,26 @@
     border-color: $theme-dark-color-button-disabled-border;
   }
 
+  .button_flag {
+    background: url('../assets/image/flag-light.png') no-repeat center;
+    background-size: contain;
+
+    @media (hover: hover) {
+      &:hover {
+        background: url('../assets/image/flag-light.png') no-repeat center, $color-button-hover;
+        background-size: contain;
+      }
+    }
+
+    &.playground_flag-mode {
+      background: url('../assets/image/flag-light.png') no-repeat center, $color-button-hover;
+      background-size: contain;
+    }
+  }
+
   .button_theme {
-    background: url('../assets/image/sun.png') no-repeat center;
     min-width: 3rem;
+    background: url('../assets/image/sun.png') no-repeat center;
     background-size: contain;
 
     @media (hover: hover) {

@@ -17,19 +17,20 @@ import State from '../utils/state.js';
 
 export default class Game {
   constructor() {
-    this.playground = new Playground();
     this.field = new Field();
     this.events = new Events();
-    this.statistics = new Statistics();
-    this.footer = new Footer();
-    this.sound = this.footer.sound;
-    this.timer = this.statistics.counterTime;
-
-    this.header = new Header();
-    this.results = this.header.results;
   }
 
   init(size, mines) {
+    this.flagMode = false;
+    this.soundOn = true;
+    this.header = new Header();
+    this.results = this.header.results;
+    this.playground = new Playground();
+    this.statistics = new Statistics();
+    this.timer = this.statistics.counterTime;
+    this.footer = new Footer();
+    this.sound = this.footer.sound;
     this.playground.init(size, mines);
 
     Game.clearBody();
@@ -45,13 +46,43 @@ export default class Game {
     document.body.addEventListener(this.events.ID.NEWGAME, this.onNewGame.bind(this));
     this.header.buttonSave.addEventListener('click', this.onSaveState.bind(this));
     this.header.buttonRestore.addEventListener('click', this.onRestoreState.bind(this));
-    this.footer.buttonTheme.addEventListener('click', Game.onToggleTheme);
+    this.footer.buttonTheme.addEventListener('click', this.onToggleTheme.bind(this));
+    this.footer.buttonFlag.addEventListener('click', this.onToggleFlagMode.bind(this));
+    this.sound.checkbox.addEventListener('change', this.onChangeSoundState.bind(this));
 
     this.checkStorage();
   }
 
-  static onToggleTheme() {
+  onChangeSoundState(e) {
+    this.soundOn = e.target.checked;
+    this.saveConfig();
+  }
+
+  onToggleFlagMode() {
+    if (this.flagMode) {
+      this.playground.element.classList.remove('playground_flag-mode');
+      this.footer.buttonFlag.classList.remove('playground_flag-mode');
+    } else {
+      this.playground.element.classList.add('playground_flag-mode');
+      this.footer.buttonFlag.classList.add('playground_flag-mode');
+    }
+    this.flagMode = !this.flagMode;
+
+    this.saveConfig();
+  }
+
+  saveConfig() {
+    const config = {
+      soundOn: this.soundOn,
+      themeDark: document.body.classList.contains('theme_dark'),
+    };
+
+    State.SaveState(State.STORAGE.Config, config);
+  }
+
+  onToggleTheme() {
     document.body.classList.toggle('theme_dark');
+    this.saveConfig();
   }
 
   getScore() {
@@ -71,6 +102,22 @@ export default class Game {
     const results = State.RestoreState(State.STORAGE.Results);
     if (results) {
       this.results.restoreState(results);
+    }
+    const config = State.RestoreState(State.STORAGE.Config);
+    if (config) {
+      this.restoreConfig(config);
+    }
+  }
+
+  restoreConfig(config) {
+    this.soundOn = config.soundOn;
+    console.log('config.soundOn: ', config.soundOn);
+    this.sound.checkbox.checked = config.soundOn;
+
+    if (config.themeDark) {
+      document.body.classList.add('theme_dark');
+    } else {
+      document.body.classList.remove('theme_dark');
     }
   }
 
@@ -126,7 +173,7 @@ export default class Game {
       darkTheme: document.body.classList.contains('theme_dark'),
     };
 
-    State.SaveState(State.STORAGE.Game, JSON.stringify(state));
+    State.SaveState(State.STORAGE.Game, state);
     this.enableRestore();
   }
 
@@ -140,7 +187,43 @@ export default class Game {
       return;
     }
 
-    const field = e.target;
+    this.rightClickHandler(e.target);
+  }
+
+  clickHandler(field) {
+    this.playSound(this.sound.audioStep);
+
+    const fieldId = +field.dataset.id;
+
+    if (!this.playground.mines.length) { // the first click - start game
+      this.startRound(fieldId);
+    }
+
+    const { state, content } = this.playground.getFieldData(fieldId);
+    if (state === STATE.Hidden) {
+      this.incrementStep();
+      if (content >= CONTENT.Mine) {
+        this.changeFieldState(field, content, STATE.Explosion);
+        document.body.dispatchEvent(this.events.getEvent(this.events.ID.LOSE));
+        return;
+      }
+
+      this.changeFieldState(field, content, STATE.Open);
+      if (!content) {
+        this.openHeighbors(field);
+      }
+
+      if (this.playground.isWinPosition()) {
+        document.body.dispatchEvent(this.events.getEvent(this.events.ID.WIN));
+      }
+    }
+  }
+
+  rightClickHandler(field) {
+    if (!this.playground.mines.length) {
+      return;
+    }
+
     const fieldId = +field.dataset.id;
 
     const { state, content } = this.playground.getFieldData(fieldId);
@@ -171,33 +254,10 @@ export default class Game {
     if (!e.target.classList.contains('field')) {
       return;
     }
-
-    this.playSound(this.sound.audioStep);
-
-    const field = e.target;
-    const fieldId = +field.dataset.id;
-
-    if (!this.playground.mines.length) { // the first click - start game
-      this.startRound(fieldId);
-    }
-
-    const { state, content } = this.playground.getFieldData(fieldId);
-    if (state === STATE.Hidden) {
-      this.incrementStep();
-      if (content >= CONTENT.Mine) {
-        this.changeFieldState(field, content, STATE.Explosion);
-        document.body.dispatchEvent(this.events.getEvent(this.events.ID.LOSE));
-        return;
-      }
-
-      this.changeFieldState(field, content, STATE.Open);
-      if (!content) {
-        this.openHeighbors(field);
-      }
-
-      if (this.playground.isWinPosition()) {
-        document.body.dispatchEvent(this.events.getEvent(this.events.ID.WIN));
-      }
+    if (this.flagMode) {
+      this.rightClickHandler(e.target);
+    } else {
+      this.clickHandler(e.target);
     }
   }
 
@@ -300,7 +360,7 @@ export default class Game {
     document.body.append(popup);
 
     this.results.addResult(this.getScore());
-    State.SaveState(State.STORAGE.Results, JSON.stringify(this.results.list));
+    State.SaveState(State.STORAGE.Results, this.results.list);
   }
 
   onLose() {

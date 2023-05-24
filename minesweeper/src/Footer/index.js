@@ -7,6 +7,7 @@ import Button from '../Button/index.js';
 export default class Footer {
   constructor() {
     this.sound = new Sound();
+    this.buttonFlag = Button({ className: 'button_flag' });
     this.buttonTheme = Button({ className: 'button_theme' });
     this.init();
   }
@@ -14,6 +15,7 @@ export default class Footer {
   init() {
     this.element = HtmlHelper.ElementFromHTML(FooterHtml);
     this.element.append(this.sound.getElement());
+    this.element.append(this.buttonFlag);
     this.element.append(this.buttonTheme);
   }
 

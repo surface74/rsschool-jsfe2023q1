@@ -3,7 +3,7 @@
 .footer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   max-width: $content-width-min;
   margin-top: $space-vertical;
   margin-bottom: 2 * $space-vertical;

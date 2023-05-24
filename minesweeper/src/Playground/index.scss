@@ -10,6 +10,13 @@
   grid-template-columns: repeat($playground-easy, 1fr);
   max-width: 500px;
   font-size: $font-size-large;
+
+  &.playground_flag-mode {
+    cursor: url(../assets/image/flag_32x32.png) 15 15, auto;
+    @media (max-width: 400px) {
+      cursor: url(../assets/image/flag_16x16.png) 8 8, auto;
+    }
+  }
 }
 
 .playground_medium {
@@ -22,6 +29,13 @@
   }
   @media (max-width: 400px) {
     font-size: 3.5vw;
+  }
+
+  &.playground_flag-mode {
+    cursor: url(../assets/image/flag_32x32.png) 15 15, auto;
+    @media (max-width: 500px) {
+      cursor: url(../assets/image/flag_16x16.png) 8 8, auto;
+    }
   }
 }
 
@@ -36,5 +50,35 @@
 
   @media (max-width: 500px) {
     font-size: 2vw;
+  }
+
+  &.playground_flag-mode {
+    cursor: url(../assets/image/flag_16x16.png) 8 8, auto;
+  }
+}
+
+.theme_dark {
+  .playground_easy {
+    &.playground_flag-mode {
+      cursor: url(../assets/image/flag_32x32-light.png) 15 15, auto;
+      @media (max-width: 400px) {
+        cursor: url(../assets/image/flag_16x16-light.png) 8 8, auto;
+      }
+    }
+  }
+
+  .playground_medium {
+    &.playground_flag-mode {
+      cursor: url(../assets/image/flag_32x32-light.png) 15 15, auto;
+      @media (max-width: 500px) {
+        cursor: url(../assets/image/flag_16x16-light.png) 8 8, auto;
+      }
+    }
+  }
+
+  .playground_hard {
+    &.playground_flag-mode {
+      cursor: url(../assets/image/flag_16x16-light.png) 8 8, auto;
+    }
   }
 }

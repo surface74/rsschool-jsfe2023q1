@@ -13,14 +13,21 @@ export default class Sound {
 
   init() {
     this.element = HtmlHelper.ElementFromHTML(SoundHtml);
-    const checkbox = this.element.querySelector('.sound__switch');
-    this.soundOn = checkbox.checked;
-    checkbox.addEventListener('change', this.onChange.bind(this));
+    this.checkbox = this.element.querySelector('.sound__switch');
+    // this.checkbox.addEventListener('change', this.onChange.bind(this));
   }
 
-  onChange(e) {
-    this.soundOn = e.target.checked;
-  }
+  // get soundOn() {
+  //   return this.checkbox.checked;
+  // }
+
+  // set soundOn(value) {
+  //   this.checkbox.checked = value;
+  // }
+
+  // onChange(e) {
+  //   this.soundOn = e.target.checked;
+  // }
 
   getElement() {
     return this.element;
