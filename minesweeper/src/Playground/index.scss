@@ -16,6 +16,13 @@
   grid-template-columns: repeat($playground-medium, 1fr);
   max-width: 750px;
   font-size: $font-size-large;
+
+  @media (max-width: 500px) {
+    font-size: 4vw;
+  }
+  @media (max-width: 400px) {
+    font-size: 3.5vw;
+  }
 }
 
 .playground_hard {
@@ -25,5 +32,9 @@
 
   @media (max-width: 700px) {
     font-size: $font-size-small;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 2vw;
   }
 }

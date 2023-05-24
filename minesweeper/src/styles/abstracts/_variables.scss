@@ -57,8 +57,12 @@ $space-horizontal: 1vw;
 $padding: 10px;
 $input-scale: 1.5;
 
+$color-win-message: #008000;
+$color-lose-message: #ff0000;
+
 $content-width-min: 500px;
 $content-width-max: 1280px;
 
-$color-win-message: #008000;
-$color-lose-message: #ff0000;
+$content-width-small: 500px;
+$content-width-medium: 750px;
+$content-width-large: 750px;

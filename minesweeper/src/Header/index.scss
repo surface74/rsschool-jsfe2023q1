@@ -2,8 +2,17 @@
 
 .header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: fit-content;
-  margin-bottom: 2*$space-vertical;
+  max-width: $content-width-min;
+  margin-bottom: $space-vertical;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    align-items: center;
+    row-gap: $space-horizontal;
+
+    & .button {
+      width: 80%;
+    }
+  }
 }

@@ -1,8 +1,19 @@
 @import '../abstracts/variables';
 
 .wrapper {
-  min-width: $content-width-min;
-  max-width: $content-width-max;
+  // min-width: $content-width-min;
   margin: auto;
+}
+
+.wrapper_small {
+  max-width: $content-width-small;
+}
+
+.wrapper_medium {
+  max-width: $content-width-medium;
+}
+
+.wrapper_medium {
+  max-width: $content-width-large;
 }
 
