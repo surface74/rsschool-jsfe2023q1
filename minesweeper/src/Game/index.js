@@ -55,12 +55,16 @@ export default class Game {
 
   onChangeSoundState(e) {
     this.soundOn = e.target.checked;
-    if (this.soundOn) {
+    this.setSoundState(this.soundOn);
+    this.saveConfig();
+  }
+
+  setSoundState(isOn) {
+    if (isOn) {
       this.sound.getElement().classList.add('sound_on');
     } else {
       this.sound.getElement().classList.remove('sound_on');
     }
-    this.saveConfig();
   }
 
   onToggleFlagMode() {
@@ -109,19 +113,24 @@ export default class Game {
       this.results.restoreState(results);
     }
     const config = State.RestoreState(State.STORAGE.Config);
-    if (config) {
-      this.restoreConfig(config);
-    }
+    this.restoreConfig(config);
   }
 
   restoreConfig(config) {
-    this.soundOn = config.soundOn;
-    this.sound.checkbox.checked = config.soundOn;
+    if (config) {
+      this.soundOn = config.soundOn;
+      this.sound.checkbox.checked = config.soundOn;
+      this.setSoundState(this.soundOn);
 
-    if (config.themeDark) {
-      document.body.classList.add('theme_dark');
+      if (config.themeDark) {
+        document.body.classList.add('theme_dark');
+      } else {
+        document.body.classList.remove('theme_dark');
+      }
     } else {
-      document.body.classList.remove('theme_dark');
+      this.soundOn = this.sound.checkbox.checked;
+      this.setSoundState(this.soundOn);
+      this.saveConfig();
     }
   }
 

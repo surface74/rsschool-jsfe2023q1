@@ -16,11 +16,12 @@
   background-size: contain;
 
 }
-
-.sound__label:hover:before {
-  border-color: $color-button-hover-border;
-  background: url('../assets/image/speaker-off.png') no-repeat center, $color-button-hover;
-  background-size: contain;
+@media (hover:hover) {
+  .sound__label:hover:before {
+    border-color: $color-button-hover-border;
+    background: url('../assets/image/speaker-off.png') no-repeat center, $color-button-hover;
+    background-size: contain;
+  }
 }
 
 .sound_on {
@@ -42,9 +43,11 @@
     background-size: contain;
   }
 
-  .sound__label:hover:before {
-    background: url('../assets/image/speaker-off-light.png') no-repeat center, $color-button-hover;
-    background-size: contain;
+  @media (hover:hover) {
+    .sound__label:hover:before {
+      background: url('../assets/image/speaker-off-light.png') no-repeat center, $color-button-hover;
+      background-size: contain;
+    }
   }
 
   .sound_on {
