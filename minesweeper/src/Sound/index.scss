@@ -29,6 +29,14 @@
     background: url('../assets/image/speaker-on.png') no-repeat center;
     background-size: contain;
   }
+
+  @media (hover:hover) {
+    .sound__label:hover:before {
+      border-color: $color-button-hover-border;
+      background: url('../assets/image/speaker-on.png') no-repeat center, $color-button-hover;
+      background-size: contain;
+    }
+  }
 }
 
 .sound__switch {
@@ -54,6 +62,13 @@
     .sound__label:before {
       background: url('../assets/image/speaker-on-light.png') no-repeat center;
       background-size: contain;
+    }
+
+    @media (hover:hover) {
+      .sound__label:hover:before {
+        background: url('../assets/image/speaker-on-light.png') no-repeat center, $color-button-hover;
+        background-size: contain;
+      }
     }
   }
 }
