@@ -13,8 +13,11 @@
 
   &.playground_flag-mode {
     cursor: url(../assets/image/flag_32x32.png) 15 15, auto;
+  }
 
-    @media (max-width: 400px) {
+  @media (max-width: 400px) {
+    font-size: 4vw;
+    &.playground_flag-mode {
       cursor: url(../assets/image/flag_16x16.png) 8 8, auto;
     }
   }
