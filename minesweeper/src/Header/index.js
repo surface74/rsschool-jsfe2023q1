@@ -37,7 +37,9 @@ export default class Header {
   }
 
   showNewGamePopup() {
-    document.body.append(this.newGame.getElement());
+    const popup = this.newGame.getElement();
+    popup.style.top = `${window.scrollY}px`;
+    document.body.append(popup);
   }
 
   showResultsPopup() {

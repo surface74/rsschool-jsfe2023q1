@@ -363,6 +363,7 @@ export default class Game {
       attr: { class: 'popup__title_win popup__title' },
     });
     const popup = Popup({ htmlElement: messageElement });
+    popup.style.top = Game.getScrollTop();
     document.body.append(popup);
 
     this.results.addResult(this.getScore());
@@ -379,6 +380,11 @@ export default class Game {
       attr: { class: 'popup__title_lose popup__title' },
     });
     const popup = Popup({ htmlElement: message });
+    popup.style.top = Game.getScrollTop();
     document.body.append(popup);
+  }
+
+  static getScrollTop() {
+    return `${window.scrollY}px`;
   }
 }
