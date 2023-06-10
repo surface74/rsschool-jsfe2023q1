@@ -9,13 +9,18 @@ const baseConfig = {
     module: {
         rules: [
             {
+                test: /.\ts$/i,
+                use: ['ts-loader'],
+                include: [path.resolve(__dirname, 'src')],
+            },
+            {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
         ],
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.ts'],
     },
     output: {
         filename: 'index.js',
