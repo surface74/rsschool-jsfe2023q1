@@ -1,5 +1,5 @@
 {
-    "name": "NewsJS",
+    "name": "news-api",
     "version": "1.0.0",
     "description": "",
     "main": "webpack.base.config.js",
@@ -18,8 +18,10 @@
     "homepage": "",
     "devDependencies": {
         "clean-webpack-plugin": "^3.0.0",
+        "commitizen": "^4.3.0",
         "copy-webpack-plugin": "^7.0.0",
         "css-loader": "^5.1.0",
+        "cz-conventional-changelog": "^3.3.0",
         "eslint": "^7.27.0",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-import": "^2.23.3",
@@ -31,5 +33,10 @@
         "webpack-cli": "^4.5.0",
         "webpack-dev-server": "^3.11.2",
         "webpack-merge": "^5.7.3"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }
