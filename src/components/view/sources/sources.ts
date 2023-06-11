@@ -1,20 +1,27 @@
 import './sources.css';
+type DataItem = {
+    name: string;
+    id: string;
+};
+
+type Data = DataItem[];
 
 class Sources {
-    draw(data) {
-        const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp');
+    draw(data: Data) {
+        const fragment: DocumentFragment = document.createDocumentFragment();
+        const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
+        if (sourceItemTemp) {
+            data.forEach((item) => {
+                const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
+                if (sourceClone) {
+                    (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
+                    (sourceClone.querySelector('.source__item') as HTMLElement).setAttribute('data-source-id', item.id);
+                    fragment.append(sourceClone);
+                }
+            });
+        }
 
-        data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true);
-
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
-
-            fragment.append(sourceClone);
-        });
-
-        document.querySelector('.sources').append(fragment);
+        (document.querySelector('.sources') as HTMLElement).append(fragment);
     }
 }
 
