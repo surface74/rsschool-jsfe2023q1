@@ -37,3 +37,10 @@ export interface ISource {
     status: string;
     sources: ISourceItem[];
 }
+
+export type Endpoint = 'everything' | 'sources';
+
+export enum HTTPMethod {
+    'GET',
+    'POST',
+}
