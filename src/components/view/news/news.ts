@@ -1,23 +1,9 @@
 import './news.css';
-type NewsDataItem = {
-    source: {
-        id: string;
-        name: string;
-    };
-    author: string;
-    title: string;
-    description: string;
-    url: string;
-    urlToImage: string;
-    publishedAt: string;
-    content: string;
-};
-
-type NewsData = NewsDataItem[];
+import { INewsDataItem } from '../../../types';
 
 class News {
-    draw(data: NewsData) {
-        const news: NewsData = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    draw(data: INewsDataItem[]) {
+        const news: INewsDataItem[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
