@@ -1,8 +1,5 @@
 export interface INewsDataItem {
-    source: {
-        id: string;
-        name: string;
-    };
+    source: ISourceItem;
     author: string;
     title: string;
     description: string;
@@ -13,8 +10,8 @@ export interface INewsDataItem {
 }
 
 export interface IDrawDataItem {
-    name: string;
     id: string;
+    name: string;
 }
 
 export interface INewsData {
@@ -26,11 +23,11 @@ export interface INewsData {
 export interface ISourceItem {
     id: string;
     name: string;
-    description: string;
-    url: string;
-    category: string;
-    language: string;
-    country: string;
+    description?: string;
+    url?: string;
+    category?: string;
+    language?: string;
+    country?: string;
 }
 
 export interface ISource {
@@ -40,7 +37,7 @@ export interface ISource {
 
 export interface IGetResponce {
     endpoint: Endpoint;
-    options: { sources?: string };
+    options?: QueryOption;
 }
 
 export type QueryOption = {

@@ -1,4 +1,4 @@
-import { Endpoint, HTTPMethod, IGetResponce, QueryOption, ResponceStatus } from '../../types';
+import { Endpoint, HTTPMethod, IGetResponce, ISource, INewsData, QueryOption, ResponceStatus } from '../../types';
 
 class Loader {
     baseLink: string;
@@ -11,7 +11,7 @@ class Loader {
 
     getResp(
         { endpoint, options = {} }: IGetResponce,
-        callback = (): void => {
+        callback: (data: unknown) => void = (): void => {
             console.error('No callback for GET response');
         }
     ) {
@@ -39,7 +39,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: HTTPMethod, endpoint: Endpoint, callback: (data:string)=> void, options = {}) {
+    load(method: HTTPMethod, endpoint: Endpoint, callback: (data: unknown) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => (res as Response).json())
