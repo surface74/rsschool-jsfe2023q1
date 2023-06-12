@@ -38,9 +38,21 @@ export interface ISource {
     sources: ISourceItem[];
 }
 
+export interface IGetResponce {
+    endpoint: Endpoint;
+    options: { sources?: string };
+}
+
+export type QueryOption = {
+    sources?: string;
+    apiKey?: string;
+}
+
 export type Endpoint = 'everything' | 'sources';
 
-export enum HTTPMethod {
-    'GET',
-    'POST',
+export type HTTPMethod = 'GET' | 'POST';
+
+export enum ResponceStatus {
+    'Unauthorised' = 401,
+    'NotFound' = 404,
 }
