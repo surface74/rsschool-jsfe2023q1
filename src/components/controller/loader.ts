@@ -4,7 +4,7 @@ class Loader {
     baseLink: string;
     options: QueryOption;
 
-    constructor(baseLink: string, options: Extract<QueryOption, 'apiKey'>) {
+    constructor(baseLink: string, options: QueryOption) {
         this.baseLink = baseLink;
         this.options = options;
     }
@@ -28,7 +28,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: QueryOption, endpoint: Endpoint) {
+    makeUrl(options: QueryOption, endpoint: Endpoint): string {
         const urlOptions: QueryOption = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
