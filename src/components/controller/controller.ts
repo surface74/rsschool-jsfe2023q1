@@ -1,8 +1,8 @@
 import AppLoader from './appLoader';
-import { ISource, INews } from '../../types';
+import { DataType } from '../../types';
 
 class AppController extends AppLoader {
-    public getSources(callback: (source: unknown) => void) {
+    public getSources(callback: (source: DataType) => void) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -11,7 +11,7 @@ class AppController extends AppLoader {
         );
     }
 
-    public getNews(e: MouseEvent, callback: (data: unknown) => void) {
+    public getNews(e: MouseEvent, callback: (data: DataType) => void) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 

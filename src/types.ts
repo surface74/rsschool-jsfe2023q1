@@ -48,3 +48,5 @@ export enum ResponceStatus {
     'Unauthorised' = 401,
     'NotFound' = 404,
 }
+
+export type DataType = ISource | INews;
