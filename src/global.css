@@ -34,3 +34,12 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
+
+.wrapper {
+    margin: 0 auto;
+    width: 95%;
+}
+
+.container {
+    width: 100%;
+}
