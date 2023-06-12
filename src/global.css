@@ -2,16 +2,22 @@ body {
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
-    background: #0000ff;
+    /* background: #0000ff; */
+    background: url('./images/background.jpg');
 }
 
 header {
-    padding: 10px 30px;
+    padding: 10px 0;
 }
 
 header h1 {
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 800;
+
+    @media (max-width: 1280px) {
+        font-size: 2rem;
+        padding: 0.5rem;
+    }
 }
 
 footer {
@@ -35,6 +41,12 @@ footer .copyright:before {
     content: '©';
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .wrapper {
     margin: 0 auto;
     width: 95%;
@@ -42,4 +54,12 @@ footer .copyright:before {
 
 .container {
     width: 100%;
+}
+
+.course {
+    display: block;
+    height: 30px;
+    width: 100%;
+    margin-top: 1rem;
+    background: url('./images/rs_school_js.svg') no-repeat center;
 }
