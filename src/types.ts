@@ -17,7 +17,7 @@ export interface IDrawDataItem {
     id: string;
 }
 
-export interface IServerData {
+export interface INewsData {
     status: string;
     totalResults: number;
     articles: INewsDataItem[];
