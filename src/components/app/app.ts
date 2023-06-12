@@ -1,6 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { INewsData, ISource } from '../../types';
+import { INews, ISource } from '../../types';
 
 class App {
     controller: AppController;
@@ -13,7 +13,7 @@ class App {
 
     start() {
         (document.querySelector('.sources') as HTMLElement).addEventListener('click', (e: MouseEvent) =>
-            this.controller.getNews(e, (data: unknown) => this.view.drawNews(data as INewsData))
+            this.controller.getNews(e, (data: unknown) => this.view.drawNews(data as INews))
         );
         this.controller.getSources((data: unknown) => this.view.drawSources(data as ISource));
     }

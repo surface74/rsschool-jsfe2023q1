@@ -1,4 +1,4 @@
-import { Endpoint, HTTPMethod, IGetResponce, ISource, INewsData, QueryOption, ResponceStatus } from '../../types';
+import { Endpoint, HTTPMethod, IGetResponce, QueryOption, ResponceStatus } from '../../types';
 
 class Loader {
     baseLink: string;

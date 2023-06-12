@@ -1,12 +1,12 @@
 import './sources.css';
-import { IDrawDataItem } from '../../../types';
+import { SourceItem } from '../../../types';
 
 class Sources {
-    draw(data: IDrawDataItem[]): void {
+    draw(data: SourceItem[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
         if (sourceItemTemp) {
-            data.forEach((item: IDrawDataItem) => {
+            data.forEach((item: SourceItem) => {
                 const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
                 if (sourceClone) {
                     (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;

@@ -1,5 +1,5 @@
-export interface INewsDataItem {
-    source: ISourceItem;
+export type Article = {
+    source: Pick<SourceItem, 'id' | 'name'>;
     author: string;
     title: string;
     description: string;
@@ -7,32 +7,27 @@ export interface INewsDataItem {
     urlToImage: string;
     publishedAt: string;
     content: string;
-}
+};
 
-export interface IDrawDataItem {
-    id: string;
-    name: string;
-}
-
-export interface INewsData {
+export interface INews {
     status: string;
     totalResults: number;
-    articles: INewsDataItem[];
+    articles: Article[];
 }
 
-export interface ISourceItem {
+export type SourceItem = {
     id: string;
     name: string;
-    description?: string;
-    url?: string;
-    category?: string;
-    language?: string;
-    country?: string;
-}
+    description: string;
+    url: string;
+    category: string;
+    language: string;
+    country: string;
+};
 
 export interface ISource {
     status: string;
-    sources: ISourceItem[];
+    sources: SourceItem[];
 }
 
 export interface IGetResponce {
@@ -43,7 +38,7 @@ export interface IGetResponce {
 export type QueryOption = {
     sources?: string;
     apiKey?: string;
-}
+};
 
 export type Endpoint = 'everything' | 'sources';
 
