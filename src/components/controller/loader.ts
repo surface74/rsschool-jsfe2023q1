@@ -1,15 +1,15 @@
 import { Endpoint, HTTPMethod, IGetResponce, QueryOption, ResponceStatus } from '../../types';
 
 class Loader {
-    baseLink: string;
-    options: QueryOption;
+    private readonly baseLink: string;
+    private readonly options: QueryOption;
 
     constructor(baseLink: string, options: QueryOption) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp(
+    public getResp(
         { endpoint, options = {} }: IGetResponce,
         callback: (data: unknown) => void = (): void => {
             console.error('No callback for GET response');
@@ -18,7 +18,7 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res: Response): Response {
+    private errorHandler(res: Response): Response {
         if (!res.ok) {
             if (res.status === ResponceStatus.NotFound || res.status === ResponceStatus.Unauthorised)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -28,7 +28,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: QueryOption, endpoint: Endpoint): string {
+    private makeUrl(options: QueryOption, endpoint: Endpoint): string {
         const urlOptions: QueryOption = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -39,12 +39,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: HTTPMethod, endpoint: Endpoint, callback: (data: unknown) => void, options = {}) {
+    private load(method: HTTPMethod, endpoint: Endpoint, callback: (data: unknown) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
-            .then((res) => (res as Response).json())
-            .then((data) => callback(data))
-            .catch((err) => console.error(err));
+            .then((res: Response) => res.json())
+            .then((data: unknown) => callback(data))
+            .catch((err: Error) => console.error(err));
     }
 }
 
