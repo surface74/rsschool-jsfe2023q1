@@ -12,9 +12,12 @@ class App {
     }
 
     public start() {
-        (document.querySelector('.sources') as HTMLElement).addEventListener('click', (e: MouseEvent) =>
-            this.controller.getNews(e, (data: DataType) => this.view.drawNews(data as INews))
-        );
+        const element: HTMLElement | null = document.querySelector('.sources');
+        if (element) {
+            element.addEventListener('click', (e: MouseEvent) =>
+                this.controller.getNews(e, (data: DataType) => this.view.drawNews(data as INews))
+            );
+        }
         this.controller.getSources((data: DataType) => this.view.drawSources(data as ISource));
     }
 }
