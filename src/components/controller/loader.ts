@@ -1,6 +1,6 @@
 import { Endpoint, HTTPMethod, IGetResponce, QueryOption, ResponceStatus } from '../../types';
 
-class Loader<Type> {
+class Loader<T> {
     private readonly baseLink: string;
     private readonly options: QueryOption;
 
@@ -11,7 +11,7 @@ class Loader<Type> {
 
     public getResp(
         { endpoint, options = {} }: IGetResponce,
-        callback: (data: Type) => void = (): void => {
+        callback: (data: T) => void = (): void => {
             console.error('No callback for GET response');
         }
     ) {
@@ -39,11 +39,11 @@ class Loader<Type> {
         return url.slice(0, -1);
     }
 
-    private load(method: HTTPMethod, endpoint: Endpoint, callback: (data: Type) => void, options = {}) {
+    private load(method: HTTPMethod, endpoint: Endpoint, callback: (data: T) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res: Response) => res.json())
-            .then((data: Type) => callback(data))
+            .then((data: T) => callback(data))
             .catch((err: Error) => console.error(err));
     }
 }
