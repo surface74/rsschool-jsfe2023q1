@@ -12,27 +12,33 @@ class AppController extends AppLoader {
     }
 
     public getNews(e: MouseEvent, callback: (data: DataType) => void) {
-        let target = e.target as HTMLElement;
-        const newsContainer = e.currentTarget as HTMLElement;
-
-        while (target !== newsContainer) {
-            if (target.classList.contains('source__item')) {
-                const sourceId = (target as HTMLElement).getAttribute('data-source-id') as string;
-                if (newsContainer.getAttribute('data-source') !== sourceId) {
-                    newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
-                        {
-                            endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
-                            },
-                        },
-                        callback
-                    );
+        let target: EventTarget | null = e.target;
+        if (target instanceof HTMLElement) {
+            const newsContainer: EventTarget | null = e.currentTarget;
+            if (newsContainer instanceof HTMLElement) {
+                while (target !== newsContainer) {
+                    if ((<HTMLElement>target).classList.contains('source__item')) {
+                        const sourceId: string | null = (<HTMLElement>target).getAttribute('data-source-id');
+                        if (sourceId) {
+                            const dataSource: string | null = newsContainer.getAttribute('data-source');
+                            if (dataSource !== sourceId) {
+                                newsContainer.setAttribute('data-source', sourceId);
+                                super.getResp(
+                                    {
+                                        endpoint: 'everything',
+                                        options: {
+                                            sources: sourceId,
+                                        },
+                                    },
+                                    callback
+                                );
+                            }
+                        }
+                        return;
+                    }
+                    target = (<HTMLElement>target).parentNode;
                 }
-                return;
             }
-            target = target.parentNode as HTMLElement;
         }
     }
 }
