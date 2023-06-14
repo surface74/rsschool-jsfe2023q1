@@ -4,28 +4,19 @@ import { SourceItem } from '../../../types';
 class Sources {
     public draw(data: SourceItem[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
-        const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
+        const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
         if (sourceItemTemp) {
             data.forEach((item: SourceItem) => {
-                const sourceClone: Node = sourceItemTemp.content.cloneNode(true);
-                if (sourceClone instanceof HTMLElement) {
-                    const sourceItemName: HTMLElement | null = sourceClone.querySelector('.source__item-name');
-                    if (sourceItemName) {
-                        sourceItemName.textContent = item.name;
-                    }
-                    const sourceItem: HTMLElement | null = sourceClone.querySelector('.source__item');
-                    if (sourceItem) {
-                        sourceItem.setAttribute('data-source-id', item.id);
-                    }
+                const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
+                if (sourceClone) {
+                    (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
+                    (sourceClone.querySelector('.source__item') as HTMLElement).setAttribute('data-source-id', item.id);
                     fragment.append(sourceClone);
                 }
             });
         }
 
-        const sources: HTMLElement | null = document.querySelector('.sources');
-        if (sources) {
-            sources.append(fragment);
-        }
+        (document.querySelector('.sources') as HTMLElement).append(fragment);
     }
 }
 
