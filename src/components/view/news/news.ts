@@ -53,8 +53,11 @@ class News {
             });
         }
 
-        (document.querySelector('.news') as HTMLElement).innerHTML = '';
-        (document.querySelector('.news') as HTMLElement).appendChild(fragment);
+        const newsElement: HTMLElement | null = document.querySelector('.news');
+        if (newsElement) {
+            newsElement.innerHTML = '';
+            newsElement.appendChild(fragment);
+        }
     }
 }
 
