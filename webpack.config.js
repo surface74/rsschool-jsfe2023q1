@@ -39,7 +39,8 @@ const baseConfig = {
         new CopyPlugin({
             patterns: [
               {
-                from: './src/public/favicon.ico',
+                from: './src/public/',
+                to: 'assets/'
               },
             ],
           }),
