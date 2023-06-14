@@ -3,16 +3,21 @@ import { Article } from '../../../types';
 
 class News {
     public draw(data: Article[]) {
-        const news: Article[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+        const articles: Article[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
 
         if (newsItemTemp) {
-            news.forEach((item, idx) => {
-                const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
-                if (newsClone) {
-                    if (idx % 2) (newsClone.querySelector('.news__item') as HTMLElement).classList.add('alt');
+            articles.forEach((item, idx) => {
+                const newsClone: Node = newsItemTemp.content.cloneNode(true);
+                if (newsClone instanceof HTMLElement) {
+                    if (idx % 2) {
+                        const newsItem: HTMLElement | null = newsClone.querySelector('.news__item');
+                        if (newsItem) {
+                            newsItem.classList.add('alt');
+                        }
+                    }
 
                     (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
                         item.urlToImage || 'img/news_placeholder.jpg'
@@ -37,8 +42,11 @@ class News {
             });
         }
 
-        (document.querySelector('.news') as HTMLElement).innerHTML = '';
-        (document.querySelector('.news') as HTMLElement).appendChild(fragment);
+        const news: HTMLElement | null = document.querySelector('.news');
+        if (news) {
+            news.innerHTML = '';
+            news.appendChild(fragment);
+        }
     }
 }
 
