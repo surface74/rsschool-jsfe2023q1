@@ -40,9 +40,15 @@ export type QueryOption = {
     apiKey?: string;
 };
 
-export type Endpoint = 'everything' | 'sources';
+export enum Endpoint {
+    EVERYTHING = 'everything',
+    SOURCES = 'sources',
+}
 
-export type HTTPMethod = 'GET' | 'POST';
+export enum HTTPMethod {
+    GET = 'GET',
+    POST = 'POST',
+}
 
 export enum ResponceStatus {
     'Unauthorised' = 401,
