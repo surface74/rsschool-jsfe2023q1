@@ -49,4 +49,4 @@ export enum ResponceStatus {
     'NotFound' = 404,
 }
 
-export type DataType = ISource | INews;
+export type DataType = ISource & INews;
