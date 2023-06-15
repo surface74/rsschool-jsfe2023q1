@@ -9,6 +9,7 @@ class App {
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
+        this.start();
     }
 
     public start() {

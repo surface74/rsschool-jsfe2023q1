@@ -1,18 +1,19 @@
 import './news.css';
-import { Article } from '../../../types';
+import { Article, MAX_ARTICLES } from '../../../types';
 
 class News {
     public draw(data: Article[]) {
-        const news: Article[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+        const news: Article[] =
+            data.length >= MAX_ARTICLES ? data.filter((_item, index) => index < MAX_ARTICLES) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLElement | null = document.querySelector('#newsItemTemp');
 
         if (newsItemTemp instanceof HTMLTemplateElement) {
-            news.forEach((item, idx) => {
+            news.forEach((item, index) => {
                 const newsClone: Node = newsItemTemp.content.cloneNode(true);
                 if (newsClone instanceof DocumentFragment) {
-                    if (idx % 2) {
+                    if (index % 2) {
                         const newsItem: HTMLElement | null = newsClone.querySelector('.news__item');
                         if (newsItem) {
                             newsItem.classList.add('alt');

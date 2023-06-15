@@ -1,4 +1,6 @@
-import { Endpoint, HTTPMethod, IGetResponce, QueryOption, ResponceStatus } from '../../types';
+import { Endpoint, HTTPMethod, ResponceStatus } from '../../enums';
+import { IGetResponce } from '../../interfaces';
+import { QueryOption } from '../../types';
 
 class Loader<T> {
     private readonly baseLink: string;
