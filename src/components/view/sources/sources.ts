@@ -21,8 +21,10 @@ class Sources {
                 fragment.append(sourceClone);
             });
         }
-
-        (document.querySelector('.sources') as HTMLElement).append(fragment);
+        const sourcesElement: HTMLElement | null = document.querySelector('.sources');
+        if (sourcesElement) {
+            sourcesElement.append(fragment);
+        }
     }
 }
 
