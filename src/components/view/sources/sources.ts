@@ -7,18 +7,19 @@ class Sources {
         const sourceItemTemp: HTMLElement | null = document.querySelector('#sourceItemTemp');
         if (sourceItemTemp instanceof HTMLTemplateElement) {
             data.forEach((item: SourceItem) => {
-                const sourceClone = <HTMLElement>sourceItemTemp.content.cloneNode(true);
+                const sourceClone: Node = sourceItemTemp.content.cloneNode(true);
+                if (sourceClone instanceof DocumentFragment) {
+                    const sourceItemName: HTMLElement | null = sourceClone.querySelector('.source__item-name');
+                    if (sourceItemName) {
+                        sourceItemName.textContent = item.name;
+                    }
+                    const sourceItem: HTMLElement | null = sourceClone.querySelector('.source__item');
+                    if (sourceItem) {
+                        sourceItem.setAttribute('data-source-id', item.id);
+                    }
 
-                const sourceItemName: HTMLElement | null = sourceClone.querySelector('.source__item-name');
-                if (sourceItemName) {
-                    sourceItemName.textContent = item.name;
+                    fragment.append(sourceClone);
                 }
-                const sourceItem: HTMLElement | null = sourceClone.querySelector('.source__item');
-                if (sourceItem) {
-                    sourceItem.setAttribute('data-source-id', item.id);
-                }
-
-                fragment.append(sourceClone);
             });
         }
         const sourcesElement: HTMLElement | null = document.querySelector('.sources');
