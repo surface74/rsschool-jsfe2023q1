@@ -1,6 +1,3 @@
-import './index.scss';
+import App from './components/app/app';
 
-const title: HTMLElement = document.createElement('h1');
-title.textContent = 'Hello world!';
-
-document.body.append(title);
+new App();
