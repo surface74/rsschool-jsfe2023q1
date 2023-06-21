@@ -4,18 +4,18 @@ export default class Observer {
     private listeners = new Map<EventName, Array<<T>(param?: T) => void>>();
 
     subscribe(nameEvent: EventName, listener: <T>(param?: T) => void) {
-        let listenerArray = this.listeners.get(nameEvent);
-        if (!listenerArray) {
-            listenerArray = new Array<<T>(param?: T) => void>;
-            this.listeners.set(nameEvent, listenerArray);
+        let eventListners = this.listeners.get(nameEvent);
+        if (!eventListners) {
+            eventListners = new Array<<T>(param?: T) => void>();
+            this.listeners.set(nameEvent, eventListners);
         }
-        listenerArray.push(listener);
+        eventListners.push(listener);
     }
 
     notify<T>(nameEvent: EventName, param?: T) {
-        const listenerArray = this.listeners.get(nameEvent);
-        if (listenerArray) {
-            listenerArray.forEach((listener) => listener(param));
+        const eventListners = this.listeners.get(nameEvent);
+        if (eventListners) {
+            eventListners.forEach((listener) => listener(param));
         }
     }
 }
