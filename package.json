@@ -1,7 +1,7 @@
 {
-    "name": "ts-template-project",
+    "name": "rs-css",
     "version": "1.0.0",
-    "description": "The base for a TS-projects",
+    "description": "RS-CSS project RSSchool JSFE2023Q1",
     "private": "true",
     "scripts": {
         "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",

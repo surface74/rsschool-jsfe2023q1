@@ -1,12 +1,12 @@
-import MainView from '../view/main-view';
+import MainView from '../view/main-view/index';
 
 export default class App {
     constructor() {
-        this.createViews();
+        this.init();
     }
 
-    createViews() {
-        const mainView = new MainView();
-        document.body.append(mainView.getHtmlElement());
+    init() {
+        const mainViewElement = new MainView().getHtmlElement();
+        document.body.append(mainViewElement);
     }
 }
