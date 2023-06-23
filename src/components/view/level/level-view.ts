@@ -4,6 +4,7 @@ import { TagNames } from '../../../enums/view/tag-names';
 import { EventName } from '../../../enums/events/event-names';
 import DefaultView from '../default-view';
 import Observer from '../../observer/observer';
+import Level from '../../levels/level-1';
 
 export default class LevelView extends DefaultView {
     private readonly TEXT = 'LevelView';
@@ -18,6 +19,8 @@ export default class LevelView extends DefaultView {
         const element = document.createElement(TagNames.SECTION);
         element.classList.add(CssClasses.LEVEL);
         element.textContent = 'LevelView';
+
+        element.append(new Level().getHtmlElement());
         return element;
     }
 }
