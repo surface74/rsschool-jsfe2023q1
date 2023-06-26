@@ -1,15 +1,23 @@
 export default abstract class Level {
-    protected element: HTMLElement;
+    protected readonly LEVEL_TITLE: string = '';
+    protected element: DocumentFragment;
     protected items: string[] = [];
     protected answers: string[] = [];
 
     constructor() {
-        this.element = this.createHTMLElenemt();
+        this.element = document.createDocumentFragment();
     }
 
-    getHtmlElement() {
+    public getHtmlElement() {
         return this.element;
     }
 
-    protected abstract createHTMLElenemt<T>(param?: T): HTMLElement;
+    public getLevelTitle() {
+        return this.LEVEL_TITLE;
+    }
+
+    public getAnswer() {
+        return this.answers;
+    }
+    protected abstract createHTMLElement(param: string): DocumentFragment;
 }

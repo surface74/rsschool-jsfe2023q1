@@ -20,7 +20,6 @@ export default class LevelView extends DefaultView {
         element.classList.add(CssClasses.LEVEL);
         element.textContent = 'LevelView';
 
-        element.append(new Level().getHtmlElement());
         return element;
     }
 }

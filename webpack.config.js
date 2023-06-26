@@ -10,6 +10,10 @@ const baseConfig = {
     module: {
         rules: [
             {
+                test: /\.html$/i,
+                loader: "html-loader",
+            },
+            {
                 test: /\.ts|.tsx$/i,
                 use: ['ts-loader'],
                 include: [path.resolve(__dirname, 'src')],
