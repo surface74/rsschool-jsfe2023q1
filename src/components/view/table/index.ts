@@ -1,4 +1,4 @@
-import './style.css';
+import './index.scss';
 import { CssClasses } from '../../../enums/view/css-classes';
 import { TagNames } from '../../../enums/view/tag-names';
 import DefaultView from '../default-view';

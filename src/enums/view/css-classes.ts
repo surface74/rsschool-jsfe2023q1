@@ -1,6 +1,8 @@
 export enum CssClasses {
     MAIN = 'main',
 
+    SECTION_HEADER = 'section-header',
+
     TABLE = 'table',
     TABLE_ITEM = 'table__item',
 
@@ -9,6 +11,8 @@ export enum CssClasses {
     CSS_VIEWER = 'css-viewer',
 
     HTML_VIEWER = 'html-viewer',
+
+    EDITOR_VIEWER = 'editor-viewer',
 
     SELECTED = 'selected',
 

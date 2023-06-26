@@ -6,7 +6,9 @@ export default class App {
     }
 
     init() {
-        const mainViewElement = new MainView().getHtmlElement();
-        document.body.append(mainViewElement);
+        const mainView = new MainView();
+
+        document.body.append(mainView.getHtmlElement());
+        mainView.loadLevel();
     }
 }
