@@ -1,0 +1,30 @@
+@import '../../../styles/abstracts/variables.scss';
+@import '../view-styles.scss';
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 5;
+
+    margin: 5px;
+    padding: 5px;
+
+    border: 1px dashed white;
+    border-radius: $view-border-radius;
+}
+
+.board__level-order {
+    color: $title-color;
+    font-size: $font-size-board-order;
+}
+
+.board__item-container {
+    display: flex;
+    align-items: center;
+    background: url(../../../assets/images/table-100.svg) no-repeat center;
+}

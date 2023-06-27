@@ -3,7 +3,7 @@
 .css-viewer {
   grid-column-start: 1;
   grid-column-end: 4;
-  grid-row-start: 4;
+  grid-row-start: 5;
   grid-row-end: 10;
 
   margin: 5px;
@@ -40,6 +40,7 @@
 .css-viewer__help {
   font-size: $font-size-code;
   color: $font-color;
+  padding: 1rem;
 }
 
 @keyframes blink {

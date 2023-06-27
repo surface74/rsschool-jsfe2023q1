@@ -7,7 +7,7 @@ import { Attributes } from '../../enums/view/attributes';
 import HtmlHelper from '../../utils/html-helper';
 
 export default class Level1 extends Level {
-    LEVEL_TITLE = 'Level 1';
+    LEVEL_TITLE = 'Select the plates';
 
     constructor() {
         super();

@@ -14,4 +14,5 @@ export enum TagNames {
     CSS_VIEWER_CONTROLS = DIV,
     INPUT = 'input',
     BUTTON = 'button',
+    BOARD_LEVEL_ORDER = H2,
 }

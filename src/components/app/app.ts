@@ -7,7 +7,6 @@ export default class App {
 
     init() {
         const mainView = new MainView();
-
         document.body.append(mainView.getHtmlElement());
         mainView.initGame();
     }

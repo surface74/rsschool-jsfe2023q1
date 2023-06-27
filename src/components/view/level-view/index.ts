@@ -34,7 +34,6 @@ export default class LevelView extends DefaultView {
 
         const selector = `.${CssClasses.LEVEL_VIEWER} .${CssClasses.LEVEL_VIEWER_CONTENT}`;
         const editor: Element | null = document.querySelector(selector);
-        console.log('editor: ', editor);
         if (editor) {
             editor.replaceChildren(levelList);
         }
