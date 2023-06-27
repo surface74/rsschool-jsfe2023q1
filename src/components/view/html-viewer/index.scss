@@ -2,19 +2,19 @@
 @import '../view-styles.scss';
 
 .html-viewer {
-    grid-column-start: 4;
-    grid-column-end: 7;
-    grid-row-start: 4;
-    grid-row-end: 10;
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row-start: 4;
+  grid-row-end: 10;
 
-    margin: 5px;
+  margin: 5px;
 
-    background-color: $editor-background-color;
-    border: 1px solid $border-color;
-    border-radius: $view-border-radius;
+  background-color: $editor-background-color;
+  border: 1px solid $border-color;
+  border-radius: $view-border-radius;
 }
 
 .html-code {
-    font-size: $font-size-code;
-    color: $font-color;
+  font-size: $font-size-code;
+  color: $font-color;
 }

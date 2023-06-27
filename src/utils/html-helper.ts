@@ -1,4 +1,5 @@
 import { TagNames } from '../enums/view/tag-names';
+
 type Attributes = {
     [key: string]: string;
 };

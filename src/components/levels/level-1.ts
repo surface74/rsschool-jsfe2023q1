@@ -3,7 +3,7 @@ import html from './level-1.html';
 import Level from './level';
 import { CssClasses } from '../../enums/view/css-classes';
 import { TagNames } from '../../enums/view/tag-names';
-import { AttributeNames } from '../../enums/view/attributes-names';
+import { Attributes } from '../../enums/view/attributes';
 import HtmlHelper from '../../utils/html-helper';
 
 export default class Level1 extends Level {

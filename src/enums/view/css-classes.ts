@@ -3,6 +3,8 @@ export enum CssClasses {
 
     SECTION_HEADER = 'section-header',
 
+    CSS_VIEWER_BUTTON = 'css-viewer__button',
+
     TABLE = 'table',
     TABLE_ITEM = 'table__item',
 
@@ -10,6 +12,9 @@ export enum CssClasses {
     LEVEL_VIEWER_CONTENT = 'level-viewer__content',
 
     CSS_VIEWER = 'css-viewer',
+    CSS_VIEWER_CONTROLS = 'css-viewer__controls',
+    CSS_VIEWER_INPUT = 'css-viewer__input',
+    CSS_VIEWER_HELP = 'css-viewer__help',
 
     HTML_VIEWER = 'html-viewer',
 
@@ -24,7 +29,4 @@ export enum CssClasses {
     LEVEL_LIST = 'level-viewer__list',
     LEVEL_LIST_ITEM = 'level-viewer__list-item',
     LEVEL_LIST_ITEM_DONE = 'level-viewer__list-item_done',
-
-    CSS_VIEWER_CONTROLS = 'css-viewer__controls',
-    CSS_VIEWER_INPUT = 'css-viewer__input',
 }

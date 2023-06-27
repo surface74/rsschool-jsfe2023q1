@@ -13,4 +13,5 @@ export enum TagNames {
     LEVEL_LIST_ITEM = 'li',
     CSS_VIEWER_CONTROLS = DIV,
     INPUT = 'input',
+    BUTTON = 'button',
 }
