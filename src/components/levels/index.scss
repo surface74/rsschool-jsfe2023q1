@@ -1,3 +1,5 @@
-.padding-left {
-  padding-left: 1rem;
+@import '../../styles/abstracts/variables.scss';
+
+.level-viewer__list-item_done {
+  color: $font-color-dark;
 }

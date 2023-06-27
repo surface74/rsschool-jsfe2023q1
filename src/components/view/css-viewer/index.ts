@@ -2,6 +2,7 @@ import './index.scss';
 import { CssClasses } from '../../../enums/view/css-classes';
 import { TagNames } from '../../../enums/view/tag-names';
 import DefaultView from '../default-view';
+import HtmlHelper from '../../../utils/html-helper';
 
 export default class CssViewerView extends DefaultView {
     private readonly HEADER_TITLE = 'CSS Viewer';
@@ -13,6 +14,19 @@ export default class CssViewerView extends DefaultView {
     }
 
     private configureHtml() {
+        this.addHeader();
+        this.addControls();
+    }
+
+    private addControls() {
+        const controlBlock = document.createElement(TagNames.CSS_VIEWER_CONTROLS);
+        const input = document.createElement(TagNames.INPUT);
+        input.classList.add(CssClasses.CSS_VIEWER_INPUT);
+
+        this.htmlElement.append(controlBlock);
+    }
+
+    private addHeader() {
         const header = document.createElement(TagNames.SECTION_HEADER);
         header.classList.add(CssClasses.SECTION_HEADER);
 

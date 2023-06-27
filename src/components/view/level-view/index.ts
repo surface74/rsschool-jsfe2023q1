@@ -25,8 +25,10 @@ export default class LevelView extends DefaultView {
         this.levels.forEach((item) => {
             const listItem = document.createElement(TagNames.LEVEL_LIST_ITEM);
             listItem.classList.add(CssClasses.LEVEL_LIST_ITEM);
+            if (item.done) {
+                listItem.classList.add(CssClasses.LEVEL_LIST_ITEM_DONE);
+            }
             listItem.textContent = item.level.getLevelTitle();
-            console.log('listItem: ', listItem);
             levelList.append(listItem);
         });
 

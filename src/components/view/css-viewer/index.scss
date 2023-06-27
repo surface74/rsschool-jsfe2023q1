@@ -12,3 +12,8 @@
     border-radius: $view-border-radius;
     border: 1px solid $border-color;
 }
+
+.css-viewer__controls {
+    display: flex;
+    width: 100%;
+}
