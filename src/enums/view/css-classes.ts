@@ -6,7 +6,8 @@ export enum CssClasses {
     TABLE = 'table',
     TABLE_ITEM = 'table__item',
 
-    LEVEL = 'level',
+    LEVEL_VIEWER = 'level-viewer',
+    LEVEL_VIEWER_CONTENT = 'level-viewer__content',
 
     CSS_VIEWER = 'css-viewer',
 
@@ -19,4 +20,7 @@ export enum CssClasses {
     HTML_CODE = 'html-code',
 
     PADDING_LEFT = 'padding-left',
+
+    LEVEL_LIST = 'level-viewer__list',
+    LEVEL_LIST_ITEM = 'level-viewer__list-item',
 }

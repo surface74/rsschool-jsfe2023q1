@@ -8,4 +8,7 @@ export enum TagNames {
     SECTION_TITLE = 'label',
     TABLE_ITEM = DIV,
     EDITOR_VIEWER = DIV,
+    LEVEL_VIEWER = DIV,
+    LEVEL_LIST = 'ul',
+    LEVEL_LIST_ITEM = 'li',
 }
