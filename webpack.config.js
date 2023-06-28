@@ -49,14 +49,14 @@ const baseConfig = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css',
         }),
-        // new CopyPlugin({
-        //     patterns: [
-        //         {
-        //             from: './src/public/',
-        //             to: 'assets/'
-        //         },
-        //     ],
-        // }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: './src/assets/images',
+                    to: 'assets/images'
+                },
+            ],
+        }),
         new CleanWebpackPlugin(),
     ],
 };

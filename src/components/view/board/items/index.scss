@@ -1,0 +1,28 @@
+.table-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // max-width: 100%
+}
+
+.table-item__table {
+  width: 100%;
+}
+
+.table-item__pickle,
+.table-item__orange {
+  width: 70px;
+
+  &.size-small {
+    transform: scale(.5);
+  }
+}
+
+.table-item__plate,
+.table-item__bento {
+  width: 120px;
+
+  &.size-small {
+    transform: scale(.5);
+  }
+}

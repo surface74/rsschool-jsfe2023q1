@@ -6,7 +6,16 @@ export enum CssClasses {
     CSS_VIEWER_BUTTON = 'css-viewer__button',
 
     BOARD = 'board',
-    TABLE_ITEM = 'table__item',
+    BOARD_LEVEL_ORDER = 'board__level-order',
+    BOARD_ITEM_CONTAINER = 'board__item-container',
+    BOARD_TABLE = 'board__table',
+
+    TABLE_ITEM = 'table-item',
+    TABLE_ITEM_PICKLE = 'table-item__pickle',
+    TABLE_ITEM_ORANGE = 'table-item__orange',
+    TABLE_ITEM_PLATE = 'table-item__plate',
+    TABLE_ITEM_BENTO = 'table-item__bento',
+    TABLE_ITEM_TABLE = 'table-item__table',
 
     LEVEL_VIEWER = 'level-viewer',
     LEVEL_VIEWER_CONTENT = 'level-viewer__content',
@@ -30,6 +39,5 @@ export enum CssClasses {
     LEVEL_LIST_ITEM = 'level-viewer__list-item',
     LEVEL_LIST_ITEM_DONE = 'level-viewer__list-item_done',
 
-    BOARD_LEVEL_ORDER = 'board__level-order',
-    BOARD_ITEM_CONTAINER = 'board__item-container',
+    SIZE_SMALL = 'size-small',
 }

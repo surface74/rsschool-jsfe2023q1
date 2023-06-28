@@ -15,4 +15,5 @@ export enum TagNames {
     INPUT = 'input',
     BUTTON = 'button',
     BOARD_LEVEL_ORDER = H2,
+    IMAGE = 'img',
 }

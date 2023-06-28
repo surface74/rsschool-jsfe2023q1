@@ -21,10 +21,20 @@
 .board__level-order {
     color: $title-color;
     font-size: $font-size-board-order;
+    margin-bottom: 10rem;
+}
+
+.board__table {
+    position: relative;
 }
 
 .board__item-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
-    background: url(../../../assets/images/table-100.svg) no-repeat center;
+    justify-content: space-around;
+    padding: 0 10% 2%;
 }

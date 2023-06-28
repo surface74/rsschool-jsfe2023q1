@@ -24,7 +24,7 @@ export default class MainView extends DefaultView {
 
         this.levels = new LevelStorage().storage;
         this.levelView = new LevelView(observerMethod, this.levels);
-        this.boardView = new BoardView(observerMethod);
+        this.boardView = new BoardView();
         this.htmlViewerView = new HtmlViewerView(observerMethod);
         this.cssViewerView = new CssViewerView();
 
@@ -46,6 +46,7 @@ export default class MainView extends DefaultView {
 
         this.boardView.setLevelOrder(level.getLevelTitle());
         this.htmlViewerView.setEditorContent(level.getHtmlElement());
+        this.boardView.fillTable();
     }
 
     protected createHtml(): HTMLElement {

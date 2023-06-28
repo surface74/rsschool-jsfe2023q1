@@ -2,11 +2,14 @@ import './index.scss';
 import { CssClasses } from '../../../enums/view/css-classes';
 import { TagNames } from '../../../enums/view/tag-names';
 import DefaultView from '../default-view';
-import TagItemView from './tag-item/tag-item-view';
-import Observer from '../../observer/observer';
+import Pickle from './items/pickle';
+import Orange from './items/orange';
+import Plate from './items/plate';
+import Bento from './items/bento';
+import Table from './items/table';
 
 export default class BoardView extends DefaultView {
-    constructor(observer: Observer) {
+    constructor() {
         super();
         this.configureHtml();
     }
@@ -18,30 +21,39 @@ export default class BoardView extends DefaultView {
         }
     }
 
+    public fillTable() {
+        const board = document.querySelector(`.${CssClasses.BOARD_ITEM_CONTAINER}`);
+        if (board) {
+            const pickle = new Pickle();
+            const orange = new Orange();
+            const plate = new Plate();
+            const bento = new Bento();
+            board.replaceChildren(
+                plate.getHtmlElement(),
+                pickle.getHtmlElement(),
+                bento.getHtmlElement(),
+                orange.getHtmlElement()
+            );
+        }
+    }
+
     private configureHtml() {
         const levelOrder = document.createElement(TagNames.BOARD_LEVEL_ORDER);
         levelOrder.classList.add(CssClasses.BOARD_LEVEL_ORDER);
 
+        const table = new Table().getHtmlElement();
+        // table.classList.add(CssClasses.BOARD_TABLE);
+
         const itemsContainer = document.createElement(TagNames.DIV);
         itemsContainer.classList.add(CssClasses.BOARD_ITEM_CONTAINER);
+        table.append(itemsContainer);
 
-        this.htmlElement.append(levelOrder, itemsContainer);
+        this.htmlElement.append(levelOrder, table);
     }
 
     protected createHtml(): HTMLElement {
         const element = document.createElement(TagNames.SECTION);
         element.classList.add(CssClasses.BOARD);
-
-        // let observer: Observer | null = null;
-        // if (param instanceof Observer) {
-        //     observer = param;
-        // }
-        // let tagItemItem = new TagItemView(observer);
-        // element.append(tagItemItem.getHtmlElement());
-        // tagItemItem = new TagItemView(observer);
-        // element.append(tagItemItem.getHtmlElement());
-        // tagItemItem = new TagItemView(observer);
-        // element.append(tagItemItem.getHtmlElement());
 
         return element;
     }
