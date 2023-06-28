@@ -10,6 +10,7 @@ import Observer from '../../observer/observer';
 import LevelStorage from '../../level-storage/level-storage';
 import { LevelItem } from '../../../types/level-item';
 import { EventName } from '../../../enums/events/event-names';
+import Level1 from '../../levels/level-1';
 
 export default class MainView extends DefaultView {
     levelView: LevelView;
@@ -36,20 +37,23 @@ export default class MainView extends DefaultView {
             this.cssViewerView.getHtmlElement()
         );
 
-        // document.body.addEventListener(EventName.LEVEL_SELECTED, this.onSelectLevel.bind(this));
+        document.body.addEventListener(String(EventName.LEVEL_SELECTED), this.onSelectLevel.bind(this));
     }
 
-    // private onSelectLevel(e: CustomEvent) {
-    //     console.log();
-    // }
+    private onSelectLevel(e: Event): void {
+        if (e instanceof CustomEvent) {
+            const levelId = Number(e.detail);
+            this.loadLevel(levelId);
+        }
+    }
 
     public initGame() {
         this.levelView.fillLevelsList();
-        this.loadLevel(1);
+        this.loadLevel(0);
     }
 
-    private loadLevel(levelNumber: number): void {
-        const level = this.levels[levelNumber - 1].level;
+    private loadLevel(levelId: number): void {
+        const level = this.levels[levelId].level;
 
         this.boardView.setLevelOrder(level.getLevelTitle());
         this.htmlViewerView.setEditorContent(level.getHtmlElement());

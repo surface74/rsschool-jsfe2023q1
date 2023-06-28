@@ -29,6 +29,7 @@ export default class HtmlViewerView extends DefaultView {
             this.htmlElement.textContent = param;
         }
     }
+
     private unselectHandler() {
         this.htmlElement.classList.remove(CssClasses.SELECTED);
         this.htmlElement.textContent = '';
@@ -38,7 +39,10 @@ export default class HtmlViewerView extends DefaultView {
         const selector = `.${CssClasses.HTML_VIEWER} .${CssClasses.EDITOR_VIEWER}`;
         const editor: Element | null = document.querySelector(selector);
         if (editor) {
-            editor.replaceChildren(content);
+            console.log('before replace: ', JSON.stringify(content));
+            // editor.replaceChildren();
+            // editor.append(content);
+            console.log('after replace: ', content.childElementCount);
         }
     }
 

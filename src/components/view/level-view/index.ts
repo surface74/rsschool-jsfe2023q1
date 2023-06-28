@@ -52,7 +52,7 @@ export default class LevelView extends DefaultView {
             if (e.target.classList.contains(CssClasses.LEVEL_VIEWER_LIST_ITEM)) {
                 const item = e.target;
                 const levelId = item.getAttribute(Attributes.DATA_LEVEL_ID);
-                const levelSelectedEvent = new CustomEvent(EventName.LEVEL_SELECTED, {
+                const levelSelectedEvent = new CustomEvent(String(EventName.LEVEL_SELECTED), {
                     bubbles: true,
                     detail: levelId,
                 });

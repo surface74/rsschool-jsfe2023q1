@@ -1,29 +1,42 @@
 import './index.scss';
 import html from './level-1.html';
-import Level from './level';
+// import Level from './level';
 import { CssClasses } from '../../enums/view/css-classes';
-import { TagNames } from '../../enums/view/tag-names';
-import { Attributes } from '../../enums/view/attributes';
 import HtmlHelper from '../../utils/html-helper';
 
-export default class Level1 extends Level {
-    LEVEL_TITLE = 'Select the plates';
+export default class Level1 {
+    protected element: DocumentFragment; // = document.createDocumentFragment();
+    protected items: string[] = [];
+    protected answers: string[] = [];
+    protected readonly LEVEL_TITLE = 'Select the plates';
 
     constructor() {
-        super();
-        this.createHTMLElement(html);
+        // super();
+        this.element = this.createHTMLElement(html);
 
         this.items = ['<plate />', '<plate />'];
-        this.element = this.createHTMLElement(html);
         this.answers = ['plate'];
     }
 
-    createHTMLElement(param: string) {
+    createHTMLElement(param: string): DocumentFragment {
         const element = HtmlHelper.ElementFromHTML(
             param
                 .replace(/{{%HTML_CODE}}/g, CssClasses.HTML_CODE)
                 .replace(/{{%PADDING_LEFT}}/g, CssClasses.PADDING_LEFT)
         );
+        console.log(element);
         return element;
+    }
+
+    public getHtmlElement() {
+        return this.element;
+    }
+
+    public getLevelTitle() {
+        return this.LEVEL_TITLE;
+    }
+
+    public getAnswer() {
+        return this.answers;
     }
 }
