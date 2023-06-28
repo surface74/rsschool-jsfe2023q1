@@ -38,17 +38,20 @@ export default class BoardView extends DefaultView {
     }
 
     private configureHtml() {
+        const wrapper = document.createElement(TagNames.DIV);
+        wrapper.classList.add(CssClasses.BOARD_WRAPPER);
+
         const levelOrder = document.createElement(TagNames.BOARD_LEVEL_ORDER);
         levelOrder.classList.add(CssClasses.BOARD_LEVEL_ORDER);
 
         const table = new Table().getHtmlElement();
-        // table.classList.add(CssClasses.BOARD_TABLE);
 
         const itemsContainer = document.createElement(TagNames.DIV);
         itemsContainer.classList.add(CssClasses.BOARD_ITEM_CONTAINER);
         table.append(itemsContainer);
 
-        this.htmlElement.append(levelOrder, table);
+        wrapper.append(levelOrder, table);
+        this.htmlElement.append(wrapper);
     }
 
     protected createHtml(): HTMLElement {

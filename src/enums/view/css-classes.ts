@@ -6,6 +6,7 @@ export enum CssClasses {
     CSS_VIEWER_BUTTON = 'css-viewer__button',
 
     BOARD = 'board',
+    BOARD_WRAPPER = 'board__wrapper',
     BOARD_LEVEL_ORDER = 'board__level-order',
     BOARD_ITEM_CONTAINER = 'board__item-container',
     BOARD_TABLE = 'board__table',
@@ -16,6 +17,7 @@ export enum CssClasses {
     TABLE_ITEM_PLATE = 'table-item__plate',
     TABLE_ITEM_BENTO = 'table-item__bento',
     TABLE_ITEM_TABLE = 'table-item__table',
+    TABLE_ITEM_TABLE_IMAGE = 'table-item__table-image',
 
     LEVEL_VIEWER = 'level-viewer',
     LEVEL_VIEWER_CONTENT = 'level-viewer__content',

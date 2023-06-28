@@ -14,11 +14,15 @@ export default class Table extends TableItem {
     }
 
     private configureHtml() {
+        const wrapper = document.createElement(TagNames.DIV);
+        wrapper.classList.add(CssClasses.TABLE_ITEM_TABLE);
+
         const image = document.createElement(TagNames.IMAGE);
-        image.classList.add(CssClasses.TABLE_ITEM_TABLE);
+        image.classList.add(CssClasses.TABLE_ITEM_TABLE_IMAGE);
         image.setAttribute(Attributes.SRC, `${this.BASE_PATH}${this.IMAGE_PATH}`);
 
-        this.htmlElement.append(image);
+        wrapper.append(image);
+        this.htmlElement.append(wrapper);
     }
 
     protected createHtml(): HTMLElement {

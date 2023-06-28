@@ -2,10 +2,6 @@
 @import '../view-styles.scss';
 
 .board {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     grid-column-start: 1;
     grid-column-end: 7;
     grid-row-start: 1;
@@ -18,10 +14,16 @@
     border-radius: $view-border-radius;
 }
 
+.board__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .board__level-order {
     color: $title-color;
     font-size: $font-size-board-order;
-    margin-bottom: 10rem;
+    // margin-bottom: 10rem;
 }
 
 .board__table {
