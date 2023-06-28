@@ -5,6 +5,7 @@ import { EventName } from '../../../enums/events/event-names';
 import DefaultView from '../default-view';
 import Observer from '../../observer/observer';
 import { LevelItem } from '../../../types/level-item';
+import { Attributes } from '../../../enums/view/attributes';
 
 export default class LevelView extends DefaultView {
     private readonly HEADER_TITLE = 'LEVELS';
@@ -21,13 +22,20 @@ export default class LevelView extends DefaultView {
 
     public fillLevelsList(): void {
         const levelList = document.createElement(TagNames.LEVEL_LIST);
-        levelList.classList.add(CssClasses.LEVEL_LIST);
+        levelList.classList.add(CssClasses.LEVEL_VIEWER_LIST);
+        levelList.addEventListener('click', this.selectLevel.bind(this));
+
         this.levels.forEach((item, index) => {
             const listItem = document.createElement(TagNames.LEVEL_LIST_ITEM);
-            listItem.classList.add(CssClasses.LEVEL_LIST_ITEM);
-            if (item.done) {
-                listItem.classList.add(CssClasses.LEVEL_LIST_ITEM_DONE);
+            listItem.setAttribute(Attributes.DATA_LEVEL_ID, String(index));
+            listItem.classList.add(CssClasses.LEVEL_VIEWER_LIST_ITEM);
+
+            if (item.helpUsed) {
+                listItem.classList.add(CssClasses.LEVEL_DONE_WITH_HELP);
+            } else if (item.done) {
+                listItem.classList.add(CssClasses.LEVEL_DONE);
             }
+
             listItem.textContent = `Level ${index + 1}`;
             levelList.append(listItem);
         });
@@ -36,6 +44,16 @@ export default class LevelView extends DefaultView {
         const editor: Element | null = document.querySelector(selector);
         if (editor) {
             editor.replaceChildren(levelList);
+        }
+    }
+
+    selectLevel(e: MouseEvent): void {
+        if (e.target instanceof HTMLElement) {
+            if (e.target.classList.contains(CssClasses.LEVEL_VIEWER_LIST_ITEM)) {
+                const item = e.target;
+                const levelId = item.getAttribute(Attributes.DATA_LEVEL_ID);
+                console.log('levelId: ', levelId);
+            }
         }
     }
 

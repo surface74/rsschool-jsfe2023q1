@@ -1,5 +1,9 @@
 @import '../../styles/abstracts/variables.scss';
 
-.level-viewer__list-item_done {
-  color: $font-color-dark;
+.level_done {
+  color: $font-color-level-done;
+}
+
+.level_done-with-help {
+  color: $font-color-level-done-with-help;
 }

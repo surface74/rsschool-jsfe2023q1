@@ -16,3 +16,12 @@
     font-size: $font-size-section-header;
     color: $font-color-light;
 }
+
+.level-viewer__list-item {
+    cursor: pointer;
+    padding-bottom: 1rem;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}

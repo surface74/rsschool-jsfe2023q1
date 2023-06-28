@@ -21,6 +21,10 @@ export enum CssClasses {
 
     LEVEL_VIEWER = 'level-viewer',
     LEVEL_VIEWER_CONTENT = 'level-viewer__content',
+    LEVEL_VIEWER_LIST = 'level-viewer__list',
+    LEVEL_VIEWER_LIST_ITEM = 'level-viewer__list-item',
+    LEVEL_DONE = 'level_done',
+    LEVEL_DONE_WITH_HELP = 'level_done-with-help',
 
     CSS_VIEWER = 'css-viewer',
     CSS_VIEWER_CONTROLS = 'css-viewer__controls',
@@ -37,9 +41,6 @@ export enum CssClasses {
 
     PADDING_LEFT = 'padding-left',
 
-    LEVEL_LIST = 'level-viewer__list',
-    LEVEL_LIST_ITEM = 'level-viewer__list-item',
-    LEVEL_LIST_ITEM_DONE = 'level-viewer__list-item_done',
 
     SIZE_SMALL = 'size-small',
 }
