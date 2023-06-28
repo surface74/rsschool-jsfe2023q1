@@ -9,6 +9,7 @@ import BoardView from '../board/index';
 import Observer from '../../observer/observer';
 import LevelStorage from '../../level-storage/level-storage';
 import { LevelItem } from '../../../types/level-item';
+import { EventName } from '../../../enums/events/event-names';
 
 export default class MainView extends DefaultView {
     levelView: LevelView;
@@ -34,7 +35,13 @@ export default class MainView extends DefaultView {
             this.htmlViewerView.getHtmlElement(),
             this.cssViewerView.getHtmlElement()
         );
+
+        // document.body.addEventListener(EventName.LEVEL_SELECTED, this.onSelectLevel.bind(this));
     }
+
+    // private onSelectLevel(e: CustomEvent) {
+    //     console.log();
+    // }
 
     public initGame() {
         this.levelView.fillLevelsList();
