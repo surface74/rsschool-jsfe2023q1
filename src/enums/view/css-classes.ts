@@ -9,7 +9,6 @@ export enum CssClasses {
     BOARD_WRAPPER = 'board__wrapper',
     BOARD_LEVEL_ORDER = 'board__level-order',
     BOARD_ITEM_CONTAINER = 'board__item-container',
-    BOARD_TABLE = 'board__table',
 
     TABLE_ITEM = 'table-item',
     TABLE_ITEM_PICKLE = 'table-item__pickle',
@@ -40,7 +39,6 @@ export enum CssClasses {
     HTML_CODE = 'html-code',
 
     PADDING_LEFT = 'padding-left',
-
 
     SIZE_SMALL = 'size-small',
 }

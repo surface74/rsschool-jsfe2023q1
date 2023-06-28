@@ -6,7 +6,6 @@ import Pickle from './items/pickle';
 import Orange from './items/orange';
 import Plate from './items/plate';
 import Bento from './items/bento';
-import Table from './items/table';
 
 export default class BoardView extends DefaultView {
     constructor() {
@@ -44,13 +43,10 @@ export default class BoardView extends DefaultView {
         const levelOrder = document.createElement(TagNames.BOARD_LEVEL_ORDER);
         levelOrder.classList.add(CssClasses.BOARD_LEVEL_ORDER);
 
-        const table = new Table().getHtmlElement();
-
         const itemsContainer = document.createElement(TagNames.DIV);
         itemsContainer.classList.add(CssClasses.BOARD_ITEM_CONTAINER);
-        table.append(itemsContainer);
 
-        wrapper.append(levelOrder, table);
+        wrapper.append(levelOrder, itemsContainer);
         this.htmlElement.append(wrapper);
     }
 

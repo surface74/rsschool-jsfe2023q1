@@ -26,17 +26,13 @@
     // margin-bottom: 10rem;
 }
 
-.board__table {
-    position: relative;
-}
-
 .board__item-container {
-    position: absolute;
     top: 0;
-    height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 0 10% 2%;
+    justify-content: center;
+    gap: 5%;
+    padding: 1rem 3rem;
+    background: url('../../../assets/images/table-top.png') no-repeat center;
 }
