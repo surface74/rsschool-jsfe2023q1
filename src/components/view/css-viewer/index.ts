@@ -11,6 +11,7 @@ export default class CssViewerView extends DefaultView {
     private readonly HEADER_FILENAME = 'style.css';
     private readonly BUTTON_ENTER_CAPTION = 'Enter';
     private readonly BUTTON_HELP_CAPTION = 'Help';
+    private readonly INPUT_PLACEHOLDER = 'Type in CSS selector';
 
     constructor() {
         super();
@@ -28,6 +29,7 @@ export default class CssViewerView extends DefaultView {
         controlBlock.classList.add(CssClasses.CSS_VIEWER_CONTROLS);
 
         const input = document.createElement(TagNames.INPUT);
+        input.setAttribute(Attributes.PLACEHOLDER, this.INPUT_PLACEHOLDER);
         input.classList.add(CssClasses.CSS_VIEWER_INPUT);
 
         const enterButton = document.createElement(TagNames.BUTTON);
