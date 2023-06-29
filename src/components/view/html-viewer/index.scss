@@ -14,7 +14,11 @@
   border-radius: $view-border-radius;
 }
 
-.html-code {
+.html-viewer__code {
   font-size: $font-size-code;
   color: $font-color;
+}
+
+.selectable-code:hover {
+  color: $font-color-light;
 }

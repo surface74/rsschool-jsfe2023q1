@@ -33,12 +33,13 @@ export enum CssClasses {
     CSS_VIEWER_HELP = 'css-viewer__help',
 
     HTML_VIEWER = 'html-viewer',
+    HTML_VIEWER_CODE = 'html-viewer__code',
+
+    SELECTABLE_CODE = 'selectable-code',
 
     EDITOR_VIEWER = 'editor-viewer',
 
     SELECTED = 'selected',
-
-    HTML_CODE = 'html-code',
 
     PADDING_LEFT = 'padding-left',
 
