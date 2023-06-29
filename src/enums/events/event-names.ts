@@ -1,12 +1,12 @@
 export enum EventName {
-    TAG_SELECTED,
-    TAG_UNSELECTED,
+    CODE_SELECTED = 'codeSelected',
+    CODE_UNSELECTED = 'codeUnselected',
 
-    HTML_SELECTED,
-    HTML_UNSELECTED,
+    HTML_SELECTED = 'htmlSelected',
+    HTML_UNSELECTED = 'htmlUnselected',
 
-    LEVEL_SELECTED,
-    LEVEL_UNSELECTED,
+    LEVEL_SELECTED = 'levelSelected',
+
     CLICK = 'click',
     KEY_DOWN = 'keydown',
 }

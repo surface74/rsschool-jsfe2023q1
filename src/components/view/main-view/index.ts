@@ -37,7 +37,7 @@ export default class MainView extends DefaultView {
             this.cssViewerView.getHtmlElement()
         );
 
-        document.body.addEventListener(String(EventName.LEVEL_SELECTED), this.onSelectLevel.bind(this));
+        document.body.addEventListener(EventName.LEVEL_SELECTED, this.onSelectLevel.bind(this));
     }
 
     private onSelectLevel(e: Event): void {

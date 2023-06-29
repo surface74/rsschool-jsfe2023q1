@@ -30,7 +30,12 @@ export default class Level1 extends Level {
     }
 
     createViewElement(param: string): DocumentFragment {
-        const element = HtmlHelper.ElementFromHTML(param.replace(/{{%DATA_ITEM_ID}}/g, Attributes.DATA_ITEM_ID));
+        const element = HtmlHelper.ElementFromHTML(
+            param
+                .replace(/{{DATA_ITEM_ID}}/g, Attributes.DATA_ITEM_ID)
+                .replace(/{{TABLE_ITEM_SELECTABLE}}/g, CssClasses.TABLE_ITEM_SELECTABLE)
+                .replace(/{{TABLE_ITEM}}/g, CssClasses.TABLE_ITEM)
+        );
         return element;
     }
 }

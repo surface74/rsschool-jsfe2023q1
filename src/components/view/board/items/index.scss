@@ -30,3 +30,11 @@
     transform: scale(.5);
   }
 }
+
+.table__item_selectable:hover {
+  outline: auto;
+}
+
+.table__item_selected {
+  outline: auto;
+}

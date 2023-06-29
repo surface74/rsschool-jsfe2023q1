@@ -18,6 +18,8 @@ export enum CssClasses {
     TABLE_ITEM_BENTO = 'table-item__bento',
     TABLE_ITEM_TABLE = 'table-item__table',
     TABLE_ITEM_TABLE_IMAGE = 'table-item__table-image',
+    TABLE_ITEM_SELECTABLE = 'table__item_selectable',
+    TABLE_ITEM_SELECTED = 'table__item_selected',
 
     LEVEL_VIEWER = 'level-viewer',
     LEVEL_VIEWER_CONTENT = 'level-viewer__content',
@@ -36,6 +38,7 @@ export enum CssClasses {
     HTML_VIEWER_CODE = 'html-viewer__code',
 
     SELECTABLE_CODE = 'selectable-code',
+    CODE_SELECTED = 'code_selected',
 
     EDITOR_VIEWER = 'editor-viewer',
 
