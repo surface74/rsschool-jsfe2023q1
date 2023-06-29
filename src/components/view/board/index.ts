@@ -1,4 +1,5 @@
 import './index.scss';
+import { EventName } from '../../../enums/events/event-names';
 import { CssClasses } from '../../../enums/view/css-classes';
 import { TagNames } from '../../../enums/view/tag-names';
 import DefaultView from '../default-view';
@@ -6,11 +7,24 @@ import Pickle from './items/pickle';
 import Orange from './items/orange';
 import Plate from './items/plate';
 import Bento from './items/bento';
+import Mediator from '../../mediator/mediator';
 
 export default class BoardView extends DefaultView {
     constructor() {
         super();
         this.configureHtml();
+    }
+
+    private selectHandler<T>(param: T) {
+        if (this instanceof HTMLElement) {
+            this.classList.add(CssClasses.TABLE_ITEM_SELECTED);
+        }
+    }
+
+    private unselectHandler<T>(param: T) {
+        if (this instanceof HTMLElement) {
+            this.classList.remove(CssClasses.TABLE_ITEM_SELECTED);
+        }
     }
 
     public setLevelOrder(order: string) {
@@ -35,6 +49,17 @@ export default class BoardView extends DefaultView {
             //     orange.getHtmlElement()
             // );
         }
+        this.addEventListeners();
+    }
+
+    private addEventListeners() {
+        const selector = `.${CssClasses.TABLE_ITEM_SELECTABLE}`;
+        const items = document.querySelectorAll(selector);
+        items.forEach((item) => {
+            const lineId = item.getAttribute('data-item-id');
+            item.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(item, lineId));
+            item.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(item, lineId));
+        });
     }
 
     private configureHtml() {

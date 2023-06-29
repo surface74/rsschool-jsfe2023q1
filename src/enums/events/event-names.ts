@@ -9,4 +9,6 @@ export enum EventName {
 
     CLICK = 'click',
     KEY_DOWN = 'keydown',
+    POINTER_ENTER = 'pointerenter',
+    POINTER_LEAVE = 'pointerleave',
 }

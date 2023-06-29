@@ -41,8 +41,8 @@ export default class HtmlViewerView extends DefaultView {
         const codeLines = document.querySelectorAll(selector);
         codeLines.forEach((line) => {
             const lineId = line.getAttribute('data-item-id');
-            line.addEventListener('pointerenter', this.selectHandler.bind(line, lineId));
-            line.addEventListener('pointerleave', this.unselectHandler.bind(line, lineId));
+            line.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(line, lineId));
+            line.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(line, lineId));
         });
     }
 
