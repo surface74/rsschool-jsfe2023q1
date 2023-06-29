@@ -1,5 +1,6 @@
 import './index.scss';
 import { EventName } from '../../../enums/events/event-names';
+import { Attributes } from '../../../enums/view/attributes';
 import { CssClasses } from '../../../enums/view/css-classes';
 import { TagNames } from '../../../enums/view/tag-names';
 import DefaultView from '../default-view';
@@ -19,11 +20,21 @@ export default class BoardView extends DefaultView {
         if (this instanceof HTMLElement) {
             this.classList.add(CssClasses.TABLE_ITEM_SELECTED);
         }
+        const selector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const tableItem = document.querySelector(selector);
+        if (tableItem) {
+            tableItem.classList.add(CssClasses.CODE_SELECTED);
+        }
     }
 
     private unselectHandler<T>(param: T) {
         if (this instanceof HTMLElement) {
             this.classList.remove(CssClasses.TABLE_ITEM_SELECTED);
+        }
+        const selector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const tableItem = document.querySelector(selector);
+        if (tableItem) {
+            tableItem.classList.remove(CssClasses.CODE_SELECTED);
         }
     }
 
