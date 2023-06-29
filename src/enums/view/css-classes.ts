@@ -4,6 +4,7 @@ export enum CssClasses {
     SECTION_HEADER = 'section-header',
 
     CSS_VIEWER_BUTTON = 'css-viewer__button',
+    CSS_VIEWER_BUTTON_ENTER = 'css-viewer__button-enter',
 
     BOARD = 'board',
     BOARD_WRAPPER = 'board__wrapper',
@@ -28,6 +29,7 @@ export enum CssClasses {
     CSS_VIEWER = 'css-viewer',
     CSS_VIEWER_CONTROLS = 'css-viewer__controls',
     CSS_VIEWER_INPUT = 'css-viewer__input',
+    CSS_VIEWER_INPUT_ERROR = 'css-viewer__input_error',
     CSS_VIEWER_HELP = 'css-viewer__help',
 
     HTML_VIEWER = 'html-viewer',

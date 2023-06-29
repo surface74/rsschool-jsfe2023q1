@@ -34,7 +34,7 @@ export default class CssViewerView extends DefaultView {
 
         const enterButton = document.createElement(TagNames.BUTTON);
         enterButton.setAttribute(Attributes.TYPE, Attributes.BUTTON);
-        enterButton.classList.add(CssClasses.CSS_VIEWER_BUTTON);
+        enterButton.classList.add(CssClasses.CSS_VIEWER_BUTTON, CssClasses.CSS_VIEWER_BUTTON_ENTER);
         enterButton.textContent = this.BUTTON_ENTER_CAPTION;
 
         const helpButton = document.createElement(TagNames.BUTTON);

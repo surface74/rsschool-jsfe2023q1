@@ -32,6 +32,10 @@
   outline: none;
 }
 
+.css-viewer__input_error {
+  animation: blink-error 1s;
+}
+
 .css-viewer__button {
   height: 3rem;
   margin: 0 .5rem;
@@ -54,5 +58,19 @@
 
   100% {
     background-color: rgba(0, 255, 255, 0.8);
+  }
+}
+
+@keyframes blink-error {
+  0% {
+    background-color: rgb(255, 0, 0, 0.8);
+  }
+
+  50% {
+    background-color: rgba(255, 0, 0, 0.2);
+  }
+
+  100% {
+    background-color: rgba(255, 0, 0, 0.8);
   }
 }

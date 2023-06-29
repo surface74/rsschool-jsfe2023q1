@@ -7,4 +7,6 @@ export enum EventName {
 
     LEVEL_SELECTED,
     LEVEL_UNSELECTED,
+    CLICK = 'click',
+    KEY_DOWN = 'keydown',
 }

@@ -6,7 +6,17 @@ export default class LevelStorage {
     storage: LevelItem[] = [];
 
     constructor() {
-        this.storage.push({ id: 1, done: true, helpUsed: false });
+        this.storage.push({ id: 1, done: false, helpUsed: false });
+    }
+
+    public get length(): number {
+        return this.storage.length;
+    }
+
+    public levelDone(levelId: number): void {
+        console.log('levelId: ', levelId);
+        this.storage[levelId - 1].done = true;
+        this.storage[levelId - 1].helpUsed = false;
     }
 
     public getStorage() {
