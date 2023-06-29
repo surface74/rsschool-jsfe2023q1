@@ -9,6 +9,7 @@ import Orange from './items/orange';
 import Plate from './items/plate';
 import Bento from './items/bento';
 import Mediator from '../../mediator/mediator';
+import Tooltip from '../../tooltip/index';
 
 export default class BoardView extends DefaultView {
     constructor() {
@@ -19,11 +20,13 @@ export default class BoardView extends DefaultView {
     private selectHandler<T>(param: T) {
         if (this instanceof HTMLElement) {
             this.classList.add(CssClasses.TABLE_ITEM_SELECTED);
-        }
-        const selector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
-        const tableItem = document.querySelector(selector);
-        if (tableItem) {
-            tableItem.classList.add(CssClasses.CODE_SELECTED);
+            const selector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+            const codeLine = document.querySelector(selector);
+            if (codeLine instanceof HTMLElement) {
+                codeLine.classList.add(CssClasses.CODE_SELECTED);
+                const tooltip = new Tooltip(this);
+                document.body.append(tooltip.getHtmlElement());
+            }
         }
     }
 
@@ -35,6 +38,10 @@ export default class BoardView extends DefaultView {
         const tableItem = document.querySelector(selector);
         if (tableItem) {
             tableItem.classList.remove(CssClasses.CODE_SELECTED);
+            const tooltip = document.querySelector(`.${CssClasses.TOOLTIP}`);
+            if (tooltip) {
+                tooltip.remove();
+            }
         }
     }
 

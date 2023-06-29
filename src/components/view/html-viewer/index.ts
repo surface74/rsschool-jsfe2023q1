@@ -5,6 +5,7 @@ import { TagNames } from '../../../enums/view/tag-names';
 import DefaultView from '../default-view';
 import Mediator from '../../mediator/mediator';
 import { Attributes } from '../../../enums/view/attributes';
+import Tooltip from '../../tooltip/index';
 
 export default class HtmlViewerView extends DefaultView {
     private readonly HEADER_TITLE = 'HTML Viewer';
@@ -21,8 +22,10 @@ export default class HtmlViewerView extends DefaultView {
             this.classList.add(CssClasses.CODE_SELECTED);
             const selector = `.${CssClasses.TABLE_ITEM_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
             const tableItem = document.querySelector(selector);
-            if (tableItem) {
+            if (tableItem instanceof HTMLElement) {
                 tableItem.classList.add(CssClasses.TABLE_ITEM_SELECTED);
+                const tooltip = new Tooltip(tableItem);
+                document.body.append(tooltip.getHtmlElement());
             }
         }
     }
@@ -35,6 +38,10 @@ export default class HtmlViewerView extends DefaultView {
         const tableItem = document.querySelector(selector);
         if (tableItem) {
             tableItem.classList.remove(CssClasses.TABLE_ITEM_SELECTED);
+            const tooltip = document.querySelector(`.${CssClasses.TOOLTIP}`);
+            if (tooltip) {
+                tooltip.remove();
+            }
         }
     }
 

@@ -1,0 +1,10 @@
+@import '../../styles/abstracts/variables.scss';
+
+.tooltip {
+  position: absolute;
+  border: 1px solid $color-tooltip-border;
+  border-radius: 5px;
+  padding: 0.2rem 1rem;
+  font-size: $font-size-tooltip;
+  background-color: $color-tooltip-background;
+}

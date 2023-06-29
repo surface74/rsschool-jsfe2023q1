@@ -42,6 +42,8 @@ export enum CssClasses {
 
     EDITOR_VIEWER = 'editor-viewer',
 
+    TOOLTIP = 'tooltip',
+
     SELECTED = 'selected',
 
     PADDING_LEFT = 'padding-left',

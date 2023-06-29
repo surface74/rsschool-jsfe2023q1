@@ -33,8 +33,10 @@ export default class Level1 extends Level {
         const element = HtmlHelper.ElementFromHTML(
             param
                 .replace(/{{DATA_ITEM_ID}}/g, Attributes.DATA_ITEM_ID)
+                .replace(/{{DATA_ITEM_TOOLTIP}}/g, Attributes.DATA_ITEM_TOOLTIP)
                 .replace(/{{TABLE_ITEM_SELECTABLE}}/g, CssClasses.TABLE_ITEM_SELECTABLE)
                 .replace(/{{TABLE_ITEM}}/g, CssClasses.TABLE_ITEM)
+                .replace(/{{TABLE_ITEM_PLATE}}/g, CssClasses.TABLE_ITEM_PLATE)
         );
         return element;
     }

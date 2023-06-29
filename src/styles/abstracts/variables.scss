@@ -1,7 +1,5 @@
 $view-border-radius: 0;
 
-$level-background-color: #1b1813;
-
 $font-color-light: #efefef;
 $font-color-code: #d7d7d7;
 $font-color: #84837f;
@@ -10,14 +8,19 @@ $font-color-level-done: #00d600;
 $font-color-level-done-with-help: yellow;
 
 $background-color: #2e2923;
+$level-background-color: #1b1813;
+$border-color: $font-color-dark;
+
+$title-color: $font-color-light;
 $title-background-color: #27241d;
+
 $editor-background-color: #201d18;
 $editor-background-color-light: #efefef;
 
-$title-color: $font-color-light;
-$border-color: $font-color-dark;
+$color-tooltip-border: $border-color;
+$color-tooltip-background: #07c9f5;
 
 $font-size-code: 1.8rem;
 $font-size-section-header: 1.8rem;
+$font-size-tooltip: 2rem;
 $font-size-board-order: 4rem;
-
