@@ -12,7 +12,7 @@ export default class LevelView extends DefaultView {
     private readonly HEADER_FILENAME = '';
     private readonly levels: LevelItem[];
 
-    constructor(observer: Observer, levels: LevelItem[]) {
+    constructor(levels: LevelItem[]) {
         super();
         this.levels = levels;
         this.configureHtml();
@@ -25,9 +25,9 @@ export default class LevelView extends DefaultView {
         levelList.classList.add(CssClasses.LEVEL_VIEWER_LIST);
         levelList.addEventListener('click', this.selectLevel.bind(this));
 
-        this.levels.forEach((item, index) => {
+        this.levels.forEach((item) => {
             const listItem = document.createElement(TagNames.LEVEL_LIST_ITEM);
-            listItem.setAttribute(Attributes.DATA_LEVEL_ID, String(index));
+            listItem.setAttribute(Attributes.DATA_LEVEL_ID, String(item.id));
             listItem.classList.add(CssClasses.LEVEL_VIEWER_LIST_ITEM);
 
             if (item.helpUsed) {
@@ -36,7 +36,7 @@ export default class LevelView extends DefaultView {
                 listItem.classList.add(CssClasses.LEVEL_DONE);
             }
 
-            listItem.textContent = `Level ${index + 1}`;
+            listItem.textContent = `Level ${item.id}`;
             levelList.append(listItem);
         });
 
@@ -50,11 +50,9 @@ export default class LevelView extends DefaultView {
     selectLevel(e: MouseEvent): void {
         if (e.target instanceof HTMLElement) {
             if (e.target.classList.contains(CssClasses.LEVEL_VIEWER_LIST_ITEM)) {
-                const item = e.target;
-                const levelId = item.getAttribute(Attributes.DATA_LEVEL_ID);
                 const levelSelectedEvent = new CustomEvent(String(EventName.LEVEL_SELECTED), {
                     bubbles: true,
-                    detail: levelId,
+                    detail: e.target.getAttribute(Attributes.DATA_LEVEL_ID),
                 });
                 this.htmlElement.dispatchEvent(levelSelectedEvent);
             }

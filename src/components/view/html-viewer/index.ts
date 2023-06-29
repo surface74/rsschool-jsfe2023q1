@@ -39,10 +39,7 @@ export default class HtmlViewerView extends DefaultView {
         const selector = `.${CssClasses.HTML_VIEWER} .${CssClasses.EDITOR_VIEWER}`;
         const editor: Element | null = document.querySelector(selector);
         if (editor) {
-            console.log('before replace: ', JSON.stringify(content));
-            // editor.replaceChildren();
-            // editor.append(content);
-            console.log('after replace: ', content.childElementCount);
+            editor.replaceChildren(content);
         }
     }
 

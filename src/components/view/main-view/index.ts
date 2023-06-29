@@ -11,21 +11,22 @@ import LevelStorage from '../../level-storage/level-storage';
 import { LevelItem } from '../../../types/level-item';
 import { EventName } from '../../../enums/events/event-names';
 import Level1 from '../../levels/level-1';
+// import Level1 from '../../levels/level-1';
 
 export default class MainView extends DefaultView {
     levelView: LevelView;
     boardView: BoardView;
     htmlViewerView: HtmlViewerView;
     cssViewerView: CssViewerView;
-    levels: LevelItem[];
+    levelStorage: LevelStorage;
 
     constructor() {
         super();
 
         const observerMethod = new Observer();
 
-        this.levels = new LevelStorage().storage;
-        this.levelView = new LevelView(observerMethod, this.levels);
+        this.levelStorage = new LevelStorage();
+        this.levelView = new LevelView(this.levelStorage.storage);
         this.boardView = new BoardView();
         this.htmlViewerView = new HtmlViewerView(observerMethod);
         this.cssViewerView = new CssViewerView();
@@ -49,15 +50,18 @@ export default class MainView extends DefaultView {
 
     public initGame() {
         this.levelView.fillLevelsList();
-        this.loadLevel(0);
+        this.loadLevel(1);
     }
 
     private loadLevel(levelId: number): void {
-        const level = this.levels[levelId].level;
-
-        this.boardView.setLevelOrder(level.getLevelTitle());
-        this.htmlViewerView.setEditorContent(level.getHtmlElement());
-        this.boardView.fillTable();
+        const level = this.levelStorage.getLevel(levelId);
+        if (level) {
+            this.boardView.setLevelOrder(level.getLevelTitle());
+            const content = level.getHtmlElement();
+            console.log('content: ', content);
+            this.htmlViewerView.setEditorContent(level.getHtmlElement());
+            this.boardView.fillTable();
+        }
     }
 
     protected createHtml(): HTMLElement {
