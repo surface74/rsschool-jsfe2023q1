@@ -20,19 +20,20 @@ export default class BoardView extends DefaultView {
         }
     }
 
-    public fillTable() {
+    public fillTable(element: DocumentFragment) {
         const board = document.querySelector(`.${CssClasses.BOARD_ITEM_CONTAINER}`);
         if (board) {
-            const pickle = new Pickle();
-            const orange = new Orange();
-            const plate = new Plate();
-            const bento = new Bento();
-            board.replaceChildren(
-                plate.getHtmlElement(),
-                pickle.getHtmlElement(),
-                bento.getHtmlElement(),
-                orange.getHtmlElement()
-            );
+            board.replaceChildren(element);
+            // const pickle = new Pickle();
+            // const orange = new Orange();
+            // const plate = new Plate();
+            // const bento = new Bento();
+            // board.replaceChildren(
+            //     plate.getHtmlElement(),
+            //     pickle.getHtmlElement(),
+            //     bento.getHtmlElement(),
+            //     orange.getHtmlElement()
+            // );
         }
     }
 

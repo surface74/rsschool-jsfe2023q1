@@ -1,5 +1,5 @@
 import '../index.scss';
-import html from './level-1.html';
+import '../../view/board/items/index.scss';
 import viewHtml from './view.html';
 import helpHtml from './help.html';
 import Level from '../level';
@@ -29,11 +29,7 @@ export default class Level1 extends Level {
     }
 
     createViewElement(param: string): DocumentFragment {
-        const element = HtmlHelper.ElementFromHTML(
-            param
-                .replace(/{{%HTML_CODE}}/g, CssClasses.HTML_CODE)
-                .replace(/{{%PADDING_LEFT}}/g, CssClasses.PADDING_LEFT)
-        );
+        const element = HtmlHelper.ElementFromHTML(param.replace(/{{%DATA_ITEM_ID}}/g, Attributes.DATA_ITEM_ID));
         return element;
     }
 }

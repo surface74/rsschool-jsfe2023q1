@@ -52,11 +52,10 @@ export default class MainView extends DefaultView {
 
     private loadLevel(levelId: number): void {
         const level = this.levelStorage.getLevel(levelId);
-        console.log('level: ', level);
         if (level) {
             this.boardView.setLevelOrder(level.getLevelTitle());
             this.htmlViewerView.setEditorContent(level.getHelpElement());
-            this.boardView.fillTable();
+            this.boardView.fillTable(level.getViewElement());
         }
     }
 
