@@ -27,7 +27,7 @@ export default class MainView extends DefaultView {
         this.levelStorage = new LevelStorage();
         this.levelView = new LevelView(this.levelStorage.storage);
         this.boardView = new BoardView();
-        this.htmlViewerView = new HtmlViewerView(observerMethod);
+        this.htmlViewerView = new HtmlViewerView();
         this.cssViewerView = new CssViewerView();
 
         this.htmlElement.append(
