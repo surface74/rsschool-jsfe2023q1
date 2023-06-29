@@ -8,10 +8,7 @@ import LevelView from '../level-view/index';
 import BoardView from '../board/index';
 import Observer from '../../observer/observer';
 import LevelStorage from '../../level-storage/level-storage';
-import { LevelItem } from '../../../types/level-item';
 import { EventName } from '../../../enums/events/event-names';
-import Level1 from '../../levels/level-1';
-// import Level1 from '../../levels/level-1';
 
 export default class MainView extends DefaultView {
     levelView: LevelView;
@@ -55,11 +52,10 @@ export default class MainView extends DefaultView {
 
     private loadLevel(levelId: number): void {
         const level = this.levelStorage.getLevel(levelId);
+        console.log('level: ', level);
         if (level) {
             this.boardView.setLevelOrder(level.getLevelTitle());
-            const content = level.getHtmlElement();
-            console.log('content: ', content);
-            this.htmlViewerView.setEditorContent(level.getHtmlElement());
+            this.htmlViewerView.setEditorContent(level.getHelpElement());
             this.boardView.fillTable();
         }
     }

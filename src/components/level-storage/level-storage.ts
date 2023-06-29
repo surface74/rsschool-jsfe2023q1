@@ -1,7 +1,6 @@
 import { Levels } from '../../types/level';
 import { LevelItem } from '../../types/level-item';
-import Level from '../levels/level';
-import Level1 from '../levels/level-1';
+import Level1 from '../levels/level-1/level-1';
 
 export default class LevelStorage {
     storage: LevelItem[] = [];
