@@ -37,6 +37,7 @@ export default class Level1 extends Level {
                 .replace(/{{TABLE_ITEM_SELECTABLE}}/g, CssClasses.TABLE_ITEM_SELECTABLE)
                 .replace(/{{TABLE_ITEM}}/g, CssClasses.TABLE_ITEM)
                 .replace(/{{TABLE_ITEM_PLATE}}/g, CssClasses.TABLE_ITEM_PLATE)
+                .replace(/{{TABLE_ITEM_ACTIVE}}/g, CssClasses.TABLE_ITEM_ACTIVE)
         );
         return element;
     }

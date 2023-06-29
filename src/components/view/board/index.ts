@@ -52,6 +52,15 @@ export default class BoardView extends DefaultView {
         }
     }
 
+    public hideActiveElement() {
+        const selector = `.${CssClasses.TABLE_ITEM_ACTIVE}`;
+        const activeItems = this.htmlElement.querySelectorAll(selector);
+        activeItems.forEach((item) => {
+            item.classList.remove(CssClasses.TABLE_ITEM_ACTIVE);
+            item.classList.add(CssClasses.TABLE_ITEM_GO_AWAY);
+        });
+    }
+
     public fillTable(element: DocumentFragment) {
         const board = document.querySelector(`.${CssClasses.BOARD_ITEM_CONTAINER}`);
         if (board) {

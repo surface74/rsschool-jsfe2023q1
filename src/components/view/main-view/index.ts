@@ -6,7 +6,6 @@ import CssViewerView from '../css-viewer/index';
 import HtmlViewerView from '../html-viewer/index';
 import LevelView from '../level-view/index';
 import BoardView from '../board/index';
-import Observer from '../../observer/observer';
 import LevelStorage from '../../level-storage/level-storage';
 import { EventName } from '../../../enums/events/event-names';
 import { KeyCodes } from '../../../types/key-codes';
@@ -21,8 +20,6 @@ export default class MainView extends DefaultView {
 
     constructor() {
         super();
-
-        const observerMethod = new Observer();
 
         this.levelStorage = new LevelStorage();
         this.levelView = new LevelView(this.levelStorage.storage);
@@ -60,8 +57,14 @@ export default class MainView extends DefaultView {
                         input.value = '';
                         this.levelStorage.levelDone(this.currentLevel);
                         this.levelView.fillLevelsList();
+                        this.boardView.hideActiveElement();
+
                         if (this.levelStorage.length < this.currentLevel) {
-                            this.loadLevel(this.currentLevel + 1);
+                            setTimeout(() => {
+                                this.loadLevel(this.currentLevel + 1);
+                            }, 1000);
+                        } else {
+                            this.showCongrats();
                         }
                     } else {
                         input.classList.add(CssClasses.CSS_VIEWER_INPUT_ERROR);
@@ -70,6 +73,10 @@ export default class MainView extends DefaultView {
                 }
             }
         }
+    }
+
+    private showCongrats() {
+        // TODO: Show dialog 'Congrats! All level done'
     }
 
     public initGame() {

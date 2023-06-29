@@ -20,6 +20,8 @@ export enum CssClasses {
     TABLE_ITEM_TABLE_IMAGE = 'table-item__table-image',
     TABLE_ITEM_SELECTABLE = 'table__item_selectable',
     TABLE_ITEM_SELECTED = 'table__item_selected',
+    TABLE_ITEM_ACTIVE = 'table__item_active',
+    TABLE_ITEM_GO_AWAY = 'table__item_go_away',
 
     LEVEL_VIEWER = 'level-viewer',
     LEVEL_VIEWER_CONTENT = 'level-viewer__content',
