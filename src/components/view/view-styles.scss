@@ -14,7 +14,8 @@
 .editor-viewer {
   display: flex;
   flex-direction: column;
-  color: $title-color;
+  color: $font-color-code;
+  // color: $title-color;
   padding: 1rem;
   font-size: $font-size-code;
 

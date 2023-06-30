@@ -8,13 +8,12 @@ import Replacer from '../../../utils/replacer';
 
 export default class Level1 extends Level {
     protected readonly LEVEL_TITLE = 'Select the plates';
+    protected readonly ANSWERS = ['plate'];
 
     constructor() {
         super();
         this.helpElement = this.createHTMLElement(helpHtml);
         this.viewElement = this.createHTMLElement(viewHtml);
-
-        this.answers = ['plate'];
     }
 
     createHTMLElement(param: string): DocumentFragment {

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import Level1 from './level-1';
+import Level1 from './index';
 
 describe('when creating Level', () => {
     it('return created HTMLElement', () => {
