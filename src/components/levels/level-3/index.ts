@@ -7,8 +7,8 @@ import HtmlHelper from '../../../utils/html-helper';
 import Replacer from '../../../utils/replacer';
 
 export default class Level3 extends Level {
-    protected readonly LEVEL_TITLE = 'Select the plates';
-    protected readonly ANSWERS = ['plate'];
+    protected readonly LEVEL_TITLE = 'Select the fancy plate';
+    protected readonly ANSWERS = ['#fancy'];
 
     constructor() {
         super();
