@@ -6,7 +6,7 @@ import Level from '../level';
 import HtmlHelper from '../../../utils/html-helper';
 import Replacer from '../../../utils/replacer';
 
-export default class Level1 extends Level {
+export default class Level2 extends Level {
     protected readonly LEVEL_TITLE = 'Select the plates';
 
     constructor() {

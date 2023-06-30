@@ -24,7 +24,5 @@ export default abstract class Level {
         return this.answers;
     }
 
-    protected abstract createHelpElement(param: string): DocumentFragment;
-    protected abstract createViewElement(param: string): DocumentFragment;
-    // protected abstract createHTMLElement(param: string): DocumentFragment;
+    protected abstract createHTMLElement(param: string): DocumentFragment;
 }

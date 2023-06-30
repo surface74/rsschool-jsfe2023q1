@@ -34,6 +34,8 @@
 
 .table__item_selected {
   outline: auto;
+  outline-offset: 4px;
+  outline-color: aliceblue;
 }
 
 .table__item_go_away {

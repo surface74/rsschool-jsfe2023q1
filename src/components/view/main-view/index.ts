@@ -96,6 +96,7 @@ export default class MainView extends DefaultView {
     private loadLevel(levelId: number): void {
         this.levelView.fillLevelsList();
         const level = this.levelStorage.getLevel(levelId);
+        console.log('level: ', level);
         if (level) {
             this.currentLevel = levelId;
             this.boardView.setLevelOrder(level.getLevelTitle());
