@@ -14,6 +14,7 @@ export enum CssClasses {
     TABLE_ITEM = 'table-item',
     TABLE_ITEM_PICKLE = 'table-item__pickle',
     TABLE_ITEM_ORANGE = 'table-item__orange',
+    TABLE_ITEM_APPLE = 'table-item__apple',
     TABLE_ITEM_PLATE = 'table-item__plate',
     TABLE_ITEM_BENTO = 'table-item__bento',
     TABLE_ITEM_TABLE = 'table-item__table',

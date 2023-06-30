@@ -3,7 +3,6 @@ import { CssClasses } from '../../../enums/view/css-classes';
 import { TagNames } from '../../../enums/view/tag-names';
 import { EventName } from '../../../enums/events/event-names';
 import DefaultView from '../default-view';
-import Observer from '../../observer/observer';
 import { LevelItem } from '../../../types/level-item';
 import { Attributes } from '../../../enums/view/attributes';
 
@@ -16,8 +15,6 @@ export default class LevelView extends DefaultView {
         super();
         this.levels = levels;
         this.configureHtml();
-        // this.htmlElement.addEventListener('mouseenter', () => observer?.notify(EventName.LEVEL_SELECTED, this.TEXT));
-        // this.htmlElement.addEventListener('mouseout', () => observer?.notify(EventName.LEVEL_UNSELECTED, this.TEXT));
     }
 
     public fillLevelsList(): void {
