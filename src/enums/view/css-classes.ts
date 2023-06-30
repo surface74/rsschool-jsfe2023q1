@@ -50,5 +50,11 @@ export enum CssClasses {
 
     PADDING_LEFT = 'padding-left',
 
+    PADDING_LEFT_X2 = 'padding-left_x2',
+
     SIZE_SMALL = 'size-small',
+
+    POSITION_INSIDE = 'position-inside',
+
+    POSITION_CONTAINER = 'position-container',
 }

@@ -15,5 +15,17 @@ body * {
 }
 
 .padding-left {
-  padding-left: 1rem;
+  padding-left: $padding;
+}
+
+.padding-left_x2 {
+  padding-left: calc(2 * $padding);
+}
+
+.position-inside {
+  position: absolute;
+}
+
+.position-container {
+  position: relative;
 }
