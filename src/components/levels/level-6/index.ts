@@ -6,9 +6,9 @@ import Level from '../level';
 import HtmlHelper from '../../../utils/html-helper';
 import Replacer from '../../../utils/replacer';
 
-export default class Level5 extends Level {
-    protected readonly LEVEL_TITLE = 'Select the pickle on the fancy plate';
-    protected readonly ANSWERS = ['#fancy pickle'];
+export default class Level4 extends Level {
+    protected readonly LEVEL_TITLE = 'Select the small apples';
+    protected readonly ANSWERS = ['apple.small'];
 
     constructor() {
         super();
