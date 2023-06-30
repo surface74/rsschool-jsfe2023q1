@@ -2,11 +2,11 @@
  * @jest-environment jsdom
  */
 
-import Level6 from './index';
+import Level7 from './index';
 
 describe('when creating Level', () => {
     it('return created HTMLElement', () => {
-        const level = new Level6();
+        const level = new Level7();
         expect(level.getHelpElement()).toBeInstanceOf(DocumentFragment);
     });
 });
