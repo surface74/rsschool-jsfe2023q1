@@ -18,22 +18,24 @@ export default class HtmlViewerView extends DefaultView {
     }
 
     private selectHandler<T>(param: T) {
-        if (this instanceof HTMLElement) {
-            this.classList.add(CssClasses.CODE_SELECTED);
-            const selector = `.${CssClasses.TABLE_ITEM_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
-            const tableItem = document.querySelector(selector);
-            if (tableItem instanceof HTMLElement) {
-                tableItem.classList.add(CssClasses.TABLE_ITEM_SELECTED);
-                const tooltip = new Tooltip(tableItem);
-                document.body.append(tooltip.getHtmlElement());
-            }
+        const codeSelector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const codes = document.querySelectorAll(codeSelector);
+        codes.forEach((code) => code.classList.add(CssClasses.CODE_SELECTED));
+
+        const selector = `.${CssClasses.TABLE_ITEM_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const tableItem = document.querySelector(selector);
+        if (tableItem instanceof HTMLElement) {
+            tableItem.classList.add(CssClasses.TABLE_ITEM_SELECTED);
+            const tooltip = new Tooltip(tableItem);
+            document.body.append(tooltip.getHtmlElement());
         }
     }
 
     private unselectHandler<T>(param: T) {
-        if (this instanceof HTMLElement) {
-            this.classList.remove(CssClasses.CODE_SELECTED);
-        }
+        const codeSelector = `.${CssClasses.CODE_SELECTED}`;
+        const codes = document.querySelectorAll(codeSelector);
+        codes.forEach((code) => code.classList.remove(CssClasses.CODE_SELECTED));
+
         const selector = `.${CssClasses.TABLE_ITEM_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
         const tableItem = document.querySelector(selector);
         if (tableItem) {
@@ -59,8 +61,8 @@ export default class HtmlViewerView extends DefaultView {
         const codeLines = document.querySelectorAll(selector);
         codeLines.forEach((line) => {
             const lineId = line.getAttribute('data-item-id');
-            line.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(line, lineId));
-            line.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(line, lineId));
+            line.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(null, lineId));
+            line.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(null, lineId));
         });
     }
 
