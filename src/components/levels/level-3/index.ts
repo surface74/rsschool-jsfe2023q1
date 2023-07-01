@@ -1,5 +1,4 @@
 import '../index.scss';
-import '../../view/board/items/index.scss';
 import viewHtml from './view.html';
 import helpHtml from './help.html';
 import Level from '../level';

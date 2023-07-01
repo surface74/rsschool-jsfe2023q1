@@ -7,7 +7,7 @@ export enum TagNames {
     SECTION_HEADER = DIV,
     SECTION_TITLE = 'label',
     TABLE_ITEM = DIV,
-    EDITOR_VIEWER = DIV,
+    CODE_WRAPPER = DIV,
     LEVEL_VIEWER = DIV,
     LEVEL_LIST = 'ul',
     LEVEL_LIST_ITEM = 'li',

@@ -10,13 +10,3 @@
   background-color: $title-background-color;
   border: 1px solid $border-color;
 }
-
-.editor-viewer {
-  display: flex;
-  flex-direction: column;
-  color: $font-color-code;
-  padding: 1rem;
-  font-size: $font-size-code;
-
-  cursor: default;
-}

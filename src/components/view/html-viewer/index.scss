@@ -19,6 +19,16 @@
   color: $font-color;
 }
 
+.code-wrapper {
+  display: flex;
+  flex-direction: column;
+  color: $font-color-code;
+  padding: $padding;
+  font-size: $font-size-code;
+
+  cursor: default;
+}
+
 .code_selected {
   color: $font-color-light;
 }

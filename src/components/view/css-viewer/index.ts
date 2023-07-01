@@ -62,7 +62,7 @@ export default class CssViewerView extends DefaultView {
     }
 
     private addHelpBlock(): void {
-        const editor = document.createElement(TagNames.EDITOR_VIEWER);
+        const editor = document.createElement(TagNames.CODE_WRAPPER);
         editor.classList.add(CssClasses.CSS_VIEWER_HELP);
         const help = HtmlHelper.ElementFromHTML(htmlHelp);
         editor.append(help);

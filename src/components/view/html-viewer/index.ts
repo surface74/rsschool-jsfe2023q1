@@ -18,7 +18,7 @@ export default class HtmlViewerView extends DefaultView {
     }
 
     private selectHandler<T>(param: T) {
-        const codeSelector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const codeSelector = `.${CssClasses.CODE_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
         const codes = document.querySelectorAll(codeSelector);
         codes.forEach((code) => code.classList.add(CssClasses.CODE_SELECTED));
 
@@ -48,16 +48,16 @@ export default class HtmlViewerView extends DefaultView {
     }
 
     public setEditorContent(content: DocumentFragment): void {
-        const selector = `.${CssClasses.HTML_VIEWER} .${CssClasses.EDITOR_VIEWER}`;
-        const editor: Element | null = document.querySelector(selector);
-        if (editor) {
-            editor.replaceChildren(content);
+        const selector = `.${CssClasses.HTML_VIEWER} .${CssClasses.CODE_WRAPPER}`;
+        const codeContainer: Element | null = document.querySelector(selector);
+        if (codeContainer) {
+            codeContainer.replaceChildren(content);
         }
         this.addEventListeners();
     }
 
     private addEventListeners() {
-        const selector = `.${CssClasses.SELECTABLE_CODE}`;
+        const selector = `.${CssClasses.CODE_SELECTABLE}`;
         const codeLines = document.querySelectorAll(selector);
         codeLines.forEach((line) => {
             const lineId = line.getAttribute('data-item-id');
@@ -78,8 +78,8 @@ export default class HtmlViewerView extends DefaultView {
         headerFilename.textContent = this.HEADER_FILENAME;
         header.append(headerTitle, headerFilename);
 
-        const editor = document.createElement(TagNames.EDITOR_VIEWER);
-        editor.classList.add(CssClasses.EDITOR_VIEWER);
+        const editor = document.createElement(TagNames.CODE_WRAPPER);
+        editor.classList.add(CssClasses.CODE_WRAPPER);
 
         this.htmlElement.append(header, editor);
     }

@@ -14,7 +14,7 @@ export default class BoardView extends DefaultView {
     }
 
     private selectHandler<T>(param: T) {
-        const codeSelector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const codeSelector = `.${CssClasses.CODE_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
         const codes = document.querySelectorAll(codeSelector);
         codes.forEach((code) => code.classList.add(CssClasses.CODE_SELECTED));
 
@@ -82,8 +82,8 @@ export default class BoardView extends DefaultView {
         const items = document.querySelectorAll(selector);
         items.forEach((item) => {
             const lineId = item.getAttribute('data-item-id');
-            item.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(item, lineId));
-            item.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(item, lineId));
+            item.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(null, lineId));
+            item.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(null, lineId));
         });
     }
 

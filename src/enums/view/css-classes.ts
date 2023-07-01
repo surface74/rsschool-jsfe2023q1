@@ -40,11 +40,10 @@ export enum CssClasses {
 
     HTML_VIEWER = 'html-viewer',
     HTML_VIEWER_CODE = 'html-viewer__code',
+    CODE_WRAPPER = 'code-wrapper',
 
-    SELECTABLE_CODE = 'selectable-code',
+    CODE_SELECTABLE = 'code-selectable',
     CODE_SELECTED = 'code_selected',
-
-    EDITOR_VIEWER = 'editor-viewer',
 
     TOOLTIP = 'tooltip',
 

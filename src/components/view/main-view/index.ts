@@ -96,13 +96,13 @@ export default class MainView extends DefaultView {
     private loadLevel(levelId: number): void {
         this.levelView.fillLevelsList();
         this.levelView.setCurrentLevelMark(levelId);
+
         const level = this.levelStorage.getLevel(levelId);
-        // TO DO: add style to current level item LEVEL_VIEWER_LIST_ITEM_ACTIVE
         if (level) {
             this.currentLevel = levelId;
             this.boardView.setLevelOrder(level.getLevelTitle());
-            this.htmlViewerView.setEditorContent(level.getHelpElement());
             this.boardView.fillTable(level.getViewElement());
+            this.htmlViewerView.setEditorContent(level.getHelpElement());
         }
     }
 
