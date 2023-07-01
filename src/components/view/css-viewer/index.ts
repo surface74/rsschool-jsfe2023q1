@@ -15,10 +15,10 @@ export default class CssViewerView extends DefaultView {
 
     constructor() {
         super();
-        this.configureHtml();
+        this.configElement();
     }
 
-    private configureHtml() {
+    private configElement() {
         this.addHeader();
         this.addControls();
         this.addHelpBlock();

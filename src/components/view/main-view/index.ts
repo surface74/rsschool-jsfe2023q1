@@ -50,34 +50,42 @@ export default class MainView extends DefaultView {
             e instanceof MouseEvent ||
             (e instanceof KeyboardEvent && (e.code === KeyCodes.ENTER || e.code === KeyCodes.NUMPAD_ENTER))
         ) {
-            const input = document.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
-            if (input instanceof HTMLInputElement) {
-                const level = this.levelStorage.getLevel(this.currentLevel);
-                if (level) {
+            const level = this.levelStorage.getLevel(this.currentLevel);
+            if (level) {
+                const input = document.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
+                if (input instanceof HTMLInputElement) {
                     const answer = input.value
                         .split(' ')
                         .filter((s) => s)
                         .join(' ');
                     if (level.getAnswer().includes(answer)) {
-                        input.value = '';
-                        this.levelStorage.levelDone(this.currentLevel);
-                        this.levelView.fillLevelsList();
-                        this.boardView.hideActiveElement();
-
-                        if (this.levelStorage.length > this.currentLevel) {
-                            setTimeout(() => {
-                                console.log(`Next level: ${this.currentLevel + 1}`);
-                                this.loadLevel(this.currentLevel + 1);
-                            }, 1000);
-                        } else {
-                            this.showCongrats();
-                        }
+                        this.processRightAnswer();
                     } else {
                         input.classList.add(CssClasses.CSS_VIEWER_INPUT_ERROR);
                         setTimeout(() => input.classList.remove(CssClasses.CSS_VIEWER_INPUT_ERROR), 1000);
                     }
                 }
             }
+        }
+    }
+
+    private processRightAnswer() {
+        const input = document.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
+        if (input instanceof HTMLInputElement) {
+            input.value = '';
+        }
+        this.levelStorage.levelDone(this.currentLevel);
+        this.levelView.fillLevelsList();
+        this.boardView.hideActiveElement();
+
+        if (this.levelStorage.length > this.currentLevel) {
+            setTimeout(() => {
+                console.log(`Next level: ${this.currentLevel + 1}`);
+                this.loadLevel(this.currentLevel + 1);
+            }, 1000);
+        } else {
+            this.showCongrats();
+            this.loadLevel(this.currentLevel);
         }
     }
 
