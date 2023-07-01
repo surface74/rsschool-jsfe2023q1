@@ -14,26 +14,28 @@ export default class BoardView extends DefaultView {
     }
 
     private selectHandler<T>(param: T) {
-        if (this instanceof HTMLElement) {
-            this.classList.add(CssClasses.TABLE_ITEM_SELECTED);
-            const selector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
-            const codeLine = document.querySelector(selector);
-            if (codeLine instanceof HTMLElement) {
-                codeLine.classList.add(CssClasses.CODE_SELECTED);
-                const tooltip = new Tooltip(this);
-                document.body.append(tooltip.getHtmlElement());
-            }
+        const codeSelector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const codes = document.querySelectorAll(codeSelector);
+        codes.forEach((code) => code.classList.add(CssClasses.CODE_SELECTED));
+
+        const selector = `.${CssClasses.TABLE_ITEM_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const tableItem = document.querySelector(selector);
+        if (tableItem instanceof HTMLElement) {
+            tableItem.classList.add(CssClasses.TABLE_ITEM_SELECTED);
+            const tooltip = new Tooltip(tableItem);
+            document.body.append(tooltip.getHtmlElement());
         }
     }
 
     private unselectHandler<T>(param: T) {
-        if (this instanceof HTMLElement) {
-            this.classList.remove(CssClasses.TABLE_ITEM_SELECTED);
-        }
-        const selector = `.${CssClasses.SELECTABLE_CODE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
+        const codeSelector = `.${CssClasses.CODE_SELECTED}`;
+        const codes = document.querySelectorAll(codeSelector);
+        codes.forEach((code) => code.classList.remove(CssClasses.CODE_SELECTED));
+
+        const selector = `.${CssClasses.TABLE_ITEM_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
         const tableItem = document.querySelector(selector);
         if (tableItem) {
-            tableItem.classList.remove(CssClasses.CODE_SELECTED);
+            tableItem.classList.remove(CssClasses.TABLE_ITEM_SELECTED);
             const tooltip = document.querySelector(`.${CssClasses.TOOLTIP}`);
             if (tooltip) {
                 tooltip.remove();
