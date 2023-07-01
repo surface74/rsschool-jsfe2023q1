@@ -4,10 +4,6 @@ import { Attributes } from '../../../enums/view/attributes';
 import { CssClasses } from '../../../enums/view/css-classes';
 import { TagNames } from '../../../enums/view/tag-names';
 import DefaultView from '../default-view';
-import Pickle from './items/pickle';
-import Orange from './items/orange';
-import Plate from './items/plate';
-import Bento from './items/bento';
 import Mediator from '../../mediator/mediator';
 import Tooltip from '../../tooltip/index';
 

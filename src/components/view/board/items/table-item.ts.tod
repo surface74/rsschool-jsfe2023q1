@@ -1,0 +1,20 @@
+type Config = {
+    isActive: boolean;
+    isContainer: boolean;
+    isInsider: boolean;
+};
+
+export default abstract class TableItem {
+    protected element: DocumentFragment = document.createDocumentFragment();
+    protected config: Config;
+    constructor({ isActive, isContainer, isInsider }) {
+        this.config = { isActive, isContainer, isInsider };
+    }
+
+    getHtmlElement() {
+        return this.element;
+    }
+
+    protected abstract createElement(html: string): DocumentFragment;
+    protected abstract configElement(): void;
+}
