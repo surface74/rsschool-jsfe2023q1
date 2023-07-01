@@ -53,7 +53,11 @@ export default class MainView extends DefaultView {
             if (input instanceof HTMLInputElement) {
                 const level = this.levelStorage.getLevel(this.currentLevel);
                 if (level) {
-                    if (level.getAnswer().includes(input.value.trim())) {
+                    const answer = input.value
+                        .split(' ')
+                        .filter((s) => s)
+                        .join(' ');
+                    if (level.getAnswer().includes(answer)) {
                         input.value = '';
                         this.levelStorage.levelDone(this.currentLevel);
                         this.levelView.fillLevelsList();
