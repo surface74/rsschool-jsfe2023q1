@@ -58,4 +58,6 @@ export enum CssClasses {
     POSITION_INSIDE = 'position-inside',
 
     POSITION_CONTAINER = 'position-container',
+
+    DIALOG = 'dialog',
 }

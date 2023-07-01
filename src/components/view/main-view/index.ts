@@ -9,6 +9,7 @@ import BoardView from '../board/index';
 import LevelStorage from '../../level-storage/level-storage';
 import { EventName } from '../../../enums/events/event-names';
 import { KeyCodes } from '../../../types/key-codes';
+import Dialog from '../../dialog/index';
 
 export default class MainView extends DefaultView {
     levelView: LevelView;
@@ -63,8 +64,9 @@ export default class MainView extends DefaultView {
                         this.levelView.fillLevelsList();
                         this.boardView.hideActiveElement();
 
-                        if (this.levelStorage.length < this.currentLevel) {
+                        if (this.levelStorage.length > this.currentLevel) {
                             setTimeout(() => {
+                                console.log(`Next level: ${this.currentLevel + 1}`);
                                 this.loadLevel(this.currentLevel + 1);
                             }, 1000);
                         } else {
@@ -80,7 +82,9 @@ export default class MainView extends DefaultView {
     }
 
     private showCongrats() {
-        // TODO: Show dialog 'Congrats! All level done'
+        const dialog = new Dialog(`Congrats! You've done all levels!`).getDialog();
+        document.body.append(dialog);
+        dialog.showModal();
     }
 
     public initGame() {

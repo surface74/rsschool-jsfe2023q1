@@ -17,4 +17,5 @@ export enum TagNames {
     BOARD_LEVEL_ORDER = H2,
     IMAGE = 'img',
     TOOLTIP = SECTION_TITLE,
+    DIALOG = 'dialog',
 }
