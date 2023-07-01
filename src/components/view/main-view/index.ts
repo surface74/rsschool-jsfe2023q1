@@ -10,8 +10,10 @@ import LevelStorage from '../../level-storage/level-storage';
 import { EventName } from '../../../enums/events/event-names';
 import { KeyCodes } from '../../../types/key-codes';
 import Dialog from '../../dialog/index';
+import TextGenerator from '../../../utils/text-generator';
 
 export default class MainView extends DefaultView {
+    private readonly TYPE_SPEED = 100;
     levelView: LevelView;
     boardView: BoardView;
     htmlViewerView: HtmlViewerView;
@@ -34,8 +36,59 @@ export default class MainView extends DefaultView {
             this.htmlViewerView.getHtmlElement(),
             this.cssViewerView.getHtmlElement()
         );
+    }
 
+    public initGame() {
+        this.addEventListners();
+        this.loadLevel(this.currentLevel);
+    }
+
+    private addEventListners() {
         document.body.addEventListener(EventName.LEVEL_SELECTED, this.onSelectLevel.bind(this));
+
+        const onCheckCssHandler = this.onCheckCss.bind(this);
+
+        const buttonEnter = document.querySelector(`.${CssClasses.CSS_VIEWER_BUTTON_ENTER}`);
+        if (buttonEnter) {
+            buttonEnter.addEventListener(EventName.CLICK, onCheckCssHandler);
+        }
+
+        const input = document.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
+        if (input) {
+            input.addEventListener(EventName.KEY_DOWN, onCheckCssHandler);
+        }
+
+        const buttonHelp = document.querySelector(`.${CssClasses.CSS_VIEWER_BUTTON_HELP}`);
+        if (buttonHelp) {
+            buttonHelp.addEventListener(EventName.CLICK, this.showRightAnswer.bind(this));
+        }
+    }
+
+    private showRightAnswer(): void {
+        const level = this.levelStorage.getLevel(this.currentLevel);
+        if (level) {
+            const answer = level.getAnswer()[0];
+            const input = document.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
+            if (input instanceof HTMLInputElement) {
+                input.value = '';
+                this.levelStorage.levelDoneWithHelp(this.currentLevel);
+                this.typeAnswer<HTMLInputElement>(TextGenerator.getGenerator(answer), input);
+            }
+        }
+    }
+
+    typeAnswer<T>(generator: Generator, input: T) {
+        setTimeout(() => {
+            const result = generator.next();
+            if (result.value) {
+                if (input instanceof HTMLInputElement) {
+                    input.value += result.value;
+                } else if (input instanceof HTMLElement) {
+                    input.innerHTML += result.value;
+                }
+                this.typeAnswer(generator, input);
+            }
+        }, this.TYPE_SPEED);
     }
 
     private onSelectLevel(e: Event): void {
@@ -80,7 +133,6 @@ export default class MainView extends DefaultView {
 
         if (this.levelStorage.length > this.currentLevel) {
             setTimeout(() => {
-                console.log(`Next level: ${this.currentLevel + 1}`);
                 this.loadLevel(this.currentLevel + 1);
             }, 1000);
         } else {
@@ -93,20 +145,6 @@ export default class MainView extends DefaultView {
         const dialog = new Dialog(`Congrats! You've done all levels!`).getDialog();
         document.body.append(dialog);
         dialog.showModal();
-    }
-
-    public initGame() {
-        const onCheckCssHandler = this.onCheckCss.bind(this);
-        const buttonEnter = document.querySelector(`.${CssClasses.CSS_VIEWER_BUTTON_ENTER}`);
-        if (buttonEnter) {
-            buttonEnter.addEventListener(EventName.CLICK, onCheckCssHandler);
-            this.loadLevel(this.currentLevel);
-        }
-
-        const input = document.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
-        if (input) {
-            input.addEventListener(EventName.KEY_DOWN, onCheckCssHandler);
-        }
     }
 
     private loadLevel(levelId: number): void {

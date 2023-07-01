@@ -39,7 +39,7 @@ export default class CssViewerView extends DefaultView {
 
         const helpButton = document.createElement(TagNames.BUTTON);
         helpButton.setAttribute(Attributes.TYPE, Attributes.BUTTON);
-        helpButton.classList.add(CssClasses.CSS_VIEWER_BUTTON);
+        helpButton.classList.add(CssClasses.CSS_VIEWER_BUTTON, CssClasses.CSS_VIEWER_BUTTON_HELP);
         helpButton.textContent = this.BUTTON_HELP_CAPTION;
 
         controlBlock.append(input, enterButton, helpButton);

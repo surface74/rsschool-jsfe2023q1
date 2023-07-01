@@ -25,9 +25,6 @@ export default class Dialog {
     }
 
     private onCloseDialog(e: Event): void {
-        if (e instanceof KeyboardEvent) {
-            console.log(e.code);
-        }
         if (e instanceof MouseEvent || (e instanceof KeyboardEvent && e.code === KeyCodes.ESC)) {
             this.element.remove();
         }

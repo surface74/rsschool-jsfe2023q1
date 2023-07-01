@@ -72,11 +72,12 @@ export default class LevelStorage {
     }
 
     public levelDone(levelId: number): void {
-        this.storage[levelId - 1].done = true;
-        this.storage[levelId - 1].helpUsed = false;
+        if (!this.storage[levelId - 1].helpUsed) {
+            this.storage[levelId - 1].done = true;
+        }
     }
 
-    public levelGetHelp(levelId: number): void {
+    public levelDoneWithHelp(levelId: number): void {
         if (!this.storage[levelId - 1].done) {
             this.storage[levelId - 1].helpUsed = true;
         }

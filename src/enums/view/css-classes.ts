@@ -5,6 +5,7 @@ export enum CssClasses {
 
     CSS_VIEWER_BUTTON = 'css-viewer__button',
     CSS_VIEWER_BUTTON_ENTER = 'css-viewer__button-enter',
+    CSS_VIEWER_BUTTON_HELP = 'css-viewer__button-help',
 
     BOARD = 'board',
     BOARD_WRAPPER = 'board__wrapper',
