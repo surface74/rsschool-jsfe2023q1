@@ -9,6 +9,7 @@ import Level6 from '../levels/level-6/index';
 import Level7 from '../levels/level-7/index';
 import Level8 from '../levels/level-8/index';
 import Level9 from '../levels/level-9/index';
+import Level10 from '../levels/level-10/index';
 
 export default class LevelStorage {
     storage: LevelItem[] = [];
@@ -23,6 +24,7 @@ export default class LevelStorage {
         this.storage.push({ id: 7, done: false, helpUsed: false });
         this.storage.push({ id: 8, done: false, helpUsed: false });
         this.storage.push({ id: 9, done: false, helpUsed: false });
+        this.storage.push({ id: 10, done: false, helpUsed: false });
     }
 
     public getLevel(levelId: number): Level | null {
@@ -53,6 +55,9 @@ export default class LevelStorage {
                 break;
             case 9:
                 return new Level9();
+                break;
+            case 10:
+                return new Level10();
                 break;
 
             default:
