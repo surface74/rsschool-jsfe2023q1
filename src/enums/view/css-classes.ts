@@ -30,6 +30,7 @@ export enum CssClasses {
     LEVEL_VIEWER_LIST_ITEM = 'level-viewer__list-item',
     LEVEL_DONE = 'level_done',
     LEVEL_DONE_WITH_HELP = 'level_done-with-help',
+    LEVEL_VIEWER_LIST_ITEM_ACTIVE = 'level-viewer__list-item_active',
 
     CSS_VIEWER = 'css-viewer',
     CSS_VIEWER_CONTROLS = 'css-viewer__controls',

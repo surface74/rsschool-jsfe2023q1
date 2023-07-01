@@ -44,6 +44,14 @@ export default class LevelView extends DefaultView {
         }
     }
 
+    public setCurrentLevelMark(levelId: number): void {
+        const selector = `.${CssClasses.LEVEL_VIEWER_LIST_ITEM}[${Attributes.DATA_LEVEL_ID}="${levelId}"]`;
+        const levelItem = this.htmlElement.querySelector(selector);
+        if (levelItem) {
+            levelItem.classList.add(CssClasses.LEVEL_VIEWER_LIST_ITEM_ACTIVE);
+        }
+    }
+
     selectLevel(e: MouseEvent): void {
         if (e.target instanceof HTMLElement) {
             if (e.target.classList.contains(CssClasses.LEVEL_VIEWER_LIST_ITEM)) {

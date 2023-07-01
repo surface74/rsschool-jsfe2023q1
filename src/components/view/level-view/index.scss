@@ -25,3 +25,10 @@
         transform: scale(1.1);
     }
 }
+
+.level-viewer__list-item_active {
+    font-style: italic;
+    font-weight: bold;
+    transform: scale(1.1);
+    text-shadow: 0px 0px 20px $text-color-shadow;
+}
