@@ -1,0 +1,72 @@
+.table-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s;
+}
+
+.table-item__table {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.table-item__table-image {
+  width: 100%;
+}
+
+.table-item__pickle,
+.table-item__apple,
+.table-item__orange {
+  width: 70px;
+
+  &.size-small {
+    transform: scale(.5);
+  }
+}
+
+.table-item__plate,
+.table-item__bento {
+  width: 120px;
+
+  &.size-small {
+    transform: scale(.5);
+  }
+}
+
+.table__item_selected {
+  outline: auto;
+  outline-offset: 4px;
+  outline-color: aliceblue;
+}
+
+.table__item_go_away {
+  opacity: 0;
+}
+
+.table__item_active {
+  animation: blur 2s infinite;
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(1px);
+  }
+
+  50% {
+    filter: blur(5px);
+  }
+
+  100% {
+    filter: blur(1px);
+  }
+}
+
+@keyframes goaway {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

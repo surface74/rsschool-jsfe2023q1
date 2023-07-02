@@ -1,0 +1,39 @@
+@import '../../../styles/abstracts/variables.scss';
+@import '../view-styles.scss';
+
+.board {
+    grid-column-start: 1;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 5;
+
+    margin: 5px;
+    padding: 5px;
+
+    border: 1px dashed white;
+    border-radius: $view-border-radius;
+}
+
+.board__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board__level-order {
+    color: $title-color;
+    font-size: $font-size-board-order;
+    text-align: center;
+}
+
+.board__item-container {
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    padding: 1rem 3rem;
+    background: url('../../../assets/images/table-top.png') no-repeat center;
+}

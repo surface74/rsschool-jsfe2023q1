@@ -1,0 +1,12 @@
+@import '../../styles/abstracts/variables.scss';
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  color: $title-color;
+  font-size: $font-size-section-header;
+
+  background-color: $title-background-color;
+  border: 1px solid $border-color;
+}

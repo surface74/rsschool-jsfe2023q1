@@ -1,0 +1,31 @@
+@import url('https://fonts.cdnfonts.com/css/exo-2');
+@import './abstracts/variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  background-color: $background-color;
+}
+
+body * {
+  font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
+}
+
+.padding-left {
+  padding-left: $padding;
+}
+
+.padding-left_x2 {
+  padding-left: calc(2 * $padding);
+}
+
+.position-inside {
+  position: absolute;
+}
+
+.position-container {
+  position: relative;
+}

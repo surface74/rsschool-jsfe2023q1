@@ -1,0 +1,11 @@
+@import '../../styles/abstracts/variables.scss';
+
+.dialog {
+  width: fit-content;
+  padding: 5rem;
+  font-size: calc(2 * $font-size-tooltip);
+}
+
+.dialog::backdrop {
+  backdrop-filter: blur(3px);
+}
