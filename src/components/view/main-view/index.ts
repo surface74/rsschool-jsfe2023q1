@@ -11,6 +11,8 @@ import { EventName } from '../../../enums/events/event-names';
 import { KeyCodes } from '../../../types/key-codes';
 import Dialog from '../../dialog/index';
 import TextGenerator from '../../../utils/text-generator';
+import Storage from '../../../utils/storage';
+import { StorageKey } from '../../../enums/storage-key';
 
 export default class MainView extends DefaultView {
     private readonly TYPE_SPEED = 100;
@@ -23,8 +25,10 @@ export default class MainView extends DefaultView {
 
     constructor() {
         super();
-
         this.levelStorage = new LevelStorage();
+
+        this.restoreState();
+
         this.levelView = new LevelView(this.levelStorage.storage);
         this.boardView = new BoardView();
         this.htmlViewerView = new HtmlViewerView();
@@ -36,6 +40,20 @@ export default class MainView extends DefaultView {
             this.htmlViewerView.getHtmlElement(),
             this.cssViewerView.getHtmlElement()
         );
+    }
+
+    private restoreState() {
+        const levels = Storage.RestoreLevelsState(StorageKey.LEVELS);
+        if (levels) {
+            this.levelStorage.setStorage(levels);
+        }
+        const currentLevel = Storage.RestoreCurrentLevelState(StorageKey.CURRENT_LEVEL);
+        this.currentLevel = currentLevel || 1;
+    }
+
+    private saveState() {
+        Storage.SaveCurrentLevelState(StorageKey.CURRENT_LEVEL, this.currentLevel);
+        Storage.SaveLevelsState(StorageKey.LEVELS, this.levelStorage.storage);
     }
 
     public initGame() {
@@ -65,16 +83,17 @@ export default class MainView extends DefaultView {
     }
 
     private showRightAnswer(): void {
+        this.cssViewerView.clearInput();
         const level = this.levelStorage.getLevel(this.currentLevel);
         if (level) {
             const answer = level.getAnswer()[0];
             const input = document.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
             if (input instanceof HTMLInputElement) {
-                input.value = '';
                 this.levelStorage.levelDoneWithHelp(this.currentLevel);
                 this.typeAnswer<HTMLInputElement>(TextGenerator.getGenerator(answer), input);
             }
         }
+        this.saveState();
     }
 
     typeAnswer<T>(generator: Generator, input: T) {
@@ -123,10 +142,8 @@ export default class MainView extends DefaultView {
     }
 
     private processRightAnswer() {
-        const input = document.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
-        if (input instanceof HTMLInputElement) {
-            input.value = '';
-        }
+        this.saveState();
+        this.cssViewerView.clearInput();
         this.levelStorage.levelDone(this.currentLevel);
         this.levelView.fillLevelsList();
         this.boardView.hideActiveElement();
@@ -148,6 +165,7 @@ export default class MainView extends DefaultView {
     }
 
     private loadLevel(levelId: number): void {
+        this.cssViewerView.clearInput();
         this.levelView.fillLevelsList();
         this.levelView.setCurrentLevelMark(levelId);
 
@@ -158,6 +176,7 @@ export default class MainView extends DefaultView {
             this.boardView.fillTable(level.getViewElement());
             this.htmlViewerView.setEditorContent(level.getHelpElement());
         }
+        this.saveState();
     }
 
     protected createHtml(): HTMLElement {

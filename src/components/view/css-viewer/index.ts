@@ -46,6 +46,13 @@ export default class CssViewerView extends DefaultView {
         this.htmlElement.append(controlBlock);
     }
 
+    public clearInput() {
+        const input = this.htmlElement.querySelector(`.${CssClasses.CSS_VIEWER_INPUT}`);
+        if (input instanceof HTMLInputElement) {
+            input.value = '';
+        }
+    }
+
     private addHeader(): void {
         const header = document.createElement(TagNames.SECTION_HEADER);
         header.classList.add(CssClasses.SECTION_HEADER);

@@ -93,4 +93,8 @@ export default class LevelStorage {
     public getStorage() {
         return this.storage;
     }
+
+    public setStorage(value: LevelItem[]) {
+        this.storage = value;
+    }
 }
