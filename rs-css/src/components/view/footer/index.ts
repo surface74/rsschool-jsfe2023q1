@@ -43,10 +43,3 @@ export default class Footer extends DefaultView {
         return element;
     }
 }
-
-// <footer class="wrapper">
-// <p class="copyright">
-//     2023 <a href="https://github.com/rolling-scopes-school/surface74-JSFE2023Q1">NewsAPI</a>
-//     <a class="course" href="https://rs.school/js/"></a>
-// </p>
-// </footer>

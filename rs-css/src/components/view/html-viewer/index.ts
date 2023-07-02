@@ -60,7 +60,7 @@ export default class HtmlViewerView extends DefaultView {
         codeLines.forEach((line) => {
             const lineId = line.getAttribute('data-item-id');
             line.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(null, lineId));
-            line.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(null, lineId));
+            line.addEventListener(EventName.POINTER_OUT, this.unselectHandler.bind(null, lineId));
         });
     }
 

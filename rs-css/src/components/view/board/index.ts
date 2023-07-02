@@ -62,16 +62,6 @@ export default class BoardView extends DefaultView {
         const board = document.querySelector(`.${CssClasses.BOARD_ITEM_CONTAINER}`);
         if (board) {
             board.replaceChildren(element);
-            // const pickle = new Pickle();
-            // const orange = new Orange();
-            // const plate = new Plate();
-            // const bento = new Bento();
-            // board.replaceChildren(
-            //     plate.getHtmlElement(),
-            //     pickle.getHtmlElement(),
-            //     bento.getHtmlElement(),
-            //     orange.getHtmlElement()
-            // );
         }
         this.addEventListeners();
     }
@@ -82,7 +72,7 @@ export default class BoardView extends DefaultView {
         items.forEach((item) => {
             const lineId = item.getAttribute('data-item-id');
             item.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(null, lineId));
-            item.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(null, lineId));
+            item.addEventListener(EventName.POINTER_OUT, this.unselectHandler.bind(null, lineId));
         });
     }
 
