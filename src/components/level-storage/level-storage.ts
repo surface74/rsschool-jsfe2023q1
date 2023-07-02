@@ -15,6 +15,11 @@ export default class LevelStorage {
     storage: LevelItem[] = [];
 
     constructor() {
+        this.init();
+    }
+
+    public init() {
+        this.storage.length = 0;
         this.storage.push({ id: 1, done: false, helpUsed: false });
         this.storage.push({ id: 2, done: false, helpUsed: false });
         this.storage.push({ id: 3, done: false, helpUsed: false });

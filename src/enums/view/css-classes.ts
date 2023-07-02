@@ -3,6 +3,11 @@ export enum CssClasses {
 
     SECTION_HEADER = 'section-header',
 
+    CSS_VIEWER = 'css-viewer',
+    CSS_VIEWER_CONTROLS = 'css-viewer__controls',
+    CSS_VIEWER_INPUT = 'css-viewer__input',
+    CSS_VIEWER_INPUT_ERROR = 'css-viewer__input_error',
+    CSS_VIEWER_HELP = 'css-viewer__help',
     CSS_VIEWER_BUTTON = 'css-viewer__button',
     CSS_VIEWER_BUTTON_ENTER = 'css-viewer__button-enter',
     CSS_VIEWER_BUTTON_HELP = 'css-viewer__button-help',
@@ -26,18 +31,14 @@ export enum CssClasses {
     TABLE_ITEM_GO_AWAY = 'table__item_go_away',
 
     LEVEL_VIEWER = 'level-viewer',
+    LEVEL_VIEWER_BUTTON = 'level-viewer__button',
+    LEVEL_VIEWER_BUTTON_RESET = 'level-viewer__button-reset',
     LEVEL_VIEWER_CONTENT = 'level-viewer__content',
     LEVEL_VIEWER_LIST = 'level-viewer__list',
     LEVEL_VIEWER_LIST_ITEM = 'level-viewer__list-item',
     LEVEL_DONE = 'level_done',
     LEVEL_DONE_WITH_HELP = 'level_done-with-help',
     LEVEL_VIEWER_LIST_ITEM_ACTIVE = 'level-viewer__list-item_active',
-
-    CSS_VIEWER = 'css-viewer',
-    CSS_VIEWER_CONTROLS = 'css-viewer__controls',
-    CSS_VIEWER_INPUT = 'css-viewer__input',
-    CSS_VIEWER_INPUT_ERROR = 'css-viewer__input_error',
-    CSS_VIEWER_HELP = 'css-viewer__help',
 
     HTML_VIEWER = 'html-viewer',
     HTML_VIEWER_CODE = 'html-viewer__code',

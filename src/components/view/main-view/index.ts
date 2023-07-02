@@ -12,7 +12,6 @@ import { KeyCodes } from '../../../types/key-codes';
 import Dialog from '../../dialog/index';
 import TextGenerator from '../../../utils/text-generator';
 import Storage from '../../../utils/storage';
-import { StorageKey } from '../../../enums/storage-key';
 
 export default class MainView extends DefaultView {
     private readonly TYPE_SPEED = 100;
@@ -80,6 +79,17 @@ export default class MainView extends DefaultView {
         if (buttonHelp) {
             buttonHelp.addEventListener(EventName.CLICK, this.showRightAnswer.bind(this));
         }
+
+        const buttonReset = document.querySelector(`.${CssClasses.LEVEL_VIEWER_BUTTON_RESET}`);
+        if (buttonReset) {
+            buttonReset.addEventListener(EventName.CLICK, this.resetProggress.bind(this));
+        }
+    }
+
+    private resetProggress(): void {
+        this.levelStorage.init();
+        this.currentLevel = 1;
+        this.loadLevel(1);
     }
 
     private showRightAnswer(): void {

@@ -12,6 +12,19 @@
     border-radius: $view-border-radius;
 }
 
+.level-viewer__button {
+    height: 3rem;
+    margin: 0 .5rem;
+    padding: 0 $padding;
+    transition: background-color .3s;
+    border: 1px solid $border-color;
+    outline: none;
+
+    &:hover {
+        background: $color-tooltip-background;
+    }
+}
+
 .level-viewer__content {
     font-size: $font-size-section-header;
     color: $font-color-light;

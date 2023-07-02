@@ -7,6 +7,7 @@ import { LevelItem } from '../../../types/level-item';
 import { Attributes } from '../../../enums/view/attributes';
 
 export default class LevelView extends DefaultView {
+    private readonly BUTTON_RESET_CAPTION = 'Reset';
     private readonly HEADER_TITLE = 'LEVELS';
     private readonly HEADER_FILENAME = '';
     private readonly levels: LevelItem[];
@@ -79,7 +80,12 @@ export default class LevelView extends DefaultView {
         const editor = document.createElement(TagNames.LEVEL_VIEWER);
         editor.classList.add(CssClasses.LEVEL_VIEWER_CONTENT);
 
-        this.htmlElement.append(header, editor);
+        const resetButton = document.createElement(TagNames.BUTTON);
+        resetButton.setAttribute(Attributes.TYPE, Attributes.BUTTON);
+        resetButton.classList.add(CssClasses.LEVEL_VIEWER_BUTTON, CssClasses.LEVEL_VIEWER_BUTTON_RESET);
+        resetButton.textContent = this.BUTTON_RESET_CAPTION;
+
+        this.htmlElement.append(header, editor, resetButton);
     }
 
     protected createHtml(): HTMLElement {
