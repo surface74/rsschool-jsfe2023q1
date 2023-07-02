@@ -13,7 +13,8 @@
   border: 1px solid $border-color;
   border-radius: $view-border-radius;
 
-  overflow-x: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .html-viewer__code {
@@ -29,6 +30,10 @@
   font-size: $font-size-code;
 
   cursor: default;
+
+  @media (max-width: 1024px) {
+    font-size: $font-size-code-small;
+  }
 }
 
 .code_selected {

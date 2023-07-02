@@ -10,6 +10,10 @@ html {
   background-color: $background-color;
 }
 
+body {
+  margin: 0;
+}
+
 body * {
   font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
 }

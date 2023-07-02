@@ -11,7 +11,8 @@
     border: 1px solid $border-color;
     border-radius: $view-border-radius;
 
-    overflow-x: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .level-viewer__button {

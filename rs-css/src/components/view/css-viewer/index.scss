@@ -12,7 +12,8 @@
   border-radius: $view-border-radius;
   border: 1px solid $border-color;
 
-  overflow-x: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .css-viewer__controls {
@@ -54,6 +55,10 @@
   font-size: $font-size-code;
   color: $font-color;
   padding: 1rem;
+
+  @media (max-width: 1024px) {
+    font-size: $font-size-code-small;
+  }
 }
 
 @keyframes blink {
