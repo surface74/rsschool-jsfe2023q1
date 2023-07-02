@@ -18,4 +18,7 @@ export enum TagNames {
     IMAGE = 'img',
     TOOLTIP = SECTION_TITLE,
     DIALOG = 'dialog',
+    FOOTER = 'footer',
+    PARAGRAPH = 'p',
+    LINK = 'a',
 }

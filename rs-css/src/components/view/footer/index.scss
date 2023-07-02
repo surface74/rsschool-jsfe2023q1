@@ -1,0 +1,55 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: $padding;
+}
+
+.footer-wrapper {
+  display: flex;
+  gap: $padding;
+  font-size: $font-size-footer;
+  color: $font-color;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.footer__course {
+  color: $font-color;
+  text-decoration: none;
+  height: 50px;
+  width: 70px;
+  background: url(../../../assets/images/course-icon.png) no-repeat center;
+  background-size: contain;
+
+  &:hover {
+    background: url(../../../assets/images/course-icon-light.png) no-repeat center;
+    background-size: contain;
+  }
+}
+
+.footer__author {
+  height: 30px;
+  text-decoration: none;
+  background-color: transparent;
+  padding-top: 3px;
+  color: $font-color;
+
+  &:hover {
+    color: $font-color-light;
+  }
+}
+
+// .footer__copyright {
+//   height: 30px;
+//   text-decoration: none;
+//   color: $font-color;
+
+// }
+
+// .footer__copyright:before {
+//   content: '©';
+// }

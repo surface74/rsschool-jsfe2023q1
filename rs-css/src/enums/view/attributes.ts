@@ -7,4 +7,5 @@ export enum Attributes {
     BUTTON = 'button',
     SRC = 'src',
     STYLE = 'style',
+    HREF = 'href',
 }

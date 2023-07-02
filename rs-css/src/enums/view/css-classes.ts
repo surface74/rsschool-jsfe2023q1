@@ -62,4 +62,10 @@ export enum CssClasses {
     POSITION_CONTAINER = 'position-container',
 
     DIALOG = 'dialog',
+
+    FOOTER = 'footer',
+    FOOTER_COPYRIGHT = 'footer__copyright',
+    FOOTER_AUTHOR = 'footer__author',
+    FOOTER_COURSE = 'footer__course',
+    FOOTER_WRAPPER = 'footer-wrapper',
 }

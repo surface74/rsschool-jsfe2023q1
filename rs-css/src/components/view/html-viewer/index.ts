@@ -3,14 +3,12 @@ import { EventName } from '../../../enums/events/event-names';
 import { CssClasses } from '../../../enums/view/css-classes';
 import { TagNames } from '../../../enums/view/tag-names';
 import DefaultView from '../default-view';
-import Mediator from '../../mediator/mediator';
 import { Attributes } from '../../../enums/view/attributes';
 import Tooltip from '../../tooltip/index';
 
 export default class HtmlViewerView extends DefaultView {
     private readonly HEADER_TITLE = 'HTML Viewer';
     private readonly HEADER_FILENAME = 'table.html';
-    private mediator = Mediator.getInstance();
 
     constructor() {
         super();
