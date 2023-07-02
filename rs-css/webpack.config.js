@@ -37,8 +37,8 @@ const baseConfig = {
         extensions: ['.ts', '.tsx', '.js'],
     },
     output: {
-        filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
+        filename: '[name].[contenthash].js',
         assetModuleFilename: 'assets/[hash][ext]',
     },
     plugins: [
@@ -49,14 +49,14 @@ const baseConfig = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css',
         }),
-        // new CopyPlugin({
-        //     patterns: [
-        //         {
-        //             from: './src/assets/images',
-        //             to: 'assets/images'
-        //         },
-        //     ],
-        // }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: './src/assets/favicons',
+                    to: 'assets/favicons',
+                },
+            ],
+        }),
         new CleanWebpackPlugin(),
     ],
 };
