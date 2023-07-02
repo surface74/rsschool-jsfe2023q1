@@ -140,7 +140,11 @@ export default class MainView extends DefaultView {
                         .split(' ')
                         .filter((s) => s)
                         .join(' ');
-                    if (level.getAnswer().includes(answer)) {
+
+                    const levelId = Number.parseInt(answer);
+                    if (levelId && this.levelStorage.length >= levelId) {
+                        this.loadLevel(levelId);
+                    } else if (level.getAnswer().includes(answer)) {
                         this.processRightAnswer();
                     } else {
                         input.classList.add(CssClasses.CSS_VIEWER_INPUT_ERROR);
@@ -169,7 +173,7 @@ export default class MainView extends DefaultView {
     }
 
     private showCongrats() {
-        const dialog = new Dialog(`Congrats! You've done all levels!`).getDialog();
+        const dialog = new Dialog(`Congrats! You've done the last level!`).getDialog();
         document.body.append(dialog);
         dialog.showModal();
     }
