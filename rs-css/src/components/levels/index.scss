@@ -27,19 +27,29 @@
 .table-item__pickle,
 .table-item__apple,
 .table-item__orange {
-  width: 70px;
+  max-width: 70px;
+  width: 6.6vw;
 
   &.size-small {
     transform: scale(.5);
+  }
+
+  @media (max-width: 1024px) {
+    width: 4.5vw;
   }
 }
 
 .table-item__plate,
 .table-item__bento {
-  width: 120px;
+  max-width: 120px;
+  width: 9.9vw;
 
   &.size-small {
     transform: scale(.5);
+  }
+
+  @media (max-width: 1024px) {
+    width: 8.9vw;
   }
 }
 

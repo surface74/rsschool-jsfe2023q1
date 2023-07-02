@@ -11,6 +11,8 @@
   background-color: $editor-background-color-light;
   border-radius: $view-border-radius;
   border: 1px solid $border-color;
+
+  overflow-x: auto;
 }
 
 .css-viewer__controls {

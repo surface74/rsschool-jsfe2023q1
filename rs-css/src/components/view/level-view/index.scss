@@ -10,6 +10,8 @@
 
     border: 1px solid $border-color;
     border-radius: $view-border-radius;
+
+    overflow-x: auto;
 }
 
 .level-viewer__button {

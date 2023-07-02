@@ -15,7 +15,6 @@
 }
 
 .board__wrapper {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,15 +24,20 @@
     color: $title-color;
     font-size: $font-size-board-order;
     text-align: center;
+    margin: 1vh;
+
+    @media (max-width: 1024px) {
+        font-size: $font-size-board-order-small;
+    }
 }
 
 .board__item-container {
-    top: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1vw;
     padding: 1rem 3rem;
-    background: url('../../../assets/images/table-top.png') no-repeat center;
+    background: url('../../../assets/images/table-2.png') no-repeat center;
+    background-size: cover;
 }
