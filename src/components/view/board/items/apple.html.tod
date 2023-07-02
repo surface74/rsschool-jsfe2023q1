@@ -1,3 +1,0 @@
-<div class="{{TABLE_ITEM}} {{TABLE_ITEM_SELECTABLE}} {{POSITION_INSIDE}}" {{DATA_ITEM_TOOLTIP}}="&lt;apple&gt;&lt;/apple&gt;" {{DATA_ITEM_ID}}="2">
-  <img class="{{TABLE_ITEM}} {{TABLE_ITEM_APPLE}} {{TABLE_ITEM_ACTIVE}}" src="../../../assets/images/apple.png">
-</div>
