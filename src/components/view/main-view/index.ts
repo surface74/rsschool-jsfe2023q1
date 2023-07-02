@@ -43,17 +43,17 @@ export default class MainView extends DefaultView {
     }
 
     private restoreState() {
-        const levels = Storage.RestoreLevelsState(StorageKey.LEVELS);
+        const levels = Storage.RestoreLevelsState();
         if (levels) {
             this.levelStorage.setStorage(levels);
         }
-        const currentLevel = Storage.RestoreCurrentLevelState(StorageKey.CURRENT_LEVEL);
+        const currentLevel = Storage.RestoreCurrentLevelState();
         this.currentLevel = currentLevel || 1;
     }
 
     private saveState() {
-        Storage.SaveCurrentLevelState(StorageKey.CURRENT_LEVEL, this.currentLevel);
-        Storage.SaveLevelsState(StorageKey.LEVELS, this.levelStorage.storage);
+        Storage.SaveCurrentLevelState(this.currentLevel);
+        Storage.SaveLevelsState(this.levelStorage.storage);
     }
 
     public initGame() {
