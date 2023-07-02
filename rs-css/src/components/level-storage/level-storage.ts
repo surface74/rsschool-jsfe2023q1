@@ -32,6 +32,10 @@ export default class LevelStorage {
         this.storage.push({ id: 10, done: false, helpUsed: false });
     }
 
+    public isAllLevelsDone() {
+        return this.storage.every((level) => level.done);
+    }
+
     public getLevel(levelId: number): Level | null {
         switch (levelId) {
             case 1:

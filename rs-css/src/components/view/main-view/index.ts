@@ -15,6 +15,9 @@ import Storage from '../../../utils/storage';
 
 export default class MainView extends DefaultView {
     private readonly TYPE_SPEED = 100;
+    private readonly LAST_LEVEL_DONE_MESSAGE = `Congrats! You've done the last level!`;
+    private readonly ALL_LEVEL_DONE_MESSAGE = `Congrats! You've done all levels!`;
+
     levelView: LevelView;
     boardView: BoardView;
     htmlViewerView: HtmlViewerView;
@@ -162,18 +165,20 @@ export default class MainView extends DefaultView {
         this.levelView.fillLevelsList();
         this.boardView.hideActiveElement();
 
-        if (this.levelStorage.length > this.currentLevel) {
+        if (this.levelStorage.isAllLevelsDone()) {
+            this.showCongrats(this.ALL_LEVEL_DONE_MESSAGE);
+        } else if (this.levelStorage.length > this.currentLevel) {
             setTimeout(() => {
                 this.loadLevel(this.currentLevel + 1);
             }, 1000);
         } else {
-            this.showCongrats();
+            this.showCongrats(this.LAST_LEVEL_DONE_MESSAGE);
             this.loadLevel(this.currentLevel);
         }
     }
 
-    private showCongrats() {
-        const dialog = new Dialog(`Congrats! You've done the last level!`).getDialog();
+    private showCongrats(message: string): void {
+        const dialog = new Dialog(message).getDialog();
         document.body.append(dialog);
         dialog.showModal();
     }
