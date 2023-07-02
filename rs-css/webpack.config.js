@@ -11,7 +11,7 @@ const baseConfig = {
         rules: [
             {
                 test: /\.html$/i,
-                loader: "html-loader",
+                loader: 'html-loader',
             },
             {
                 test: /\.ts|.tsx$/i,
@@ -49,14 +49,14 @@ const baseConfig = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css',
         }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: './src/assets/images',
-                    to: 'assets/images'
-                },
-            ],
-        }),
+        // new CopyPlugin({
+        //     patterns: [
+        //         {
+        //             from: './src/assets/images',
+        //             to: 'assets/images'
+        //         },
+        //     ],
+        // }),
         new CleanWebpackPlugin(),
     ],
 };
