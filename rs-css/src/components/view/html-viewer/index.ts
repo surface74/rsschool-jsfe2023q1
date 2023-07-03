@@ -24,8 +24,9 @@ export default class HtmlViewerView extends DefaultView {
         const tableItem = document.querySelector(selector);
         if (tableItem instanceof HTMLElement) {
             tableItem.classList.add(CssClasses.TABLE_ITEM_SELECTED);
-            const tooltip = new Tooltip(tableItem);
-            document.body.append(tooltip.getHtmlElement());
+            const tooltip = new Tooltip(tableItem).getHtmlElement();
+            tooltip.setAttribute(Attributes.DATA_ITEM_ID, String(param));
+            document.body.append(tooltip);
         }
     }
 
@@ -38,7 +39,7 @@ export default class HtmlViewerView extends DefaultView {
         const tableItem = document.querySelector(selector);
         if (tableItem) {
             tableItem.classList.remove(CssClasses.TABLE_ITEM_SELECTED);
-            const tooltip = document.querySelector(`.${CssClasses.TOOLTIP}`);
+            const tooltip = document.querySelector(`.${CssClasses.TOOLTIP}[${Attributes.DATA_ITEM_ID}="${param}"]`);
             if (tooltip) {
                 tooltip.remove();
             }
@@ -60,7 +61,7 @@ export default class HtmlViewerView extends DefaultView {
         codeLines.forEach((line) => {
             const lineId = line.getAttribute('data-item-id');
             line.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(null, lineId));
-            line.addEventListener(EventName.POINTER_OUT, this.unselectHandler.bind(null, lineId));
+            line.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(null, lineId));
         });
     }
 

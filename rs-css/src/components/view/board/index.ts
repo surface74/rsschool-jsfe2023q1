@@ -9,10 +9,10 @@ import Tooltip from '../../tooltip/index';
 export default class BoardView extends DefaultView {
     constructor() {
         super();
-        this.configureHtml();
+        this.configHtml();
     }
 
-    private selectHandler<T>(param: T) {
+    private selectHandler(param: string) {
         const codeSelector = `.${CssClasses.CODE_SELECTABLE}[${Attributes.DATA_ITEM_ID}="${param}"]`;
         const codes = document.querySelectorAll(codeSelector);
         codes.forEach((code) => code.classList.add(CssClasses.CODE_SELECTED));
@@ -21,12 +21,14 @@ export default class BoardView extends DefaultView {
         const tableItem = document.querySelector(selector);
         if (tableItem instanceof HTMLElement) {
             tableItem.classList.add(CssClasses.TABLE_ITEM_SELECTED);
-            const tooltip = new Tooltip(tableItem);
-            document.body.append(tooltip.getHtmlElement());
+            const tooltip = new Tooltip(tableItem).getHtmlElement();
+            tooltip.setAttribute(Attributes.DATA_ITEM_ID, param);
+            document.body.append(tooltip);
         }
     }
 
     private unselectHandler<T>(param: T) {
+        console.log(`out ${param}`);
         const codeSelector = `.${CssClasses.CODE_SELECTED}`;
         const codes = document.querySelectorAll(codeSelector);
         codes.forEach((code) => code.classList.remove(CssClasses.CODE_SELECTED));
@@ -35,7 +37,7 @@ export default class BoardView extends DefaultView {
         const tableItem = document.querySelector(selector);
         if (tableItem) {
             tableItem.classList.remove(CssClasses.TABLE_ITEM_SELECTED);
-            const tooltip = document.querySelector(`.${CssClasses.TOOLTIP}`);
+            const tooltip = document.querySelector(`.${CssClasses.TOOLTIP}[${Attributes.DATA_ITEM_ID}="${param}"]`);
             if (tooltip) {
                 tooltip.remove();
             }
@@ -71,12 +73,12 @@ export default class BoardView extends DefaultView {
         const items = document.querySelectorAll(selector);
         items.forEach((item) => {
             const lineId = item.getAttribute('data-item-id');
-            item.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(null, lineId));
-            item.addEventListener(EventName.POINTER_OUT, this.unselectHandler.bind(null, lineId));
+            item.addEventListener(EventName.POINTER_ENTER, this.selectHandler.bind(null, String(lineId)));
+            item.addEventListener(EventName.POINTER_LEAVE, this.unselectHandler.bind(null, String(lineId)));
         });
     }
 
-    private configureHtml() {
+    private configHtml() {
         const wrapper = document.createElement(TagNames.DIV);
         wrapper.classList.add(CssClasses.BOARD_WRAPPER);
 

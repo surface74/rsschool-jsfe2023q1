@@ -4,7 +4,11 @@
   position: absolute;
   border: 1px solid $color-tooltip-border;
   border-radius: 5px;
-  padding: 0.2rem 1rem;
+  padding: 0.1rem 1rem;
   font-size: $font-size-tooltip;
   background-color: $color-tooltip-background;
+
+  @media (max-width: 1024px) {
+    font-size: $font-size-tooltip-small;
+  }
 }
