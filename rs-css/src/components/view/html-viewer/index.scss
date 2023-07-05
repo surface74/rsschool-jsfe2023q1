@@ -36,6 +36,12 @@
   }
 }
 
+.code-wrapper .hljs {
+  padding: 0;
+  background: transparent;
+}
+
 .code_selected {
-  color: $font-color-light;
+  text-shadow: 0 0 0.5em $text-color-shadow;
+  font-style: italic;
 }

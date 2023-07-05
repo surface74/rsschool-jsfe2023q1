@@ -28,7 +28,6 @@ export default class BoardView extends DefaultView {
     }
 
     private unselectHandler<T>(param: T) {
-        console.log(`out ${param}`);
         const codeSelector = `.${CssClasses.CODE_SELECTED}`;
         const codes = document.querySelectorAll(codeSelector);
         codes.forEach((code) => code.classList.remove(CssClasses.CODE_SELECTED));

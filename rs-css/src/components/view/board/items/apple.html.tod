@@ -1,3 +1,3 @@
-<div class="{{TABLE_ITEM}} {{TABLE_ITEM_SELECTABLE}} {{POSITION_INSIDE}}" {{DATA_ITEM_TOOLTIP}}="&lt;apple&gt;&lt;/apple&gt;" {{DATA_ITEM_ID}}="2">
-  <img class="{{TABLE_ITEM}} {{TABLE_ITEM_APPLE}} {{TABLE_ITEM_ACTIVE}}" src="../../../assets/images/apple.png">
+<div class="{{TABLE_ITEM}} {{TABLE_ITEM_SELECTABLE}} {{POSITION_INSIDE}}" {{DATA_ITEM_TOOLTIP}}="{{TEMPLATE_TOOLTIP}}" {{DATA_ITEM_ID}}="TEMPLATE_ID">
+  <img class="{{TABLE_ITEM}} {{TEMPLATE_TABLE_ITEM}} {{TABLE_ITEM_ACTIVE}} {{SIZE_SMALL}}" src={{TEMPLATE_IMAGE_PATH}}>
 </div>

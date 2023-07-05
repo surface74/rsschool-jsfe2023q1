@@ -68,4 +68,6 @@ export enum CssClasses {
     FOOTER_AUTHOR = 'footer__author',
     FOOTER_COURSE = 'footer__course',
     FOOTER_WRAPPER = 'footer-wrapper',
+
+    LANGUAGE_XML = 'language-xml',
 }

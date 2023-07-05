@@ -6,6 +6,7 @@ export enum TagNames {
     SECTION = 'section',
     SECTION_HEADER = DIV,
     SECTION_TITLE = 'label',
+    SCRIPT = 'script',
     TABLE_ITEM = DIV,
     CODE_WRAPPER = DIV,
     LEVEL_VIEWER = DIV,
@@ -20,5 +21,6 @@ export enum TagNames {
     DIALOG = 'dialog',
     FOOTER = 'footer',
     PARAGRAPH = 'p',
-    LINK = 'a',
+    A = 'a',
+    LINK = 'link',
 }

@@ -12,6 +12,7 @@ import { KeyCodes } from '../../../types/key-codes';
 import Dialog from '../../dialog/index';
 import TextGenerator from '../../../utils/text-generator';
 import Storage from '../../../utils/storage';
+import hljs from 'highlight.js';
 
 export default class MainView extends DefaultView {
     private readonly TYPE_SPEED = 100;
@@ -196,6 +197,7 @@ export default class MainView extends DefaultView {
             this.htmlViewerView.setEditorContent(level.getHelpElement());
         }
         this.saveState();
+        hljs.highlightAll();
     }
 
     protected createHtml(): HTMLElement {

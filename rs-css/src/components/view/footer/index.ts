@@ -23,12 +23,12 @@ export default class Footer extends DefaultView {
         copyright.classList.add(CssClasses.FOOTER_COPYRIGHT);
         copyright.textContent = this.PRODUCTION_YEAR;
 
-        const githubLink = document.createElement(TagNames.LINK);
+        const githubLink = document.createElement(TagNames.A);
         githubLink.classList.add(CssClasses.FOOTER_AUTHOR);
         githubLink.setAttribute(Attributes.HREF, this.GITHUB_LINK);
         githubLink.textContent = this.PROJECT_NAME;
 
-        const courseLink = document.createElement(TagNames.LINK);
+        const courseLink = document.createElement(TagNames.A);
         courseLink.classList.add(CssClasses.FOOTER_COURSE);
         courseLink.setAttribute(Attributes.HREF, this.GITHUB_LINK);
 

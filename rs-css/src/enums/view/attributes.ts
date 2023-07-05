@@ -8,4 +8,5 @@ export enum Attributes {
     SRC = 'src',
     STYLE = 'style',
     HREF = 'href',
+    REL = 'rel',
 }
