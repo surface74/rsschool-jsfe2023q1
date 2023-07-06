@@ -19,6 +19,10 @@ body * {
   font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
 }
 
+pre {
+  text-wrap: wrap;
+}
+
 code {
   word-break: break-word;
 }

@@ -7,12 +7,17 @@
     grid-row-end: 10;
 
     margin: 5px;
+    padding-bottom: 1rem;
 
     border: 1px solid $border-color;
     border-radius: $view-border-radius;
 
     overflow-y: auto;
     overflow-x: hidden;
+
+    @media (max-width: 1024px) {
+        grid-row-end: 5;
+    }
 }
 
 .level-viewer__button {
