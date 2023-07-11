@@ -37,7 +37,7 @@ const baseConfig = {
         extensions: ['.ts', '.tsx', '.js'],
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve('../dist'),
         filename: '[name].[contenthash].js',
         assetModuleFilename: 'assets/[hash][ext]',
     },
@@ -60,6 +60,8 @@ const baseConfig = {
         new CleanWebpackPlugin(),
     ],
 };
+
+console.log(baseConfig.output.path);
 
 module.exports = ({ mode }) => {
     const isProductionMode = mode === 'prod';

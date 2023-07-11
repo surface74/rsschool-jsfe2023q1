@@ -7,13 +7,13 @@ module.exports = {
         open: {
             app: {
                 name: 'chrome',
-            }
+            },
         },
         static: {
-            directory: path.join(__dirname, 'dist'),
+            directory: path.resolve('../dist'),
         },
         hot: true,
         compress: true,
         port: 3000,
-    }
+    },
 };
