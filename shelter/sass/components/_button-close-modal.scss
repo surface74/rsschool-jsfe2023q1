@@ -1,0 +1,21 @@
+button.button-close-modal {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 2px solid $color-primary;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  background: url("../../assets/images/cross.svg") center no-repeat;
+  @extend %transition-color;
+
+  &:hover {
+    border-color: $color-primary-light;
+    background-color: $color-primary-light;
+  }
+
+  &:active {
+    border-color: $color-primary;
+    background-color: $color-primary;
+  }
+}

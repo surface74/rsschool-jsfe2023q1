@@ -1,23 +1,14 @@
-%animation-active {
-  transform: rotate(90deg);
-}
-
 .burger {
-  z-index: 1;
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
   width: 30px;
   height: 22px;
-  padding: 0;
-  background: transparent;
+  background: url("../../assets/icons/burger.svg");
   border: none;
-  outline: none;
   cursor: pointer;
   transition: all 0.3s;
 
   @include respond-to("toggle-menu") {
-    display: inline-flex;
+    display: inline-block;
   }
 
   &:hover {
@@ -25,27 +16,10 @@
   }
 
   &:active {
-    @extend %animation-active;
-  }
-
-  & .burger__line {
-    width: 100%;
-    border: 1px solid $color-primary;
+    transform: rotate(90deg);
   }
 }
 
 .burger_dark {
-  & .burger__line {
-    border-color: $color-dark;
-  }
-}
-
-.burger_light {
-  & .burger__line {
-    border-color: $color-primary;
-  }
-}
-
-.burger_activated {
-  @extend %animation-active;
+  background: url("../../assets/icons/burger-dark.svg");
 }

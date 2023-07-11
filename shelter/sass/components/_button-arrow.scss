@@ -1,4 +1,4 @@
-.button-arrow {
+button.button-arrow {
   width: 52px;
   height: 52px;
   padding: 0;
@@ -13,38 +13,50 @@
 
   @extend %transition-color;
 
-  &.button-arrow_left {
+  &.button-arrow--left {
     transform: rotate(0deg);
   }
 
-  &.button-arrow_up {
+  &.button-arrow--up {
     transform: rotate(90deg);
   }
 
-  &.button-arrow_right {
+  &.button-arrow--right {
     transform: rotate(180deg);
   }
 
-  &.button-arrow_down {
+  &.button-arrow--down {
     transform: rotate(-90deg);
   }
 
-  &:hover {
+  &:hover,
+  &.button-arrow--left:hover,
+  &.button-arrow--up:hover,
+  &.button-arrow--right:hover,
+  &.button-arrow--down:hover {
     border-color: $color-primary-light;
     background-color: $color-primary-light;
   }
 
   &:active,
+  &.button-arrow--left:active,
+  &.button-arrow--up:active,
+  &.button-arrow--right:active,
+  &.button-arrow--down:active,
   &.active {
     color: $color-dark-3xl;
     border-color: $color-primary;
     background-color: $color-primary;
   }
 
-  &:disabled {
+  &:disabled,
+  &.button-arrow--left:disabled,
+  &.button-arrow--up:disabled,
+  &.button-arrow--right:disabled,
+  &.button-arrow--down:disabled {
     color: $color-dark-s;
     border-color: $color-dark-s;
-    background: url("../../assets/icons/arrow-disabled.svg") center no-repeat;
+    background: url("../../assets/images/arrow-disabled.svg") center no-repeat;
     background-color: transparent;
     cursor: auto;
   }
