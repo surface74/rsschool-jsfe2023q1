@@ -1,5 +1,5 @@
 import html from './index.html';
-import HtmlHelper from '../../utils/html-helper';
+import HtmlCreator from '../../utils/html-creator';
 
 export default class Favicon {
     element: DocumentFragment;
@@ -13,6 +13,6 @@ export default class Favicon {
     }
 
     private createElement(param: string): DocumentFragment {
-        return HtmlHelper.ElementFromHTML(param);
+        return HtmlCreator.ElementFromHTML(param);
     }
 }
