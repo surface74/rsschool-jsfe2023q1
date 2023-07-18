@@ -1,29 +1,24 @@
-import { TagName } from '../../enums/tag-name';
+import TagName from '../../enums/tag-name';
 import HtmlCreator, { ElementParams } from '../../utils/html-creator';
 import Favicon from '../favicon/index';
 
 export default class App {
-    constructor() {
-        this.init();
-    }
+  private favicon: Favicon;
 
-    init() {
-        const favicon = new Favicon();
-        document.head.append(favicon.getHtmlElement());
+  constructor() {
+    this.favicon = new Favicon();
+  }
 
-        const param: ElementParams = {
-            tag: TagName.DIV,
-            classNames: ['red'],
-        };
+  init() {
+    document.head.append(this.favicon.getHtmlElement());
 
-        const element = new HtmlCreator(param).getElement();
-        document.body.append(element);
-        //     const mainView = new MainView();
-        //     document.body.append(mainView.getHtmlElement());
+    const param: ElementParams = {
+      tag: TagName.DIV,
+      classNames: ['red'],
+      textContent: '',
+    };
 
-        //     const footer = new Footer();
-        //     document.body.append(footer.getHtmlElement());
-
-        //     mainView.initGame();
-    }
+    const element = new HtmlCreator(param).getElement();
+    document.body.append(element);
+  }
 }

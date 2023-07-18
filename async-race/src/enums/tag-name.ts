@@ -1,3 +1,5 @@
-export enum TagName {
-    DIV = 'div',
+enum TagName {
+  DIV = 'div',
 }
+
+export default TagName;

@@ -5,6 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+console.log('__dirname: ', __dirname);
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
     module: {

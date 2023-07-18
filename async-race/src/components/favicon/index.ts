@@ -2,17 +2,20 @@ import html from './index.html';
 import HtmlCreator from '../../utils/html-creator';
 
 export default class Favicon {
-    element: DocumentFragment;
+  private element: DocumentFragment;
 
-    constructor() {
-        this.element = this.createElement(html);
-    }
+  private readonly template: string;
 
-    getHtmlElement(): DocumentFragment {
-        return this.element;
-    }
+  constructor() {
+    this.template = html;
+    this.element = this.createElement();
+  }
 
-    private createElement(param: string): DocumentFragment {
-        return HtmlCreator.ElementFromHTML(param);
-    }
+  getHtmlElement(): DocumentFragment {
+    return this.element;
+  }
+
+  private createElement(): DocumentFragment {
+    return HtmlCreator.ElementFromHTML(this.template);
+  }
 }
