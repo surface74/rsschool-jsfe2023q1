@@ -1,14 +1,11 @@
 @import '../../../styles/abstracts/variables.scss';
 
 .header {
-  display: flex;
-  padding: $padding;
-  gap: 2*$padding;
   width: $section-max-width;
 
   & .nav {
     display: flex;
     padding: $padding;
-    gap: 2*$padding;
+    gap: $padding;
   }
 }

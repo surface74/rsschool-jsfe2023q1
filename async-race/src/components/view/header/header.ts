@@ -8,6 +8,7 @@ enum HeaderCss {
   HEADER = 'header',
   NAV = 'nav',
 }
+
 type ButtonConfig = { text: string; callback: () => void };
 
 enum ButtonTitle {

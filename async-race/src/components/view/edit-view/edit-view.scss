@@ -1,0 +1,11 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.edit-view {
+  display: flex;
+  padding: $padding;
+  gap: $padding;
+}
+
+.edit-view__input-color {
+  padding: 0;
+}

@@ -1,4 +1,5 @@
 import Favicon from '../favicon/index';
+import EditView from '../view/edit-view/edit-view';
 import Header from '../view/header/header';
 
 export default class App {
@@ -14,5 +15,8 @@ export default class App {
     const header = new Header();
 
     document.body.append(header.getElement());
+
+    const editView = new EditView('Test', () => console.log('Test'));
+    document.body.append(editView.getElement());
   }
 }
