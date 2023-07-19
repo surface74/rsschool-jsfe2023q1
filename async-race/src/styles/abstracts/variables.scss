@@ -1,7 +1,6 @@
 $font-color-light: #efefef;
 $font-color: #84837f;
-$font-color-code: $font-color;
-$font-color-dark: #5f5d5a;
+$font-color-dark: #333231;
 $font-color-level-done: #00d600;
 $text-color-shadow: #d8ff00;
 
@@ -15,12 +14,16 @@ $title-background-color: #27241d;
 $font-size-section-header: 1.8rem;
 $font-size-tooltip: 2rem;
 
-$button-border-color: $font-color-dark;
+$button-color-border: $font-color;
 $button-font-size: 1.6rem;
 $button-color-text: $font-color;
-$button-color-hover-text: $font-color;
-$button-color-hover-border: $font-color;
-$button-color-hover: $font-color;
+$button-color-text-hover: $font-color-dark;
+$button-color-border-hover: $font-color-dark;
+$button-color-background-hover: $font-color;
 
 $button-disabled-color-text: $font-color;
 $button-disabled-color-border: $font-color;
+
+$section-max-width: 90vw;
+
+$padding: 2rem;

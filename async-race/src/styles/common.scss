@@ -10,8 +10,7 @@ html {
   background-color: $background-color;
 }
 
-body,
-pre {
+body {
   margin: 0;
 }
 
@@ -19,3 +18,7 @@ body * {
   font-family: 'LG_Wine_Euro', sans-serif;
 }
 
+.wrapper {
+  margin: auto;
+  max-width: 90wv;
+}

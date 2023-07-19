@@ -29,7 +29,7 @@ export default class HtmlCreator {
 
   public addInnerElement(element: InsertableElement) {
     if (element instanceof HTMLElement || element instanceof DocumentFragment) {
-      this.element.append();
+      this.element.append(element);
     } else {
       this.element.append(element.getElement());
     }

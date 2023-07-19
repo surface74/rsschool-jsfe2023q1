@@ -1,8 +1,8 @@
+import './button.scss';
 import EventName from '../../enums/event-name';
 import TagName from '../../enums/tag-name';
 import { ElementParams } from '../../utils/html-creator';
 import DefaultView from '../view/default-view';
-import './button.scss';
 
 export enum ButtonCss {
   BUTTON = 'button',
