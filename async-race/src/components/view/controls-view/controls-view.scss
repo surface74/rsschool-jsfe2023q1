@@ -1,0 +1,7 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.controls-view {
+  display: flex;
+  padding: $padding;
+  gap: $padding;
+}
