@@ -1,5 +1,6 @@
 import Favicon from '../favicon/index';
 import ControlsView from '../view/controls-view/controls-view';
+import CurrentPage from '../view/current-page/current-page';
 // import EditView from '../view/edit-view/edit-view';
 import Header from '../view/header/header';
 import PageTitle from '../view/page-title/page-title';
@@ -21,6 +22,10 @@ export default class App {
     const pageTitle = new PageTitle('GARAGE', 2);
     document.body.append(pageTitle.getElement());
     pageTitle.setCarCount(111);
+
+    const currentPage = new CurrentPage(0);
+    document.body.append(currentPage.getElement());
+    currentPage.setCurrentPage(222);
 
     const controlView = new ControlsView([
       () => console.log('control-0'),
