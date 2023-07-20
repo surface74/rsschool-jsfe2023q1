@@ -8,8 +8,6 @@ enum PaginatorCss {
   PAGINATOR = 'paginator',
 }
 
-type ButtonConfig = { text: string; callback: () => void };
-
 enum ButtonTitle {
   PREV = 'PREV',
   NEXT = 'NEXT',

@@ -2,6 +2,7 @@ import Favicon from '../favicon/index';
 import ControlsView from '../view/controls-view/controls-view';
 // import EditView from '../view/edit-view/edit-view';
 import Header from '../view/header/header';
+import PageTitle from '../view/page-title/page-title';
 import Paginator from '../view/paginator/paginator';
 
 export default class App {
@@ -15,8 +16,11 @@ export default class App {
     document.head.append(this.favicon.getHtmlElement());
 
     const header = new Header();
-
     document.body.append(header.getElement());
+
+    const pageTitle = new PageTitle('GARAGE', 2);
+    document.body.append(pageTitle.getElement());
+    pageTitle.setCarCount(111);
 
     const controlView = new ControlsView([
       () => console.log('control-0'),
