@@ -1,8 +1,6 @@
 @import '../../styles/abstracts/variables.scss';
 
 .car {
-  position: absolute;
-
   & svg {
     transform: scale(-1, 1)
   }

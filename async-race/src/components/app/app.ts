@@ -1,7 +1,6 @@
+import { CarInfo } from '../car/car';
 import Favicon from '../favicon/index';
-import CarControl from '../view/car-control/car-control';
-import CarTrack from '../view/car-track/car-track';
-import CarsManager from '../view/cars-manager/cars-manager';
+import CarLane from '../view/car-lane/car-lane';
 import ControlsView from '../view/controls-view/controls-view';
 import CurrentPage from '../view/current-page/current-page';
 import Header from '../view/header/header';
@@ -36,6 +35,20 @@ export default class App {
     ]);
     document.body.append(controlView.getElement());
 
+    const carInfo: CarInfo = {
+      id: 0,
+      name: 'Test car',
+      color: 'yellow',
+    };
+    const carLane = new CarLane(
+      carInfo,
+      () => console.log('select car'),
+      () => console.log('delete car'),
+      () => console.log('start car'),
+      () => console.log('return car')
+    );
+    document.body.append(carLane.getElement());
+
     const paginator = new Paginator(
       0,
       1,
@@ -43,21 +56,5 @@ export default class App {
       () => console.log('paginator-next')
     );
     document.body.append(paginator.getElement());
-
-    const carTrack = new CarTrack({ id: 0, name: 'Lacia', color: '#550077' });
-    document.body.append(carTrack.getElement());
-
-    const carsManager = new CarsManager(
-      'Tesla',
-      () => console.log('carsManager - select car'),
-      () => console.log('carsManager - remove car')
-    );
-    document.body.append(carsManager.getElement());
-
-    const carControl = new CarControl(
-      () => console.log('carControl - start'),
-      () => console.log('carControl - return')
-    );
-    document.body.append(carControl.getElement());
   }
 }
