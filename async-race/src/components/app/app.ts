@@ -1,7 +1,9 @@
 import Favicon from '../favicon/index';
+import CarControl from '../view/car-control/car-control';
+import CarTrack from '../view/car-track/car-track';
+import CarsManager from '../view/cars-manager/cars-manager';
 import ControlsView from '../view/controls-view/controls-view';
 import CurrentPage from '../view/current-page/current-page';
-// import EditView from '../view/edit-view/edit-view';
 import Header from '../view/header/header';
 import PageTitle from '../view/page-title/page-title';
 import Paginator from '../view/paginator/paginator';
@@ -41,5 +43,21 @@ export default class App {
       () => console.log('paginator-next')
     );
     document.body.append(paginator.getElement());
+
+    const carTrack = new CarTrack({ id: 0, name: 'Lacia', color: '#550077' });
+    document.body.append(carTrack.getElement());
+
+    const carsManager = new CarsManager(
+      'Tesla',
+      () => console.log('carsManager - select car'),
+      () => console.log('carsManager - remove car')
+    );
+    document.body.append(carsManager.getElement());
+
+    const carControl = new CarControl(
+      () => console.log('carControl - start'),
+      () => console.log('carControl - return')
+    );
+    document.body.append(carControl.getElement());
   }
 }

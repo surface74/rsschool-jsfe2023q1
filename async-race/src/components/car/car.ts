@@ -13,22 +13,22 @@ export type CarInfo = {
 };
 
 export default class Car {
-  private car: HTMLElement;
+  private element: HTMLElement;
 
   private carInfo: CarInfo;
 
   constructor(info: CarInfo) {
     this.carInfo = info;
 
-    this.car = document.createElement(TagName.DIV);
-    this.car.classList.add(CarCss.CAR);
-    this.car.innerHTML = html;
+    this.element = document.createElement(TagName.DIV);
+    this.element.classList.add(CarCss.CAR);
+    this.element.innerHTML = html;
 
     this.setColor(this.carInfo.color);
   }
 
-  public getCar() {
-    return this.car;
+  public getCarElement() {
+    return this.element;
   }
 
   public getCarName(): string {
@@ -45,7 +45,7 @@ export default class Car {
 
   public setColor(color: string): void {
     this.carInfo.color = color;
-    this.car.style.fill = color;
+    this.element.style.fill = color;
   }
 
   public setName(name: string): void {
@@ -54,5 +54,11 @@ export default class Car {
 
   public setId(id: number): void {
     this.carInfo.id = id;
+  }
+
+  public setCarInfo(info: CarInfo) {
+    this.setColor(info.color);
+    this.setId(info.id);
+    this.setName(info.name);
   }
 }

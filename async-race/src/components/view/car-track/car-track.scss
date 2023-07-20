@@ -1,0 +1,10 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.car-track {
+  height: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $padding;
+  border-bottom: 2px dashed $car-track-color;
+}

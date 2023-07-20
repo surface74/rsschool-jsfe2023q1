@@ -11,6 +11,9 @@ $border-color: $font-color-dark;
 $title-color: $font-color-light;
 $title-font-size: 2rem;
 
+$current-page-color: $font-color-light;
+$current-page-font-size: 1.8rem;
+
 $button-color-border: $font-color;
 $button-font-size: 1.6rem;
 $button-color-text: $font-color;
@@ -21,6 +24,19 @@ $button-color-background-hover: $font-color;
 $button-disabled-color-text: $font-color;
 $button-disabled-color-border: $font-color;
 
+$button-start-color-text: #008000;
+$button-start-color-border: $button-start-color-text;
+$button-start-color-text-hover: #90ee90;
+$button-start-color-border-hover: $button-start-color-text-hover;
+
+$button-return-color-text: #b10303;
+$button-return-color-border: $button-return-color-text;
+$button-return-color-text-hover: #ff0000;
+$button-return-color-border-hover: $button-return-color-text-hover;
+
+
+$car-track-color: $font-color-light;
+
 $section-max-width: 90vw;
 
-$padding: 2rem;
+$padding: 1rem;

@@ -5,6 +5,7 @@ enum TagName {
   NAV = 'nav',
   SECTION = 'section',
   INPUT = 'input',
+  SPAN = 'span',
 }
 
 export default TagName;

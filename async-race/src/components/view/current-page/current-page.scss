@@ -1,6 +1,7 @@
 @import '../../../styles/abstracts/variables.scss';
 
 .current-page {
-  color: $title-color;
-  font-size: $title-font-size;
+  color: $current-page-color;
+  font-size: $current-page-font-size;
+  padding: $padding;
 }

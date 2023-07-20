@@ -1,0 +1,39 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.car-control {
+  display: flex;
+  padding: $padding;
+  gap: $padding;
+
+  .car-control__button_start {
+    color: $button-start-color-text;
+    border-color: $button-start-color-border;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $button-start-color-text-hover;
+        border-color: $button-start-color-border-hover;
+      }
+    }
+  }
+
+  .car-control__button_return {
+    color: $button-return-color-text;
+    border-color: $button-return-color-border;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $button-return-color-text-hover;
+        border-color: $button-return-color-border-hover;
+      }
+    }
+  }
+
+
+
+  .car-control__button_disabled {
+    color: $button-disabled-color-text;
+    border-color: $button-disabled-color-border;
+    pointer-events: none;
+  }
+}

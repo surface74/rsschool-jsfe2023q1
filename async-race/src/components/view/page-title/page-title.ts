@@ -1,7 +1,7 @@
+import './page-title.scss';
 import TagName from '../../../enums/tag-name';
 import { ElementParams } from '../../../utils/html-creator';
 import DefaultView from '../default-view';
-import './page-title.scss';
 
 enum PageTitleCss {
   PAGE_TITLE = 'page-title',
