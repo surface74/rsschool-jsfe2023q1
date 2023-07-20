@@ -1,0 +1,14 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.cars-manager {
+  display: flex;
+  align-items: center;
+  padding: $padding;
+  gap: $padding;
+
+  .car-name {
+    color: $font-color-light;
+    font-size: $button-font-size;
+
+  }
+}
