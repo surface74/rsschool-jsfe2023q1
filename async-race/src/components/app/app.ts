@@ -1,4 +1,5 @@
 import { CarInfo } from '../car/car';
+import DbModel from '../db-model/db-model';
 import Favicon from '../favicon/index';
 import CarLane from '../view/car-lane/car-lane';
 import ControlsView from '../view/controls-view/controls-view';
@@ -10,11 +11,22 @@ import Paginator from '../view/paginator/paginator';
 export default class App {
   private favicon: Favicon;
 
+  private database: DbModel;
+
   constructor() {
     this.favicon = new Favicon();
+    this.database = DbModel.getInstance();
   }
 
   init() {
+    // const car: CarInfo = {
+    //   id: 7,
+    //   name: 'Biggest car',
+    //   color: 'red',
+    // };
+    this.database.getWinners(console.log);
+    // this.database.driveCar(7, console.log);
+
     document.head.append(this.favicon.getHtmlElement());
 
     const header = new Header();

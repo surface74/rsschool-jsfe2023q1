@@ -1,5 +1,7 @@
 import './lanes-view.scss';
 import { ElementParams } from '../../../utils/html-creator';
+import DefaultView from '../default-view';
+import TagName from '../../../enums/tag-name';
 
 enum LanesViewCss {
   LANES_VIEW = 'lanes-view',

@@ -1,0 +1,7 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.page-garage {
+  display: flex;
+  flex-direction: column;
+  gap: $padding;
+}
