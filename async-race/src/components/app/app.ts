@@ -1,5 +1,5 @@
 import { CarInfo } from '../car/car';
-import DbModel from '../db-model/db-model';
+import DbModel, { WinnersSortField, WinnersSortOrder, WinnerInfo } from '../db-model/db-model';
 import Favicon from '../favicon/index';
 import CarLane from '../view/car-lane/car-lane';
 import ControlsView from '../view/controls-view/controls-view';
@@ -19,14 +19,6 @@ export default class App {
   }
 
   init() {
-    // const car: CarInfo = {
-    //   id: 7,
-    //   name: 'Biggest car',
-    //   color: 'red',
-    // };
-    this.database.getWinners(console.log);
-    // this.database.driveCar(7, console.log);
-
     document.head.append(this.favicon.getHtmlElement());
 
     const header = new Header();

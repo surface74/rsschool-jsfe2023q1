@@ -20,7 +20,18 @@ enum CarStatus {
   STOPPED = 'stopped',
 }
 
-export type WinnerStatus = { id: number; wins: number; time: number };
+export enum WinnersSortField {
+  ID = 'id',
+  WINS = 'wins',
+  TIME = 'time',
+}
+
+export enum WinnersSortOrder {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+
+export type WinnerInfo = { id: number; wins: number; time: number };
 
 export type RaceParams = { velocity: number; distance: number };
 
@@ -33,15 +44,91 @@ export default class DbModel {
 
   private readonly ENGINE_PATH = 'engine';
 
+  private readonly CARS_PER_PAGE = 7;
+
+  private readonly WINNERS_PER_PAGE = 10;
+
   static getInstance() {
     return this.storage;
   }
 
-  async getWinners(callback: (winners: Array<WinnerStatus>) => void) {
+  async getWinners(callback: (winners: Array<WinnerInfo>) => void) {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}`;
     const method = { method: HttpMethod.GET };
 
     await fetch(path, method)
+      .then((result) => result.json())
+      .then((result) => callback(result))
+      .catch((error: Error) => console.error(error));
+  }
+
+  async getWinnersOnPage(
+    callback: (winners: Array<WinnerInfo>, totalItem: number) => void,
+    pageNumber: number,
+    sortField: WinnersSortField,
+    sortOrder: WinnersSortOrder,
+    itemPerPage: number = this.WINNERS_PER_PAGE
+  ) {
+    const query = `_page=${pageNumber}&_limit=${itemPerPage}&_sort=${sortField}&_order=${sortOrder}`;
+    const path = `${this.BASE_PATH}/${Endpoint.WINNERS}?${query}`;
+    const method = { method: HttpMethod.GET };
+
+    let totalItem = 0;
+    await fetch(path, method)
+      .then((result) => {
+        totalItem = Number(result.headers.get('X-Total-Count') || 0);
+        return result.json();
+      })
+      .then((result) => callback(result, totalItem))
+      .catch((error: Error) => console.error(error));
+  }
+
+  async getWinner(carId: number, callback: (car: WinnerInfo) => void) {
+    const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${carId}`;
+    const method = { method: HttpMethod.GET };
+
+    await fetch(path, method)
+      .then((result) => result.json())
+      .then((result) => callback(result))
+      .catch((error: Error) => console.error(error));
+  }
+
+  async createWinner(winnerInfo: WinnerInfo, callback: (winnerInfo: WinnerInfo) => void) {
+    const path = `${this.BASE_PATH}/${Endpoint.WINNERS}`;
+    const method = HttpMethod.POST;
+    const headers = { 'Content-Type': 'application/json' };
+    const body = JSON.stringify({
+      id: winnerInfo.id,
+      wins: winnerInfo.wins,
+      time: winnerInfo.time,
+    });
+
+    await fetch(path, { method, headers, body })
+      .then((result) => result.json())
+      .then((result) => callback(result))
+      .catch((error: Error) => console.error(error));
+  }
+
+  async deleteWinner(carId: number, callback: () => void) {
+    const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${carId}`;
+    const method = { method: HttpMethod.DELETE };
+
+    await fetch(path, method)
+      .then((result) => result.json())
+      .then(() => callback())
+      .catch((error: Error) => console.error(error));
+  }
+
+  async updateWinner(winnerInfo: WinnerInfo, callback: (winnerInfo: WinnerInfo) => void) {
+    const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${winnerInfo.id}`;
+    const method = HttpMethod.PUT;
+    const headers = { 'Content-Type': 'application/json' };
+    const body = JSON.stringify({
+      time: winnerInfo.time,
+      wins: winnerInfo.wins,
+    });
+
+    await fetch(path, { method, headers, body })
       .then((result) => result.json())
       .then((result) => callback(result))
       .catch((error: Error) => console.error(error));
@@ -57,6 +144,25 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
+  async getCarsOnPage(
+    callback: (cars: Array<CarInfo>, totalCars: number) => void,
+    pageNumber: number,
+    itemPerPage: number = this.CARS_PER_PAGE
+  ) {
+    const query = `_page=${pageNumber}&_limit=${itemPerPage}`;
+    const path = `${this.BASE_PATH}/${Endpoint.GARAGE}?${query}`;
+    const method = { method: HttpMethod.GET };
+
+    let totalItem = 0;
+    await fetch(path, method)
+      .then((result) => {
+        totalItem = Number(result.headers.get('X-Total-Count') || 0);
+        return result.json();
+      })
+      .then((result) => callback(result, totalItem))
+      .catch((error: Error) => console.error(error));
+  }
+
   async getCar(carId: number, callback: (car: CarInfo) => void) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}/${carId}`;
     const method = { method: HttpMethod.GET };
@@ -67,7 +173,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async addCar(carInfo: CarInfo, callback: (car: CarInfo) => void) {
+  async createCar(carInfo: CarInfo, callback: (car: CarInfo) => void) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}`;
     const method = HttpMethod.POST;
     const headers = { 'Content-Type': 'application/json' };
