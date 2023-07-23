@@ -1,64 +1,55 @@
-import { CarInfo } from '../car/car';
+import StorageKey, { CurrentPage } from '../../enums/storage-key';
 import DbModel, { WinnersSortField, WinnersSortOrder, WinnerInfo } from '../db-model/db-model';
 import Favicon from '../favicon/index';
-import CarLane from '../view/car-lane/car-lane';
-import ControlsView from '../view/controls-view/controls-view';
-import CurrentPage from '../view/current-page/current-page';
+import PageGarrage from '../view/page-garage/page-garage';
 import Header from '../view/header/header';
-import PageTitle from '../view/page-title/page-title';
-import Paginator from '../view/paginator/paginator';
+import PageHolder from '../view/page-holder/page-holder';
+import Storage from '../storage/storage';
+import PageWinners from '../view/page-winners/page-winners';
 
 export default class App {
   private favicon: Favicon;
 
   private database: DbModel;
 
+  private storage: Storage;
+
+  private winnersPageNumber: number = 0;
+
+  private garagePageNumber: number = 0;
+
+  private currentPage: CurrentPage = CurrentPage.GARAGE;
+
   constructor() {
     this.favicon = new Favicon();
     this.database = DbModel.getInstance();
+    this.storage = new Storage();
   }
 
   init() {
+    this.restoreState();
+
     document.head.append(this.favicon.getHtmlElement());
 
     const header = new Header();
     document.body.append(header.getElement());
 
-    const pageTitle = new PageTitle('GARAGE', 2);
-    document.body.append(pageTitle.getElement());
-    pageTitle.setCarCount(111);
+    const pageHolder = new PageHolder();
+    document.body.append(pageHolder.getElement());
 
-    const currentPage = new CurrentPage(0);
-    document.body.append(currentPage.getElement());
-    currentPage.setCurrentPage(222);
+    const pageGarage = new PageGarrage(this.garagePageNumber);
+    const pageWinners = new PageWinners(this.winnersPageNumber);
 
-    const controlView = new ControlsView([
-      () => console.log('control-0'),
-      () => console.log('control-1'),
-      () => console.log('control-2'),
-    ]);
-    document.body.append(controlView.getElement());
+    if (this.currentPage === CurrentPage.GARAGE) {
+      pageHolder.setContent(pageGarage.getElement());
+    } else {
+      pageHolder.setContent(pageWinners.getElement());
+    }
+  }
 
-    const carInfo: CarInfo = {
-      id: 0,
-      name: 'Test car',
-      color: 'yellow',
-    };
-    const carLane = new CarLane(
-      carInfo,
-      () => console.log('select car'),
-      () => console.log('delete car'),
-      () => console.log('start car'),
-      () => console.log('return car')
-    );
-    document.body.append(carLane.getElement());
-
-    const paginator = new Paginator(
-      0,
-      1,
-      () => console.log('paginator-prev'),
-      () => console.log('paginator-next')
-    );
-    document.body.append(paginator.getElement());
+  restoreState() {
+    this.garagePageNumber = Storage.GetGaragePage();
+    this.winnersPageNumber = Storage.GetWinnersPage();
+    this.currentPage = Storage.GetCurrentPage();
   }
 }

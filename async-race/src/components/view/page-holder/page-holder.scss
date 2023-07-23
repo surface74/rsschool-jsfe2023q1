@@ -1,11 +1,10 @@
 @import '../../../styles/abstracts/variables.scss';
 
-.lanes-view {
+.page-holder {
+  width: $section-max-width;
+  margin: auto;
+
   display: flex;
   flex-direction: column;
-  gap: $padding;
-}
-
-.lanes-view:first-child {
-  padding-top: $padding;
+  padding: $padding;
 }

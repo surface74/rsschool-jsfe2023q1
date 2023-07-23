@@ -20,9 +20,11 @@ export default class CarLane extends DefaultView {
 
   private carTrack: CarTrack;
 
+  private selectCarCallback: (carInfo: CarInfo) => void;
+
   constructor(
     carInfo: CarInfo,
-    selectCarCallback: () => void,
+    selectCarCallback: (carInfo: CarInfo) => void,
     removeCarCallback: () => void,
     startCarCallback: () => void,
     returnCarCallback: () => void
@@ -35,12 +37,17 @@ export default class CarLane extends DefaultView {
 
     super(params);
 
-    this.carInfo = carInfo;
-    this.carsManager = new CarsManager(this.carInfo.name, selectCarCallback, removeCarCallback);
+    this.selectCarCallback = selectCarCallback;
+    this.carInfo = { ...carInfo };
+    this.carsManager = new CarsManager(this.carInfo, this.selectCarHandler.bind(this), removeCarCallback);
     this.carControl = new CarControl(startCarCallback, returnCarCallback);
     this.carTrack = new CarTrack(this.carInfo);
 
     this.configView();
+  }
+
+  private selectCarHandler() {
+    this.selectCarCallback(this.carInfo);
   }
 
   private configView() {

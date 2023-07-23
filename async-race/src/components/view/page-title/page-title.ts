@@ -8,28 +8,28 @@ enum PageTitleCss {
 }
 
 export default class PageTitle extends DefaultView {
-  private carCounter: number;
+  private itemCounter: number;
 
   private pageTitle: string;
 
-  constructor(pageTitle: string, carCount: number) {
+  constructor(pageTitle: string, itemCount: number) {
     const params: ElementParams = {
       tag: TagName.SECTION,
       classNames: [PageTitleCss.PAGE_TITLE],
-      textContent: `${pageTitle} (${carCount})`,
+      textContent: `${pageTitle} (${itemCount})`,
     };
     super(params);
 
-    this.carCounter = carCount;
+    this.itemCounter = itemCount;
     this.pageTitle = pageTitle;
   }
 
-  public setCarCount(carCount: number): void {
-    this.carCounter = carCount;
+  public setItemCount(itemCount: number): void {
+    this.itemCounter = itemCount;
     this.updateTitle();
   }
 
   private updateTitle() {
-    this.getElement().textContent = `${this.pageTitle} (${this.carCounter})`;
+    this.getElement().textContent = `${this.pageTitle} (${this.itemCounter})`;
   }
 }

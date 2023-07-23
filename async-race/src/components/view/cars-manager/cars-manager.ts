@@ -3,6 +3,7 @@ import TagName from '../../../enums/tag-name';
 import { ElementParams } from '../../../utils/html-creator';
 import Button, { ButtonCss, ButtonParams } from '../../button/button';
 import DefaultView from '../default-view';
+import { CarInfo } from '../../car/car';
 
 enum CarsManagerCss {
   CARS_MANAGER = 'cars-manager',
@@ -15,13 +16,15 @@ enum ButtonTitle {
 }
 
 export default class CarsManager extends DefaultView {
+  private carInfo: CarInfo;
+
   private selectButton: HTMLElement;
 
   private removeButton: HTMLElement;
 
   private carNameElement: HTMLElement;
 
-  constructor(carName: string, selectCallback: () => void, removeCallback: () => void) {
+  constructor(carInfo: CarInfo, selectCallback: () => void, removeCallback: () => void) {
     const params: ElementParams = {
       tag: TagName.DIV,
       classNames: [CarsManagerCss.CARS_MANAGER],
@@ -29,9 +32,10 @@ export default class CarsManager extends DefaultView {
     };
     super(params);
 
+    this.carInfo = { ...carInfo };
     this.selectButton = this.createSelectButton(ButtonTitle.SELECT, selectCallback);
     this.removeButton = this.createRemoveButton(ButtonTitle.REMOVE, removeCallback);
-    this.carNameElement = this.createCarNameElement(carName);
+    this.carNameElement = this.createCarNameElement(this.carInfo.name);
 
     this.configView();
   }

@@ -1,6 +1,12 @@
-import StorageKey from '../../enums/storage-key';
+import StorageKey, { CurrentPage } from '../../enums/storage-key';
 
 export default class Storage {
+  static GetCurrentPage(): CurrentPage {
+    const result = localStorage.getItem(StorageKey.CURRENT_PAGE) || CurrentPage.GARAGE;
+
+    return result === CurrentPage.GARAGE ? CurrentPage.GARAGE : CurrentPage.WINNERS;
+  }
+
   static GetGaragePage(): number {
     const result: string | null = localStorage.getItem(StorageKey.GARAGE_PAGE);
 

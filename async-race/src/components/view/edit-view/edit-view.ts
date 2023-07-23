@@ -1,6 +1,7 @@
 import TagName from '../../../enums/tag-name';
 import HtmlCreator, { ElementParams } from '../../../utils/html-creator';
 import Button, { ButtonCss, ButtonParams } from '../../button/button';
+import { CarInfo } from '../../car/car';
 import DefaultView from '../default-view';
 import './edit-view.scss';
 
@@ -11,6 +12,8 @@ enum EditViewCss {
 }
 
 export default class EditView extends DefaultView {
+  private carInfo: CarInfo;
+
   private nameInput: HTMLElement;
 
   private colorInput: HTMLElement;
@@ -25,6 +28,11 @@ export default class EditView extends DefaultView {
     };
     super(params);
 
+    this.carInfo = {
+      id: -1,
+      name: '',
+      color: 'black',
+    };
     this.nameInput = this.addNameInput();
     this.colorInput = this.addColorInput();
     this.addButton(buttonText, callback);
@@ -38,6 +46,7 @@ export default class EditView extends DefaultView {
     };
 
     this.nameInput = new HtmlCreator(params).getElement();
+    this.nameInput.setAttribute('minlength', '2');
     this.getCreator().addInnerElement(this.nameInput);
 
     return this.nameInput;
@@ -68,24 +77,30 @@ export default class EditView extends DefaultView {
     this.getElement().append(button);
   }
 
-  public setViewValues(textValue: string, colorValue: string): void {
+  public setViewValues(carInfo: CarInfo): void {
+    this.carInfo = { ...carInfo };
     if (this.nameInput instanceof HTMLInputElement) {
-      this.nameInput.value = textValue;
+      this.nameInput.value = carInfo.name;
     }
     if (this.colorInput instanceof HTMLInputElement) {
-      this.colorInput.value = colorValue;
+      this.colorInput.value = carInfo.color;
     }
   }
 
-  public getViewValues(): { name: string; color: string } {
-    const result = { name: '', color: '' };
+  public getViewValues(): CarInfo {
     if (this.nameInput instanceof HTMLInputElement) {
-      result.name = this.nameInput.value;
+      this.carInfo.name = this.nameInput.value;
     }
     if (this.colorInput instanceof HTMLInputElement) {
-      result.color = this.colorInput.value;
+      this.carInfo.color = this.colorInput.value;
     }
 
-    return result;
+    return { ...this.carInfo };
+  }
+
+  public clearInput() {
+    if (this.nameInput instanceof HTMLInputElement) {
+      this.nameInput.value = '';
+    }
   }
 }

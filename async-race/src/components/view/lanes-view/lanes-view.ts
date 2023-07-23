@@ -10,7 +10,7 @@ enum LanesViewCss {
 export default class LanesView extends DefaultView {
   constructor() {
     const params: ElementParams = {
-      tag: TagName.SECTION,
+      tag: TagName.DIV,
       classNames: [LanesViewCss.LANES_VIEW],
       textContent: '',
     };

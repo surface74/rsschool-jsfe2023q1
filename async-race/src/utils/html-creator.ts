@@ -35,6 +35,10 @@ export default class HtmlCreator {
     }
   }
 
+  public clearInnerContent() {
+    this.element.replaceChildren('');
+  }
+
   private createElement(params: ElementParams): HTMLElement {
     this.element = document.createElement(params.tag);
 

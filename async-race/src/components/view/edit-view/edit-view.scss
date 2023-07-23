@@ -4,8 +4,20 @@
   display: flex;
   padding: $padding;
   gap: $padding;
+
+  & .button {
+    min-width: 8rem;
+  }
 }
 
 .edit-view__input-color {
   padding: 0;
+}
+
+.edit-view__input-text {
+  font-size: $input-text-font-size;
+}
+
+.edit-view__input-text:invalid {
+  border: 2px solid red;
 }
