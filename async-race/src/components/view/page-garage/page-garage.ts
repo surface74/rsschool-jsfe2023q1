@@ -9,6 +9,8 @@ import { CarInfo } from '../../car/car';
 import CarLane from '../car-lane/car-lane';
 import EditView from '../edit-view/edit-view';
 import LanesView from '../lanes-view/lanes-view';
+import ControlsView from '../controls-view/controls-view';
+import Paginator from '../paginator/paginator';
 
 enum PageGarrageCss {
   PAGE_GARAGE = 'page-garage',
@@ -21,6 +23,8 @@ enum Titles {
 }
 
 export default class PageGarrage extends DefaultView {
+  private readonly ITEMS_PER_PAGE = 7;
+
   private database: DbModel = DbModel.getInstance();
 
   private pageTitle: PageTitle = new PageTitle(Titles.PAGE_TITLE, 0);
@@ -31,7 +35,11 @@ export default class PageGarrage extends DefaultView {
 
   private updateCarBlock: EditView;
 
+  private controlsView: ControlsView;
+
   private carLanesContainer: LanesView = new LanesView();
+
+  private paginator: Paginator;
 
   private pageNumber: number;
 
@@ -51,7 +59,13 @@ export default class PageGarrage extends DefaultView {
     this.currentPage = new CurrentPage(pageNumber + 1);
     this.createCarBlock = new EditView(Titles.BUTTON_CREATE_TITLE, this.createCar.bind(this));
     this.updateCarBlock = new EditView(Titles.BUTTON_UPDATE_TITLE, this.updateCar.bind(this));
+    this.controlsView = new ControlsView(
+      this.raceCars.bind(this),
+      this.resetCars.bind(this),
+      this.createCarsCallback.bind(this)
+    );
 
+    this.paginator = new Paginator(this.pageNumber, this.prevPage.bind(this), this.nextPage.bind(this));
     this.configView();
     this.getCarsFromDatabase();
   }
@@ -61,15 +75,37 @@ export default class PageGarrage extends DefaultView {
     this.getCreator().addInnerElement(this.currentPage.getElement());
     this.getCreator().addInnerElement(this.createCarBlock.getElement());
     this.getCreator().addInnerElement(this.updateCarBlock.getElement());
+    this.getCreator().addInnerElement(this.controlsView.getElement());
     this.getCreator().addInnerElement(this.carLanesContainer.getElement());
+    this.getCreator().addInnerElement(this.paginator.getElement());
   }
 
   public updateTitle(totalCars: number) {
     this.pageTitle.setItemCount(totalCars);
   }
 
+  private raceCars() {
+    console.log('RACE!', this.cars);
+  }
+
+  private resetCars() {
+    console.log('RESET!', this.cars);
+  }
+
+  private createCarsCallback() {
+    console.log('RESET!', this.cars);
+  }
+
+  private prevPage() {
+    console.log('PREV PAGE!', this.cars);
+  }
+
+  private nextPage() {
+    console.log('NEXT PAGE!', this.cars);
+  }
+
   public getCarsFromDatabase() {
-    this.database.getCarsOnPage(this.createContent.bind(this), this.pageNumber);
+    this.database.getCarsOnPage(this.createContent.bind(this), this.pageNumber, this.ITEMS_PER_PAGE);
   }
 
   private createCar(): void {

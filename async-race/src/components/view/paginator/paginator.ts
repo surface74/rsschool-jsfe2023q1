@@ -20,9 +20,7 @@ export default class Paginator extends DefaultView {
 
   private currentPage: number;
 
-  private totalPage: number;
-
-  constructor(currentPage: number, totalPage: number, prevCallback: () => void, nextCallback: () => void) {
+  constructor(currentPage: number, prevCallback: () => void, nextCallback: () => void) {
     const params: ElementParams = {
       tag: TagName.SECTION,
       classNames: [PaginatorCss.PAGINATOR],
@@ -31,8 +29,6 @@ export default class Paginator extends DefaultView {
     super(params);
 
     this.currentPage = currentPage;
-
-    this.totalPage = totalPage;
 
     this.prevButton = this.createPrevButton(ButtonTitle.PREV, prevCallback);
     this.nextButton = this.createNextButton(ButtonTitle.NEXT, nextCallback);

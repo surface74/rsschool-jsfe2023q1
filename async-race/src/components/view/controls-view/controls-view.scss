@@ -3,7 +3,7 @@
 .controls-view {
   display: flex;
   padding: $padding;
-  margin-bottom: $padding;
+  margin-bottom: 2 * $padding;
   gap: $padding;
   border-bottom: 2px solid $font-color-level-done;
 }

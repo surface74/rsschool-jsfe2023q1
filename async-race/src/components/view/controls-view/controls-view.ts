@@ -19,7 +19,7 @@ enum ButtonTitle {
 export default class ControlsView extends DefaultView {
   private buttons: Array<ButtonConfig>;
 
-  constructor(callbacks: Array<() => void>) {
+  constructor(raceCallback: () => void, resetCallback: () => void, createCarsCallback: () => void) {
     const params: ElementParams = {
       tag: TagName.SECTION,
       classNames: [ControlsViewCss.CONTROLS_VIEW],
@@ -29,15 +29,15 @@ export default class ControlsView extends DefaultView {
     this.buttons = [
       {
         text: ButtonTitle.RACE,
-        callback: callbacks[0],
+        callback: raceCallback,
       },
       {
         text: ButtonTitle.RESET,
-        callback: callbacks[1],
+        callback: resetCallback,
       },
       {
         text: ButtonTitle.CREATE_CARS,
-        callback: callbacks[2],
+        callback: createCarsCallback,
       },
     ];
 
