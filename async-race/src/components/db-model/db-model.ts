@@ -188,13 +188,13 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async deleteCar(carId: number, callback: (carId: number) => void) {
+  async deleteCar(carId: number, callback: () => void) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}/${carId}`;
     const method = { method: HttpMethod.DELETE };
 
     await fetch(path, method)
       .then((result) => result.json())
-      .then(() => callback(carId))
+      .then(() => callback())
       .catch((error: Error) => console.error(error));
   }
 

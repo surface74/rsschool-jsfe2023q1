@@ -74,7 +74,9 @@ export default class PageGarrage extends DefaultView {
 
   private createCar(): void {
     const carInfo = this.createCarBlock.getViewValues();
-    this.database.createCar(carInfo, this.createCarCallback.bind(this));
+    if (carInfo.name.length > 1) {
+      this.database.createCar(carInfo, this.createCarCallback.bind(this));
+    }
   }
 
   private async createCarCallback(): Promise<void> {
@@ -98,7 +100,13 @@ export default class PageGarrage extends DefaultView {
     this.carLanesContainer.getElement().replaceChildren('');
 
     this.cars.forEach((carInfo) => {
-      const carLane = new CarLane(carInfo, this.selectCar.bind(this), this.removeCar, this.startCar, this.returnCar);
+      const carLane = new CarLane(
+        carInfo,
+        this.selectCar.bind(this),
+        this.removeCar.bind(this),
+        this.startCar.bind(this),
+        this.returnCar.bind(this)
+      );
       this.carLanes.push(carLane);
       this.carLanesContainer.getCreator().addInnerElement(carLane.getElement());
     });
@@ -110,8 +118,12 @@ export default class PageGarrage extends DefaultView {
     this.updateCarBlock.setViewValues(carInfo);
   }
 
-  private async removeCar() {
-    console.log('remove', this);
+  private async removeCar(carId: number) {
+    this.database.deleteCar(carId, this.removeCarCallback.bind(this));
+  }
+
+  private async removeCarCallback() {
+    this.getCarsFromDatabase();
   }
 
   private async startCar() {
