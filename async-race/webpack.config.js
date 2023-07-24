@@ -37,7 +37,7 @@ const baseConfig = {
     extensions: ['.ts', '.tsx', '.js'],
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[hash][ext]',
   },
