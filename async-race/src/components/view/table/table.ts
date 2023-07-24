@@ -31,6 +31,7 @@ export default class Table extends DefaultView {
   }
 
   private createTableItems(carInfos: CarInfo[]) {
+    this.getElement().replaceChildren('');
     carInfos.forEach((carInfo, index) => {
       const id = document.createElement(TagName.DIV);
       id.classList.add(TableCss.TABLE_CELL);

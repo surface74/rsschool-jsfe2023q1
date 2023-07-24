@@ -113,13 +113,12 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async deleteWinner(carId: number, callback: () => void) {
+  async deleteWinner(carId: number) {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${carId}`;
     const method = { method: HttpMethod.DELETE };
 
     await fetch(path, method)
       .then((result) => result.json())
-      .then(() => callback())
       .catch((error: Error) => console.error(error));
   }
 

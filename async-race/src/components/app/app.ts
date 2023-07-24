@@ -58,6 +58,7 @@ export default class App {
   }
 
   private showWinners() {
+    this.pageWinners.getWinnersFromDatabase();
     this.pageHolder.setContent(this.pageWinners.getElement());
     Storage.SaveCurrentPage(CurrentPageKey.WINNERS);
   }

@@ -173,6 +173,7 @@ export default class PageGarrage extends DefaultView {
   }
 
   private async removeCar(carId: number) {
+    this.database.deleteWinner(carId);
     this.database.deleteCar(carId, this.removeCarCallback.bind(this));
   }
 
