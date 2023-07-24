@@ -3,7 +3,7 @@ import DefaultView from '../default-view';
 import PageTitle from '../page-title/page-title';
 import { ElementParams } from '../../../utils/html-creator';
 import TagName from '../../../enums/tag-name';
-import DbModel from '../../db-model/db-model';
+import DbModel, { RaceParams } from '../../db-model/db-model';
 import CurrentPage from '../current-page/current-page';
 import Car, { CarInfo } from '../../car/car';
 import CarLane from '../car-lane/car-lane';
@@ -158,7 +158,7 @@ export default class PageGarrage extends DefaultView {
         carInfo,
         this.selectCar.bind(this),
         this.removeCar.bind(this),
-        this.startCar.bind(this),
+        this.startEngine.bind(this),
         this.returnCar.bind(this)
       );
       this.carLanes.push(carLane);
@@ -181,10 +181,24 @@ export default class PageGarrage extends DefaultView {
     this.getCarsFromDatabase();
   }
 
-  private async startCar(car: Car) {
+  private startEngine(car: Car) {
+    this.database.startCar(car, this.carStarted.bind(this));
+  }
+
+  private async carStarted(raceParam: RaceParams, car: Car) {
+    const { velocity, distance } = raceParam;
+    const time = distance / velocity;
+
+    this.database.driveCar(car, () => console.log('OK'), this.stopCar.bind(this));
+
+    this.startRace(car, time);
+  }
+
+  private startRace(car: Car, time: number) {
     const trackWidth = this.carLanesContainer.getElement().getBoundingClientRect().width;
-    const distance = trackWidth - 170;
-    car.startRace(distance, 1000);
+    const carOffsetLeft = car.getCarElement().getBoundingClientRect().left;
+    const distance = trackWidth - carOffsetLeft;
+    car.startRace(distance, time);
   }
 
   private async stopCar(car: Car) {

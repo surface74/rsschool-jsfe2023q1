@@ -88,9 +88,9 @@ export default class Car {
 
     const tick = () => {
       currentX += dX;
-      this.element.style.transform = `translateX(${currentX}px)`;
 
       if (currentX < endX) {
+        this.element.style.transform = `translateX(${currentX}px)`;
         this.animationId = requestAnimationFrame(tick);
       } else {
         cancelAnimationFrame(this.animationId);

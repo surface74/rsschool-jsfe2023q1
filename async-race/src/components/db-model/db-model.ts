@@ -1,5 +1,5 @@
 import MyMath from '../../utils/my-math';
-import { CarInfo } from '../car/car';
+import Car, { CarInfo } from '../car/car';
 import carModels from '../view/car-models/car-models';
 
 enum HttpMethod {
@@ -256,7 +256,8 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async startCar(carId: number, callback: (raceParams: RaceParams) => void) {
+  async startCar(car: Car, callback: (raceParams: RaceParams, car: Car) => void) {
+    const carId = car.getCarId();
     const query = `id=${carId}&status=${CarStatus.STARTED}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
     const method = HttpMethod.PATCH;
@@ -267,11 +268,12 @@ export default class DbModel {
 
     await fetch(path, { method, headers })
       .then((result) => result.json())
-      .then((result) => callback(result))
+      .then((result) => callback(result, car))
       .catch((error: Error) => console.error(error));
   }
 
-  async driveCar(carId: number, callbackOK: (carId: number) => void, callbackError: (carId: number) => void) {
+  async driveCar(car: Car, callbackOK: (car: Car) => void, callbackError: (car: Car) => void) {
+    const carId = car.getCarId();
     const query = `id=${carId}&status=${CarStatus.DRIVE}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
     const method = HttpMethod.PATCH;
@@ -281,7 +283,7 @@ export default class DbModel {
     };
 
     await fetch(path, { method, headers })
-      .then((result) => (result.ok ? callbackOK(carId) : callbackError(carId)))
+      .then((result) => (result.ok ? callbackOK(car) : callbackError(car)))
       .catch((error: Error) => console.error(error));
   }
 
