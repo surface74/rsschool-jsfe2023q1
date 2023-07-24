@@ -1,16 +1,16 @@
-import StorageKey, { CurrentPage } from '../../enums/storage-key';
+import StorageKey, { CurrentPageKey } from '../../enums/storage-key';
 
 export default class Storage {
-  static GetCurrentPage(): CurrentPage {
-    const result = localStorage.getItem(StorageKey.CURRENT_PAGE) || CurrentPage.GARAGE;
+  static GetCurrentPage(): CurrentPageKey {
+    const result = localStorage.getItem(StorageKey.CURRENT_PAGE) || CurrentPageKey.GARAGE;
 
-    return result === CurrentPage.GARAGE ? CurrentPage.GARAGE : CurrentPage.WINNERS;
+    return result === CurrentPageKey.GARAGE ? CurrentPageKey.GARAGE : CurrentPageKey.WINNERS;
   }
 
   static GetGaragePage(): number {
     const result: string | null = localStorage.getItem(StorageKey.GARAGE_PAGE);
 
-    return result ? Number(result) : 0;
+    return result ? Number(result) : 1;
   }
 
   static SaveGaragePage(garagePage: number): void {
@@ -20,7 +20,7 @@ export default class Storage {
   static GetWinnersPage(): number {
     const result: string | null = localStorage.getItem(StorageKey.WINNERS_PAGE);
 
-    return result ? Number(result) : 0;
+    return result ? Number(result) : 1;
   }
 
   static SaveWinnersPage(winnersPage: number): void {

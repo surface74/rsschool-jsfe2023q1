@@ -4,7 +4,7 @@ enum StorageKey {
   CURRENT_PAGE = 'current-page',
 }
 
-export enum CurrentPage {
+export enum CurrentPageKey {
   GARAGE,
   WINNERS,
 }

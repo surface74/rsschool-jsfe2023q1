@@ -11,6 +11,7 @@ import EditView from '../edit-view/edit-view';
 import LanesView from '../lanes-view/lanes-view';
 import ControlsView from '../controls-view/controls-view';
 import Paginator from '../paginator/paginator';
+import Storage from '../../storage/storage';
 
 enum PageGarrageCss {
   PAGE_GARAGE = 'page-garage',
@@ -31,7 +32,7 @@ export default class PageGarrage extends DefaultView {
 
   private pageTitle: PageTitle = new PageTitle(Titles.PAGE_TITLE, 0);
 
-  private currentPage: CurrentPage;
+  private currentPageView: CurrentPage;
 
   private createCarBlock: EditView;
 
@@ -43,7 +44,9 @@ export default class PageGarrage extends DefaultView {
 
   private paginator: Paginator;
 
-  private pageNumber: number;
+  private pageNumber: number = 1;
+
+  private totalCars: number = 0;
 
   private cars: CarInfo[] = [];
 
@@ -58,7 +61,8 @@ export default class PageGarrage extends DefaultView {
     super(params);
 
     this.pageNumber = pageNumber;
-    this.currentPage = new CurrentPage(pageNumber + 1);
+    console.log('pageNumber: ', pageNumber);
+    this.currentPageView = new CurrentPage(pageNumber);
     this.createCarBlock = new EditView(Titles.BUTTON_CREATE_TITLE, this.createCar.bind(this));
     this.updateCarBlock = new EditView(Titles.BUTTON_UPDATE_TITLE, this.updateCar.bind(this));
     this.controlsView = new ControlsView(
@@ -74,7 +78,7 @@ export default class PageGarrage extends DefaultView {
 
   private configView() {
     this.getCreator().addInnerElement(this.pageTitle.getElement());
-    this.getCreator().addInnerElement(this.currentPage.getElement());
+    this.getCreator().addInnerElement(this.currentPageView.getElement());
     this.getCreator().addInnerElement(this.createCarBlock.getElement());
     this.getCreator().addInnerElement(this.updateCarBlock.getElement());
     this.getCreator().addInnerElement(this.controlsView.getElement());
@@ -99,11 +103,23 @@ export default class PageGarrage extends DefaultView {
   }
 
   private prevPage() {
-    console.log('PREV PAGE!', this.cars);
+    if (this.pageNumber > 1) {
+      this.pageNumber -= 1;
+      this.getCarsFromDatabase();
+      this.currentPageView.setCurrentPage(this.pageNumber);
+    }
+    this.saveState();
   }
 
   private nextPage() {
-    console.log('NEXT PAGE!', this.cars);
+    console.log('this.pageNumber: ', this.pageNumber);
+    const totalPages = Math.ceil(this.totalCars / this.ITEMS_PER_PAGE);
+    if (this.pageNumber < totalPages) {
+      this.pageNumber += 1;
+      this.getCarsFromDatabase();
+      this.currentPageView.setCurrentPage(this.pageNumber);
+    }
+    this.saveState();
   }
 
   public getCarsFromDatabase() {
@@ -149,6 +165,7 @@ export default class PageGarrage extends DefaultView {
       this.carLanesContainer.getCreator().addInnerElement(carLane.getElement());
     });
 
+    this.totalCars = totalCars;
     this.updateTitle(totalCars);
   }
 
@@ -170,5 +187,9 @@ export default class PageGarrage extends DefaultView {
 
   private async returnCar() {
     console.log('return', this);
+  }
+
+  private saveState() {
+    Storage.SaveGaragePage(this.pageNumber);
   }
 }

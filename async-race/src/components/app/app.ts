@@ -1,5 +1,5 @@
-import StorageKey, { CurrentPage } from '../../enums/storage-key';
-import DbModel, { WinnersSortField, WinnersSortOrder, WinnerInfo } from '../db-model/db-model';
+import { CurrentPageKey } from '../../enums/storage-key';
+import DbModel from '../db-model/db-model';
 import Favicon from '../favicon/index';
 import PageGarrage from '../view/page-garage/page-garage';
 import Header from '../view/header/header';
@@ -14,11 +14,11 @@ export default class App {
 
   private storage: Storage;
 
-  private winnersPageNumber: number = 0;
+  private winnersPageNumber: number = 1;
 
-  private garagePageNumber: number = 0;
+  private garagePageNumber: number = 1;
 
-  private currentPage: CurrentPage = CurrentPage.GARAGE;
+  private currentPage: CurrentPageKey = CurrentPageKey.GARAGE;
 
   constructor() {
     this.favicon = new Favicon();
@@ -40,7 +40,7 @@ export default class App {
     const pageGarage = new PageGarrage(this.garagePageNumber);
     const pageWinners = new PageWinners(this.winnersPageNumber);
 
-    if (this.currentPage === CurrentPage.GARAGE) {
+    if (this.currentPage === CurrentPageKey.GARAGE) {
       pageHolder.setContent(pageGarage.getElement());
     } else {
       pageHolder.setContent(pageWinners.getElement());
