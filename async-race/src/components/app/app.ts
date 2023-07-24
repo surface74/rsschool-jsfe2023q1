@@ -18,33 +18,46 @@ export default class App {
 
   private garagePageNumber: number = 1;
 
+  private pageGarage: PageGarrage;
+
+  private pageWinners: PageWinners;
+
+  private pageHolder: PageHolder;
+
   private currentPage: CurrentPageKey = CurrentPageKey.GARAGE;
 
   constructor() {
     this.favicon = new Favicon();
     this.database = DbModel.getInstance();
     this.storage = new Storage();
+
+    this.restoreState();
+    this.pageHolder = new PageHolder();
+    this.pageGarage = new PageGarrage(this.garagePageNumber);
+    this.pageWinners = new PageWinners(this.winnersPageNumber);
   }
 
   init() {
-    this.restoreState();
-
     document.head.append(this.favicon.getHtmlElement());
 
-    const header = new Header();
+    const header = new Header(this.showGarage.bind(this), this.showWinners.bind(this));
     document.body.append(header.getElement());
 
-    const pageHolder = new PageHolder();
-    document.body.append(pageHolder.getElement());
-
-    const pageGarage = new PageGarrage(this.garagePageNumber);
-    const pageWinners = new PageWinners(this.winnersPageNumber);
+    document.body.append(this.pageHolder.getElement());
 
     if (this.currentPage === CurrentPageKey.GARAGE) {
-      pageHolder.setContent(pageGarage.getElement());
+      this.pageHolder.setContent(this.pageGarage.getElement());
     } else {
-      pageHolder.setContent(pageWinners.getElement());
+      this.pageHolder.setContent(this.pageWinners.getElement());
     }
+  }
+
+  private showGarage() {
+    this.pageHolder.setContent(this.pageGarage.getElement());
+  }
+
+  private showWinners() {
+    this.pageHolder.setContent(this.pageWinners.getElement());
   }
 
   restoreState() {

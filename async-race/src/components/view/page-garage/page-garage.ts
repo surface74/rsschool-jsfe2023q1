@@ -61,7 +61,6 @@ export default class PageGarrage extends DefaultView {
     super(params);
 
     this.pageNumber = pageNumber;
-    console.log('pageNumber: ', pageNumber);
     this.currentPageView = new CurrentPage(pageNumber);
     this.createCarBlock = new EditView(Titles.BUTTON_CREATE_TITLE, this.createCar.bind(this));
     this.updateCarBlock = new EditView(Titles.BUTTON_UPDATE_TITLE, this.updateCar.bind(this));
@@ -112,7 +111,6 @@ export default class PageGarrage extends DefaultView {
   }
 
   private nextPage() {
-    console.log('this.pageNumber: ', this.pageNumber);
     const totalPages = Math.ceil(this.totalCars / this.ITEMS_PER_PAGE);
     if (this.pageNumber < totalPages) {
       this.pageNumber += 1;

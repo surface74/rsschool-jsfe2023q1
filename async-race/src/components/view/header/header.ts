@@ -21,7 +21,7 @@ export default class Header extends DefaultView {
 
   private navElement: HTMLElement;
 
-  constructor() {
+  constructor(showGarage: () => void, showWinners: () => void) {
     const params: ElementParams = {
       tag: TagName.HEADER,
       classNames: [HeaderCss.HEADER],
@@ -32,15 +32,11 @@ export default class Header extends DefaultView {
     this.buttons = [
       {
         text: ButtonTitle.TO_GARAGE,
-        callback: () => {
-          console.log('garage');
-        },
+        callback: showGarage,
       },
       {
         text: ButtonTitle.TO_WINNERS,
-        callback: () => {
-          console.log('winners');
-        },
+        callback: showWinners,
       },
     ];
 

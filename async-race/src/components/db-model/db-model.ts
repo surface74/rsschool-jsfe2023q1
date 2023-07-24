@@ -50,6 +50,8 @@ export default class DbModel {
 
   private readonly WINNERS_PER_PAGE = 10;
 
+  private carModels = carModels;
+
   static getInstance() {
     return this.storage;
   }
@@ -211,7 +213,7 @@ export default class DbModel {
       const carInfo: CarInfo = {
         id: -1,
         name: this.getRandomCarName(),
-        color: this.getRandomColor(),
+        color: carModels.color[MyMath.getRandom(0, carModels.color.length - 1)],
       };
       promises.push(this.createCarSilent(carInfo));
     }
@@ -221,12 +223,12 @@ export default class DbModel {
   }
 
   private getRandomColor(): string {
-    return carModels.color[MyMath.getRandom(0, carModels.color.length - 1)];
+    return this.carModels.color[MyMath.getRandom(0, carModels.color.length - 1)];
   }
 
   private getRandomCarName(): string {
-    const part1 = carModels.mark[MyMath.getRandom(0, carModels.mark.length - 1)];
-    const part2 = carModels.model[MyMath.getRandom(0, carModels.model.length - 1)];
+    const part1 = this.carModels.mark[MyMath.getRandom(0, carModels.mark.length - 1)];
+    const part2 = this.carModels.model[MyMath.getRandom(0, carModels.model.length - 1)];
 
     return `${part1} ${part2}`;
   }
