@@ -1,4 +1,6 @@
+import MyMath from '../../utils/my-math';
 import { CarInfo } from '../car/car';
+import carModels from '../view/car-models/car-models';
 
 enum HttpMethod {
   GET = 'GET',
@@ -186,6 +188,47 @@ export default class DbModel {
       .then((result) => result.json())
       .then((result) => callback(result))
       .catch((error: Error) => console.error(error));
+  }
+
+  async createCarSilent(carInfo: CarInfo) {
+    const path = `${this.BASE_PATH}/${Endpoint.GARAGE}`;
+    const method = HttpMethod.POST;
+    const headers = { 'Content-Type': 'application/json' };
+    const body = JSON.stringify({
+      name: carInfo.name,
+      color: carInfo.color,
+    });
+
+    await fetch(path, { method, headers, body })
+      .then((result) => result.json())
+      .then((result) => console.log(result))
+      .catch((error: Error) => console.error(error));
+  }
+
+  async createCars(carNumber: number, callback: () => void) {
+    const promises: Promise<void>[] = [];
+    for (let i = 0; i < carNumber; i += 1) {
+      const carInfo: CarInfo = {
+        id: -1,
+        name: this.getRandomCarName(),
+        color: this.getRandomColor(),
+      };
+      promises.push(this.createCarSilent(carInfo));
+    }
+    await Promise.all(promises);
+
+    callback();
+  }
+
+  private getRandomColor(): string {
+    return carModels.color[MyMath.getRandom(0, carModels.color.length - 1)];
+  }
+
+  private getRandomCarName(): string {
+    const part1 = carModels.mark[MyMath.getRandom(0, carModels.mark.length - 1)];
+    const part2 = carModels.model[MyMath.getRandom(0, carModels.model.length - 1)];
+
+    return `${part1} ${part2}`;
   }
 
   async deleteCar(carId: number, callback: () => void) {

@@ -25,6 +25,8 @@ enum Titles {
 export default class PageGarrage extends DefaultView {
   private readonly ITEMS_PER_PAGE = 7;
 
+  private readonly BULK_CARS_CREATION_COUNT = 100;
+
   private database: DbModel = DbModel.getInstance();
 
   private pageTitle: PageTitle = new PageTitle(Titles.PAGE_TITLE, 0);
@@ -93,7 +95,7 @@ export default class PageGarrage extends DefaultView {
   }
 
   private createCarsCallback() {
-    console.log('RESET!', this.cars);
+    this.database.createCars(this.BULK_CARS_CREATION_COUNT, this.getCarsFromDatabase.bind(this));
   }
 
   private prevPage() {
