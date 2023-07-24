@@ -1,0 +1,8 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(auto, 5);
+}
+
+

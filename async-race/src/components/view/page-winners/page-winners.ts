@@ -7,6 +7,7 @@ import CurrentPage from '../current-page/current-page';
 import Storage from '../../storage/storage';
 import Paginator from '../paginator/paginator';
 import DbModel, { WinnersSortField, WinnersSortOrder, WinnerInfo } from '../../db-model/db-model';
+import TableHeader from '../table-header/table-header';
 
 enum PageWinnersCss {
   PAGE_WINNERS = 'page-winners',
@@ -31,6 +32,8 @@ export default class PageWinners extends DefaultView {
 
   private database: DbModel = DbModel.getInstance();
 
+  private tableHeader: TableHeader;
+
   constructor(pageNumber: number) {
     const params: ElementParams = {
       tag: TagName.SECTION,
@@ -41,10 +44,23 @@ export default class PageWinners extends DefaultView {
 
     this.pageNumber = pageNumber;
     this.currentPageView = new CurrentPage(pageNumber);
+    this.tableHeader = new TableHeader(
+      this.sortById.bind(this),
+      this.sortByWins.bind(this),
+      this.sortByBestTime.bind(this)
+    );
 
     this.paginator = new Paginator(this.pageNumber, this.prevPage.bind(this), this.nextPage.bind(this));
     this.configView();
     this.getWinnersFromDatabase();
+  }
+
+  private configView() {
+    this.getCreator().addInnerElement(this.pageTitle.getElement());
+    this.getCreator().addInnerElement(this.currentPageView.getElement());
+    this.getCreator().addInnerElement(this.tableHeader.getElement());
+
+    this.getCreator().addInnerElement(this.paginator.getElement());
   }
 
   public getWinnersFromDatabase() {
@@ -55,6 +71,18 @@ export default class PageWinners extends DefaultView {
       WinnersSortOrder.ASC,
       this.ITEMS_PER_PAGE
     );
+  }
+
+  private sortById() {
+    console.log('sortID', typeof this);
+  }
+
+  private sortByWins() {
+    console.log('sortByWins', typeof this);
+  }
+
+  private sortByBestTime() {
+    console.log('sortByBestTime', typeof this);
   }
 
   private async createContent(winnersInfos: WinnerInfo[], totalItems: number): Promise<void> {}
@@ -82,10 +110,6 @@ export default class PageWinners extends DefaultView {
 
   public updateTitle(totalItems: number) {
     this.pageTitle.setItemCount(totalItems);
-  }
-
-  private configView() {
-    this.getCreator().addInnerElement(this.pageTitle.getElement());
   }
 
   private saveState() {

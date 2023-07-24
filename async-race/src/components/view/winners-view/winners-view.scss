@@ -1,0 +1,11 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.lanes-view {
+  display: flex;
+  flex-direction: column;
+  gap: $padding;
+}
+
+.lanes-view:first-child {
+  padding-top: $padding;
+}

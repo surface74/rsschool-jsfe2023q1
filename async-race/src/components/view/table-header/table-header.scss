@@ -1,0 +1,17 @@
+@import '../../../styles/abstracts/variables.scss';
+
+.table-header {
+  display: grid;
+  grid-template-columns: repeat(5, 200px);
+
+  .button {
+    width: auto;
+    background: $table-header-background-color;
+
+  }
+
+  .button_disabled {
+    pointer-events: none;
+  }
+}
+

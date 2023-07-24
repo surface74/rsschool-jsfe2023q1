@@ -2,9 +2,13 @@ import StorageKey, { CurrentPageKey } from '../../enums/storage-key';
 
 export default class Storage {
   static GetCurrentPage(): CurrentPageKey {
-    const result = localStorage.getItem(StorageKey.CURRENT_PAGE) || CurrentPageKey.GARAGE;
+    const result = localStorage.getItem(StorageKey.CURRENT_PAGE);
 
-    return result === CurrentPageKey.GARAGE ? CurrentPageKey.GARAGE : CurrentPageKey.WINNERS;
+    return result === '1' ? CurrentPageKey.WINNERS : CurrentPageKey.GARAGE;
+  }
+
+  static SaveCurrentPage(currentPage: CurrentPageKey): void {
+    localStorage.setItem(StorageKey.CURRENT_PAGE, String(currentPage));
   }
 
   static GetGaragePage(): number {

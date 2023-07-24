@@ -54,10 +54,12 @@ export default class App {
 
   private showGarage() {
     this.pageHolder.setContent(this.pageGarage.getElement());
+    Storage.SaveCurrentPage(CurrentPageKey.GARAGE);
   }
 
   private showWinners() {
     this.pageHolder.setContent(this.pageWinners.getElement());
+    Storage.SaveCurrentPage(CurrentPageKey.WINNERS);
   }
 
   restoreState() {
