@@ -2,7 +2,20 @@
 
 .table {
   display: grid;
-  grid-template-columns: repeat(auto, 5);
+  grid-template-columns: 5vw 15vw 20vw 20vw 20vw;
+  row-gap: 2 * $padding;
+
+  font-size: $table-font-size;
+  color: $table-font-color;
+  text-align: center;
+}
+
+.table-sell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  ;
 }
 
 

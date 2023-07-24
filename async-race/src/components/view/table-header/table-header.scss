@@ -2,7 +2,7 @@
 
 .table-header {
   display: grid;
-  grid-template-columns: repeat(5, 200px);
+  grid-template-columns: 5vw 15vw 20vw 20vw 20vw;
 
   .button {
     width: auto;

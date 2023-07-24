@@ -8,6 +8,7 @@ import Storage from '../../storage/storage';
 import Paginator from '../paginator/paginator';
 import DbModel, { WinnersSortField, WinnersSortOrder, WinnerInfo } from '../../db-model/db-model';
 import TableHeader from '../table-header/table-header';
+import Table from '../table/table';
 
 enum PageWinnersCss {
   PAGE_WINNERS = 'page-winners',
@@ -22,7 +23,7 @@ export default class PageWinners extends DefaultView {
 
   private pageNumber: number = 1;
 
-  private totalCars: number = 0;
+  private totalItems: number = 0;
 
   private pageTitle: PageTitle = new PageTitle(Titles.PAGE_TITLE, 0);
 
@@ -33,6 +34,8 @@ export default class PageWinners extends DefaultView {
   private database: DbModel = DbModel.getInstance();
 
   private tableHeader: TableHeader;
+
+  private table: Table = new Table();
 
   constructor(pageNumber: number) {
     const params: ElementParams = {
@@ -59,6 +62,7 @@ export default class PageWinners extends DefaultView {
     this.getCreator().addInnerElement(this.pageTitle.getElement());
     this.getCreator().addInnerElement(this.currentPageView.getElement());
     this.getCreator().addInnerElement(this.tableHeader.getElement());
+    this.getCreator().addInnerElement(this.table.getElement());
 
     this.getCreator().addInnerElement(this.paginator.getElement());
   }
@@ -73,6 +77,12 @@ export default class PageWinners extends DefaultView {
     );
   }
 
+  private async createContent(winnersInfos: WinnerInfo[], totalItems: number): Promise<void> {
+    this.totalItems = totalItems;
+    this.updateTitle(totalItems);
+    this.table.fillTable(winnersInfos);
+  }
+
   private sortById() {
     console.log('sortID', typeof this);
   }
@@ -84,8 +94,6 @@ export default class PageWinners extends DefaultView {
   private sortByBestTime() {
     console.log('sortByBestTime', typeof this);
   }
-
-  private async createContent(winnersInfos: WinnerInfo[], totalItems: number): Promise<void> {}
 
   private prevPage() {
     console.log('this.pageNumber: ', this.pageNumber);
@@ -99,7 +107,7 @@ export default class PageWinners extends DefaultView {
 
   private nextPage() {
     console.log('this.pageNumber: ', this.pageNumber);
-    const totalPages = Math.ceil(this.totalCars / this.ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(this.totalItems / this.ITEMS_PER_PAGE);
     if (this.pageNumber < totalPages) {
       this.pageNumber += 1;
       this.getWinnersFromDatabase();

@@ -177,6 +177,25 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
+  async getCarSilent(carId: number): Promise<CarInfo> {
+    const path = `${this.BASE_PATH}/${Endpoint.GARAGE}/${carId}`;
+    const method = { method: HttpMethod.GET };
+
+    const response = await fetch(path, method);
+    const data = (await response.json()) as Promise<CarInfo>;
+
+    return data;
+  }
+
+  async getCarsByWinnerInfo(winnerInfos: WinnerInfo[], callback: (carInfos: CarInfo[]) => void) {
+    const promises: Promise<CarInfo>[] = [];
+    winnerInfos.forEach((winnerInfo) => promises.push(this.getCarSilent(winnerInfo.id)));
+
+    const carInfos = await Promise.all(promises);
+
+    callback(carInfos);
+  }
+
   async createCar(carInfo: CarInfo, callback: (car: CarInfo) => void) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}`;
     const method = HttpMethod.POST;
@@ -203,7 +222,6 @@ export default class DbModel {
 
     await fetch(path, { method, headers, body })
       .then((result) => result.json())
-      .then((result) => console.log(result))
       .catch((error: Error) => console.error(error));
   }
 
