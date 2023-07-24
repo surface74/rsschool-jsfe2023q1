@@ -182,10 +182,10 @@ export default class PageGarrage extends DefaultView {
   }
 
   private startEngine(car: Car) {
-    this.database.startCar(car, this.carStarted.bind(this));
+    this.database.startCar(car, this.engineStarted.bind(this));
   }
 
-  private async carStarted(raceParam: RaceParams, car: Car) {
+  private async engineStarted(raceParam: RaceParams, car: Car) {
     const { velocity, distance } = raceParam;
     const time = distance / velocity;
 
@@ -206,6 +206,7 @@ export default class PageGarrage extends DefaultView {
   }
 
   private async returnCar(car: Car) {
+    await this.database.stopCar(car.getCarId());
     car.stopRace();
     car.returnCar();
   }

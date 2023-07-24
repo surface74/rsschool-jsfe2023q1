@@ -306,7 +306,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async stopCar(carId: number, callback: (raceParams: RaceParams) => void) {
+  async stopCar(carId: number) {
     const query = `id=${carId}&status=${CarStatus.STOPPED}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
     const method = HttpMethod.PATCH;
@@ -317,7 +317,6 @@ export default class DbModel {
 
     await fetch(path, { method, headers })
       .then((result) => result.json())
-      .then((result) => callback(result))
       .catch((error: Error) => console.error(error));
   }
 }
