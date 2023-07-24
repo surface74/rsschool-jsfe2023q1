@@ -48,7 +48,7 @@ export default class PageGarrage extends DefaultView {
 
   private totalCars: number = 0;
 
-  private cars: CarInfo[] = [];
+  private cars: Car[] = [];
 
   private carLanes: CarLane[] = [];
 
@@ -148,12 +148,12 @@ export default class PageGarrage extends DefaultView {
     this.getCarsFromDatabase();
   }
 
-  private async createContent(cars: CarInfo[], totalCars: number): Promise<void> {
-    this.cars = cars;
+  private async createContent(carInfos: CarInfo[], totalCars: number): Promise<void> {
+    this.cars.length = 0;
     this.carLanes.length = 0;
     this.carLanesContainer.getElement().replaceChildren('');
 
-    this.cars.forEach((carInfo) => {
+    carInfos.forEach((carInfo) => {
       const carLane = new CarLane(
         carInfo,
         this.selectCar.bind(this),
@@ -161,6 +161,7 @@ export default class PageGarrage extends DefaultView {
         this.startEngine.bind(this),
         this.returnCar.bind(this)
       );
+      this.cars.push(carLane.getCar());
       this.carLanes.push(carLane);
       this.carLanesContainer.getCreator().addInnerElement(carLane.getElement());
     });

@@ -60,6 +60,10 @@ export default class CarLane extends DefaultView {
     this.configView();
   }
 
+  public getCar() {
+    return this.carTrack.getCar();
+  }
+
   private startCarHandler() {
     this.carControl.disableStartButton();
     this.carControl.enableReturnButton();
