@@ -17,6 +17,8 @@ export default class Car {
 
   private carInfo: CarInfo;
 
+  private animationId = 0;
+
   constructor(info: CarInfo) {
     this.carInfo = info;
 
@@ -60,5 +62,41 @@ export default class Car {
     this.setColor(info.color);
     this.setId(info.id);
     this.setName(info.name);
+  }
+
+  public startRace(distance: number, time: number) {
+    if (this.animationId === 0) {
+      this.animation(distance, time);
+    }
+  }
+
+  public returnCar() {
+    this.element.style.transform = '';
+  }
+
+  public stopRace() {
+    if (this.animationId !== 0) {
+      cancelAnimationFrame(this.animationId);
+      this.animationId = 0;
+    }
+  }
+
+  private animation(endX: number, duration: number) {
+    let currentX = this.element.offsetLeft;
+    const framesCount = (duration / 1000) * 60;
+    const dX = (endX - this.element.offsetLeft) / framesCount;
+
+    const tick = () => {
+      currentX += dX;
+      this.element.style.transform = `translateX(${currentX}px)`;
+
+      if (currentX < endX) {
+        this.animationId = requestAnimationFrame(tick);
+      } else {
+        cancelAnimationFrame(this.animationId);
+        this.animationId = 0;
+      }
+    };
+    tick();
   }
 }

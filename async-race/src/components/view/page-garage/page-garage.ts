@@ -182,11 +182,18 @@ export default class PageGarrage extends DefaultView {
   }
 
   private async startCar(car: Car) {
-    console.log('start', car);
+    const trackWidth = this.carLanesContainer.getElement().getBoundingClientRect().width;
+    const distance = trackWidth - 170;
+    car.startRace(distance, 1000);
+  }
+
+  private async stopCar(car: Car) {
+    car.stopRace();
   }
 
   private async returnCar(car: Car) {
-    console.log('return', this);
+    car.stopRace();
+    car.returnCar();
   }
 
   private saveState() {
