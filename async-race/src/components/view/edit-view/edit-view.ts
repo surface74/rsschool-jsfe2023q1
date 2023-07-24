@@ -14,6 +14,12 @@ enum EditViewCss {
 export default class EditView extends DefaultView {
   private carInfo: CarInfo;
 
+  private defaultCarInfo: CarInfo = {
+    id: -1,
+    name: '',
+    color: 'black',
+  };
+
   private nameInput: HTMLElement;
 
   private colorInput: HTMLElement;
@@ -28,11 +34,7 @@ export default class EditView extends DefaultView {
     };
     super(params);
 
-    this.carInfo = {
-      id: -1,
-      name: '',
-      color: 'black',
-    };
+    this.carInfo = { ...this.defaultCarInfo };
     this.nameInput = this.addNameInput();
     this.colorInput = this.addColorInput();
     this.addButton(buttonText, callback);
@@ -102,5 +104,6 @@ export default class EditView extends DefaultView {
     if (this.nameInput instanceof HTMLInputElement) {
       this.nameInput.value = '';
     }
+    this.carInfo = { ...this.defaultCarInfo };
   }
 }
