@@ -5,7 +5,7 @@ import { ElementParams } from '../../../utils/html-creator';
 import TagName from '../../../enums/tag-name';
 import DbModel from '../../db-model/db-model';
 import CurrentPage from '../current-page/current-page';
-import { CarInfo } from '../../car/car';
+import Car, { CarInfo } from '../../car/car';
 import CarLane from '../car-lane/car-lane';
 import EditView from '../edit-view/edit-view';
 import LanesView from '../lanes-view/lanes-view';
@@ -181,11 +181,11 @@ export default class PageGarrage extends DefaultView {
     this.getCarsFromDatabase();
   }
 
-  private async startCar() {
-    console.log('start', this);
+  private async startCar(car: Car) {
+    console.log('start', car);
   }
 
-  private async returnCar() {
+  private async returnCar(car: Car) {
     console.log('return', this);
   }
 

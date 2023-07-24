@@ -1,6 +1,6 @@
 import './car-lane.scss';
 import DefaultView from '../default-view';
-import { CarInfo } from '../../car/car';
+import Car, { CarInfo } from '../../car/car';
 import CarsManager from '../cars-manager/cars-manager';
 import CarControl from '../car-control/car-control';
 import CarTrack from '../car-track/car-track';
@@ -24,12 +24,16 @@ export default class CarLane extends DefaultView {
 
   private removeCarCallback: (carId: number) => void;
 
+  private startCarCallback: (car: Car) => void;
+
+  private returnCarCallback: (car: Car) => void;
+
   constructor(
     carInfo: CarInfo,
     selectCarCallback: (carInfo: CarInfo) => void,
     removeCarCallback: (carId: number) => void,
-    startCarCallback: () => void,
-    returnCarCallback: () => void
+    startCarCallback: (car: Car) => void,
+    returnCarCallback: (car: Car) => void
   ) {
     const params: ElementParams = {
       tag: TagName.SECTION,
@@ -41,16 +45,31 @@ export default class CarLane extends DefaultView {
 
     this.selectCarCallback = selectCarCallback;
     this.removeCarCallback = removeCarCallback;
+    this.startCarCallback = startCarCallback;
+    this.returnCarCallback = returnCarCallback;
+
     this.carInfo = { ...carInfo };
     this.carsManager = new CarsManager(
       this.carInfo,
       this.selectCarHandler.bind(this),
       this.removeCarHandler.bind(this)
     );
-    this.carControl = new CarControl(startCarCallback, returnCarCallback);
     this.carTrack = new CarTrack(this.carInfo);
+    this.carControl = new CarControl(this.startCarHandler.bind(this), this.returnCarHandler.bind(this));
 
     this.configView();
+  }
+
+  private startCarHandler() {
+    this.carControl.disableStartButton();
+    this.carControl.enableReturnButton();
+    this.startCarCallback(this.carTrack.getCar());
+  }
+
+  private returnCarHandler() {
+    this.carControl.disableReturnButton();
+    this.carControl.enableStartButton();
+    this.returnCarCallback(this.carTrack.getCar());
   }
 
   private selectCarHandler() {

@@ -24,6 +24,10 @@ export default class CarTrack extends DefaultView {
     this.getCreator().addInnerElement(this.car.getCarElement());
   }
 
+  public getCar() {
+    return this.car;
+  }
+
   public getTrackElement() {
     return this.getElement();
   }

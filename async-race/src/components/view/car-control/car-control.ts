@@ -76,4 +76,20 @@ export default class CarControl extends DefaultView {
     this.returnButton = new Button(params).getElement();
     return this.returnButton;
   }
+
+  public disableStartButton() {
+    this.startButton.classList.add(CarControlCss.CAR_CONTROL_BUTTON_DISABLED);
+  }
+
+  public enableStartButton() {
+    this.startButton.classList.remove(CarControlCss.CAR_CONTROL_BUTTON_DISABLED);
+  }
+
+  public disableReturnButton() {
+    this.returnButton.classList.add(CarControlCss.CAR_CONTROL_BUTTON_DISABLED);
+  }
+
+  public enableReturnButton() {
+    this.returnButton.classList.remove(CarControlCss.CAR_CONTROL_BUTTON_DISABLED);
+  }
 }
