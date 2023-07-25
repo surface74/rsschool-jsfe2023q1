@@ -3,7 +3,7 @@ import DefaultView from '../default-view';
 import PageTitle from '../page-title/page-title';
 import { ElementParams } from '../../../utils/html-creator';
 import TagName from '../../../enums/tag-name';
-import DbModel, { RaceParams } from '../../db-model/db-model';
+import DbModel, { RaceParams, WinnerInfo } from '../../db-model/db-model';
 import CurrentPage from '../current-page/current-page';
 import Car, { CarInfo } from '../../car/car';
 import CarLane from '../car-lane/car-lane';
@@ -133,9 +133,33 @@ export default class PageGarrage extends DefaultView {
 
     this.winnerFound = true;
 
-    const message = `${car.getCarName()} went first (${(time / 1000).toFixed(2)}s)`;
+    const winnerTime = +(time / 1000).toFixed(2);
+    const message = `${car.getCarName()} went first (${winnerTime}s)`;
     this.showCongrats(message);
-    console.log('winner: ', car);
+
+    this.checkWinnersList(car, winnerTime);
+  }
+
+  private checkWinnersList(car: Car, time: number) {
+    this.database.getWinner(car, this.updateWinners.bind(this), time);
+  }
+
+  private async updateWinners(car: Car, winnerInfo: WinnerInfo, time: number) {
+    if (winnerInfo.id) {
+      if (winnerInfo.time > time) {
+        const updateWinnerInfo: WinnerInfo = { ...winnerInfo };
+        updateWinnerInfo.time = time;
+        updateWinnerInfo.wins += 1;
+        this.database.updateWinner(updateWinnerInfo, (params: WinnerInfo) => console.log(params));
+      }
+    } else {
+      const newWinnerInfo: WinnerInfo = {
+        id: car.getCarId(),
+        time,
+        wins: 1,
+      };
+      this.database.createWinner(newWinnerInfo, (params: WinnerInfo) => console.log(params));
+    }
   }
 
   private showCongrats(message: string): void {
@@ -255,7 +279,7 @@ export default class PageGarrage extends DefaultView {
     car.startRace(distance, time);
   }
 
-  private async stopCar(car: Car) {
+  private stopCar(car: Car) {
     car.stopRace();
   }
 

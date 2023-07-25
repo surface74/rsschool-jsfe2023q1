@@ -87,13 +87,13 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async getWinner(carId: number, callback: (car: WinnerInfo) => void) {
-    const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${carId}`;
+  async getWinner(car: Car, callback: (car: Car, winnerInfo: WinnerInfo, time: number) => void, time: number) {
+    const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${car.getCarId()}`;
     const method = { method: HttpMethod.GET };
 
     await fetch(path, method)
       .then((result) => result.json())
-      .then((result) => callback(result))
+      .then((result) => callback(car, result, time))
       .catch((error: Error) => console.error(error));
   }
 

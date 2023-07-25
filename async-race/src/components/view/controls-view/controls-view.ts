@@ -100,7 +100,6 @@ export default class ControlsView extends DefaultView {
   }
 
   private configView() {
-    console.log('this.raceButton: ', this.raceButton);
     this.getElement().append(this.raceButton, this.resetButton, this.createCarsButton);
   }
 }
