@@ -28,7 +28,7 @@ export default class TableHeader extends DefaultView {
 
   private headerButtonBestTime: Button;
 
-  constructor(sortById: () => void, sortByWins: () => void, sortByBestTime: () => void) {
+  constructor(sortByWins: () => void, sortByBestTime: () => void) {
     const params: ElementParams = {
       tag: TagName.DIV,
       classNames: [TableHeaderCss.TABLE_HEADER],
@@ -37,7 +37,7 @@ export default class TableHeader extends DefaultView {
 
     super(params);
 
-    this.headerButtonId = this.createButtonId(ButtonTitle.ID, sortById);
+    this.headerButtonId = this.createButtonId(ButtonTitle.ID, () => {});
     this.headerButtonCar = this.createButtonCar(ButtonTitle.CAR, () => {});
     this.headerButtonName = this.createButtonName(ButtonTitle.NAME, () => {});
     this.headerButtonWins = this.createButtonWins(ButtonTitle.WINS, sortByWins);
@@ -78,7 +78,7 @@ export default class TableHeader extends DefaultView {
 
   private createButtonId(text: string, callback: () => void) {
     const params: ButtonParams = {
-      classNames: [ButtonCss.BUTTON],
+      classNames: [ButtonCss.BUTTON, TableHeaderCss.BUTTON_DISABLED],
       textContent: text,
       callback,
     };

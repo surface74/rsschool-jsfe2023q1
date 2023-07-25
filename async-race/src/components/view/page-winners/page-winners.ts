@@ -18,6 +18,11 @@ enum Titles {
   PAGE_TITLE = 'WINNERS',
 }
 
+export type SortConfig = {
+  field: WinnersSortField;
+  order: WinnersSortOrder;
+};
+
 export default class PageWinners extends DefaultView {
   private readonly ITEMS_PER_PAGE = 10;
 
@@ -37,6 +42,13 @@ export default class PageWinners extends DefaultView {
 
   private table: Table = new Table();
 
+  private sortConfig: SortConfig;
+
+  private readonly defaultSortConfig: SortConfig = {
+    field: WinnersSortField.ID,
+    order: WinnersSortOrder.ASC,
+  };
+
   constructor(pageNumber: number) {
     const params: ElementParams = {
       tag: TagName.SECTION,
@@ -47,14 +59,12 @@ export default class PageWinners extends DefaultView {
 
     this.pageNumber = pageNumber;
     this.currentPageView = new CurrentPage(pageNumber);
-    this.tableHeader = new TableHeader(
-      this.sortById.bind(this),
-      this.sortByWins.bind(this),
-      this.sortByBestTime.bind(this)
-    );
+    this.tableHeader = new TableHeader(this.sortByWins.bind(this), this.sortByBestTime.bind(this));
 
     this.paginator = new Paginator(this.pageNumber, this.prevPage.bind(this), this.nextPage.bind(this));
     this.configView();
+
+    this.sortConfig = this.restoreSortConfig();
     this.getWinnersFromDatabase();
   }
 
@@ -67,12 +77,23 @@ export default class PageWinners extends DefaultView {
     this.getCreator().addInnerElement(this.paginator.getElement());
   }
 
+  private restoreSortConfig(): SortConfig {
+    const data = Storage.GetSortConfig();
+    if (data) {
+      const config = JSON.parse(data);
+      if (config.field && config.order) {
+        return config;
+      }
+    }
+    return this.defaultSortConfig;
+  }
+
   public getWinnersFromDatabase() {
     this.database.getWinnersOnPage(
       this.createContent.bind(this),
       this.pageNumber,
-      WinnersSortField.ID,
-      WinnersSortOrder.ASC,
+      this.sortConfig.field,
+      this.sortConfig.order,
       this.ITEMS_PER_PAGE
     );
   }
@@ -83,16 +104,20 @@ export default class PageWinners extends DefaultView {
     this.table.fillTable(winnersInfos);
   }
 
-  private sortById() {
-    console.log('sortID', typeof this);
-  }
-
   private sortByWins() {
-    console.log('sortByWins', typeof this);
+    this.sortConfig.field = WinnersSortField.WINS;
+    this.sortConfig.order =
+      this.sortConfig.order === WinnersSortOrder.ASC ? WinnersSortOrder.DESC : WinnersSortOrder.ASC;
+
+    this.getWinnersFromDatabase();
   }
 
   private sortByBestTime() {
-    console.log('sortByBestTime', typeof this);
+    this.sortConfig.field = WinnersSortField.TIME;
+    this.sortConfig.order =
+      this.sortConfig.order === WinnersSortOrder.ASC ? WinnersSortOrder.DESC : WinnersSortOrder.ASC;
+
+    this.getWinnersFromDatabase();
   }
 
   private prevPage() {
@@ -122,5 +147,6 @@ export default class PageWinners extends DefaultView {
 
   private saveState() {
     Storage.SaveWinnersPage(this.pageNumber);
+    Storage.SaveSortConfig(JSON.stringify(this.sortConfig));
   }
 }

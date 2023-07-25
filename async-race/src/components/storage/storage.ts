@@ -30,4 +30,14 @@ export default class Storage {
   static SaveWinnersPage(winnersPage: number): void {
     localStorage.setItem(StorageKey.WINNERS_PAGE, String(winnersPage));
   }
+
+  static SaveSortConfig(orderConfig: string): void {
+    localStorage.setItem(StorageKey.SORT_CONFIG, orderConfig);
+  }
+
+  static GetSortConfig(): string {
+    const result: string | null = localStorage.getItem(StorageKey.SORT_CONFIG);
+
+    return result || '';
+  }
 }
