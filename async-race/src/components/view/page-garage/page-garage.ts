@@ -175,7 +175,6 @@ export default class PageGarrage extends DefaultView {
   private async resetGarageState() {
     await this.resetCars();
 
-    this.carLanes.forEach((carLane) => carLane.restoreButtonState());
     this.resetRaceUI();
   }
 
@@ -185,6 +184,8 @@ export default class PageGarrage extends DefaultView {
       promises.push(this.returnCar(car));
     });
     await Promise.all(promises);
+
+    this.carLanes.forEach((carLane) => carLane.restoreButtonState());
   }
 
   private createCarsCallback() {
