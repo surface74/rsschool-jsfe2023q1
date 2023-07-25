@@ -6,4 +6,25 @@
   margin-bottom: 2 * $padding;
   gap: $padding;
   border-bottom: 2px solid $font-color-level-done;
+
+}
+
+.controls-view__button {
+  color: $font-color-light;
+  background: $button-color-background;
+
+  @media (hover: hover) {
+    &:hover {
+      color: $button-color-text-hover;
+      border-color: $button-color-border-hover;
+      background: $button-color-background-hover;
+    }
+  }
+}
+
+.controls-view__button_disabled {
+  color: $button-disabled-color-text;
+  border-color: $button-disabled-color-border;
+  background: transparent;
+  pointer-events: none;
 }

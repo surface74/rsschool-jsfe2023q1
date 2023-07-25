@@ -275,7 +275,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async startCar(car: Car, callback: (raceParams: RaceParams, car: Car) => void) {
+  async startEngine(car: Car, callback: (raceParams: RaceParams, car: Car) => void) {
     const carId = car.getCarId();
     const query = `id=${carId}&status=${CarStatus.STARTED}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
@@ -291,7 +291,22 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async driveCar(car: Car, callbackOK: (car: Car) => void, callbackError: (car: Car) => void) {
+  async startEngineSilent(car: Car): Promise<RaceParams> {
+    const carId = car.getCarId();
+    const query = `id=${carId}&status=${CarStatus.STARTED}`;
+    const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
+    const method = HttpMethod.PATCH;
+    const headers = {
+      'Content-Type': 'application/json',
+      charset: 'UTF-8',
+    };
+
+    const response = await fetch(path, { method, headers });
+    const data = (await response.json()) as Promise<RaceParams>;
+    return data;
+  }
+
+  async driveCar(car: Car, callbackOK: (car: Car) => void, callbackError: (car: Car) => void): Promise<Car> {
     const carId = car.getCarId();
     const query = `id=${carId}&status=${CarStatus.DRIVE}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
@@ -304,6 +319,8 @@ export default class DbModel {
     await fetch(path, { method, headers })
       .then((result) => (result.ok ? callbackOK(car) : callbackError(car)))
       .catch((error: Error) => console.error(error));
+
+    return car;
   }
 
   async stopCar(carId: number) {

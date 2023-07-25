@@ -93,8 +93,7 @@ export default class Car {
         this.element.style.transform = `translateX(${currentX}px)`;
         this.animationId = requestAnimationFrame(tick);
       } else {
-        cancelAnimationFrame(this.animationId);
-        this.animationId = 0;
+        this.stopRace();
       }
     };
     tick();

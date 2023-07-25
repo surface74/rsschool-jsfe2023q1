@@ -52,6 +52,8 @@ export default class PageGarrage extends DefaultView {
 
   private carLanes: CarLane[] = [];
 
+  private winnerFound = false;
+
   constructor(pageNumber: number) {
     const params: ElementParams = {
       tag: TagName.SECTION,
@@ -89,8 +91,44 @@ export default class PageGarrage extends DefaultView {
     this.pageTitle.setItemCount(totalCars);
   }
 
-  private raceCars() {
-    console.log('RACE!', this.cars);
+  private configRaceUI() {
+    this.controlsView.disableRaceButton();
+    this.controlsView.enableResetButton();
+  }
+
+  private resetRaceUI() {
+    this.controlsView.disableResetButton();
+    this.controlsView.enableRaceButton();
+  }
+
+  private async raceCars() {
+    this.configRaceUI();
+    const promisesInfo: Promise<RaceParams>[] = [];
+    this.cars.forEach((car) => {
+      promisesInfo.push(this.database.startEngineSilent(car));
+    });
+    const raceInfos = await Promise.all(promisesInfo);
+    console.log('raceInfos: ', raceInfos);
+
+    const promisesResult: Promise<Car>[] = [];
+    raceInfos.forEach((raceParam, index) => {
+      const { velocity, distance } = raceParam;
+      const time = distance / velocity;
+      const car = this.cars[index];
+      this.winnerFound = false;
+      promisesResult.push(this.database.driveCar(car, this.congratsWinner.bind(this), this.stopCar.bind(this)));
+      this.startRace(car, time);
+    });
+
+    await Promise.all(promisesResult);
+    this.winnerFound = false;
+  }
+
+  private congratsWinner(car: Car) {
+    if (!this.winnerFound) {
+      this.winnerFound = true;
+      console.log('winner: ', car);
+    }
   }
 
   private resetCars() {
@@ -182,7 +220,7 @@ export default class PageGarrage extends DefaultView {
   }
 
   private startEngine(car: Car) {
-    this.database.startCar(car, this.engineStarted.bind(this));
+    this.database.startEngine(car, this.engineStarted.bind(this));
   }
 
   private async engineStarted(raceParam: RaceParams, car: Car) {
