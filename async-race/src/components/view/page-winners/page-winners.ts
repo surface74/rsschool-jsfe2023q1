@@ -152,7 +152,6 @@ export default class PageWinners extends DefaultView {
   }
 
   private prevPage() {
-    console.log('this.pageNumber: ', this.pageNumber);
     if (this.pageNumber > 1) {
       this.pageNumber -= 1;
       this.getWinnersFromDatabase();
@@ -162,7 +161,6 @@ export default class PageWinners extends DefaultView {
   }
 
   private nextPage() {
-    console.log('this.pageNumber: ', this.pageNumber);
     const totalPages = Math.ceil(this.totalItems / this.ITEMS_PER_PAGE);
     if (this.pageNumber < totalPages) {
       this.pageNumber += 1;

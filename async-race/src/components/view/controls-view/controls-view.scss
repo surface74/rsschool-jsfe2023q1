@@ -2,8 +2,8 @@
 
 .controls-view {
   display: flex;
-  padding: $padding;
-  margin-bottom: 2 * $padding;
+  padding: 2 * $padding;
+  margin-bottom: 4 * $padding;
   gap: $padding;
   border-bottom: 2px solid $font-color-level-done;
 

@@ -96,7 +96,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async createWinner(winnerInfo: WinnerInfo, callback: (winnerInfo: WinnerInfo) => void) {
+  async createWinner(winnerInfo: WinnerInfo): Promise<void> {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}`;
     const method = HttpMethod.POST;
     const headers = { 'Content-Type': 'application/json' };
@@ -108,7 +108,6 @@ export default class DbModel {
 
     await fetch(path, { method, headers, body })
       .then((result) => result.json())
-      .then((result) => callback(result))
       .catch((error: Error) => console.error(error));
   }
 
@@ -121,7 +120,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async updateWinner(winnerInfo: WinnerInfo, callback: (winnerInfo: WinnerInfo) => void) {
+  async updateWinner(winnerInfo: WinnerInfo): Promise<void> {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${winnerInfo.id}`;
     const method = HttpMethod.PUT;
     const headers = { 'Content-Type': 'application/json' };
@@ -132,7 +131,6 @@ export default class DbModel {
 
     await fetch(path, { method, headers, body })
       .then((result) => result.json())
-      .then((result) => callback(result))
       .catch((error: Error) => console.error(error));
   }
 
@@ -165,7 +163,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async getCar(carId: number, callback: (car: CarInfo) => void) {
+  async getCar(carId: number, callback: (car: CarInfo) => void): Promise<void> {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}/${carId}`;
     const method = { method: HttpMethod.GET };
 
@@ -308,7 +306,7 @@ export default class DbModel {
   async driveCar(
     car: Car,
     callbackOK: (car: Car, time: number) => void,
-    callbackError: (car: Car) => void,
+    callbackError: () => void,
     time: number
   ): Promise<Car> {
     const carId = car.getCarId();
@@ -321,7 +319,7 @@ export default class DbModel {
     };
 
     await fetch(path, { method, headers })
-      .then((result) => (result.ok ? callbackOK(car, time) : callbackError(car)))
+      .then((result) => (result.ok ? callbackOK(car, time) : callbackError()))
       .catch((error: Error) => console.error(error));
 
     return car;
