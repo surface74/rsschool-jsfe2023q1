@@ -51,7 +51,11 @@ export default class ControlsView extends DefaultView {
 
   private createResetButton(text: string, callback: () => void): HTMLElement {
     const params: ButtonParams = {
-      classNames: [ButtonCss.BUTTON, ControlsViewCss.CONTROLS_VIEW_BUTTON],
+      classNames: [
+        ButtonCss.BUTTON,
+        ControlsViewCss.CONTROLS_VIEW_BUTTON,
+        ControlsViewCss.CONTROLS_VIEW_BUTTON_DISABLED,
+      ],
       textContent: text,
       callback,
     };

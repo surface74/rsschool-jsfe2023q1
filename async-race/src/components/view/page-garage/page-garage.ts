@@ -93,7 +93,6 @@ export default class PageGarrage extends DefaultView {
 
   private configRaceUI() {
     this.controlsView.disableRaceButton();
-    this.controlsView.enableResetButton();
   }
 
   private resetRaceUI() {
@@ -121,6 +120,7 @@ export default class PageGarrage extends DefaultView {
     });
 
     await Promise.all(promisesResult);
+    this.controlsView.enableResetButton();
     this.winnerFound = false;
   }
 
@@ -133,6 +133,10 @@ export default class PageGarrage extends DefaultView {
 
   private resetCars() {
     console.log('RESET!', this.cars);
+    this.cars.forEach((car) => {
+      this.returnCar(car);
+    });
+    this.resetRaceUI();
   }
 
   private createCarsCallback() {
