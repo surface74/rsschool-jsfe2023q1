@@ -45,7 +45,7 @@ export default class PageWinners extends DefaultView {
   private sortConfig: SortConfig;
 
   private readonly defaultSortConfig: SortConfig = {
-    field: WinnersSortField.ID,
+    field: WinnersSortField.TIME,
     order: WinnersSortOrder.ASC,
   };
 
@@ -65,6 +65,8 @@ export default class PageWinners extends DefaultView {
     this.configView();
 
     this.sortConfig = this.restoreSortConfig();
+    this.setHeaderOrderMarks();
+
     this.getWinnersFromDatabase();
   }
 
@@ -77,6 +79,20 @@ export default class PageWinners extends DefaultView {
     this.getCreator().addInnerElement(this.paginator.getElement());
   }
 
+  private setHeaderOrderMarks() {
+    if (this.sortConfig.field === WinnersSortField.WINS) {
+      if (this.sortConfig.order === WinnersSortOrder.ASC) {
+        this.tableHeader.setAscOrderForColumnWins();
+      } else {
+        this.tableHeader.setDescOrderForColumnWins();
+      }
+    } else if (this.sortConfig.order === WinnersSortOrder.ASC) {
+      this.tableHeader.setAscOrderForColumnBestTime();
+    } else {
+      this.tableHeader.setDescOrderForColumnBestTime();
+    }
+  }
+
   private restoreSortConfig(): SortConfig {
     const data = Storage.GetSortConfig();
     if (data) {
@@ -85,6 +101,7 @@ export default class PageWinners extends DefaultView {
         return config;
       }
     }
+
     return this.defaultSortConfig;
   }
 
@@ -115,6 +132,7 @@ export default class PageWinners extends DefaultView {
       this.sortConfig.order = WinnersSortOrder.ASC;
     }
 
+    Storage.SaveSortConfig(JSON.stringify(this.sortConfig));
     this.getWinnersFromDatabase();
   }
 
@@ -129,6 +147,7 @@ export default class PageWinners extends DefaultView {
       this.sortConfig.order = WinnersSortOrder.ASC;
     }
 
+    Storage.SaveSortConfig(JSON.stringify(this.sortConfig));
     this.getWinnersFromDatabase();
   }
 

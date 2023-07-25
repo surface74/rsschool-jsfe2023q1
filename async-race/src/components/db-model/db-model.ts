@@ -23,7 +23,6 @@ enum CarStatus {
 }
 
 export enum WinnersSortField {
-  ID = 'id',
   WINS = 'wins',
   TIME = 'time',
 }
