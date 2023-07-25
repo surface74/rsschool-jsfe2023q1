@@ -105,10 +105,13 @@ export default class PageGarrage extends DefaultView {
 
   private async raceCars() {
     this.configRaceUI();
+    const promisesReturnCars: Promise<void>[] = [];
     const promisesInfo: Promise<RaceParams>[] = [];
     this.cars.forEach((car) => {
+      promisesReturnCars.push(this.returnCar(car));
       promisesInfo.push(this.database.startEngineSilent(car));
     });
+    await Promise.all(promisesReturnCars);
     const raceInfos = await Promise.all(promisesInfo);
 
     const promisesResult: Promise<Car>[] = [];
@@ -117,7 +120,8 @@ export default class PageGarrage extends DefaultView {
       const time = distance / velocity;
       const car = this.cars[index];
       this.winnerFound = false;
-      promisesResult.push(this.database.driveCar(car, this.congratsWinner.bind(this), this.stopCar.bind(this), time));
+
+      promisesResult.push(this.database.driveCar(car, this.processWinner.bind(this), this.stopCar.bind(this), time));
       this.startRace(car, time);
     });
 
@@ -126,7 +130,7 @@ export default class PageGarrage extends DefaultView {
     this.winnerFound = false;
   }
 
-  private congratsWinner(car: Car, time: number) {
+  private processWinner(car: Car, time: number) {
     if (this.winnerFound) {
       return;
     }
@@ -144,7 +148,7 @@ export default class PageGarrage extends DefaultView {
     this.database.getWinner(car, this.updateWinners.bind(this), time);
   }
 
-  private async updateWinners(car: Car, winnerInfo: WinnerInfo, time: number) {
+  private updateWinners(car: Car, winnerInfo: WinnerInfo, time: number) {
     if (winnerInfo.id) {
       if (winnerInfo.time > time) {
         const updateWinnerInfo: WinnerInfo = { ...winnerInfo };
@@ -209,7 +213,7 @@ export default class PageGarrage extends DefaultView {
     }
   }
 
-  private async createCarCallback(): Promise<void> {
+  private createCarCallback() {
     this.createCarBlock.clearInput();
     this.getCarsFromDatabase();
   }
@@ -219,12 +223,12 @@ export default class PageGarrage extends DefaultView {
     this.database.updateCar(carInfo, this.updateCarCallback.bind(this));
   }
 
-  private async updateCarCallback(): Promise<void> {
+  private updateCarCallback() {
     this.updateCarBlock.clearInput();
     this.getCarsFromDatabase();
   }
 
-  private async createContent(carInfos: CarInfo[], totalCars: number): Promise<void> {
+  private createContent(carInfos: CarInfo[], totalCars: number) {
     this.cars.length = 0;
     this.carLanes.length = 0;
     this.carLanesContainer.getElement().replaceChildren('');
@@ -246,16 +250,16 @@ export default class PageGarrage extends DefaultView {
     this.updateTitle(totalCars);
   }
 
-  private async selectCar(carInfo: CarInfo) {
+  private selectCar(carInfo: CarInfo) {
     this.updateCarBlock.setViewValues(carInfo);
   }
 
-  private async removeCar(carId: number) {
+  private removeCar(carId: number) {
     this.database.deleteWinner(carId);
     this.database.deleteCar(carId, this.removeCarCallback.bind(this));
   }
 
-  private async removeCarCallback() {
+  private removeCarCallback() {
     this.getCarsFromDatabase();
   }
 
@@ -263,11 +267,11 @@ export default class PageGarrage extends DefaultView {
     this.database.startEngine(car, this.engineStarted.bind(this));
   }
 
-  private async engineStarted(raceParam: RaceParams, car: Car) {
+  private engineStarted(raceParam: RaceParams, car: Car) {
     const { velocity, distance } = raceParam;
     const time = distance / velocity;
 
-    this.database.driveCar(car, () => console.log('OK'), this.stopCar.bind(this), time);
+    this.database.driveCar(car, () => {}, this.stopCar.bind(this), time);
 
     this.startRace(car, time);
   }
