@@ -306,7 +306,12 @@ export default class DbModel {
     return data;
   }
 
-  async driveCar(car: Car, callbackOK: (car: Car) => void, callbackError: (car: Car) => void): Promise<Car> {
+  async driveCar(
+    car: Car,
+    callbackOK: (car: Car, time: number) => void,
+    callbackError: (car: Car) => void,
+    time: number
+  ): Promise<Car> {
     const carId = car.getCarId();
     const query = `id=${carId}&status=${CarStatus.DRIVE}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
@@ -317,7 +322,7 @@ export default class DbModel {
     };
 
     await fetch(path, { method, headers })
-      .then((result) => (result.ok ? callbackOK(car) : callbackError(car)))
+      .then((result) => (result.ok ? callbackOK(car, time) : callbackError(car)))
       .catch((error: Error) => console.error(error));
 
     return car;

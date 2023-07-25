@@ -12,6 +12,7 @@ import LanesView from '../lanes-view/lanes-view';
 import ControlsView from '../controls-view/controls-view';
 import Paginator from '../paginator/paginator';
 import Storage from '../../storage/storage';
+import Dialog from '../../dialog/dialog';
 
 enum PageGarrageCss {
   PAGE_GARAGE = 'page-garage',
@@ -93,11 +94,13 @@ export default class PageGarrage extends DefaultView {
 
   private configRaceUI() {
     this.controlsView.disableRaceButton();
+    this.controlsView.disableCreateCarsButton();
   }
 
   private resetRaceUI() {
     this.controlsView.disableResetButton();
     this.controlsView.enableRaceButton();
+    this.controlsView.enableCreateCarsButton();
   }
 
   private async raceCars() {
@@ -107,7 +110,6 @@ export default class PageGarrage extends DefaultView {
       promisesInfo.push(this.database.startEngineSilent(car));
     });
     const raceInfos = await Promise.all(promisesInfo);
-    console.log('raceInfos: ', raceInfos);
 
     const promisesResult: Promise<Car>[] = [];
     raceInfos.forEach((raceParam, index) => {
@@ -115,7 +117,7 @@ export default class PageGarrage extends DefaultView {
       const time = distance / velocity;
       const car = this.cars[index];
       this.winnerFound = false;
-      promisesResult.push(this.database.driveCar(car, this.congratsWinner.bind(this), this.stopCar.bind(this)));
+      promisesResult.push(this.database.driveCar(car, this.congratsWinner.bind(this), this.stopCar.bind(this), time));
       this.startRace(car, time);
     });
 
@@ -124,15 +126,25 @@ export default class PageGarrage extends DefaultView {
     this.winnerFound = false;
   }
 
-  private congratsWinner(car: Car) {
-    if (!this.winnerFound) {
-      this.winnerFound = true;
-      console.log('winner: ', car);
+  private congratsWinner(car: Car, time: number) {
+    if (this.winnerFound) {
+      return;
     }
+
+    this.winnerFound = true;
+
+    const message = `${car.getCarName()} went first (${(time / 1000).toFixed(2)}s)`;
+    this.showCongrats(message);
+    console.log('winner: ', car);
+  }
+
+  private showCongrats(message: string): void {
+    const dialog = new Dialog(message).getDialog();
+    this.getElement().append(dialog);
+    dialog.showModal();
   }
 
   private resetCars() {
-    console.log('RESET!', this.cars);
     this.cars.forEach((car) => {
       this.returnCar(car);
     });
@@ -231,7 +243,7 @@ export default class PageGarrage extends DefaultView {
     const { velocity, distance } = raceParam;
     const time = distance / velocity;
 
-    this.database.driveCar(car, () => console.log('OK'), this.stopCar.bind(this));
+    this.database.driveCar(car, () => console.log('OK'), this.stopCar.bind(this), time);
 
     this.startRace(car, time);
   }

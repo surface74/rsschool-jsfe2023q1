@@ -1,0 +1,15 @@
+@import '../../styles/abstracts/variables.scss';
+
+.dialog {
+  width: fit-content;
+  padding: 5rem;
+  font-size: calc(2 * $title-font-size);
+  background: transparent;
+  border: none;
+  color: rgb(15, 238, 15);
+  text-shadow: 0px 0px 20px white;
+}
+
+.dialog::backdrop {
+  backdrop-filter: blur(2px);
+}

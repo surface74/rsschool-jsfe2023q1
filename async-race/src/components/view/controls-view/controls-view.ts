@@ -91,6 +91,14 @@ export default class ControlsView extends DefaultView {
     this.resetButton.classList.remove(ControlsViewCss.CONTROLS_VIEW_BUTTON_DISABLED);
   }
 
+  public disableCreateCarsButton() {
+    this.createCarsButton.classList.add(ControlsViewCss.CONTROLS_VIEW_BUTTON_DISABLED);
+  }
+
+  public enableCreateCarsButton() {
+    this.createCarsButton.classList.remove(ControlsViewCss.CONTROLS_VIEW_BUTTON_DISABLED);
+  }
+
   private configView() {
     console.log('this.raceButton: ', this.raceButton);
     this.getElement().append(this.raceButton, this.resetButton, this.createCarsButton);

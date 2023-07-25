@@ -6,6 +6,7 @@ enum TagName {
   SECTION = 'section',
   INPUT = 'input',
   SPAN = 'span',
+  DIALOG = 'dialog',
 }
 
 export default TagName;
