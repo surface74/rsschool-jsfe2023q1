@@ -106,16 +106,28 @@ export default class PageWinners extends DefaultView {
 
   private sortByWins() {
     this.sortConfig.field = WinnersSortField.WINS;
-    this.sortConfig.order =
-      this.sortConfig.order === WinnersSortOrder.ASC ? WinnersSortOrder.DESC : WinnersSortOrder.ASC;
+
+    if (this.sortConfig.order === WinnersSortOrder.ASC) {
+      this.tableHeader.setDescOrderForColumnWins();
+      this.sortConfig.order = WinnersSortOrder.DESC;
+    } else {
+      this.tableHeader.setAscOrderForColumnWins();
+      this.sortConfig.order = WinnersSortOrder.ASC;
+    }
 
     this.getWinnersFromDatabase();
   }
 
   private sortByBestTime() {
     this.sortConfig.field = WinnersSortField.TIME;
-    this.sortConfig.order =
-      this.sortConfig.order === WinnersSortOrder.ASC ? WinnersSortOrder.DESC : WinnersSortOrder.ASC;
+
+    if (this.sortConfig.order === WinnersSortOrder.ASC) {
+      this.tableHeader.setDescOrderForColumnBestTime();
+      this.sortConfig.order = WinnersSortOrder.DESC;
+    } else {
+      this.tableHeader.setAscOrderForColumnBestTime();
+      this.sortConfig.order = WinnersSortOrder.ASC;
+    }
 
     this.getWinnersFromDatabase();
   }

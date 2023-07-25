@@ -17,6 +17,11 @@ enum ButtonTitle {
   BEST_TIME = 'Best time (s)',
 }
 
+enum SortOrderSymbol {
+  ASC = '▲',
+  DESC = '▼',
+}
+
 export default class TableHeader extends DefaultView {
   private headerButtonId: Button;
 
@@ -44,6 +49,26 @@ export default class TableHeader extends DefaultView {
     this.headerButtonBestTime = this.createButtonTime(ButtonTitle.BEST_TIME, sortByBestTime);
 
     this.configView();
+  }
+
+  public setAscOrderForColumnWins() {
+    this.headerButtonWins.getElement().textContent = `${ButtonTitle.WINS} ${SortOrderSymbol.ASC}`;
+    this.headerButtonBestTime.getElement().textContent = `${ButtonTitle.BEST_TIME}`;
+  }
+
+  public setDescOrderForColumnWins() {
+    this.headerButtonWins.getElement().textContent = `${ButtonTitle.WINS} ${SortOrderSymbol.DESC}`;
+    this.headerButtonBestTime.getElement().textContent = `${ButtonTitle.BEST_TIME}`;
+  }
+
+  public setAscOrderForColumnBestTime() {
+    this.headerButtonBestTime.getElement().textContent = `${ButtonTitle.BEST_TIME} ${SortOrderSymbol.ASC}`;
+    this.headerButtonWins.getElement().textContent = `${ButtonTitle.WINS}`;
+  }
+
+  public setDescOrderForColumnBestTime() {
+    this.headerButtonBestTime.getElement().textContent = `${ButtonTitle.BEST_TIME} ${SortOrderSymbol.DESC}`;
+    this.headerButtonWins.getElement().textContent = `${ButtonTitle.WINS}`;
   }
 
   private configView() {
