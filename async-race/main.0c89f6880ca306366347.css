@@ -13,6 +13,7 @@
 .lanes-view{display:flex;flex-direction:column;gap:.5rem}.lanes-view:first-child{padding-top:.5rem}
 .controls-view{display:flex;padding:.5rem;margin-bottom:1rem;gap:.5rem;border-bottom:2px solid #00d600}.controls-view__button{color:#efefef;background:#3a36fc}@media(hover: hover){.controls-view__button:hover{color:#333231;border-color:#333231;background:#add8e6}}.controls-view__button_disabled{color:#84837f;border-color:#84837f;background:rgba(0,0,0,0);pointer-events:none}
 .paginator{display:flex;padding:.5rem;padding-top:2rem;gap:.5rem}
+.dialog{width:fit-content;padding:5rem;font-size:4rem;background:rgba(0,0,0,0);border:none;color:#0fee0f;text-shadow:0px 0px 20px #fff}.dialog::backdrop{backdrop-filter:blur(2px)}
 .header{width:90vw;margin:auto}.header .nav{display:flex;padding:.5rem;gap:.5rem}
 .page-holder{width:90vw;margin:auto;display:flex;flex-direction:column;padding:.5rem}
 .page-winners{display:flex;flex-direction:column;gap:.5rem}
