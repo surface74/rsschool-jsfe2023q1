@@ -6,6 +6,10 @@
   padding: $padding;
   gap: $padding;
 
+  .button {
+    background: $car-manager-button-color-background;
+  }
+
   .car-name {
     color: $font-color-light;
     font-size: $title-font-size;
@@ -13,6 +17,7 @@
   }
 
   .button_disabled {
+    background: transparent;
     pointer-events: none;
   }
 }

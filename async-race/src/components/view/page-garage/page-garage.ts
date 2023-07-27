@@ -141,7 +141,7 @@ export default class PageGarrage extends DefaultView {
 
     const winnerTime = +(time / 1000).toFixed(2);
     const message = `${car.getCarName()} went first (${winnerTime}s)`;
-    this.showCongrats(message);
+    PageGarrage.showCongrats(message);
 
     this.checkWinnersList(car, winnerTime);
   }
@@ -168,7 +168,7 @@ export default class PageGarrage extends DefaultView {
     }
   }
 
-  private showCongrats(message: string): void {
+  static showCongrats(message: string): void {
     const dialog = new Dialog(message).getDialog();
     document.body.append(dialog);
     dialog.showModal();
