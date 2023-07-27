@@ -8,6 +8,7 @@ import { CarInfo } from '../../car/car';
 enum CarsManagerCss {
   CARS_MANAGER = 'cars-manager',
   CAR_NAME = 'car-name',
+  BUTTON_DISABLED = 'button_disabled',
 }
 
 enum ButtonTitle {
@@ -38,6 +39,16 @@ export default class CarsManager extends DefaultView {
     this.carNameElement = this.createCarNameElement(this.carInfo.name);
 
     this.configView();
+  }
+
+  public disableButtons() {
+    this.selectButton.classList.add(CarsManagerCss.BUTTON_DISABLED);
+    this.removeButton.classList.add(CarsManagerCss.BUTTON_DISABLED);
+  }
+
+  public enableButtons() {
+    this.selectButton.classList.remove(CarsManagerCss.BUTTON_DISABLED);
+    this.removeButton.classList.remove(CarsManagerCss.BUTTON_DISABLED);
   }
 
   private configView() {

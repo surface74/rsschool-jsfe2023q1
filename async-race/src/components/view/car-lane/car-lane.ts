@@ -69,15 +69,27 @@ export default class CarLane extends DefaultView {
     this.carControl.enableStartButton();
   }
 
+  public disableSelectRemoveButtons() {
+    this.carsManager.disableButtons();
+  }
+
+  public enableSelectRemoveButtons() {
+    this.carsManager.enableButtons();
+  }
+
   private startCarHandler() {
     this.carControl.disableStartButton();
     this.carControl.enableReturnButton();
+
+    this.disableSelectRemoveButtons();
     this.startCarCallback(this.carTrack.getCar());
   }
 
   private returnCarHandler() {
     this.carControl.disableReturnButton();
     this.carControl.enableStartButton();
+
+    this.enableSelectRemoveButtons();
     this.returnCarCallback(this.carTrack.getCar());
   }
 

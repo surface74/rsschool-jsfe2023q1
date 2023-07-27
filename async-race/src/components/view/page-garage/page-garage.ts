@@ -95,12 +95,14 @@ export default class PageGarrage extends DefaultView {
   private configRaceUI() {
     this.controlsView.disableRaceButton();
     this.controlsView.disableCreateCarsButton();
+    this.carLanes.forEach((lane) => lane.disableSelectRemoveButtons());
   }
 
   private resetRaceUI() {
     this.controlsView.disableResetButton();
     this.controlsView.enableRaceButton();
     this.controlsView.enableCreateCarsButton();
+    this.carLanes.forEach((lane) => lane.enableSelectRemoveButtons());
   }
 
   private async raceCars() {
