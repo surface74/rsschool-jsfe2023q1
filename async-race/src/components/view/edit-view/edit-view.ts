@@ -100,7 +100,7 @@ export default class EditView extends DefaultView {
     return { ...this.carInfo };
   }
 
-  public clearInput() {
+  public clear() {
     if (this.nameInput instanceof HTMLInputElement) {
       this.nameInput.value = '';
     }

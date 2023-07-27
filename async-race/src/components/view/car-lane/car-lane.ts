@@ -64,20 +64,25 @@ export default class CarLane extends DefaultView {
     return this.carTrack.getCar();
   }
 
-  public restoreButtonState() {
+  public restoreButtonState(): void {
     this.carControl.disableReturnButton();
     this.carControl.enableStartButton();
   }
 
-  public disableSelectRemoveButtons() {
+  public disableSelectRemoveButtons(): void {
     this.carsManager.disableButtons();
   }
 
-  public enableSelectRemoveButtons() {
+  public enableSelectRemoveButtons(): void {
     this.carsManager.enableButtons();
   }
 
-  private startCarHandler() {
+  public setCarInfo(carInfo: CarInfo): void {
+    this.carsManager.setCarName(carInfo.name);
+    this.getCar().setCarInfo(carInfo);
+  }
+
+  private startCarHandler(): void {
     this.carControl.disableStartButton();
     this.carControl.enableReturnButton();
 
@@ -85,7 +90,7 @@ export default class CarLane extends DefaultView {
     this.startCarCallback(this.carTrack.getCar());
   }
 
-  private returnCarHandler() {
+  private returnCarHandler(): void {
     this.carControl.disableReturnButton();
     this.carControl.enableStartButton();
 
@@ -93,15 +98,15 @@ export default class CarLane extends DefaultView {
     this.returnCarCallback(this.carTrack.getCar());
   }
 
-  private selectCarHandler() {
+  private selectCarHandler(): void {
     this.selectCarCallback(this.carInfo);
   }
 
-  private removeCarHandler() {
+  private removeCarHandler(): void {
     this.removeCarCallback(this.carInfo.id);
   }
 
-  private configView() {
+  private configView(): void {
     this.getCreator().addInnerElement(this.carsManager.getElement());
     this.carTrack.getCreator().addInnerElement(this.carControl.getElement());
     this.getCreator().addInnerElement(this.carTrack.getElement());

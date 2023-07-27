@@ -196,6 +196,8 @@ export default class PageGarrage extends DefaultView {
 
   private prevPage() {
     if (this.pageNumber > 1) {
+      this.updateCarBlock.clear();
+      this.createCarBlock.clear();
       this.pageNumber -= 1;
       this.getCarsFromDatabase();
       this.currentPageView.setCurrentPage(this.pageNumber);
@@ -206,6 +208,8 @@ export default class PageGarrage extends DefaultView {
   private nextPage() {
     const totalPages = Math.ceil(this.totalCars / this.ITEMS_PER_PAGE);
     if (this.pageNumber < totalPages) {
+      this.updateCarBlock.clear();
+      this.createCarBlock.clear();
       this.pageNumber += 1;
       this.getCarsFromDatabase();
       this.currentPageView.setCurrentPage(this.pageNumber);
@@ -226,12 +230,11 @@ export default class PageGarrage extends DefaultView {
   }
 
   private createCarCallback(carInfo: CarInfo) {
-    this.createCarBlock.clearInput();
+    this.createCarBlock.clear();
     if (this.carLanes.length < this.ITEMS_PER_PAGE) {
       const carLane = this.createLane(carInfo);
       this.carLanesContainer.getCreator().addInnerElement(carLane.getElement());
     }
-    // this.getCarsFromDatabase();
   }
 
   private updateCar(): void {
@@ -239,9 +242,16 @@ export default class PageGarrage extends DefaultView {
     this.database.updateCar(carInfo, this.updateCarCallback.bind(this));
   }
 
-  private updateCarCallback() {
-    this.updateCarBlock.clearInput();
-    this.getCarsFromDatabase();
+  private updateCarCallback(carInfo: CarInfo) {
+    this.updateCarBlock.clear();
+
+    for (let i = 0; i < this.cars.length; i += 1) {
+      const car = this.cars[i];
+      if (car.getCarId() === carInfo.id) {
+        this.carLanes[i].setCarInfo(carInfo);
+        break;
+      }
+    }
   }
 
   private createContent(carInfos: CarInfo[], totalCars: number) {

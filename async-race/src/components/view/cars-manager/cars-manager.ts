@@ -51,13 +51,17 @@ export default class CarsManager extends DefaultView {
     this.removeButton.classList.remove(CarsManagerCss.BUTTON_DISABLED);
   }
 
+  public setCarName(name: string) {
+    this.carNameElement.textContent = name;
+  }
+
   private configView() {
     this.getCreator().addInnerElement(this.selectButton);
     this.getCreator().addInnerElement(this.removeButton);
     this.getCreator().addInnerElement(this.carNameElement);
   }
 
-  createCarNameElement(name: string): HTMLElement {
+  private createCarNameElement(name: string): HTMLElement {
     this.carNameElement = document.createElement(TagName.SPAN);
     this.carNameElement.textContent = name;
     this.carNameElement.classList.add(CarsManagerCss.CAR_NAME);
