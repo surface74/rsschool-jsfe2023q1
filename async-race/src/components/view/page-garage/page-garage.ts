@@ -170,7 +170,7 @@ export default class PageGarrage extends DefaultView {
 
   private showCongrats(message: string): void {
     const dialog = new Dialog(message).getDialog();
-    this.getElement().append(dialog);
+    document.body.append(dialog);
     dialog.showModal();
   }
 
