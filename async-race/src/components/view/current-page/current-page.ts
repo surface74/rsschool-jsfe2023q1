@@ -30,6 +30,10 @@ export default class CurrentPage extends DefaultView {
     this.updateTitle();
   }
 
+  public getCurrentPage(): number {
+    return this.currentPage;
+  }
+
   private updateTitle() {
     this.getElement().textContent = `${TEXT.TITLE} #${this.currentPage}`;
   }

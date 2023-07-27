@@ -15,6 +15,10 @@ export default class Table extends DefaultView {
 
   private winnerInfos: WinnerInfo[] = [];
 
+  private currentPage: number = 0;
+
+  private itemsPerPage: number = 0;
+
   constructor() {
     const params: ElementParams = {
       tag: TagName.DIV,
@@ -25,17 +29,21 @@ export default class Table extends DefaultView {
     super(params);
   }
 
-  public async fillTable(winnerInfos: WinnerInfo[]) {
+  public async fillTable(winnerInfos: WinnerInfo[], currentPage: number, itemsPerPage: number) {
     this.winnerInfos = winnerInfos;
-    this.database.getCarsByWinnerInfo(winnerInfos, this.createTableItems.bind(this));
+    this.currentPage = currentPage;
+    this.itemsPerPage = itemsPerPage;
+    await this.database.getCarsByWinnerInfo(winnerInfos, this.createTableItems.bind(this));
   }
 
   private createTableItems(carInfos: CarInfo[]) {
     this.getElement().replaceChildren('');
+
+    const startListNumber = (this.currentPage - 1) * this.itemsPerPage;
     carInfos.forEach((carInfo, index) => {
       const orderInTable = document.createElement(TagName.DIV);
       orderInTable.classList.add(TableCss.TABLE_CELL);
-      orderInTable.textContent = String(index + 1);
+      orderInTable.textContent = String(startListNumber + index + 1);
 
       const car = new Car(carInfo).getCarElement();
       car.classList.add(TableCss.TABLE_CELL);

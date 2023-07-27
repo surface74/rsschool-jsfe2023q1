@@ -118,7 +118,7 @@ export default class PageWinners extends DefaultView {
   private async createContent(winnersInfos: WinnerInfo[], totalItems: number): Promise<void> {
     this.totalItems = totalItems;
     this.updateTitle(totalItems);
-    this.table.fillTable(winnersInfos);
+    this.table.fillTable(winnersInfos, this.currentPageView.getCurrentPage(), this.ITEMS_PER_PAGE);
   }
 
   private sortByWins() {
