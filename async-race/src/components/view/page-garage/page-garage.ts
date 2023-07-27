@@ -152,12 +152,12 @@ export default class PageGarrage extends DefaultView {
 
   private updateWinners(car: Car, winnerInfo: WinnerInfo, time: number) {
     if (winnerInfo.id) {
+      const updateWinnerInfo: WinnerInfo = { ...winnerInfo };
+      updateWinnerInfo.wins += 1;
       if (winnerInfo.time > time) {
-        const updateWinnerInfo: WinnerInfo = { ...winnerInfo };
         updateWinnerInfo.time = time;
-        updateWinnerInfo.wins += 1;
-        this.database.updateWinner(updateWinnerInfo);
       }
+      this.database.updateWinner(updateWinnerInfo);
     } else {
       const newWinnerInfo: WinnerInfo = {
         id: car.getCarId(),
