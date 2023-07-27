@@ -221,12 +221,17 @@ export default class PageGarrage extends DefaultView {
     const carInfo = this.createCarBlock.getViewValues();
     if (carInfo.name.length > 1) {
       this.database.createCar(carInfo, this.createCarCallback.bind(this));
+      this.totalCars += 1;
     }
   }
 
-  private createCarCallback() {
+  private createCarCallback(carInfo: CarInfo) {
     this.createCarBlock.clearInput();
-    this.getCarsFromDatabase();
+    if (this.carLanes.length < this.ITEMS_PER_PAGE) {
+      const carLane = this.createLane(carInfo);
+      this.carLanesContainer.getCreator().addInnerElement(carLane.getElement());
+    }
+    // this.getCarsFromDatabase();
   }
 
   private updateCar(): void {
@@ -245,20 +250,26 @@ export default class PageGarrage extends DefaultView {
     this.carLanesContainer.getElement().replaceChildren('');
 
     carInfos.forEach((carInfo) => {
-      const carLane = new CarLane(
-        carInfo,
-        this.selectCar.bind(this),
-        this.removeCar.bind(this),
-        this.startEngine.bind(this),
-        this.returnCar.bind(this)
-      );
-      this.cars.push(carLane.getCar());
-      this.carLanes.push(carLane);
+      const carLane = this.createLane(carInfo);
       this.carLanesContainer.getCreator().addInnerElement(carLane.getElement());
     });
 
     this.totalCars = totalCars;
     this.updateTitle(totalCars);
+  }
+
+  createLane(carInfo: CarInfo): CarLane {
+    const carLane = new CarLane(
+      carInfo,
+      this.selectCar.bind(this),
+      this.removeCar.bind(this),
+      this.startEngine.bind(this),
+      this.returnCar.bind(this)
+    );
+    this.cars.push(carLane.getCar());
+    this.carLanes.push(carLane);
+
+    return carLane;
   }
 
   private selectCar(carInfo: CarInfo) {
