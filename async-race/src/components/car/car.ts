@@ -82,13 +82,12 @@ export default class Car {
   }
 
   private animation(endX: number, duration: number) {
-    let currentX = this.element.offsetLeft;
+    let currentX = 0;
     const framesCount = (duration / 1000) * 60;
-    const dX = (endX - this.element.offsetLeft) / framesCount;
+    const dX = endX / framesCount;
 
     const tick = () => {
       currentX += dX;
-
       if (currentX < endX) {
         this.element.style.transform = `translateX(${currentX}px)`;
         this.animationId = requestAnimationFrame(tick);

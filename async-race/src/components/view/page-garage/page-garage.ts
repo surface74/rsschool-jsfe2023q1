@@ -287,8 +287,10 @@ export default class PageGarrage extends DefaultView {
 
   private startRace(car: Car, time: number) {
     const trackWidth = this.carLanesContainer.getElement().getBoundingClientRect().width;
-    const carOffsetLeft = car.getCarElement().getBoundingClientRect().left;
-    const distance = trackWidth - carOffsetLeft;
+    const carWidth = car.getCarElement().getBoundingClientRect().width;
+    const carOffsetLeft = Number.parseFloat(window.getComputedStyle(car.getCarElement()).left);
+
+    const distance = trackWidth - carOffsetLeft - carWidth;
     car.startRace(distance, time);
   }
 

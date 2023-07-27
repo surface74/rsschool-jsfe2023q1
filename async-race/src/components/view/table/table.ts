@@ -33,9 +33,9 @@ export default class Table extends DefaultView {
   private createTableItems(carInfos: CarInfo[]) {
     this.getElement().replaceChildren('');
     carInfos.forEach((carInfo, index) => {
-      const id = document.createElement(TagName.DIV);
-      id.classList.add(TableCss.TABLE_CELL);
-      id.textContent = String(carInfo.id);
+      const orderInTable = document.createElement(TagName.DIV);
+      orderInTable.classList.add(TableCss.TABLE_CELL);
+      orderInTable.textContent = String(index + 1);
 
       const car = new Car(carInfo).getCarElement();
       car.classList.add(TableCss.TABLE_CELL);
@@ -49,7 +49,7 @@ export default class Table extends DefaultView {
       const time = document.createElement(TagName.DIV);
       time.textContent = String(this.winnerInfos[index].time);
 
-      this.getElement().append(id, car, name, wins, time);
+      this.getElement().append(orderInTable, car, name, wins, time);
     });
   }
 }
