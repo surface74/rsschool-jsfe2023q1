@@ -1,6 +1,8 @@
 import './car.scss';
 import html from './car.html';
+import MyMath from '../../utils/my-math';
 import TagName from '../../enums/tag-name';
+import carModels from '../view/car-models/car-models';
 
 enum CarCss {
   CAR = 'car',
@@ -13,11 +15,17 @@ export type CarInfo = {
 };
 
 export default class Car {
+  static readonly FAKE_CAR_ID = -1;
+
+  private readonly INIT_REQUEST_ID = 0;
+
+  private readonly DISPLAY_UPDATE_FREQUENCE = 16;
+
   private element: HTMLElement;
 
   private carInfo: CarInfo;
 
-  private animationId = 0;
+  private animationId = this.INIT_REQUEST_ID;
 
   constructor(info: CarInfo) {
     this.carInfo = info;
@@ -27,6 +35,22 @@ export default class Car {
     this.element.innerHTML = html;
 
     this.setColor(this.carInfo.color);
+  }
+
+  public static getDefaultCarInfo(): CarInfo {
+    return {
+      id: Car.FAKE_CAR_ID,
+      name: '',
+      color: 'black',
+    };
+  }
+
+  public static getRandomCarInfo(): CarInfo {
+    return {
+      id: Car.FAKE_CAR_ID,
+      name: this.getRandomCarName(),
+      color: carModels.color[MyMath.getRandom(0, carModels.color.length - 1)],
+    };
   }
 
   public getCarElement() {
@@ -65,7 +89,7 @@ export default class Car {
   }
 
   public startRace(distance: number, time: number) {
-    if (this.animationId === 0) {
+    if (this.animationId === this.INIT_REQUEST_ID) {
       this.animation(distance, time);
     }
   }
@@ -75,20 +99,20 @@ export default class Car {
   }
 
   public stopRace() {
-    if (this.animationId !== 0) {
+    if (this.animationId !== this.INIT_REQUEST_ID) {
       cancelAnimationFrame(this.animationId);
-      this.animationId = 0;
+      this.animationId = this.INIT_REQUEST_ID;
     }
   }
 
-  private animation(endX: number, duration: number) {
+  private animation(trackLength: number, duration: number) {
     let currentX = 0;
-    const framesCount = (duration / 1000) * 60;
-    const dX = endX / framesCount;
+    const framesCount = duration / this.DISPLAY_UPDATE_FREQUENCE;
+    const dX = trackLength / framesCount;
 
     const tick = () => {
       currentX += dX;
-      if (currentX < endX) {
+      if (currentX < trackLength) {
         this.element.style.transform = `translateX(${currentX}px)`;
         this.animationId = requestAnimationFrame(tick);
       } else {
@@ -96,5 +120,12 @@ export default class Car {
       }
     };
     tick();
+  }
+
+  private static getRandomCarName(): string {
+    const part1 = carModels.mark[MyMath.getRandom(0, carModels.mark.length - 1)];
+    const part2 = carModels.model[MyMath.getRandom(0, carModels.model.length - 1)];
+
+    return `${part1} ${part2}`;
   }
 }

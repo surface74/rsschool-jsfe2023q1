@@ -4,10 +4,11 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
+    historyApiFallback: true,
     open: {
       app: {
         name: 'chrome',
-      }
+      },
     },
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -15,5 +16,5 @@ module.exports = {
     hot: true,
     compress: true,
     port: 4000,
-  }
+  },
 };

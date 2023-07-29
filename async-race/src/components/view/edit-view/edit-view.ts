@@ -1,7 +1,7 @@
 import TagName from '../../../enums/tag-name';
 import HtmlCreator, { ElementParams } from '../../../utils/html-creator';
 import Button, { ButtonCss, ButtonParams } from '../../button/button';
-import { CarInfo } from '../../car/car';
+import Car, { CarInfo } from '../../car/car';
 import DefaultView from '../default-view';
 import './edit-view.scss';
 
@@ -13,12 +13,6 @@ enum EditViewCss {
 
 export default class EditView extends DefaultView {
   private carInfo: CarInfo;
-
-  private defaultCarInfo: CarInfo = {
-    id: -1,
-    name: '',
-    color: 'black',
-  };
 
   private nameInput: HTMLElement;
 
@@ -34,7 +28,7 @@ export default class EditView extends DefaultView {
     };
     super(params);
 
-    this.carInfo = { ...this.defaultCarInfo };
+    this.carInfo = { ...Car.getDefaultCarInfo() };
     this.nameInput = this.addNameInput();
     this.colorInput = this.addColorInput();
     this.addButton(buttonText, callback);
@@ -104,6 +98,6 @@ export default class EditView extends DefaultView {
     if (this.nameInput instanceof HTMLInputElement) {
       this.nameInput.value = '';
     }
-    this.carInfo = { ...this.defaultCarInfo };
+    this.carInfo = { ...Car.getDefaultCarInfo() };
   }
 }

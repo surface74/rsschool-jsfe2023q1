@@ -8,15 +8,17 @@ import Storage from '../storage/storage';
 import PageWinners from '../view/page-winners/page-winners';
 
 export default class App {
+  private readonly FIRST_PAGE = 1;
+
   private favicon: Favicon;
 
   private database: DbModel;
 
   private storage: Storage;
 
-  private winnersPageNumber: number = 1;
+  private winnersPageNumber: number = this.FIRST_PAGE;
 
-  private garagePageNumber: number = 1;
+  private garagePageNumber: number = this.FIRST_PAGE;
 
   private pageGarage: PageGarrage;
 

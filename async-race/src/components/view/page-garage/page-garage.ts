@@ -29,9 +29,15 @@ export default class PageGarrage extends DefaultView {
 
   private readonly BULK_CARS_CREATION_COUNT = 100;
 
+  private readonly FIRST_PAGE = 1;
+
+  private readonly MILLISECONDS_IN_SECOND = 1000;
+
+  private readonly TIME_PRECISION = 2;
+
   private database: DbModel = DbModel.getInstance();
 
-  private pageTitle: PageTitle = new PageTitle(Titles.PAGE_TITLE, 0);
+  private pageTitle: PageTitle = new PageTitle(Titles.PAGE_TITLE, this.FIRST_PAGE);
 
   private currentPageView: CurrentPage;
 
@@ -45,7 +51,7 @@ export default class PageGarrage extends DefaultView {
 
   private paginator: Paginator;
 
-  private pageNumber: number = 1;
+  private pageNumber: number = this.FIRST_PAGE;
 
   private totalCars: number = 0;
 
@@ -139,7 +145,7 @@ export default class PageGarrage extends DefaultView {
 
     this.winnerFound = true;
 
-    const winnerTime = +(time / 1000).toFixed(2);
+    const winnerTime = +(time / this.MILLISECONDS_IN_SECOND).toFixed(this.TIME_PRECISION);
     const message = `${car.getCarName()} went first (${winnerTime}s)`;
     PageGarrage.showCongrats(message);
 
@@ -195,7 +201,7 @@ export default class PageGarrage extends DefaultView {
   }
 
   private prevPage() {
-    if (this.pageNumber > 1) {
+    if (this.pageNumber > this.FIRST_PAGE) {
       this.updateCarBlock.clear();
       this.createCarBlock.clear();
       this.pageNumber -= 1;

@@ -24,13 +24,15 @@ export type SortConfig = {
 };
 
 export default class PageWinners extends DefaultView {
+  private readonly FIRST_PAGE = 1;
+
   private readonly ITEMS_PER_PAGE = 10;
 
-  private pageNumber: number = 1;
+  private pageNumber: number = this.FIRST_PAGE;
 
   private totalItems: number = 0;
 
-  private pageTitle: PageTitle = new PageTitle(Titles.PAGE_TITLE, 0);
+  private pageTitle: PageTitle = new PageTitle(Titles.PAGE_TITLE, this.FIRST_PAGE);
 
   private currentPageView: CurrentPage;
 
@@ -152,7 +154,7 @@ export default class PageWinners extends DefaultView {
   }
 
   private prevPage() {
-    if (this.pageNumber > 1) {
+    if (this.pageNumber > this.FIRST_PAGE) {
       this.pageNumber -= 1;
       this.getWinnersFromDatabase();
       this.currentPageView.setCurrentPage(this.pageNumber);

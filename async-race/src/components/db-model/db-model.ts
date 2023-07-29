@@ -1,6 +1,4 @@
-import MyMath from '../../utils/my-math';
 import Car, { CarInfo } from '../car/car';
-import carModels from '../view/car-models/car-models';
 
 enum HttpMethod {
   GET = 'GET',
@@ -49,13 +47,11 @@ export default class DbModel {
 
   private readonly WINNERS_PER_PAGE = 10;
 
-  private carModels = carModels;
-
   static getInstance() {
     return this.storage;
   }
 
-  async getWinners(callback: (winners: Array<WinnerInfo>) => void) {
+  public async getWinners(callback: (winners: Array<WinnerInfo>) => void) {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}`;
     const method = { method: HttpMethod.GET };
 
@@ -65,7 +61,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async getWinnersOnPage(
+  public async getWinnersOnPage(
     callback: (winners: Array<WinnerInfo>, totalItem: number) => void,
     pageNumber: number,
     sortField: WinnersSortField,
@@ -86,7 +82,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async getWinner(car: Car, callback: (car: Car, winnerInfo: WinnerInfo, time: number) => void, time: number) {
+  public async getWinner(car: Car, callback: (car: Car, winnerInfo: WinnerInfo, time: number) => void, time: number) {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${car.getCarId()}`;
     const method = { method: HttpMethod.GET };
 
@@ -96,7 +92,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async createWinner(winnerInfo: WinnerInfo): Promise<void> {
+  public async createWinner(winnerInfo: WinnerInfo): Promise<void> {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}`;
     const method = HttpMethod.POST;
     const headers = { 'Content-Type': 'application/json' };
@@ -111,7 +107,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async deleteWinner(carId: number) {
+  public async deleteWinner(carId: number) {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${carId}`;
     const method = { method: HttpMethod.DELETE };
 
@@ -120,7 +116,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async updateWinner(winnerInfo: WinnerInfo): Promise<void> {
+  public async updateWinner(winnerInfo: WinnerInfo): Promise<void> {
     const path = `${this.BASE_PATH}/${Endpoint.WINNERS}/${winnerInfo.id}`;
     const method = HttpMethod.PUT;
     const headers = { 'Content-Type': 'application/json' };
@@ -134,7 +130,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async getCars(callback: (cars: Array<CarInfo>) => void) {
+  public async getCars(callback: (cars: Array<CarInfo>) => void) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}`;
     const method = { method: HttpMethod.GET };
 
@@ -144,7 +140,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async getCarsOnPage(
+  public async getCarsOnPage(
     callback: (cars: Array<CarInfo>, totalCars: number) => void,
     pageNumber: number,
     itemPerPage: number = this.CARS_PER_PAGE
@@ -163,7 +159,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async getCar(carId: number, callback: (car: CarInfo) => void): Promise<void> {
+  public async getCar(carId: number, callback: (car: CarInfo) => void): Promise<void> {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}/${carId}`;
     const method = { method: HttpMethod.GET };
 
@@ -173,7 +169,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async getCarSilent(carId: number): Promise<CarInfo> {
+  public async getCarSilent(carId: number): Promise<CarInfo> {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}/${carId}`;
     const method = { method: HttpMethod.GET };
 
@@ -183,7 +179,7 @@ export default class DbModel {
     return data;
   }
 
-  async getCarsByWinnerInfo(winnerInfos: WinnerInfo[], callback: (carInfos: CarInfo[]) => void) {
+  public async getCarsByWinnerInfo(winnerInfos: WinnerInfo[], callback: (carInfos: CarInfo[]) => void) {
     const promises: Promise<CarInfo>[] = [];
     winnerInfos.forEach((winnerInfo) => promises.push(this.getCarSilent(winnerInfo.id)));
 
@@ -192,7 +188,7 @@ export default class DbModel {
     callback(carInfos);
   }
 
-  async createCar(carInfo: CarInfo, callback: (car: CarInfo) => void) {
+  public async createCar(carInfo: CarInfo, callback: (car: CarInfo) => void) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}`;
     const method = HttpMethod.POST;
     const headers = { 'Content-Type': 'application/json' };
@@ -207,7 +203,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async createCarSilent(carInfo: CarInfo) {
+  public async createCarSilent(carInfo: CarInfo) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}`;
     const method = HttpMethod.POST;
     const headers = { 'Content-Type': 'application/json' };
@@ -221,14 +217,10 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async createCars(carNumber: number, callback: () => void) {
+  public async createCars(carNumber: number, callback: () => void) {
     const promises: Promise<void>[] = [];
     for (let i = 0; i < carNumber; i += 1) {
-      const carInfo: CarInfo = {
-        id: -1,
-        name: this.getRandomCarName(),
-        color: carModels.color[MyMath.getRandom(0, carModels.color.length - 1)],
-      };
+      const carInfo: CarInfo = Car.getRandomCarInfo();
       promises.push(this.createCarSilent(carInfo));
     }
     await Promise.all(promises);
@@ -236,18 +228,7 @@ export default class DbModel {
     callback();
   }
 
-  private getRandomColor(): string {
-    return this.carModels.color[MyMath.getRandom(0, carModels.color.length - 1)];
-  }
-
-  private getRandomCarName(): string {
-    const part1 = this.carModels.mark[MyMath.getRandom(0, carModels.mark.length - 1)];
-    const part2 = this.carModels.model[MyMath.getRandom(0, carModels.model.length - 1)];
-
-    return `${part1} ${part2}`;
-  }
-
-  async deleteCar(carId: number, callback: () => void) {
+  public async deleteCar(carId: number, callback: () => void) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}/${carId}`;
     const method = { method: HttpMethod.DELETE };
 
@@ -257,7 +238,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async updateCar(carInfo: CarInfo, callback: (car: CarInfo) => void) {
+  public async updateCar(carInfo: CarInfo, callback: (car: CarInfo) => void) {
     const path = `${this.BASE_PATH}/${Endpoint.GARAGE}/${carInfo.id}`;
     const method = HttpMethod.PUT;
     const headers = { 'Content-Type': 'application/json' };
@@ -272,7 +253,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async startEngine(car: Car, callback: (raceParams: RaceParams, car: Car) => void) {
+  public async startEngine(car: Car, callback: (raceParams: RaceParams, car: Car) => void) {
     const carId = car.getCarId();
     const query = `id=${carId}&status=${CarStatus.STARTED}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
@@ -288,7 +269,7 @@ export default class DbModel {
       .catch((error: Error) => console.error(error));
   }
 
-  async startEngineSilent(car: Car): Promise<RaceParams> {
+  public async startEngineSilent(car: Car): Promise<RaceParams> {
     const carId = car.getCarId();
     const query = `id=${carId}&status=${CarStatus.STARTED}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
@@ -303,7 +284,7 @@ export default class DbModel {
     return data;
   }
 
-  async driveCar(
+  public async driveCar(
     car: Car,
     callbackOK: (car: Car, time: number) => void,
     callbackError: () => void,
@@ -325,7 +306,7 @@ export default class DbModel {
     return car;
   }
 
-  async stopCar(carId: number) {
+  public async stopCar(carId: number) {
     const query = `id=${carId}&status=${CarStatus.STOPPED}`;
     const path = `${this.BASE_PATH}/${Endpoint.ENGINE}?${query}`;
     const method = HttpMethod.PATCH;
