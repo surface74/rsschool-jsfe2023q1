@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Web Authentication</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section id="title">
+				<h3>Authentication methods and protocols in web applications</h3>
+				<p>
+					<small style="padding-top: 10rem;">Created by <a href="https://github.com/surface74">Siarhey Muliarenka</a></small>
+				</p>
+			</section>
+			<section id="terminology">
+				<h3>Terminology</h3>
+				<ul>
+					<li class="fragment">Identification</li>
+					<li class="fragment">Authentication</li>
+					<li class="fragment">Authorization</li>
+				</ul>
+			</section>
+			<section id="types-of-authentication">
+				<h3>Types of authentication</h3>
+				<ul>
+					<li class="fragment">Authentication by password
+						<ul>
+							<li class="fragment">HTTP authentication</li>
+							<li class="fragment">Forms authentication</li>
+							<li class="fragment">Other password authentication protocols</li>
+						</ul>
+					</li>
+					<li class="fragment">Authentication certificate</li>
+					<li class="fragment">One-time Password Authentication</li>
+					<li class="fragment">Access Key Authentication</li>
+				</ul>
+			</section>
+			<section id="http-authentication">
+				<h4>Authentication by password</h4>
+				<h5 class="fragment">HTTP authentication</h5>
+				<ol>
+					<li class="fragment">
+						<small>The server, when an unauthorized client accesses a protected resource, sends the
+							HTTP status "401 Unauthorized" and adds the "WWW-Authenticate" header indicating the authentication scheme
+							and parameters.</small>
+					</li>
+					<li class="fragment"><small>
+							The browser, upon receiving such a response, automatically displays the username and
+							password input dialog. The user enters their account details.
+						</small>
+					</li>
+					<li class="fragment"><small>
+							In all subsequent requests to this website, the browser automatically adds the HTTP
+							header “Authorization”, which transmits user data for authentication by the server.
+						</small>
+					</li>
+					<li class="fragment"><small>
+							The server authenticates the user according to the data from this header. The decision
+							to grant access (authorization) is made separately based on the user's role, ACL, or other account data.
+						</small>
+					</li>
+				</ol>
+			</section>
+			<section id="http-authentication-schemes">
+				<h4>Authentication by password</h4>
+				<h5>HTTP authentication</h5>
+				<img src="./assets/http-authentication.png" alt="http-authentication schema"
+					style="height: 300px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+			</section>
+			<section id="forms-authentication">
+				<h4>Authentication by password</h4>
+				<h5>Forms authentication</h5>
+				<img src="./assets/forms-authentication.png" alt="forms-authentication schema"
+					style="height: 300px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+			</section>
+			<section id="other-password-authentication">
+				<h4>Authentication by password</h4>
+				<h5>Other authentication protocols</h5>
+				<ul>
+					<li class="fragment">URL query</li>
+					<li class="fragment">Request body</li>
+					<li class="fragment">HTTP header</li>
+				</ul>
+			</section>
+			<section id="certificate">
+				<h4>Authentication certificate</h4>
+				<img src="./assets/sertificate-schema.png" alt="sertificate schema"
+					style="height: 300px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+				<img class="fragment" src="./assets/sertificate.png" alt="sertificate view"
+					style="height: 300px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+			</section>
+			<section id="one-time-password">
+				<h4>One Time Password Authentication</h4>
+				<img class="fragment" src="./assets/hard-key-token.jpg" alt="hard key token view"
+					style="height: 100px; margin: 0 auto 1rem; background: transparent;">
+				<p class="fragment">Hardware or software tokens</p>
+				<p class="fragment">Randomly generated codes transmitted to the user via SMS or other communication channel</p>
+				<p class="fragment">Printing or scratch card with a list of pre-generated one-time passwords</p>
+			</section>
+
+			<section id="access-key">
+				<h4>Access Key Authentication</h4>
+				<img src="./assets/access-key-schema.png" alt="access key athentication schema 1"
+					style="height: 300px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+				<img class="fragment" src="./assets/access-key-schema2.png" alt="access key athentication schema 2"
+					style="height: 150px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+			</section>
+
+			<section id="token-authentication">
+				<h4>Token authentication</h4>
+				<img src="./assets/token-authentication-schema.png" alt="token authentication schema 1"
+					style="height: 200px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+				<img class="fragment" src="./assets/token-authentication-schema2.png" alt="token authentication schema 2"
+					style="height: 200px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+			</section>
+
+			<section id="tokens">
+				<h4>Token authentication</h4>
+				<h5>Token formats</h5>
+				<ul>
+					<li class="fragment">Simple Web Token (SWT)</li>
+					<li class="fragment">JSON Web Token (JWT) </li>
+					<li class="fragment">Security Assertion Markup Language (SAML)</li>
+				</ul>
+			</section>
+
+			<section id="conclusion">
+				<h4>Token authentication</h4>
+				<table>
+					<thead>
+						<tr>
+							<th>Method</th>
+							<th>Application</th>
+							<th>Protocols</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><small>Password</small></td>
+							<td><small>User authentication</small></td>
+							<td><small>HTTP, Forms</small></td>
+						</tr>
+						<tr>
+							<td><small>Certificates</small></td>
+							<td><small>User authentication in secure applications; service authentication</small></td>
+							<td><small>SSL/TLS</small></td>
+						</tr>
+						<tr>
+							<td><small>One-time passwords</small></td>
+							<td><small>Additional user authentication (to achieve two-factor authentication)</small></td>
+							<td><small>Forms</small></td>
+						</tr>
+						<tr>
+							<td><small>Access keys</small></td>
+							<td><small>Service and Application Authentication</small></td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td><small>Token</small></td>
+							<td><small>Delegated user authentication; delegated application authorization</small></td>
+							<td><small>SAML, WS-Federation, OAuth, OpenID Connect</small></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section id="end">
+				<h3>END</h3>
+				<p>
+					<small>Thanks for <a href="https://https://habr.com/ru/companies/dataart/articles/262817/">Dmitrij Vyrostkov,
+							Solutions Architect, DataArt</a></small>
+				</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
